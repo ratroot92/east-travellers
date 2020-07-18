@@ -28,7 +28,7 @@ class GalleryController extends Controller {
 	}
 	public function add_url(Request $request) {
 		$url       = $request->get('url');
-		$name      = $request->get('name');
+		$$name     = $request->get('$name');
 		$url_array = explode("/", $url);
 
 		//dd($url_array[0], $url_array[1], $url_array[2], $url_array[3]);
