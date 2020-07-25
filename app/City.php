@@ -1,8 +1,9 @@
 <?php
 
 namespace App;
-use Illuminate\Database\Eloquent\Model;
 use App\All_Events;
+use Illuminate\Database\Eloquent\Model;
+
 class City extends Model {
 	protected $table      = 'cities';
 	protected $foreignKey = 'fkey';
@@ -10,12 +11,14 @@ class City extends Model {
 		'fkey', 'name', 'of',
 	];
 
-	public function activities() {
-		return $this->belongsToMany('App\Activity');
-	}
+	//
+	public function GetEventsbyCityName() {
 
-	public function GetCityActivities(){
-        return $this->belongsToMany(All_Events::class,'city_all__events','city_id','all__events_id');
-    }
+		return $this->belongsToMany(All_Events::class , 'city_all__events', 'city_id', 'all__events_id');
+	}
+	public function GetEventsbyCityNames() {
+
+		return $this->belongsToMany(All_Events::class , 'city_all__events', 'all__events_id', 'city_id');
+	}
 
 }

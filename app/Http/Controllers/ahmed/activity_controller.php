@@ -3,9 +3,11 @@ namespace App\Http\Controllers\ahmed;
 
 use App;
 use App\Activity;
+use App\All_Events;
 use App\Category;
 use App\City;
 use App\Country;
+use App\Event_City;
 use App\File;
 use App\Http\Controllers\Controller;
 use App\Image;
@@ -13,6 +15,7 @@ use App\Package_Icon;
 use DB;
 use Illuminate\Http\Request;
 use PDF;
+//
 use Validator;
 
 class activity_controller extends Controller {
@@ -1063,4 +1066,37 @@ class activity_controller extends Controller {
 				'package_cat' => $package_cat,
 			]);
 	}
+
+	//new
+	public function All_Activity_Events() {
+		$All_Activity_Events = All_Events::where('event_type', '=', 'Activity')->paginate(6);
+		$Icons               = DB::table('icons')->get();
+		// dd($All_Activity_Events);
+		return view('Activity_Event/All_Activity_Events', ['All_Activity_Events' => $All_Activity_Events, 'icons' => $Icons]);
+	}
+	//city search
+	public function Activity_By_City($id) {
+		$Get_City = Event_City::Find($id);
+		$city     = DB::table('cities')->where('name', '=', $Get_City->name)->first();
+		//dd($city);
+		if ($city) {
+			dd($city->GetEventsbyCityName);
+			if ($All_Activity_Events = $Get_City->GetEventsbyCityName) {
+				$All_Activity_Events = $All_Activity_Events->where('event_type', '=', 'Activity');
+				dd($All_Activity_Events);
+			}
+			//No Activbity Associated With Searched City
+			 else {
+				return redirect()->route('all.events.activity')->with('error', 'No Activity Found For  '.$Get_City->name);
+			}
+		}
+		//Failed To Find City
+		 else {
+			return redirect()->route('all.events.activity')->with('error', 'No Activity Found For  '.$Get_City->name);
+		}
+
+		$Icons = DB::table('icons')->get();
+		return view('Activity_Event/All_Activity_Events', ['All_Activity_Events' => $All_Activity_Events, 'icons' => $Icons]);
+	}
+
 }

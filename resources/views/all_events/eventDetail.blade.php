@@ -109,70 +109,6 @@
 
                 </div>
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3>
-                            <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
-                            {{$Event->event_type ?? ''}} Countries
-                        </h3>
-                    </div>
-                    <div class="col-md-12">
-                        <ul class="" style="list-style:none;">
-                            @foreach($Event->GetActivityCountry as $country)
-                            <li><i class="fa fa-flag text-primary mr-2 fa-2x " aria-hidden="true"></i><span
-                                    class="font-weight-bold " style="font-size:18px;">{{$country->name}}</span>
-                            </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3>
-                            <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
-                            {{$Event->event_type ?? ''}} Cities
-                        </h3>
-                    </div>
-                    <div class="col-md-12">
-                        @if($Event->GetActivityCity->count() > 0 )
-                        <ul class="" style="list-style:none;">
-                            @foreach($Event->GetActivityCity as $city)
-                            <li><i class="fa fa-building-o text-primary mr-2 fa-2x " aria-hidden="true"></i><span
-                                    class="font-weight-bold " style="font-size:18px;">{{$city->name ?? 'N/A'}}</span>
-                            </li>
-                            @endforeach
-                        </ul>
-                        @else
-                        <i class="fa fa-info fa-2x text-danger mr-2"></i> <span style="font-size:18px;">No Cities</span>
-                        @endif
-                    </div>
-                </div>
-
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3>
-                            <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
-                            {{$Event->event_type ?? ''}} Categories
-                        </h3>
-                    </div>
-                    <div class="col-md-12">
-                        @if($Event->GetActivityCategory->count() > 0 )
-                        <ul class="" style="list-style:none;">
-                            @foreach($Event->GetActivityCategory as $category)
-                            <li><i class="fa fa-list-alt text-primary mr-2 fa-2x " aria-hidden="true"></i><span
-                                    class="font-weight-bold "
-                                    style="font-size:18px;">{{$category->name ?? 'N/A'}}</span>
-                            </li>
-                            @endforeach
-                        </ul>
-                        @else
-                        <i class="fa fa-info fa-2x text-danger mr-2"></i> <span style="font-size:18px;">No
-                            Categories</span>
-                        @endif
-                    </div>
-                </div>
 
                 <div class="row">
                     <div class="col-md-12">
@@ -706,7 +642,79 @@
                         <h4><i class="fa fa-phone" aria-hidden="true"></i> +421-917-251-996</h4>
                     </div>
                 </div>
+                {{--  --}}
 
+               {{-- countries --}}
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>
+                            <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
+                            {{$Event->event_type ?? ''}} Countries
+                        </h3>
+                    </div>
+                    <div class="col-md-12">
+                        <ul class="" style="list-style:none;">
+                            @foreach($Event->GetActivityCountry as $country)
+                            <li><i class="fa fa-flag text-primary mr-2 fa-2x " aria-hidden="true"></i><span
+                                    class="font-weight-bold " style="font-size:18px;">{{$country->name}}</span>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                {{-- countries --}}
+                {{-- cities --}}
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>
+                            <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
+                            {{$Event->event_type ?? ''}} Cities
+                        </h3>
+                    </div>
+                    <div class="col-md-12">
+                        @if($Event->GetActivityCity->count() > 0 )
+                        <ul class="" style="list-style:none;">
+                            @foreach($Event->GetActivityCity as $city)
+                            <li><i class="fa fa-building-o text-primary mr-2 fa-2x " aria-hidden="true"></i><span
+                                    class="font-weight-bold " style="font-size:18px;">{{$city->name ?? 'N/A'}}</span>
+                            </li>
+                            @endforeach
+                        </ul>
+                        @else
+                        <i class="fa fa-info fa-2x text-danger mr-2"></i> <span style="font-size:18px;">No Cities</span>
+                        @endif
+                    </div>
+                </div>
+{{-- cities --}}
+{{-- categories --}}
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>
+                            <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
+                            {{$Event->event_type ?? ''}} Categories
+                        </h3>
+                    </div>
+                    <div class="col-md-12">
+                        @if($Event->GetActivityCategory->count() > 0 )
+                        <ul class="" style="list-style:none;">
+                            @foreach($Event->GetActivityCategory as $category)
+                            <li><i class="fa fa-list-alt text-primary mr-2 fa-2x " aria-hidden="true"></i><span
+                                    class="font-weight-bold "
+                                    style="font-size:18px;">{{$category->name ?? 'N/A'}}</span>
+                            </li>
+                            @endforeach
+                        </ul>
+                        @else
+                        <i class="fa fa-info fa-2x text-danger mr-2"></i> <span style="font-size:18px;">No
+                            Categories</span>
+                        @endif
+                    </div>
+                </div>
+                {{-- categoris --}}
+                {{--  --}}
             </div>
         </div>
     </div>

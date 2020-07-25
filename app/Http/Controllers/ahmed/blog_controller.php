@@ -35,28 +35,28 @@ class blog_controller extends Controller {
 
 				// $db_cities    = DB::table('cities')->where('name', 'LIKE', '%'.$query.'%')->where('of', '=', 'package')->get();
 				// $db_countries = DB::table('countries')->where('name', 'LIKE', '%'.$query.'%')->where('of', '=', 'package')->get();
-				$db_cities    = DB::table('cities')->where('of', '=', 'package')->get();
-				$db_countries = DB::table('countries')->where('of', '=', 'package')->get();
+				$db_cities    = DB::table('event__cities')->get();
+				$db_countries = DB::table('event__countries')->get();
 			} elseif ($selected_type == "2") {
 				// $db_cities    = DB::table('cities')->where('name', 'LIKE', '%'.$query.'%')->where('of', '=', 'package')->get();
 				// $db_countries = DB::table('countries')->where('name', 'LIKE', '%'.$query.'%')->where('of', '=', 'package')->get();
-				$db_cities    = DB::table('cities')->where('of', '=', 'daytour')->get();
-				$db_countries = DB::table('countries')->where('of', '=', 'daytour')->get();
+				$db_cities    = DB::table('event__cities')->get();
+				$db_countries = DB::table('event__countries')->get();
 			} elseif ($selected_type == "3") {
 				// $db_cities    = DB::table('cities')->where('name', 'LIKE', '%'.$query.'%')->where('of', '=', 'package')->get();
 				// $db_countries = DB::table('countries')->where('name', 'LIKE', '%'.$query.'%')->where('of', '=', 'package')->get();
-				$db_cities    = DB::table('cities')->where('of', '=', 'activity')->get();
-				$db_countries = DB::table('countries')->where('of', '=', 'activity')->get();
+				$db_cities    = DB::table('event__cities')->get();
+				$db_countries = DB::table('event__countries')->get();
 			} elseif ($selected_type == "4") {
 				// $db_cities    = DB::table('cities')->where('name', 'LIKE', '%'.$query.'%')->where('of', '=', 'package')->get();
 				// $db_countries = DB::table('countries')->where('name', 'LIKE', '%'.$query.'%')->where('of', '=', 'package')->get();
-				$db_cities    = DB::table('cities')->where('of', '=', 'cruise')->get();
-				$db_countries = DB::table('countries')->where('of', '=', 'cruise')->get();
+				$db_cities    = DB::table('event__cities')->get();
+				$db_countries = DB::table('event__countries')->get();
 			} elseif ($selected_type == "5") {
 				// $db_cities    = DB::table('cities')->where('name', 'LIKE', '%'.$query.'%')->where('of', '=', 'package')->get();
 				// $db_countries = DB::table('countries')->where('name', 'LIKE', '%'.$query.'%')->where('of', '=', 'package')->get();
-				$db_cities    = DB::table('cities')->where('of', '=', 'transfer')->get();
-				$db_countries = DB::table('countries')->where('of', '=', 'transfer')->get();
+				$db_cities    = DB::table('event__cities')->get();
+				$db_countries = DB::table('event__countries')->get();
 			}
 
 			$output = '<ul class="dropdown-menu"  style="display:block;position:absolute">';

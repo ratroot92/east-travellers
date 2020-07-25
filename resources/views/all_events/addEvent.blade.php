@@ -9,14 +9,16 @@
         <ul>
             <li><a href="{{asset('/admin/dashboard')}}"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
             </li>
-            <li class="active-bre"><a href="{{route('activity.view')}}"> All Activities</a>
+            <li class="active-bre"><a href="{{route('view.add.event',['action'=>'addEvent'])}}"> Add New Event</a>
             </li>
-            <li class="active-bre"><a href="{{route('activity.add')}}"> Add New Activity</a></li>
+             <li class="active-bre"><a href="{{route('view.all.events')}}"> All Events</a>
+            </li>
+            <li class="active-bre"><a href="{{route('view.add.city',['action'=>'add'])}}">Add Event City </a></li>
+            <li class="active-bre"><a href="{{route('view.all.cities')}}">All Event Cities </a></li>
+            <li class="active-bre"><a href="{{route('view.add.country',['action'=>'add'])}}">Add Event Country </a></li>
+            <li class="active-bre"><a href="{{route('view.all.countries')}}">All Event Countries </a></li>
 
-            <li class="active-bre"><a href="{{route('activity.category')}}">All Activity Categories</a>
-            <li class="active-bre"><a href="{{route('activity.addcategory')}}">Add Activity Categories</a>
-            <li class="page-back"><a href="index.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
-            </li>
+
         </ul>
     </div>
 
@@ -141,13 +143,43 @@
                                 <label>Select Country</label>
                             </div>
                         </div>
+{{--  --}}
+                        <div class="row">
+                            <div class="input-field col s12 font-weight-bold">
+                                <select multiple name="city[]" id="city" required="required">
+                                    @if($action=="addEvent")
+                                    <option disabled>Choose City</option>
+                                    @foreach($event__cities as $city)
+                                    <option value="{{$city->name}}">{{$city->name}}</option>
+                                    @endforeach
+                                    @else
+                                    <!--  -->
+                                    @foreach($event__cities as $city)
+                                    @if(!$Event->GetActivityCity->isEmpty())
+                                    @if ($selected = '') @endif
+                                    @foreach($Event->GetActivityCountry as $cityy)
+                                    @if($city->name == $cityy->name)
+                                    @if ($selected = 'selected') @endif
+                                    @endif
+                                    @endforeach
+                                    <option {{ $selected }} value="{{$city->name}}">{{$city->name}}</option>
+                                    @else
+                                    <option value="{{$city->name}}">{{$city->name}}</option>
+                                    @endif
+                                    @endforeach
+                                    <!--  -->
+                                    @endif
+                                </select>
+                                <label>Select City</label>
+                            </div>
+                        </div>
+
+
+{{--  --}}
 
 
 
-
-
-
-
+{{--
                         <div class="row">
                             <span class="alert-info pull-right">Seperate cities name by , comma & <span
                                     class="text-danger">ensure no
@@ -164,7 +196,7 @@
                             </div>
                         </div>
 
-
+--}}
 
 
 
@@ -1006,7 +1038,7 @@
                                 <div class="input-field col s12 font-weight-bold">
 
                                     <button type="submit" class="waves-effect waves-light btn-large">
-                                        @if($action=="addEvent")Create @else Update @endif Activity<i
+                                        @if($action=="addEvent")Create @else Update @endif Event<i
                                             class="fa fa-paper-plane"></i></button>
                                 </div>
                             </div>

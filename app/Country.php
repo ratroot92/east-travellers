@@ -4,18 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Country extends Model
-{
+class Country extends Model {
 
-    protected $table='countries';
+	protected $table = 'countries';
 
-	 protected $fillable = [
-        'fkey', 'name', 'of','created_at','updated_at',
-    ];
+	protected $fillable = [
+		'fkey', 'name', 'of', 'created_at', 'updated_at',
+	];
 
+	public function GetEventsbyCountryName() {
 
-
-     public function activity_city(){
-    	 return $this->belongsTo(Activity::class,'fkey','id');
-    }
+		return $this->belongsToMany(All_Events::class , 'country_all__events', 'country_id', 'all__events_id');
+	}
 }

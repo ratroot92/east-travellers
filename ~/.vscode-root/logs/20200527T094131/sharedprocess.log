@@ -1,9 +1,0 @@
-[2020-05-27 09:41:35.239] [sharedprocess] [info] main {"machineId":"69a1216601e1bafb1dd729a83d72b7c3285a88f9e8a48ad5a4f67821760f9857","windowId":2}
-[2020-05-27 09:41:35.366] [sharedprocess] [error] [File Watcher (node.js)] Error: ENOENT: no such file or directory, stat '/home/hadooop/Desktop/east_travels/easttravel/~/.vscode-root/User/snippets'
-[2020-05-27 09:41:43.211] [sharedprocess] [info] Installing extension: coenraads.bracket-pair-colorizer-2
-[2020-05-27 09:41:44.930] [sharedprocess] [info] Downloaded extension: coenraads.bracket-pair-colorizer-2 /tmp/9eefbb9f-1e74-4d96-b27c-7d19ea75eb49
-[2020-05-27 09:41:45.434] [sharedprocess] [info] Extracted extension to /home/hadooop/.vscode/extensions/.coenraads.bracket-pair-colorizer-2-0.1.4: coenraads.bracket-pair-colorizer-2
-[2020-05-27 09:41:45.435] [sharedprocess] [info] Renamed to /home/hadooop/.vscode/extensions/coenraads.bracket-pair-colorizer-2-0.1.4
-[2020-05-27 09:41:45.437] [sharedprocess] [info] Installation completed. coenraads.bracket-pair-colorizer-2
-[2020-05-27 09:41:45.632] [sharedprocess] [info] Extensions installed successfully: coenraads.bracket-pair-colorizer-2
-[2020-05-27 09:42:15.288] [sharedprocess] [info] Starting to clean up unused language packs.

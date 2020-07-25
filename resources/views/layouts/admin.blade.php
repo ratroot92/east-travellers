@@ -136,6 +136,7 @@ $path="../public/";
                         <li><a href="{{url('admin/package_cat/create/-1')}}">Add Package Categories</a>
                         </li>
                     </ul> --}}
+                   {{--
                     <ul>
                         <li><a href="{{route('package.view')}}">All Packages</a>
                         </li>
@@ -145,7 +146,7 @@ $path="../public/";
                         </li>
                         <li><a href="{{route('package.addcategory')}}">Add Package Categories</a>
                         </li>
-                    </ul>
+                    </ul> --}}
 
 
 
@@ -154,7 +155,7 @@ $path="../public/";
 
 
 
-                <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
+                {{-- <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
                             aria-hidden="true"></i> Activities</a>
                     <div class="collapsible-body left-sub-menu">
                         <ul>
@@ -168,7 +169,7 @@ $path="../public/";
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
 
 
@@ -180,9 +181,15 @@ $path="../public/";
                             </li>
                             <li><a href="{{route('view.all.events')}}">All Events</a>
                             </li>
-                            <li><a href="{{route('activity.category')}}"> Add Event Categories</a>
+
+                            <li><a href="{{route('view.add.city',['action'=>'add'])}}"> Add Event City</a>
                             </li>
-                            <li><a href="{{route('activity.addcategory')}}">All Event Categories</a>
+                            <li><a href="{{route('view.all.cities')}}">All Event Cities</a>
+                            </li>
+
+                            <li><a href="{{route('view.add.country',['action'=>'add'])}}"> Add Event Country</a>
+                            </li>
+                            <li><a href="{{route('view.all.countries')}}">All Event Countries</a>
                             </li>
                         </ul>
                     </div>
@@ -191,7 +198,7 @@ $path="../public/";
 
 
 
-                <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
+               {{--  <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
                             aria-hidden="true"></i> Cruises</a>
                     <div class="collapsible-body left-sub-menu">
                         <ul>
@@ -205,10 +212,10 @@ $path="../public/";
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
 
-                <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
+                {{-- <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
                             aria-hidden="true"></i> Transfer</a>
                     <div class="collapsible-body left-sub-view">
                         <ul>
@@ -223,7 +230,7 @@ $path="../public/";
                         </ul>
                     </div>
                 </li>
-
+ --}}
 
 
 

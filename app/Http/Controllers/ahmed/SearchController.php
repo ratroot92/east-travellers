@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\ahmed;
 
+use App\City;
+use App\Country;
+use App\Event_City;
+use App\Event_Country;
 use App\Http\Controllers\Controller;
 use DB;
 use Illuminate\Http\Request;
@@ -152,5 +156,59 @@ class SearchController extends Controller {
 				'Slovenia_cities'                           => $Slovenia_cities,
 				'Hungary_cities'                            => $Hungary_cities,
 				'Croatia_cities'                            => $Croatia_cities]);
+	}
+
+	public function showAllEvent() {
+
+	}
+
+	public function allEventsByCity($id) {
+		$City  = Event_City::Find($id);
+		$icons = DB::table('icons')->get();
+
+		if ($City) {
+			$All_Events_by_City = City::where('name', '=', $City->name)->first();
+
+			if ($All_Events_by_City) {
+				$All_Events = $All_Events_by_City->GetEventsbyCityName();
+				// dd($All_Events->count());
+				if ($All_Events->count() > 0) {
+					$All_Events = $All_Events->paginate(6);
+					return view('all_events/allEventsList', ['All_Events' => $All_Events, 'icons' => $icons, 'Search_Param' => $City, 'Display_Type' => 'list']);
+				} else {
+					return view('all_events/allEventsList', ['icons' => $icons, 'Search_Param' => $City, 'Display_Type' => 'list']);
+				}
+
+			} else {
+				return view('all_events/allEventsList', ['icons' => $icons, 'Search_Param' => $City, 'Display_Type' => 'list']);
+			}
+		} else {
+			return view('all_events/allEventsList', ['icons' => $icons, 'Search_Param' => $City, 'Display_Type' => 'list']);
+		}
+
+	}
+	public function allEventsByCountry($id) {
+		$Country = Event_Country::Find($id);
+		$icons   = DB::table('icons')->get();
+		// if country found
+		if ($Country) {
+			$All_Events_by_Country = Country::where('name', '=', $Country->name)->first();
+
+			if ($All_Events_by_Country) {
+				$All_Events = $All_Events_by_Country->GetEventsbyCountryName();
+				if ($All_Events->count() > 0) {
+					$All_Events = $All_Events->paginate(6);
+					return view('all_events/allEventsList', ['All_Events' => $All_Events, 'icons' => $icons, 'Search_Param' => $Country, 'Display_Type' => 'list']);
+				} else {
+					return view('all_events/allEventsList', ['icons' => $icons, 'Search_Param' => $Country, 'Display_Type' => 'list']);
+				}
+
+			} else {
+				return view('all_events/allEventsList', ['icons' => $icons, 'Search_Param' => $Country, 'Display_Type' => 'list']);
+			}
+		} else {
+			return view('all_events/allEventsList', ['icons' => $icons, 'Search_Param' => $Country, 'Display_Type' => 'list']);
+		}
+
 	}
 }

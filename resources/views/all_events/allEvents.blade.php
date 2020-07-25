@@ -9,17 +9,19 @@ tr {
 </style>
 <div class="sb2-2">
     <div class="sb2-2-2">
-        <ul>
-            <li><a href="{{url('/admin/dashboard')}}"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+         <ul>
+            <li><a href="{{asset('/admin/dashboard')}}"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
             </li>
-            <li class="active-bre"><a href="{{route('activity.view')}}"> All Events</a>
+            <li class="active-bre"><a href="{{route('view.add.event',['action'=>'addEvent'])}}"> Add New Event</a>
             </li>
-            <li class="active-bre"><a href="{{route('activity.add')}}"> Add New Activity</a></li>
+             <li class="active-bre"><a href="{{route('view.all.events')}}"> All Events</a>
+            </li>
+            <li class="active-bre"><a href="{{route('view.add.city',['action'=>'add'])}}">Add Event City </a></li>
+            <li class="active-bre"><a href="{{route('view.all.cities')}}">All Event Cities </a></li>
+            <li class="active-bre"><a href="{{route('view.add.country',['action'=>'add'])}}">Add Event Country </a></li>
+            <li class="active-bre"><a href="{{route('view.all.countries')}}">All Event Countries </a></li>
 
-            <li class="active-bre"><a href="{{route('activity.category')}}">All Activity Categories</a>
-            <li class="active-bre"><a href="{{route('activity.addcategory')}}">Add Activity Categories</a>
-            <li class="page-back"><a href="index.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
-            </li>
+
         </ul>
     </div>
     <div class="sb2-2-1">
@@ -86,7 +88,7 @@ tr {
 </div>
 <script>
 function confirm_delete(id) {
-    let c = confirm("Do you want to delete this Packages?");
+    let c = confirm("Do you want to delete this Event?");
     if (c === true) {
         window.location.href = "{{url('delete_event')}}/" + id;
     }

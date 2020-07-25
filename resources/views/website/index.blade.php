@@ -152,164 +152,37 @@ li{
              {{ csrf_field() }}
 
               <div id="country_list"></div>
-<div style="text-align: left;width:100%;background-color:white!important;position: absolute; z-index:99;    padding: 10px 10px;" id="search_div">
-                <a href="{{url('/cities')}}" ><h2 style="color: #253d52; padding-left: 15px">Popular <span style="color: #f4364f;font-size: 2rem;">Cities</span></h2>
+<div style="text-align: left;width:100%;background-color:white!important;position: absolute; z-index:99;  padding: 10px 10px;" id="search_div">
+               <div class="d-flex flex-row justify-content-around align-items-center">
+                 <span>
+                  <a href="{{url('/cities')}}" ><h2 style="color: #253d52; ">Popular <span style="color: #f4364f;font-size: 2rem;">Cities</span></h2>
+               </span>
+                <span>
+                  <a href="{{url('/cities')}}" ><h2 style="color: #253d52; ">Popular <span style="color: #f4364f;font-size: 2rem;">Countries</span></h2>
+               </span>
+               </div>
               </a>
               <!-- put row here -->
 
 
-              <ul class="col-md-3 list-unstyled  mt-2"style="margin:0px;padding:0px;">
+              <ul class="col-md-6 list-unstyled text-left mt-2"style="margin:0px;padding:0px;">
 
 
-                @foreach($Austria_cities as $Austria_city)
-                <h2 style="color: #253d52;"> <span style="color: #f4364f;font-size: 16px;">{{$Austria_city[0]->country ?? ''}}</span></h2>
-                <li class="list_3"id ="{{$Austria_city[0]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Austria_city[0]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Austria_city[1]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Austria_city[1]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Austria_city[2]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Austria_city[2]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Austria_city[3]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Austria_city[3]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Austria_city[4]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Austria_city[4]->name ?? ''}}</li>
-
-                @endforeach
-
-              </ul>
-              <ul class="col-md-3 list-unstyled  mt-2"style="margin:0px;padding:0px;">
-
-
-                @foreach($Germany_cities as $Germany_city)
-                <h2 style="color: #253d52;"> <span   style="color: #f4364f;font-size: 16px;">  {{$Germany_city[0]->country ?? ''}}</span></h2>
-                <li class="list_3"id ="{{$Germany_city[0]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Germany_city[0]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Germany_city[1]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Germany_city[1]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Germany_city[2]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Germany_city[2]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Germany_city[3]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Germany_city[3]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Germany_city[4]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Germany_city[4]->name ?? ''}}</li>
-
-                @endforeach
-
-              </ul>
-              <ul class="col-md-3 list-unstyled  mt-2"style="margin:0px;padding:0px;">
-
-
-                @foreach($Italy_cities as $Italy_city)
-                <h2 style="color: #253d52;"> <span style="color: #f4364f;font-size: 16px;">{{$Italy_city[0]->country ?? ''}}</span></h2>
-                <li class="list_3"id ="{{$Italy_city[0]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Italy_city[0]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Italy_city[1]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Italy_city[1]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Italy_city[2]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Italy_city[2]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Italy_city[3]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Italy_city[3]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Italy_city[4]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Italy_city[4]->name ?? ''}}</li>
-
+                @foreach($Event_Cities as $city)
+                <h2 style="color: #253d52;"> <span style="color: #f4364f;font-size: 16px;"></span></h2>
+                <a href="{{ route('allevents.search.city',['id'=>$city->id]) }}">
+                <li class="list_3" id="{{$city->id ?? ''}}"style="font-weight:bold;margin-left:10px">{{$city->name ?? ''}}</li>
+              </a>
                 @endforeach
 
               </ul>
 
-              <ul class="col-md-3 list-unstyled  mt-2"style="margin:0px;padding:0px;">
-
-                @foreach($France_cities as $France_city)
-                <h2 style="color: #253d52;"> <span style="color: #f4364f;font-size: 16px;">{{$France_city[0]->country ?? ''}}</span></h2>
-                <li class="list_3"id ="{{$France_city[0]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$France_city[0]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$France_city[1]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$France_city[1]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$France_city[2]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$France_city[2]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$France_city[3]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$France_city[3]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$France_city[4]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$France_city[4]->name ?? ''}}</li>
-
-                @endforeach
-
-              </ul>
-
-              <ul class="col-md-3 list-unstyled  mt-2"style="margin:0px;padding:0px;">
+               <ul class="col-md-6 list-unstyled  mt-2"style="margin:0px;padding:0px;">
 
 
-                @foreach($CzechRepubliccities as $CzechRepubliccity)
-                <h2 style="color: #253d52;"> <span style="color: #f4364f;font-size: 16px;">{{$CzechRepubliccity[0]->country ?? ''}}</span></h2>
-                <li class="list_3"id ="{{$CzechRepubliccity[0]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$CzechRepubliccity[0]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$CzechRepubliccity[1]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$CzechRepubliccity[1]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$CzechRepubliccity[2]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$CzechRepubliccity[2]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$CzechRepubliccity[3]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$CzechRepubliccity[3]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$CzechRepubliccity[4]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$CzechRepubliccity[4]->name ?? ''}}</li>
-
-                @endforeach
-
-              </ul>
-
-              <ul class="col-md-3 list-unstyled  mt-2"style="margin:0px;padding:0px;">
-
-                @foreach($Slovakia_cities as $Slovakia_city)
-                <h2 style="color: #253d52;"> <span style="color: #f4364f;font-size: 16px;">{{$Slovakia_city[0]->country ?? ''}}</span></h2>
-                <li class="list_3"id ="{{$Slovakia_city[0]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Slovakia_city[0]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Slovakia_city[1]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Slovakia_city[1]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Slovakia_city[2]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Slovakia_city[2]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Slovakia_city[3]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Slovakia_city[3]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Slovakia_city[4]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Slovakia_city[4]->name ?? ''}}</li>
-
-                @endforeach
-
-              </ul>
-
-              <ul class="col-md-3 list-unstyled  mt-2"style="margin:0px;padding:0px;">
-
-
-                @foreach($Hungary_cities as $Hungary_cities)
-                <h2 style="color: #253d52;"> <span style="color: #f4364f;font-size: 16px;">{{$Hungary_cities[0]->country ?? ''}}</span></h2>
-                <li class="list_3"id ="{{$CzechRepubliccity[0]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Hungary_cities[0]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$CzechRepubliccity[1]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Hungary_cities[1]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$CzechRepubliccity[2]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Hungary_cities[2]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$CzechRepubliccity[3]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Hungary_cities[3]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$CzechRepubliccity[4]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Hungary_cities[4]->name ?? ''}}</li>
-
-                @endforeach
-
-              </ul>
-              <ul class="col-md-3 list-unstyled  mt-2"style="margin:0px;padding:0px;">
-
-                @foreach($Slovenia_cities as $Slovenia_city)
-                <h2 style="color: #253d52;"> <span style="color: #f4364f;font-size: 16px;">{{$Slovenia_city[0]->country ?? ''}}</span></h2>
-                <li class="list_3"id ="{{$Slovenia_city[0]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Slovenia_city[0]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Slovenia_city[1]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Slovenia_city[1]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Slovenia_city[2]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Slovenia_city[2]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Slovenia_city[3]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Slovenia_city[3]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Slovenia_city[4]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Slovenia_city[4]->name ?? ''}}</li>
-
-                @endforeach
-
-              </ul>
-              <ul class="col-md-3 list-unstyled  mt-2"style="margin:0px;padding:0px;">
-
-
-                @foreach($Switzerland_cities as $Switzerland_city)
-                <h2 style="color: #253d52;"> <span style="color: #f4364f;font-size: 16px;">{{$Switzerland_city[0]->country ?? ''}}</span></h2>
-                <li class="list_3"id ="{{$Switzerland_city[0]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Switzerland_city[0]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Switzerland_city[1]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Switzerland_city[1]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Switzerland_city[2]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Switzerland_city[2]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Switzerland_city[3]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Switzerland_city[3]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Switzerland_city[4]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Switzerland_city[4]->name ?? ''}}</li>
-
-                @endforeach
-
-              </ul>
-              <ul class="col-md-3 list-unstyled  mt-2"style="margin:0px;padding:0px;">
-
-
-                @foreach($Slovakia_cities as $Slovakia_cities)
-                <h2 style="color: #253d52;"> <span style="color: #f4364f;font-size: 16px;">{{$Slovakia_cities[0]->country ?? ''}}</span></h2>
-                <li class="list_3"id ="{{$CzechRepubliccity[0]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Slovakia_cities[0]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$CzechRepubliccity[1]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Slovakia_cities[1]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$CzechRepubliccity[2]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Slovakia_cities[2]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$CzechRepubliccity[3]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Slovakia_cities[3]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$CzechRepubliccity[4]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Slovakia_cities[4]->name ?? ''}}</li>
-
-                @endforeach
-
-              </ul>
-              <ul class="col-md-3 list-unstyled  mt-2"style="margin:0px;padding:0px;">
-
-
-                @foreach($Poland_cities as $Poland_city)
-                <h2 style="color: #253d52;"> <span style="color: #f4364f;font-size: 16px;">{{$Poland_city[0]->country ?? ''}}</span></h2>
-                <li class="list_3"id ="{{$Poland_city[0]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Poland_city[0]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Poland_city[1]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Poland_city[1]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Poland_city[2]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Poland_city[2]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Poland_city[3]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Poland_city[3]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Poland_city[4]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Poland_city[4]->name ?? ''}}</li>
-
+                @foreach($Event_Countries as $country)
+                <h2 style="color: #253d52;"> <span style="color: #f4364f;font-size: 16px;"></span></h2>
+                <li class="list_3"id ="{{$country->id ?? ''}}"style="font-weight:bold;margin-left:10px">{{$country->name ?? ''}}</li>
                 @endforeach
 
               </ul>
@@ -320,31 +193,6 @@ li{
 
 
 
-              <!-- put row here -->
-
-
-
-
-              <!-- put row here -->
-
-
-
-
-              <!-- put row here -->
-              <ul class="col-md-3 list-unstyled  mt-2"style="margin:0px;padding:0px;">
-
-
-                @foreach($Croatia_cities as $Croatia_city)
-                <h2 style="color: #253d52;"> <span style="color: #f4364f;font-size: 16px;">{{$Croatia_city[0]->country ?? ''}}</span></h2>
-                <li class="list_3"id ="{{$Croatia_city[0]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Croatia_city[0]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Croatia_city[1]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Croatia_city[1]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Croatia_city[2]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Croatia_city[2]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Croatia_city[3]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Croatia_city[3]->name ?? ''}}</li>
-                <li class="list_3"id ="{{$Croatia_city[4]->name ?? ''}}"style="font-weight:bold;margin-left:10px">{{$Croatia_city[4]->name ?? ''}}</li>
-
-                @endforeach
-
-              </ul>
 
 
 
