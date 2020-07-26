@@ -9,12 +9,12 @@ tr {
 </style>
 <div class="sb2-2">
     <div class="sb2-2-2">
-         <ul>
+        <ul>
             <li><a href="{{asset('/admin/dashboard')}}"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
             </li>
             <li class="active-bre"><a href="{{route('view.add.event',['action'=>'addEvent'])}}"> Add New Event</a>
             </li>
-             <li class="active-bre"><a href="{{route('view.all.events')}}"> All Events</a>
+            <li class="active-bre"><a href="{{route('view.all.events')}}"> All Events</a>
             </li>
             <li class="active-bre"><a href="{{route('view.add.city',['action'=>'add'])}}">Add Event City </a></li>
             <li class="active-bre"><a href="{{route('view.all.cities')}}">All Event Cities </a></li>
@@ -51,11 +51,11 @@ tr {
                         <td>{{$item->event_type}}</td>
                         <td>{{$item->event_name}}</td>
                         <td>
-                            @foreach($item->GetActivityCity as $city)
+                            @foreach($item->Event_Cities as $city)
                             {{$city->name}}<br>
                             @endforeach
                         </td>
-                        <td> @foreach($item->GetActivityCategory as $cat)
+                        <td> @foreach($item->Event_Categories as $cat)
                             {{$cat->name}}<br>
                             @endforeach</td>
                         <td><img src="{{str_replace('http://localhost:8000/public/','http://localhost:8000/',$item->banner)}}"

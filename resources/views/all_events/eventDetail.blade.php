@@ -26,10 +26,10 @@
         <div class="container">
             <div class="banner_book_1">
                 <ul>
-                    <li class="dl2">Location :@if($Event->GetActivityCity->count() > 1)
+                    <li class="dl2">Location :@if($Event->Event_Cities->count() > 1)
                         Multiple Cities
                         @else
-                        @foreach($Event->GetActivityCity as $item)
+                        @foreach($Event->Event_Cities as $item)
                         {{$item->name}}
                         @endforeach
                         @endif</li>
@@ -524,10 +524,10 @@
                     <h3>Trip Information</h3>
                     <ul>
                         <li>Tour Code: {{ $Event->tour_code}}</li>
-                        <li>Location: @if($Event->GetActivityCity->count() > 1)
+                        <li>Location: @if($Event->Event_Cities->count() > 1)
                             Multiple Cities
                             @else
-                            @foreach($Event->GetActivityCity as $item)
+                            @foreach($Event->Event_Cities as $item)
                             {{$item->name}}
                             @endforeach
                             @endif</li>
@@ -560,10 +560,10 @@
                 <!--                    <tr>-->
                 <!--                        <td>Location</td>-->
                 <!--                        <td>:</td>-->
-                <!--                        <td>@if($Event->GetActivityCity->count() > 1)-->
+                <!--                        <td>@if($Event->Event_Cities->count() > 1)-->
                 <!--                                    Multiple Cities-->
                 <!--                                    @else-->
-                <!--                                    @foreach($Event->GetActivityCity as $item)-->
+                <!--                                    @foreach($Event->Event_Cities as $item)-->
                 <!--                                    {{$item->name}}-->
                 <!--                                    @endforeach-->
                 <!--                                    @endif</td>-->
@@ -642,9 +642,9 @@
                         <h4><i class="fa fa-phone" aria-hidden="true"></i> +421-917-251-996</h4>
                     </div>
                 </div>
-                {{--  --}}
+                {{-- --}}
 
-               {{-- countries --}}
+                {{-- countries --}}
 
                 <div class="row">
                     <div class="col-md-12">
@@ -655,7 +655,7 @@
                     </div>
                     <div class="col-md-12">
                         <ul class="" style="list-style:none;">
-                            @foreach($Event->GetActivityCountry as $country)
+                            @foreach($Event->Event_Countries as $country)
                             <li><i class="fa fa-flag text-primary mr-2 fa-2x " aria-hidden="true"></i><span
                                     class="font-weight-bold " style="font-size:18px;">{{$country->name}}</span>
                             </li>
@@ -674,9 +674,9 @@
                         </h3>
                     </div>
                     <div class="col-md-12">
-                        @if($Event->GetActivityCity->count() > 0 )
+                        @if($Event->Event_Cities->count() > 0 )
                         <ul class="" style="list-style:none;">
-                            @foreach($Event->GetActivityCity as $city)
+                            @foreach($Event->Event_Cities as $city)
                             <li><i class="fa fa-building-o text-primary mr-2 fa-2x " aria-hidden="true"></i><span
                                     class="font-weight-bold " style="font-size:18px;">{{$city->name ?? 'N/A'}}</span>
                             </li>
@@ -687,8 +687,8 @@
                         @endif
                     </div>
                 </div>
-{{-- cities --}}
-{{-- categories --}}
+                {{-- cities --}}
+                {{-- categories --}}
 
                 <div class="row">
                     <div class="col-md-12">
@@ -698,9 +698,9 @@
                         </h3>
                     </div>
                     <div class="col-md-12">
-                        @if($Event->GetActivityCategory->count() > 0 )
+                        @if($Event->Event_Categories->count() > 0 )
                         <ul class="" style="list-style:none;">
-                            @foreach($Event->GetActivityCategory as $category)
+                            @foreach($Event->Event_Categories as $category)
                             <li><i class="fa fa-list-alt text-primary mr-2 fa-2x " aria-hidden="true"></i><span
                                     class="font-weight-bold "
                                     style="font-size:18px;">{{$category->name ?? 'N/A'}}</span>
@@ -714,7 +714,7 @@
                     </div>
                 </div>
                 {{-- categoris --}}
-                {{--  --}}
+                {{-- --}}
             </div>
         </div>
     </div>

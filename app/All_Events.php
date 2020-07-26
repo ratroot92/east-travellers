@@ -3,12 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\City;
-use App\Country;
-use App\Category;
+use App\Event_Icons;
+use App\Event_City;
+use App\Event_Category;
+use App\Event_Country;
 use App\Image;
 use App\File;
-use App\Package_Icon;
+
 
 class All_Events extends Model
 {
@@ -16,37 +17,35 @@ class All_Events extends Model
     protected $primaryKey = 'id';
     protected $guarded = [];
 
-    public function GetActivityCity()
-    {
-        return $this->belongsToMany(City::class, 'city_all__events', 'all__events_id', 'city_id');
-    }
 
-    public function GetActivityCountry()
-    {
-        return $this->belongsToMany(Country::class, 'country_all__events', 'all__events_id', 'country_id');
-    }
-
-
-    public function GetActivityCategory()
-    {
-        return $this->belongsToMany(Category::class, 'category_all__events', 'all__events_id', 'category_id');
-    }
     public function GET_Images()
     {
         return $this->hasMany(Image::class, 'fkey', 'id');
     }
 
-    public function GET_Icons()
-    {
-        return $this->hasMany(Package_Icon::class, 'fkey', 'id');
-    }
 
     public function GET_Files()
     {
         return $this->hasMany(File::class, 'fkey', 'id');
     }
-    // public function DELETE_Files()
-    // {
-    //     return $this->GET_Files()->delete();
-    // }
+    //NEW
+    public function Event_Cities()
+    {
+        return $this->belongsToMany(Event_City::class, 'city_all__events', 'all__events_id', 'city_id');
+    }
+
+
+    public function Event_Countries()
+    {
+        return $this->belongsToMany(Event_Country::class, 'country_all__events', 'all__events_id', 'country_id');
+    }
+
+    public function Event_Categories()
+    {
+        return $this->belongsToMany(Event_Category::class, 'category_all__events', 'all__events_id', 'category_id');
+    }
+    public function Event_Icons()
+    {
+        return $this->belongsToMany(Event_Icons::class, 'icon_all__events', 'all__events_id', 'icon_id');
+    }
 }

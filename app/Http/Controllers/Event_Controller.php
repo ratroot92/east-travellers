@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\All_Events;
-use App\Category;
+use App\Event_Category;
+use App\Event_Icons;
 use App\Category_All__Events;
-use App\City;
 use App\City_All__Events;
-use App\Country;
 use App\Country_All__Events;
 use App\Event_City;
 use App\Event_Country;
@@ -18,58 +17,64 @@ use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
-class Event_Controller extends Controller {
+class Event_Controller extends Controller
+{
 
 	private $base_url;
 
-	public function __construct() {
+	public function __construct()
+	{
 
 		$this->base_url = url('/');
 	}
-	public function viewAddEvent($action) {
+	public function viewAddEvent($action)
+	{
 
 		$countries_list    = DB::table('event__countries')->get();
-		$events_categories = DB::table('package_cat')->groupby('name')->get();
+		$events_categories = DB::table('event__categories')->groupby('name')->get();
 		$event__cities     = DB::table('event__cities')->groupby('name')->get();
-		$icons             = DB::table('icons')->get();
+		$icons             = DB::table('event__icons')->get();
 		$event_types       = array("Activity", "Cruise", "Daytour", "Transfer", "Package");
 		// dd($countries_list);
 		return view('all_events/addEvent', [
-				'action'        => $action,
-				'country_list'  => $countries_list,
-				'packagecat'    => $events_categories,
-				'icons'         => $icons,
-				'event_types'   => $event_types,
-				'event__cities' => $event__cities,
-			]);
+			'action'        => $action,
+			'country_list'  => $countries_list,
+			'packagecat'    => $events_categories,
+			'icons'         => $icons,
+			'event_types'   => $event_types,
+			'event__cities' => $event__cities,
+		]);
 	}
 
-	public function allEvents() {
+	public function allEvents()
+	{
 		$All_Events = All_Events::all();
 		return view('all_events/allEvents', ['All_Events' => $All_Events]);
 	}
 
-	public function viewupdateEvent($action, $id) {
+	public function viewupdateEvent($action, $id)
+	{
 
 		$Event             = All_Events::Find($id);
-		$countries_list    = DB::table('country_list')->get();
+		$countries_list    = DB::table('event__countries')->get();
+		$events_categories = DB::table('event__categories')->groupby('name')->get();
 		$event__cities     = DB::table('event__cities')->groupby('name')->get();
-		$events_categories = DB::table('package_cat')->groupby('name')->get();
-		$icons             = DB::table('icons')->get();
+		$icons             = DB::table('event__icons')->get();
 		$event_types       = array("Activity", "Cruise", "Daytour", "Transfer", "Package");
 		// dd($countries_list);
 		return view('all_events/addEvent', [
-				'action'        => $action,
-				'country_list'  => $countries_list,
-				'packagecat'    => $events_categories,
-				'icons'         => $icons,
-				'event_types'   => $event_types,
-				'Event'         => $Event,
-				'event__cities' => $event__cities,
-			]);
+			'action'        => $action,
+			'country_list'  => $countries_list,
+			'packagecat'    => $events_categories,
+			'icons'         => $icons,
+			'event_types'   => $event_types,
+			'Event'         => $Event,
+			'event__cities' => $event__cities,
+		]);
 	}
 
-	public function addEvent(Request $request) {
+	public function addEvent(Request $request)
+	{
 
 		$input = $request->all();
 
@@ -111,62 +116,26 @@ class Event_Controller extends Controller {
 		$New_Event->save();
 
 		// MANT TO MANY CITIES
-		// $Uncleaned_Cities = explode(",", $request->input('city'));
-		// $Cleaned_Cities   = array_filter(array_map('trim', $Uncleaned_Cities));
-		// $cities           = array_map(function ($v) {
-		// 		return is_string($v)?trim($v):$v;
-		// 	}, $Cleaned_Cities);
-		$cities = $request->input('city');
-		foreach ($cities as $city) {
-			$New_City       = new City;
-			$New_City->name = $city;
-			$New_City->of   = $New_Event->event_type;
-			$New_City->fkey = $New_Event->id;
-			$New_City->save();
-			$New_City_All__Events                 = new City_All__Events;
-			$New_City_All__Events->city_id        = $New_City->id;
-			$New_City_All__Events->all__events_id = $New_Event->id;
-
-			$New_City_All__Events->save();
-		}
+		$cities_arr = $request->input('city');
+		$cities = Event_City::find($cities_arr);
+		$New_Event->Event_Cities()->attach($cities);
 
 		// MANT TO MANY COUNTRIES
-		$countries = $request->input('country');
-		foreach ($countries as $country) {
-			$New_Country       = new Country;
-			$New_Country->name = $country;
-			$New_Country->of   = $New_Event->event_type;
-			$New_Country->fkey = $New_Event->id;
-			$New_Country->save();
-			$New_Country_All__Events                 = new Country_All__Events;
-			$New_Country_All__Events->country_id     = $New_Country->id;
-			$New_Country_All__Events->all__events_id = $New_Event->id;
-			$New_Country_All__Events->save();
-		}
+		$countries_arr = $request->input('country');
+		$countries = Event_Country::find($countries_arr);
+		$New_Event->Event_Countries()->attach($countries);
+
 
 		// MANT TO MANY CATEGORIES
-		$categories = $request->input('cat');
-		foreach ($categories as $category) {
-			$New_Category       = new Category;
-			$New_Category->name = $category;
-			$New_Category->of   = $New_Event->event_type;
-			$New_Category->fkey = $New_Event->id;
-			$New_Category->save();
-			$New_Category_All__Events                 = new Category_All__Events;
-			$New_Category_All__Events->category_id    = $New_Category->id;
-			$New_Category_All__Events->all__events_id = $New_Event->id;
-			$New_Category_All__Events->save();
-		}
+		// $categories = $request->input('cat');
+		$categories_arr = $request->input('cat');
+		$categories = Event_Category::find($categories_arr);
+		$New_Event->Event_Categories()->attach($categories);
 
-		// ONE TO MANY ICONS
-		$icons = $request->input('icons');
-		foreach ($icons as $icon) {
-			$New_Package_Icon       = new Package_Icon;
-			$New_Package_Icon->name = $icon;
-			$New_Package_Icon->of   = $New_Event->event_type;
-			$New_Package_Icon->fkey = $New_Event->id;
-			$New_Package_Icon->save();
-		}
+		// MANT TO MANY ICONS
+		$icons_arr = $request->input('icons');
+		$icons = Event_Icons::find($icons_arr);
+		$New_Event->Event_Icons()->attach($icons);
 
 		// ONE TO MANY IMAAGES
 
@@ -176,10 +145,10 @@ class Event_Controller extends Controller {
 
 				//SAVE IMAGE TO LOCAL SERVER
 				$extension  = $img->getClientOriginalExtension();
-				$image_name = time().rand(1000, 9999)."_.".$extension;
+				$image_name = time() . rand(1000, 9999) . "_." . $extension;
 				$path       = public_path('/storage/Event_Images/');
 				$img->move($path, $image_name);
-				$img_path        = $this->base_url.'/public/storage/Event_Images/'.$image_name;
+				$img_path        = $this->base_url . '/public/storage/Event_Images/' . $image_name;
 				$New_Image       = new Image;
 				$New_Image->src  = $img_path;
 				$New_Image->name = $image_name;
@@ -212,12 +181,13 @@ class Event_Controller extends Controller {
 		// 	}
 		// }
 
-		return redirect()->back()->with('success', ''.$New_Event->event_type.' added successfully ');
+		return redirect()->back()->with('success', '' . $New_Event->event_type . ' added successfully ');
 	}
 	// END ADD EVENT
 
 	// UPDATE EVENT
-	public function updateEvent(Request $request) {
+	public function updateEvent(Request $request)
+	{
 
 		$input       = $request->all();
 		$server_name = $this->base_url;
@@ -239,8 +209,8 @@ class Event_Controller extends Controller {
 
 				foreach ($All_Images as $img) {
 					$db_path  = $img->src;
-					$len      = strlen($this->base_url."/");
-					$new_path = substr($db_path, $len, strlen($db_path)-$len);
+					$len      = strlen($this->base_url . "/");
+					$new_path = substr($db_path, $len, strlen($db_path) - $len);
 
 					if (strstr($server_name, 'localhost')) {
 						$new_path = str_replace("public/", "", $new_path);
@@ -251,118 +221,76 @@ class Event_Controller extends Controller {
 
 			// UNLINK END
 			$Updateable_Event->GET_Images()->delete();
-			########################################
-			// DELETE ALL ICONS (ONE TO MANY )
-			$Updateable_Event->GET_Icons()->delete();
-			########################################
-			// DELETE ALL COUNTRIES (MANY TO MANY )
-			$Updateable_Event->GetActivityCountry()->delete();
-			$Updateable_Event->GetActivityCountry()->sync([]);
-			########################################
-			// DELETE ALL CITIES (MANY TO MANY )
-			$Updateable_Event->GetActivityCity()->delete();
-			$Updateable_Event->GetActivityCity()->sync([]);
-			########################################
-			// DELETE ALL CATEGORIES (MANY TO MANY )
-			$Updateable_Event->GetActivityCategory()->delete();
-			$Updateable_Event->GetActivityCategory()->sync([]);
-			########################################
+
 
 			// UPDATE EVENT
 			$Updateable_Event->update([
-					'event_type'  => $request->input('event_type'),
-					'event_name'  => $request->input('name'),
-					'description' => $request->input('desc'),
-					'discount'    => $request->input('disc'),
-					'price'       => $request->input('price'),
-					'event_type'  => $request->input('event_type'),
-					'inclusion'   => $request->input('inclusion'),
-					'exclusion'   => $request->input('exclusion'),
-					'code'        => $request->input('code'),
-					'duration'    => $request->input('duration'),
-					// fill with actual later
-					'added_by' => $request->input('startloc'),
-					//
-					'terms_conditions'     => $request->input('terms'),
-					'payment_policy'       => $request->input('payment_policy'),
-					'payment_methods'      => $request->input('payment_methods'),
-					'cancellation_policy'  => $request->input('cancellation_policy'),
-					'notes'                => $request->input('notes'),
-					'questions'            => $request->input('questions'),
-					'group_size'           => $request->input('grpsize'),
-					'tour_code'            => $request->input('tourcode'),
-					'destinations'         => $request->input('destinations'),
-					'start_location'       => $request->input('startloc'),
-					'end_location'         => $request->input('endloc'),
-					'tour_style'           => $request->input('tourstyle'),
-					'tour_language'        => $request->input('tourlanguage'),
-					'visa_info'            => $request->input('visa_info'),
-					'avalibility_details'  => $request->input('avalibilitydetails'),
-					'transport_details'    => $request->input('tranportdetails'),
-					'accomodation_details' => $request->input('accomodationdetails'),
-					'meals_details'        => $request->input('mealdetails'),
-					'guide_details'        => $request->input('guidedetails'),
-					'itinerary'            => $request->input('itinerary'),
-					'status'               => $request->input('status'),
-				]);
+				'event_type'  => $request->input('event_type'),
+				'event_name'  => $request->input('name'),
+				'description' => $request->input('desc'),
+				'discount'    => $request->input('disc'),
+				'price'       => $request->input('price'),
+				'event_type'  => $request->input('event_type'),
+				'inclusion'   => $request->input('inclusion'),
+				'exclusion'   => $request->input('exclusion'),
+				'code'        => $request->input('code'),
+				'duration'    => $request->input('duration'),
+				// fill with actual later
+				'added_by' => $request->input('startloc'),
+				//
+				'terms_conditions'     => $request->input('terms'),
+				'payment_policy'       => $request->input('payment_policy'),
+				'payment_methods'      => $request->input('payment_methods'),
+				'cancellation_policy'  => $request->input('cancellation_policy'),
+				'notes'                => $request->input('notes'),
+				'questions'            => $request->input('questions'),
+				'group_size'           => $request->input('grpsize'),
+				'tour_code'            => $request->input('tourcode'),
+				'destinations'         => $request->input('destinations'),
+				'start_location'       => $request->input('startloc'),
+				'end_location'         => $request->input('endloc'),
+				'tour_style'           => $request->input('tourstyle'),
+				'tour_language'        => $request->input('tourlanguage'),
+				'visa_info'            => $request->input('visa_info'),
+				'avalibility_details'  => $request->input('avalibilitydetails'),
+				'transport_details'    => $request->input('tranportdetails'),
+				'accomodation_details' => $request->input('accomodationdetails'),
+				'meals_details'        => $request->input('mealdetails'),
+				'guide_details'        => $request->input('guidedetails'),
+				'itinerary'            => $request->input('itinerary'),
+				'status'               => $request->input('status'),
+			]);
 
 			// MANT TO MANY CITIES
-			// $Uncleaned_Cities = explode(",", $request->input('city'));
-			// $Cleaned_Cities   = array_filter(array_map('trim', $Uncleaned_Cities));
-			// $cities           = array_map(function ($v) {
-			// 		return is_string($v)?trim($v):$v;
-			// 	}, $Cleaned_Cities);
-			$cities = $request->input('city');
-			foreach ($cities as $city) {
-				$New_City       = new City;
-				$New_City->name = $city;
-				$New_City->of   = $Updateable_Event->event_type;
-				$New_City->fkey = $Updateable_Event->id;
-				$New_City->save();
-				$New_City_All__Events                 = new City_All__Events;
-				$New_City_All__Events->city_id        = $New_City->id;
-				$New_City_All__Events->all__events_id = $Updateable_Event->id;
+			$cities_arr = $request->input('city');
+			$Delete_Old_Cities = $Updateable_Event->Event_Cities()->allRelatedIds()->toArray();
 
-				$New_City_All__Events->save();
-			}
+			$Updateable_Event->Event_Cities()->detach($Delete_Old_Cities);
+			$cities = Event_City::find($cities_arr);
+			$Updateable_Event->Event_Cities()->attach($cities);
 
 			// MANT TO MANY COUNTRIES
-			$countries = $request->input('country');
-			foreach ($countries as $country) {
-				$New_Country       = new Country;
-				$New_Country->name = $country;
-				$New_Country->of   = $Updateable_Event->event_type;
-				$New_Country->fkey = $Updateable_Event->id;
-				$New_Country->save();
-				$New_Country_All__Events                 = new Country_All__Events;
-				$New_Country_All__Events->country_id     = $New_Country->id;
-				$New_Country_All__Events->all__events_id = $Updateable_Event->id;
-				$New_Country_All__Events->save();
-			}
+			$countries_arr = $request->input('country');
+			$Delete_Old_Countries = $Updateable_Event->Event_Countries()->allRelatedIds()->toArray();
+			$Updateable_Event->Event_Countries()->detach($Delete_Old_Countries);
+			$countries = Event_Country::find($countries_arr);
+			$Updateable_Event->Event_Countries()->attach($countries);
+
 
 			// MANT TO MANY CATEGORIES
-			$categories = $request->input('cat');
-			foreach ($categories as $category) {
-				$New_Category       = new Category;
-				$New_Category->name = $category;
-				$New_Category->of   = $Updateable_Event->event_type;
-				$New_Category->fkey = $Updateable_Event->id;
-				$New_Category->save();
-				$New_Category_All__Events                 = new Category_All__Events;
-				$New_Category_All__Events->category_id    = $New_Category->id;
-				$New_Category_All__Events->all__events_id = $Updateable_Event->id;
-				$New_Category_All__Events->save();
-			}
+			// $categories = $request->input('cat');
+			$categories_arr = $request->input('cat');
+			$Delete_Old_Categories = $Updateable_Event->Event_Categories()->allRelatedIds()->toArray();
+			$Updateable_Event->Event_Categories()->detach($Delete_Old_Categories);
+			$categories = Event_Category::find($categories_arr);
+			$Updateable_Event->Event_Categories()->attach($categories);
 
-			// ONE TO MANY ICONS
-			$icons = $request->input('icons');
-			foreach ($icons as $icon) {
-				$New_Package_Icon       = new Package_Icon;
-				$New_Package_Icon->name = $icon;
-				$New_Package_Icon->of   = $Updateable_Event->event_type;
-				$New_Package_Icon->fkey = $Updateable_Event->id;
-				$New_Package_Icon->save();
-			}
+			// MANT TO MANY ICONS
+			$icons_arr = $request->input('icons');
+			$Delete_Old_Icons = $Updateable_Event->Event_Icons()->allRelatedIds()->toArray();
+			$Updateable_Event->Event_Icons()->detach($Delete_Old_Icons);
+			$icons = Event_Icons::find($icons_arr);
+			$Updateable_Event->Event_Icons()->attach($icons);
 
 			// ONE TO MANY IMAAGES
 
@@ -372,10 +300,10 @@ class Event_Controller extends Controller {
 
 					//SAVE IMAGE TO LOCAL SERVER
 					$extension  = $img->getClientOriginalExtension();
-					$image_name = time().rand(1000, 9999)."_.".$extension;
+					$image_name = time() . rand(1000, 9999) . "_." . $extension;
 					$path       = public_path('/storage/Event_Images/');
 					$img->move($path, $image_name);
-					$img_path        = $this->base_url.'/public/storage/Event_Images/'.$image_name;
+					$img_path        = $this->base_url . '/public/storage/Event_Images/' . $image_name;
 					$New_Image       = new Image;
 					$New_Image->src  = $img_path;
 					$New_Image->name = $image_name;
@@ -389,48 +317,50 @@ class Event_Controller extends Controller {
 			}
 
 			//ONE TO MANY FILES
-			if ($files = $request->file('file')) {
+			// if ($files = $request->file('file')) {
 
-				foreach ($files as $key => $file) {
+			// 	foreach ($files as $key => $file) {
 
-					//SAVE FILE TO LOCAL SERVER
-					$extension = $file->getClientOriginalExtension();
-					$file_name = time().rand(1000, 9999)."_.".$extension;
-					$path      = public_path('/storage/Event_Files/');
-					$file->move($path, $file_name);
-					$file_path      = $this->base_url.'/public/storage/Event_Files/'.$file_name;
-					$New_File       = new File;
-					$New_File->src  = $file_path;
-					$New_File->name = $file_name;
-					$New_File->of   = $Updateable_Event->event_type;
-					$New_File->fkey = $Updateable_Event->id;
-					$New_File->save();
-				}
-			}
-			return redirect()->route('view.all.events');
+			// 		//SAVE FILE TO LOCAL SERVER
+			// 		$extension = $file->getClientOriginalExtension();
+			// 		$file_name = time() . rand(1000, 9999) . "_." . $extension;
+			// 		$path      = public_path('/storage/Event_Files/');
+			// 		$file->move($path, $file_name);
+			// 		$file_path      = $this->base_url . '/public/storage/Event_Files/' . $file_name;
+			// 		$New_File       = new File;
+			// 		$New_File->src  = $file_path;
+			// 		$New_File->name = $file_name;
+			// 		$New_File->of   = $Updateable_Event->event_type;
+			// 		$New_File->fkey = $Updateable_Event->id;
+			// 		$New_File->save();
+			// 	}
+			// }
+			return redirect()->route('view.all.events')->with('success', 'Event Added Successfully');
 		} else {
+			return redirect()->route('view.all.events')->with('error', 'Failed to Add Event');
 		}
 	}
 
 	// END UPDATE EVENT
 
 	//DELETE EVENT START
-	public function deleteEvent($id) {
+	public function deleteEvent($id)
+	{
 		$server_name = $this->base_url;
 
 		// DELETE COUNTRIES
-		$Updateable_Event = All_Events::Find($id);
-		if ($Updateable_Event) {
+		$Deleteable_Event = All_Events::Find($id);
+		if ($Deleteable_Event) {
 			########################################
 			// DELETE ALL FILES (ONE TO MANY )
 			// UNLINK
-			$All_Files = $Updateable_Event->GET_Files;
+			$All_Files = $Deleteable_Event->GET_Files;
 			if ($All_Files->count() > 0) {
 
 				foreach ($All_Files as $fil) {
 					$db_path  = $fil->src;
-					$len      = strlen($this->base_url."/");
-					$new_path = substr($db_path, $len, strlen($db_path)-$len);
+					$len      = strlen($this->base_url . "/");
+					$new_path = substr($db_path, $len, strlen($db_path) - $len);
 
 					if (strstr($server_name, 'localhost')) {
 						$new_path = str_replace("public/", "", $new_path);
@@ -440,17 +370,17 @@ class Event_Controller extends Controller {
 			}
 
 			// UNLINK END
-			$Updateable_Event->GET_Files()->delete();
+			$Deleteable_Event->GET_Files()->delete();
 			########################################
 			// DELETE ALL IMAGES (ONE TO MANY )
 			// UNLINK
-			$All_Images = $Updateable_Event->GET_Images;
+			$All_Images = $Deleteable_Event->GET_Images;
 			if ($All_Images->count() > 0) {
 
 				foreach ($All_Images as $img) {
 					$db_path  = $img->src;
-					$len      = strlen($this->base_url."/");
-					$new_path = substr($db_path, $len, strlen($db_path)-$len);
+					$len      = strlen($this->base_url . "/");
+					$new_path = substr($db_path, $len, strlen($db_path) - $len);
 
 					if (strstr($server_name, 'localhost')) {
 						$new_path = str_replace("public/", "", $new_path);
@@ -459,32 +389,29 @@ class Event_Controller extends Controller {
 				}
 			}
 
-			// UNLINK END
-			$Updateable_Event->GET_Images()->delete();
-			########################################
-			// DELETE ALL ICONS (ONE TO MANY )
-			$Updateable_Event->GET_Icons()->delete();
-			########################################
-			// DELETE ALL COUNTRIES (MANY TO MANY )
-			$Updateable_Event->GetActivityCountry()->delete();
-			$Updateable_Event->GetActivityCountry()->sync([]);
-			########################################
-			// DELETE ALL CITIES (MANY TO MANY )
-			$Updateable_Event->GetActivityCity()->delete();
-			$Updateable_Event->GetActivityCity()->sync([]);
-			########################################
-			// DELETE ALL CATEGORIES (MANY TO MANY )
-			$Updateable_Event->GetActivityCategory()->delete();
-			$Updateable_Event->GetActivityCategory()->sync([]);
-			########################################
+			$Delete_Old_Cities = $Deleteable_Event->Event_Cities()->allRelatedIds()->toArray();
+			$Deleteable_Event->Event_Cities()->detach($Delete_Old_Cities);
+
+			$Delete_Old_Countries = $Deleteable_Event->Event_Countries()->allRelatedIds()->toArray();
+			$Deleteable_Event->Event_Countries()->detach($Delete_Old_Countries);
+
+			$Delete_Old_Categories = $Deleteable_Event->Event_Categories()->allRelatedIds()->toArray();
+			$Deleteable_Event->Event_Categories()->detach($Delete_Old_Categories);
+
+			$Delete_Old_Icons = $Deleteable_Event->Event_Icons()->allRelatedIds()->toArray();
+			$Deleteable_Event->Event_Icons()->detach($Delete_Old_Icons);
 		}
-		if ($Updateable_Event->delete()) {
-			return redirect()   ->route('view.all.events');
+		$Deleteable_Event = $Deleteable_Event->delete();
+		if ($Deleteable_Event) {
+			return redirect()->route('view.all.events')->with('success', 'Successfully Deleted Event ');
+		} else {
+			return redirect()->route('view.all.events')->with('error', 'Failed To Delete Event');
 		}
 	}
 
 	// END DELETE EVENT
-	public function eventDetail($id) {
+	public function eventDetail($id)
+	{
 		$Event = All_Events::Find($id);
 		return view('all_events/eventDetail', ['Event' => $Event]);
 	}
@@ -495,14 +422,15 @@ class Event_Controller extends Controller {
 	########################################
 	########################################
 	########################################
-	public function viewAddCity($action) {
+	public function viewAddCity($action)
+	{
 		if ($action == 'add') {
 			return view('all_events/addEventCity', ['action' => $action]);
 		}
-
 	}
 
-	public function addEventCity(Request $request) {
+	public function addEventCity(Request $request)
+	{
 
 		$input                       = $request->all();
 		$city_name                   = trim($request->input('name'));
@@ -514,90 +442,96 @@ class Event_Controller extends Controller {
 		if ($img = $request->file('image')) {
 
 			$extension  = $img->getClientOriginalExtension();
-			$image_name = time().rand(1000, 9999)."_.".$extension;
+			$image_name = time() . rand(1000, 9999) . "_." . $extension;
 			$path       = public_path('/storage/Event_City/');
 			$img->move($path, $image_name);
-			$img_path              = $this->base_url.'/public/storage/Event_City/'.$image_name;
+			$img_path              = $this->base_url . '/public/storage/Event_City/' . $image_name;
 			$New_Event_City->image = $img_path;
-
 		}
 
 		$New_Event_City->save();
 		return redirect()->route('view.all.cities');
-
 	}
 
 	// ALL EVENT CITIES\
-	public function allEventCities() {
+	public function allEventCities()
+	{
 		$All_Event_Cities = Event_City::all();
 		return view('all_events/allEventCities', ['Event_Cities' => $All_Event_Cities]);
 	}
 	//UPDATE EVENT CITY
-	public function viewupdateEventCity($action, $id) {
+	public function viewupdateEventCity($action, $id)
+	{
 		$Event_City = Event_City::Find($id);
 		return view('all_events/addEventCity', ['action' => $action, 'Event_City' => $Event_City]);
-
 	}
 	//UPDATE CITY POST
-	public function updateEventCity(Request $request) {
+	public function updateEventCity(Request $request)
+	{
 		$input = $request->all();
 
 		$Updateable_Event_City = Event_City::Find($request->input('id'));
 		if ($Updateable_Event_City->image) {
 
 			$db_path  = $Updateable_Event_City->image;
-			$len      = strlen($this->base_url."/");
-			$new_path = substr($db_path, $len, strlen($db_path)-$len);
+			$len      = strlen($this->base_url . "/");
+			$new_path = substr($db_path, $len, strlen($db_path) - $len);
 			// if (strstr($server_name, 'localhost')) {
 			//  $new_path = str_replace("public/", "", $new_path);
 			// }
 			unlink($new_path);
-
 		}
 		//SAVE IMAGE TO LOCAL SERVER
 		if ($img = $request->file('image')) {
 
 			$extension  = $img->getClientOriginalExtension();
-			$image_name = time().rand(1000, 9999)."_.".$extension;
+			$image_name = time() . rand(1000, 9999) . "_." . $extension;
 			$path       = public_path('/storage/Event_City/');
 			$img->move($path, $image_name);
-			$img_path = $this->base_url.'/public/storage/Event_City/'.$image_name;
-			$Updateable_Event_City->update(['name' => $request->input('name'),
-					'description'                        => $request->input('description'),
-					'image'                              => $img_path,
+			$img_path = $this->base_url . '/public/storage/Event_City/' . $image_name;
+			$Updateable_Event_City->update([
+				'name' => $request->input('name'),
+				'description'                        => $request->input('description'),
+				'image'                              => $img_path,
 
-				]);
+			]);
+			$Sync_City = $Updateable_Event_City->All_Events()->allRelatedIds()->toArray();
+			$Updateable_Event_City->All_Events()->sync($Sync_City);
 			return redirect()->route('view.all.cities');
 		} else {
-			$Updateable_Event_City->update(['name' => $request->input('name'),
-					'description'                        => $request->input('description'),
+			$Updateable_Event_City->update([
+				'name' => $request->input('name'),
+				'description'                        => $request->input('description'),
 
-				]);
+			]);
+			$Sync_City = $Updateable_Event_City->All_Events()->allRelatedIds()->toArray();
+			$Updateable_Event_City->All_Events()->sync($Sync_City);
 			return redirect()->route('view.all.cities');
 		}
 	}
 	// UPDATE
 
-	public function deleteEventCity($id) {
+	public function deleteEventCity($id)
+	{
 		$Deleteable_Event_City = Event_City::Find($id);
 		if ($Deleteable_Event_City) {
 			if ($Deleteable_Event_City->image) {
 
 				$db_path  = $Deleteable_Event_City->image;
-				$len      = strlen($this->base_url."/");
-				$new_path = substr($db_path, $len, strlen($db_path)-$len);
+				$len      = strlen($this->base_url . "/");
+				$new_path = substr($db_path, $len, strlen($db_path) - $len);
 				// if (strstr($server_name, 'localhost')) {
 				//  $new_path = str_replace("public/", "", $new_path);
 				// }
 				unlink($new_path);
+				$Sync_City = $Deleteable_Event_City->All_Events()->allRelatedIds()->toArray();
+				$Deleteable_Event_City->All_Events()->detach($Sync_City);
 				$Deleteable_Event_City->delete();
 				return redirect()->route('view.all.cities');
 			}
-
 		} else {
 			return redirect()->route('view.all.cities');
 		}
-
 	}
 	//END UDPATE EVENT CITY
 
@@ -609,15 +543,16 @@ class Event_Controller extends Controller {
 	########################################
 	########################################
 
-	public function viewAddCountry($action) {
+	public function viewAddCountry($action)
+	{
 
 		if ($action == 'add') {
 			return view('all_events/addEventCountry', ['action' => $action]);
 		}
-
 	}
 
-	public function addEventCountry(Request $request) {
+	public function addEventCountry(Request $request)
+	{
 
 		$input                          = $request->all();
 		$city_name                      = trim($request->input('name'));
@@ -629,97 +564,322 @@ class Event_Controller extends Controller {
 		if ($img = $request->file('image')) {
 
 			$extension  = $img->getClientOriginalExtension();
-			$image_name = time().rand(1000, 9999)."_.".$extension;
+			$image_name = time() . rand(1000, 9999) . "_." . $extension;
 			$path       = public_path('/storage/Event_Country/');
 			$img->move($path, $image_name);
-			$img_path                 = $this->base_url.'/public/storage/Event_Country/'.$image_name;
+			$img_path                 = $this->base_url . '/public/storage/Event_Country/' . $image_name;
 			$New_Event_Country->image = $img_path;
-
 		}
 
 		$New_Event_Country->save();
 		return redirect()->route('view.all.countries');
-
 	}
 	//END ADD COUNTRY
 	// ALL COUNTRIES
-	public function allEventCountries() {
+	public function allEventCountries()
+	{
 		$All_Event_Countries = Event_Country::all();
 		return view('all_events/allEventCountries', ['Event_Country' => $All_Event_Countries]);
 	}
 
-	public function viewupdateEventCountry($action, $id) {
+	public function viewupdateEventCountry($action, $id)
+	{
 		$Event_Country = Event_Country::Find($id);
 		return view('all_events/addEventCountry', ['action' => $action, 'Event_Country' => $Event_Country]);
 		// END
 	}
 
-	public function updateEventCountry(Request $request) {
+	public function updateEventCountry(Request $request)
+	{
 		$input = $request->all();
 
 		$Updateable_Event_Country = Event_Country::Find($request->input('id'));
 		if ($Updateable_Event_Country->image) {
 
 			$db_path  = $Updateable_Event_Country->image;
-			$len      = strlen($this->base_url."/");
-			$new_path = substr($db_path, $len, strlen($db_path)-$len);
+			$len      = strlen($this->base_url . "/");
+			$new_path = substr($db_path, $len, strlen($db_path) - $len);
 			// if (strstr($server_name, 'localhost')) {
 			//  $new_path = str_replace("public/", "", $new_path);
 			// }
 			unlink($new_path);
-
 		}
 		//SAVE IMAGE TO LOCAL SERVER
 		if ($img = $request->file('image')) {
 
 			$extension  = $img->getClientOriginalExtension();
-			$image_name = time().rand(1000, 9999)."_.".$extension;
+			$image_name = time() . rand(1000, 9999) . "_." . $extension;
 			$path       = public_path('/storage/Event_Country/');
 			$img->move($path, $image_name);
-			$img_path = $this->base_url.'/public/storage/Event_Country/'.$image_name;
-			$Updateable_Event_Country->update(['name' => $request->input('name'),
-					'description'                           => $request->input('description'),
-					'image'                                 => $img_path,
+			$img_path = $this->base_url . '/public/storage/Event_Country/' . $image_name;
+			$Updateable_Event_Country->update([
+				'name' => $request->input('name'),
+				'description'                           => $request->input('description'),
+				'image'                                 => $img_path,
 
-				]);
+			]);
+			$Sync_Country = $Updateable_Event_Country->All_Events()->allRelatedIds()->toArray();
+			$Updateable_Event_Country->All_Events()->sync($Sync_Country);
 			return redirect()->route('view.all.countries');
 		} else {
-			$Updateable_Event_Country->update(['name' => $request->input('name'),
-					'description'                           => $request->input('description'),
+			$Updateable_Event_Country->update([
+				'name' => $request->input('name'),
+				'description'                           => $request->input('description'),
 
-				]);
+			]);
+			$Sync_Country = $Updateable_Event_Country->All_Events()->allRelatedIds()->toArray();
+			$Updateable_Event_Country->All_Events()->sync($Sync_Country);
 			return redirect()->route('view.all.countries');
 		}
 		// UPDATE
 	}
 
-	public function deleteEventCountry($id) {
+	public function deleteEventCountry($id)
+	{
 		$Deleteable_Event_Country = Event_Country::Find($id);
 		if ($Deleteable_Event_Country) {
 			if ($Deleteable_Event_Country->image) {
 
 				$db_path  = $Deleteable_Event_Country->image;
-				$len      = strlen($this->base_url."/");
-				$new_path = substr($db_path, $len, strlen($db_path)-$len);
+				$len      = strlen($this->base_url . "/");
+				$new_path = substr($db_path, $len, strlen($db_path) - $len);
 				// if (strstr($server_name, 'localhost')) {
 				//  $new_path = str_replace("public/", "", $new_path);
 				// }
 				unlink($new_path);
+				$Sync_Country = $Deleteable_Event_Country->All_Events()->allRelatedIds()->toArray();
+				$Deleteable_Event_Country->All_Events()->detach($Sync_Country);
 				$Deleteable_Event_Country->delete();
 				return redirect()->route('view.all.countries');
 			}
-
 		} else {
 			return redirect()->route('view.all.countries');
 		}
 	}
 	//All Events by list
-	public function listAllEvents() {
+	public function listAllEvents()
+	{
 		$All_Events = All_Events::paginate(6);
 		// $All_Events = $All_Events->paginate(6);
 		$icons = DB::table('icons')->get();
 		if ($All_Events) {
 			return view('all_events/allEventsList', ['All_Events' => $All_Events, 'icons' => $icons]);
+		}
+	}
+
+	//EVENT CATEGORIES VIEWS
+	public function viewAddCategory($action)
+	{
+		return view('all_events/addEventCategory', ['action' => $action]);
+	}
+
+	public function addEventCategory(Request $request)
+	{
+		$input                          = $request->all();
+		$Category_Name                      = trim($request->input('name'));
+		$New_Event_Category              = new Event_Category;
+		$New_Event_Category->name        = $Category_Name;
+		$New_Event_Category->description = $request->input('description');
+		// $New_Event_Category->for         = $request->input('for');
+		//SAVE IMAGE TO LOCAL SERVER
+		if ($img = $request->file('image')) {
+
+			$extension  = $img->getClientOriginalExtension();
+			$image_name = time() . rand(1000, 9999) . "_." . $extension;
+			$path       = public_path('/storage/Event_Category/');
+			$img->move($path, $image_name);
+			$img_path                 = $this->base_url . '/public/storage/Event_Category/' . $image_name;
+			$New_Event_Category->image = $img_path;
+		}
+
+		$New_Event_Category->save();
+		return redirect()->route('view.all.categories');
+	}
+
+	public function allEventCategories()
+	{
+		$All_Event_Categories = Event_Category::all();
+		return view('all_events/allEventCategories', ['Event_Categories' => $All_Event_Categories]);
+	}
+	public function viewupdateEventCategory($action, $id)
+	{
+		$Event_Category = Event_Category::Find($id);
+		return view('all_events/addEventCategory', ['action' => $action, 'Event_Category' => $Event_Category]);
+	}
+	public function updateEventCategory(Request $request)
+	{
+		$input = $request->all();
+
+		$Updateable_Event_Category = Event_Category::Find($request->input('id'));
+		if ($Updateable_Event_Category->image) {
+
+			$db_path  = $Updateable_Event_Category->image;
+			$len      = strlen($this->base_url . "/");
+			$new_path = substr($db_path, $len, strlen($db_path) - $len);
+			// if (strstr($server_name, 'localhost')) {
+			//  $new_path = str_replace("public/", "", $new_path);
+			// }
+			unlink($new_path);
+		}
+		//SAVE IMAGE TO LOCAL SERVER
+		if ($img = $request->file('image')) {
+
+			$extension  = $img->getClientOriginalExtension();
+			$image_name = time() . rand(1000, 9999) . "_." . $extension;
+			$path       = public_path('/storage/Event_Category/');
+			$img->move($path, $image_name);
+			$img_path = $this->base_url . '/public/storage/Event_Category/' . $image_name;
+			$Updateable_Event_Category->update([
+				'name' => $request->input('name'),
+				'description'                           => $request->input('description'),
+				'image'                                 => $img_path,
+
+			]);
+			$Sync_Category = $Updateable_Event_Category->All_Events()->allRelatedIds()->toArray();
+			$Updateable_Event_Category->All_Events()->sync($Sync_Category);
+			return redirect()->route('view.all.categories')->with('success', 'Event Category Updated Successfully ');
+		} else {
+			$Updateable_Event_Category->update([
+				'name' => $request->input('name'),
+				'description'                           => $request->input('description'),
+
+			]);
+			$Sync_Category = $Updateable_Event_Category->All_Events()->allRelatedIds()->toArray();
+			$Updateable_Event_Category->All_Events()->sync($Sync_Category);
+			return redirect()->route('view.all.categories')->with('success', 'Event Category Updated Successfully ');
+		}
+		// UPDATE
+	}
+
+	public function deleteEventCategory($id)
+	{
+		$Deleteable_Event_Category = Event_Category::Find($id);
+		if ($Deleteable_Event_Category) {
+			if ($Deleteable_Event_Category->image) {
+
+				$db_path  = $Deleteable_Event_Category->image;
+				$len      = strlen($this->base_url . "/");
+				$new_path = substr($db_path, $len, strlen($db_path) - $len);
+				// if (strstr($server_name, 'localhost')) {
+				//  $new_path = str_replace("public/", "", $new_path);
+				// }
+				unlink($new_path);
+				$Sync_Category = $Deleteable_Event_Category->All_Events()->allRelatedIds()->toArray();
+				$Deleteable_Event_Category->All_Events()->detach($Sync_Category);
+				$Deleteable_Event_Category->delete();
+				return redirect()->route('view.all.categories')->with('success', 'Event Category Deleted Successfully ');;
+			}
+		} else {
+			return redirect()->route('view.all.categories')->with('success', 'Failed to Delete Event Category  ');;
+		}
+	}
+	// EVENTS ICONS VIEWS
+	public function viewAddIcon($action)
+	{
+
+		return view('all_events/addEventIcons', ['action' => $action]);
+	}
+	public function addEventIcon(Request $request)
+	{
+		$input                          = $request->all();
+		$Icon_Name                      = trim($request->input('name'));
+		$New_Event_Icon              = new Event_Icons;
+		$New_Event_Icon->name        = $Icon_Name;
+		$New_Event_Icon->description = $request->input('description');
+		// $New_Event_Icon->for         = $request->input('for');
+		//SAVE IMAGE TO LOCAL SERVER
+		if ($img = $request->file('image')) {
+
+			$extension  = $img->getClientOriginalExtension();
+			$image_name = time() . rand(1000, 9999) . "_." . $extension;
+			$path       = public_path('/storage/Event_Icons/');
+			$img->move($path, $image_name);
+			$img_path                 = $this->base_url . '/public/storage/Event_Icons/' . $image_name;
+			$New_Event_Icon->image = $img_path;
+		}
+
+		$New_Event_Icon->save();
+		return redirect()->route('view.all.icons');
+	}
+
+	public function allEventIcons()
+	{
+		$All_Event_Icons = Event_Icons::all();
+		return view('all_events/allEventIcons', ['Event_Icons' => $All_Event_Icons]);
+	}
+	public function viewupdateEventIcon($action, $id)
+	{
+		$Event_Icons = Event_Icons::Find($id);
+		return view('all_events/addEventIcons', ['action' => $action, 'Event_Icons' => $Event_Icons]);
+	}
+	public function updateEventIcon(Request $request)
+	{
+		$input = $request->all();
+
+		$Updateable_Event_Icon = Event_Icons::Find($request->input('id'));
+		if ($Updateable_Event_Icon->image) {
+
+			$db_path  = $Updateable_Event_Icon->image;
+			$len      = strlen($this->base_url . "/");
+			$new_path = substr($db_path, $len, strlen($db_path) - $len);
+			// if (strstr($server_name, 'localhost')) {
+			//  $new_path = str_replace("public/", "", $new_path);
+			// }
+			unlink($new_path);
+		}
+		//SAVE IMAGE TO LOCAL SERVER
+		if ($img = $request->file('image')) {
+
+			$extension  = $img->getClientOriginalExtension();
+			$image_name = time() . rand(1000, 9999) . "_." . $extension;
+			$path       = public_path('/storage/Event_Icons/');
+			$img->move($path, $image_name);
+			$img_path = $this->base_url . '/public/storage/Event_Icons/' . $image_name;
+			$Updateable_Event_Icon->update([
+				'name' => $request->input('name'),
+				'description'                           => $request->input('description'),
+				'image'                                 => $img_path,
+
+			]);
+			$Sync_Icon = $Updateable_Event_Icon->All_Events()->allRelatedIds()->toArray();
+			$Updateable_Event_Icon->All_Events()->sync($Sync_Icon);
+			return redirect()->route('view.all.icons')->with('success', 'Event Icon Updated Successfully ');
+		} else {
+			$Updateable_Event_Icon->update([
+				'name' => $request->input('name'),
+				'description'                           => $request->input('description'),
+
+			]);
+			$Sync_Icon = $Updateable_Event_Icon->All_Events()->allRelatedIds()->toArray();
+			$Updateable_Event_Icon->All_Events()->sync($Sync_Icon);
+			return redirect()->route('view.all.icons')->with('success', 'Event Icon Updated Successfully ');
+		}
+		// UPDATE
+	}
+
+	public function deleteEventIcon($id)
+	{
+		$Deleteable_Event_Icon = Event_Icons::Find($id);
+
+
+		if ($Deleteable_Event_Icon) {
+			if ($Deleteable_Event_Icon->image) {
+
+				$db_path  = $Deleteable_Event_Icon->image;
+				$len      = strlen($this->base_url . "/");
+				$new_path = substr($db_path, $len, strlen($db_path) - $len);
+				// if (strstr($server_name, 'localhost')) {
+				//  $new_path = str_replace("public/", "", $new_path);
+				// }
+				unlink($new_path);
+				$Sync_Icons = $Deleteable_Event_Icon->All_Events()->allRelatedIds()->toArray();
+				$Deleteable_Event_Icon->All_Events()->detach($Sync_Icons);
+				$Deleteable_Event_Icon->delete();
+
+				return redirect()->route('view.all.icons')->with('success', 'Event Icon Deleted Successfully ');;
+			}
+		} else {
+			return redirect()->route('view.all.icons')->with('success', 'Failed to Delete Event Icon  ');;
 		}
 	}
 }

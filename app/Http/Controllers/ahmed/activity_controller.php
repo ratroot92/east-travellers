@@ -1,38 +1,41 @@
 <?php
+
 namespace App\Http\Controllers\ahmed;
 
 use App;
 use App\Activity;
 use App\All_Events;
-use App\Category;
-use App\City;
-use App\Country;
+use App\Event_Country;
 use App\Event_City;
 use App\File;
 use App\Http\Controllers\Controller;
 use App\Image;
-use App\Package_Icon;
+
 use DB;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use PDF;
 //
 use Validator;
 
-class activity_controller extends Controller {
+class activity_controller extends Controller
+{
 	private $base_url;
 
-	public function __construct() {
+	public function __construct()
+	{
 
 		$this->base_url = url('/');
-
 	}
-	public function view() {
+	public function view()
+	{
 		$activities = Activity::with('getcity')->get();
 		return view('activities/index', [
-				'activities' => $activities,
-			]);
+			'activities' => $activities,
+		]);
 	}
-	public function add() {
+	public function add()
+	{
 		$all_categories = DB::table('package_cat')
 			->where('class', 'activity')
 			->get();
@@ -43,10 +46,10 @@ class activity_controller extends Controller {
 		$country_list = DB::table('country_list')
 			->get();
 		return view('activities/add', [
-				'packagecat'   => $all_categories,
-				'icons'        => $icons,
-				'country_list' => $country_list,
-			]);
+			'packagecat'   => $all_categories,
+			'icons'        => $icons,
+			'country_list' => $country_list,
+		]);
 	}
 	//    public function cityByCountry($country){
 	//    // $country_selected = DB::table('country_list')
@@ -62,27 +65,28 @@ class activity_controller extends Controller {
 	// //$html                 = view('activities/city',compact('city_list'))->render();
 	// return                 response()->json($city_list);
 	//     }
-	public function insert(Request $request) {
+	public function insert(Request $request)
+	{
 		$validator = Validator::make($request->all(), [
-				// 'name'                    =>'required',
-				// 'city'                 =>'required',
-				// 'country'                 =>'required',
-				// 'cat'                  =>'required',
-				// 'desc'                    =>'required',
-				// 'file'                    =>'required',
-				// 'img'                     =>'required',
-				// 'about'                   =>'required',
-				// 'day_detail'              =>'required',
-				// 'duration'                =>'required',
-				// 'disc'                    =>'required',
-				// 'date'                    =>'required',
-				// 'price'                   =>'required',
-				// 'code'                    =>'required',
-			]);
+			// 'name'                    =>'required',
+			// 'city'                 =>'required',
+			// 'country'                 =>'required',
+			// 'cat'                  =>'required',
+			// 'desc'                    =>'required',
+			// 'file'                    =>'required',
+			// 'img'                     =>'required',
+			// 'about'                   =>'required',
+			// 'day_detail'              =>'required',
+			// 'duration'                =>'required',
+			// 'disc'                    =>'required',
+			// 'date'                    =>'required',
+			// 'price'                   =>'required',
+			// 'code'                    =>'required',
+		]);
 		if ($validator->fails()) {
 			return redirect('/activity/add')
-			->withErrors($validator)
-			->withInput();
+				->withErrors($validator)
+				->withInput();
 		} else {
 			$input            = $request->all();
 			$first_file       = '';
@@ -90,7 +94,7 @@ class activity_controller extends Controller {
 			$last_activity_id = 0;
 			$last_activity    = Activity::orderBy('created_at', 'desc')->first();
 			if ($last_activity != null) {
-				$last_activity_id = $last_activity->id+1;
+				$last_activity_id = $last_activity->id + 1;
 			} else {
 				$last_activity_id = 50001;
 			}
@@ -98,10 +102,10 @@ class activity_controller extends Controller {
 				$images = $request->file('img');
 				foreach ($images as $img) {
 					$extension  = $img->getClientOriginalExtension();
-					$image_name = time().rand(1000, 9999)."_.".$extension;
+					$image_name = time() . rand(1000, 9999) . "_." . $extension;
 					$path       = public_path('/storage/act_images/');
 					$img->move($path, $image_name);
-					$img_path       = $this->base_url.'/public/storage/act_images/'.$image_name;
+					$img_path       = $this->base_url . '/public/storage/act_images/' . $image_name;
 					$newimage       = new Image;
 					$newimage->fkey = $last_activity_id;
 					$newimage->src  = $img_path;
@@ -117,10 +121,10 @@ class activity_controller extends Controller {
 				if (count($files) > 0) {
 					foreach ($files as $file) {
 						$extension = $file->getClientOriginalExtension();
-						$file_name = time().rand(1000, 9999)."_.".$extension;
+						$file_name = time() . rand(1000, 9999) . "_." . $extension;
 						$path      = public_path('/storage/act_files/');
 						$file->move($path, $file_name);
-						$file_path      = $this->base_url.'/public/storage/act_files/'.$file_name;
+						$file_path      = $this->base_url . '/public/storage/act_files/' . $file_name;
 						$newimage       = new File;
 						$newimage->fkey = $last_activity_id;
 						$newimage->src  = $file_path;
@@ -179,10 +183,10 @@ class activity_controller extends Controller {
 					foreach ($countries as $country) {
 						$country = trim($country, " ");
 						Country::create([
-								'fkey' => $last_activity_id,
-								'name' => $country,
-								'of'   => "activity",
-							]);
+							'fkey' => $last_activity_id,
+							'name' => $country,
+							'of'   => "activity",
+						]);
 					}
 				}
 				/*new code */
@@ -191,10 +195,10 @@ class activity_controller extends Controller {
 					foreach ($icons as $icon) {
 						$icon = trim($icon, " ");
 						Package_Icon::create([
-								'fkey' => $last_activity_id,
-								'name' => $icon,
-								'of'   => "activity",
-							]);
+							'fkey' => $last_activity_id,
+							'name' => $icon,
+							'of'   => "activity",
+						]);
 					}
 				}
 				/*new code */
@@ -203,10 +207,10 @@ class activity_controller extends Controller {
 					foreach ($categories as $category) {
 						$category = trim($category, " ");
 						Category::create([
-								'fkey' => $last_activity_id,
-								'name' => $category,
-								'of'   => "activity",
-							]);
+							'fkey' => $last_activity_id,
+							'name' => $category,
+							'of'   => "activity",
+						]);
 					}
 				}
 				$cities = explode(",", $request->input('city'));
@@ -214,10 +218,10 @@ class activity_controller extends Controller {
 					foreach ($cities as $city) {
 						$city = trim($city, " ");
 						City::create([
-								'fkey' => $last_activity_id,
-								'name' => $city,
-								'of'   => "activity",
-							]);
+							'fkey' => $last_activity_id,
+							'name' => $city,
+							'of'   => "activity",
+						]);
 					}
 					DB::table('cities')
 						->where('fkey', $last_activity_id)
@@ -230,7 +234,8 @@ class activity_controller extends Controller {
 			}
 		}
 	}
-	public function update($id) {
+	public function update($id)
+	{
 		$item_city[]     = [];
 		$item_category[] = [];
 		$item_icon[]     = [];
@@ -279,43 +284,44 @@ class activity_controller extends Controller {
 			->toArray();
 		if ($activity) {
 			return view('activities/update')->with([
-					'activity'   => $activity,
-					'packagecat' => $packagecat,
+				'activity'   => $activity,
+				'packagecat' => $packagecat,
 
-					'country_list'  => $country_list,
-					'item_city'     => $item_city,
-					'item_category' => $item_category,
-					/*new code */
-					'item_icon' => $item_icon,
-					'all_icons' => $all_icons,
-					/*new code */
-					'citynames' => $citynames,
-				]);
+				'country_list'  => $country_list,
+				'item_city'     => $item_city,
+				'item_category' => $item_category,
+				/*new code */
+				'item_icon' => $item_icon,
+				'all_icons' => $all_icons,
+				/*new code */
+				'citynames' => $citynames,
+			]);
 		} else {
 			return redirect()->route('activity.view')->with('error', 'Operation failed  ');
 		}
 	}
-	public function edit(Request $request) {
+	public function edit(Request $request)
+	{
 		$validator = Validator::make($request->all(), [
-				// 'name'                    =>'required',
-				// 'city'                 =>'required',
-				// 'country'                 =>'required',
-				// 'cat'                  =>'required',
-				// 'desc'                    =>'required',
-				// 'file'                    =>'required',
-				// 'img'                     =>'required',
-				// 'about'                   =>'required',
-				// 'day_detail'              =>'required',
-				// 'duration'                =>'required',
-				// 'disc'                    =>'required',
-				// 'date'                    =>'required',
-				// 'price'                   =>'required',
-				// 'code'                    =>'required',
-			]);
+			// 'name'                    =>'required',
+			// 'city'                 =>'required',
+			// 'country'                 =>'required',
+			// 'cat'                  =>'required',
+			// 'desc'                    =>'required',
+			// 'file'                    =>'required',
+			// 'img'                     =>'required',
+			// 'about'                   =>'required',
+			// 'day_detail'              =>'required',
+			// 'duration'                =>'required',
+			// 'disc'                    =>'required',
+			// 'date'                    =>'required',
+			// 'price'                   =>'required',
+			// 'code'                    =>'required',
+		]);
 		if ($validator->fails()) {
 			return redirect('/activity/update')
-			->withErrors($validator)
-			->withInput();
+				->withErrors($validator)
+				->withInput();
 		} else {
 			$first_image         = '';
 			$first_file          = '';
@@ -327,8 +333,8 @@ class activity_controller extends Controller {
 					->get();
 				foreach ($all_img as $fil) {
 					$db_path  = $fil->src;
-					$len      = strlen($this->base_url."/");
-					$new_path = substr($db_path, $len, strlen($db_path)-$len);
+					$len      = strlen($this->base_url . "/");
+					$new_path = substr($db_path, $len, strlen($db_path) - $len);
 					unlink($new_path);
 				}
 				$all_img = DB::table('images')
@@ -337,10 +343,10 @@ class activity_controller extends Controller {
 				$images = $request->file('img');
 				foreach ($images as $img) {
 					$extension  = $img->getClientOriginalExtension();
-					$image_name = time().rand(1000, 9999)."_.".$extension;
+					$image_name = time() . rand(1000, 9999) . "_." . $extension;
 					$path       = public_path('/storage/act_images/');
 					$img->move($path, $image_name);
-					$img_path       = $this->base_url.'/public/storage/act_images/'.$image_name;
+					$img_path       = $this->base_url . '/public/storage/act_images/' . $image_name;
 					$newimage       = new Image;
 					$newimage->fkey = $updated_activity_id;
 					$newimage->src  = $img_path;
@@ -354,8 +360,8 @@ class activity_controller extends Controller {
 					->get();
 				foreach ($all_files as $fil) {
 					$db_path  = $fil->src;
-					$len      = strlen($this->base_url."/");
-					$new_path = substr($db_path, $len, strlen($db_path)-$len);
+					$len      = strlen($this->base_url . "/");
+					$new_path = substr($db_path, $len, strlen($db_path) - $len);
 					unlink($new_path);
 				}
 				$all_files = DB::table('files')
@@ -364,10 +370,10 @@ class activity_controller extends Controller {
 				$files = $request->file('file');
 				foreach ($files as $file) {
 					$extension = $file->getClientOriginalExtension();
-					$file_name = time().rand(1000, 9999)."_.".$extension;
+					$file_name = time() . rand(1000, 9999) . "_." . $extension;
 					$path      = public_path('/storage/act_files/');
 					$file->move($path, $file_name);
-					$file_path      = $this->base_url.'/public/storage/act_files/'.$file_name;
+					$file_path      = $this->base_url . '/public/storage/act_files/' . $file_name;
 					$newimage       = new File;
 					$newimage->fkey = $updated_activity_id;
 					$newimage->src  = $file_path;
@@ -456,27 +462,27 @@ class activity_controller extends Controller {
 				]);
 			if (count($countries = $request->input('country')) > 0) {
 				DB::table('countries')
-				->where('fkey', $updated_activity_id)
-				->delete();
+					->where('fkey', $updated_activity_id)
+					->delete();
 				foreach ($countries as $country) {
 					Country::create([
-							'fkey' => $updated_activity_id,
-							'name' => $country,
-							'of'   => "activity",
-						]);
+						'fkey' => $updated_activity_id,
+						'name' => $country,
+						'of'   => "activity",
+					]);
 				}
 			}
 			/*new code */
 			if (count($icons = $request->input('icons')) > 0) {
 				DB::table('package_icons')
-				->where('fkey', $updated_activity_id)
-				->delete();
+					->where('fkey', $updated_activity_id)
+					->delete();
 				foreach ($icons as $icon) {
 					Package_Icon::create([
-							'fkey' => $updated_activity_id,
-							'name' => $icon,
-							'of'   => "activity",
-						]);
+						'fkey' => $updated_activity_id,
+						'name' => $icon,
+						'of'   => "activity",
+					]);
 				}
 			}
 			/*new code */
@@ -487,10 +493,10 @@ class activity_controller extends Controller {
 					->delete();
 				foreach ($categories as $category) {
 					Category::create([
-							'fkey' => $updated_activity_id,
-							'name' => $category,
-							'of'   => "activity",
-						]);
+						'fkey' => $updated_activity_id,
+						'name' => $category,
+						'of'   => "activity",
+					]);
 				}
 			}
 			$cities = explode(",", $request->input('city'));
@@ -500,10 +506,10 @@ class activity_controller extends Controller {
 					->delete();
 				foreach ($cities as $city) {
 					City::create([
-							'fkey' => $updated_activity_id,
-							'name' => $city,
-							'of'   => "activity",
-						]);
+						'fkey' => $updated_activity_id,
+						'name' => $city,
+						'of'   => "activity",
+					]);
 				}
 				DB::table('cities')
 					->where('fkey', $updated_activity_id)
@@ -529,7 +535,8 @@ class activity_controller extends Controller {
 			}
 		}
 	}
-	public function delete($id) {
+	public function delete($id)
+	{
 		$activity = DB::table('activities')
 			->where('id', $id)
 			->delete();
@@ -539,8 +546,8 @@ class activity_controller extends Controller {
 		if ($all_images->count() > 0) {
 			foreach ($all_images as $img) {
 				$db_path  = $img->src;
-				$len      = strlen($this->base_url."/");
-				$new_path = substr($db_path, $len, strlen($db_path)-$len);
+				$len      = strlen($this->base_url . "/");
+				$new_path = substr($db_path, $len, strlen($db_path) - $len);
 				unlink($new_path);
 			}
 			DB::table('images')
@@ -553,8 +560,8 @@ class activity_controller extends Controller {
 		if ($all_files->count() > 0) {
 			foreach ($all_files as $fil) {
 				$db_path  = $fil->src;
-				$len      = strlen($this->base_url."/");
-				$new_path = substr($db_path, $len, strlen($db_path)-$len);
+				$len      = strlen($this->base_url . "/");
+				$new_path = substr($db_path, $len, strlen($db_path) - $len);
 				unlink($new_path);
 			}
 			DB::table('files')
@@ -581,18 +588,21 @@ class activity_controller extends Controller {
 			return redirect()->route('activity.view')->with('error', 'Operation failed  ');
 		}
 	}
-	public function category() {
+	public function category()
+	{
 		$package_cat = DB::table('package_cat')
 			->where('class', 'activity')
 			->get();
 		return view('activities.category', [
-				'package_cat' => $package_cat,
-			]);
+			'package_cat' => $package_cat,
+		]);
 	}
-	public function addcategory() {
+	public function addcategory()
+	{
 		return view('activities.addcategory');
 	}
-	public function insertcategory(request $request) {
+	public function insertcategory(request $request)
+	{
 		DB::table('package_cat')->insert(
 			array(
 				'class' => 'activity',
@@ -603,14 +613,16 @@ class activity_controller extends Controller {
 			->where('class', 'activity')
 			->get();
 		return view('activities.category', [
-				'package_cat' => $package_cat,
-			]);
+			'package_cat' => $package_cat,
+		]);
 	}
-	public function activities() {
+	public function activities()
+	{
 		$activities = DB::table('activities')->get();
 		return view('activities.packages')->with('activities', $activities);
 	}
-	public function ActivityDetails($id) {
+	public function ActivityDetails($id)
+	{
 		//$activity       = Activity::with('getimage','getfile','getcity','getcountry','getcategory')->Where('id',$id)->first();
 		//dd($activity);
 		$activity = DB::table('activities')->where('id', $id)->first();
@@ -642,23 +654,26 @@ class activity_controller extends Controller {
 				'categories' => $categories,
 				'countries'  => $countries,
 				'cities'     => $cities,
-			]);
+			]
+		);
 	}
-	public function gridView() {
+	public function gridView()
+	{
 		$activities = Activity::orderBy('id', 'asc')->where('status', '1')->paginate(3);
 		$cities     = DB::table('cities')->select('name')->distinct()->where('of', 'activity')->distinct()->limit('5')->get();
 		$countries  = DB::table('countries')->select('name')->distinct()->where('of', 'activity')->limit('5')->get();
 		$categories = DB::table('categories')->select('name')->distinct()->where('of', 'activity')->limit('5')->get();
 		// dd($cities);
 		return
-		view('activities/grid')->with([
+			view('activities/grid')->with([
 				'activities' => $activities,
 				'cities'     => $cities,
 				'countries'  => $countries,
 				'categories' => $categories,
 			]);
 	}
-	public function listView() {
+	public function listView()
+	{
 		$activities = Activity::orderBy('id', 'asc')->where('status', '1')->paginate(3);
 
 		$cities = DB::table('cities')->select('name')->distinct()->where('of', 'activity')->distinct()->limit('5')->get();
@@ -671,7 +686,7 @@ class activity_controller extends Controller {
 		/*new code */
 		//  dd($activities);
 		return
-		view('activities/list')->with([
+			view('activities/list')->with([
 				'activities' => $activities,
 				'cities'     => $cities,
 				'countries'  => $countries,
@@ -681,7 +696,8 @@ class activity_controller extends Controller {
 				/*new code */
 			]);
 	}
-	public function search1($price) {
+	public function search1($price)
+	{
 		$activities = Activity::with('geticons')
 			->where('price', '>', '250')
 			->paginate(3);
@@ -690,7 +706,7 @@ class activity_controller extends Controller {
 		$countries  = DB::table('countries')->select('name')->distinct()->where('of', 'activity')->limit('5')->get();
 		$categories = DB::table('categories')->select('name')->distinct()->where('of', 'activity')->limit('5')->get();
 		return
-		view('activities/list')->with([
+			view('activities/list')->with([
 				'activities' => $activities,
 				'icons'      => $icons,
 				'cities'     => $cities,
@@ -698,8 +714,9 @@ class activity_controller extends Controller {
 				'categories' => $categories,
 			]);
 	}
-	public function search2($price) {
-		$price1     = $price+0;
+	public function search2($price)
+	{
+		$price1     = $price + 0;
 		$activities = Activity::with('geticons')
 			->where('price', '>=', '100')
 			->where('price', '<=', '250')
@@ -709,7 +726,7 @@ class activity_controller extends Controller {
 		$countries  = DB::table('countries')->select('name')->distinct()->where('of', 'activity')->limit('5')->get();
 		$categories = DB::table('categories')->select('name')->distinct()->where('of', 'activity')->limit('5')->get();
 		return
-		view('activities/list')->with([
+			view('activities/list')->with([
 				'activities' => $activities,
 				'icons'      => $icons,
 				'cities'     => $cities,
@@ -717,7 +734,8 @@ class activity_controller extends Controller {
 				'categories' => $categories,
 			]);
 	}
-	public function search3($price) {
+	public function search3($price)
+	{
 		// $price1=$price+1000;
 		$activities = DB::table('activities')
 			->where('price', '>=', '50')
@@ -728,7 +746,7 @@ class activity_controller extends Controller {
 		$countries  = DB::table('countries')->select('name')->distinct()->where('of', 'activity')->limit('5')->get();
 		$categories = DB::table('categories')->select('name')->distinct()->where('of', 'activity')->limit('5')->get();
 		return
-		view('activities/list')->with([
+			view('activities/list')->with([
 				'activities' => $activities,
 				'icons'      => $icons,
 				'cities'     => $cities,
@@ -736,7 +754,8 @@ class activity_controller extends Controller {
 				'categories' => $categories,
 			]);
 	}
-	public function search4($price) {
+	public function search4($price)
+	{
 		// $price1=$price+1000;
 		$activities = DB::table('activities')
 			->where('price', '>=', '25')
@@ -747,7 +766,7 @@ class activity_controller extends Controller {
 		$countries  = DB::table('countries')->select('name')->distinct()->where('of', 'activity')->limit('5')->get();
 		$categories = DB::table('categories')->select('name')->distinct()->where('of', 'activity')->limit('5')->get();
 		return
-		view('activities/list')->with([
+			view('activities/list')->with([
 				'activities' => $activities,
 				'icons'      => $icons,
 				'cities'     => $cities,
@@ -755,7 +774,8 @@ class activity_controller extends Controller {
 				'categories' => $categories,
 			]);
 	}
-	public function search5($price) {
+	public function search5($price)
+	{
 		// $price1=$price+1000;
 		$activities = DB::table('activities')
 			->where('price', '>=', '0')
@@ -766,7 +786,7 @@ class activity_controller extends Controller {
 		$countries  = DB::table('countries')->select('name')->distinct()->where('of', 'activity')->limit('5')->get();
 		$categories = DB::table('categories')->select('name')->distinct()->where('of', 'activity')->limit('5')->get();
 		return
-		view('activities/list')->with([
+			view('activities/list')->with([
 				'activities' => $activities,
 				'icons'      => $icons,
 				'cities'     => $cities,
@@ -775,7 +795,8 @@ class activity_controller extends Controller {
 				'success'    => "Search results ",
 			]);
 	}
-	public function searchByCity($city) {
+	public function searchByCity($city)
+	{
 		$activities = DB::table('activities')
 			->join('cities', 'cities.fkey', '=', 'activities.id')
 			->where('cities.name', $city)
@@ -786,14 +807,16 @@ class activity_controller extends Controller {
 		$countries  = DB::table('countries')->select('name')->distinct()->where('of', 'activity')->limit('5')->get();
 		$categories = DB::table('categories')->select('name')->distinct()->where('of', 'activity')->limit('5')->get();
 		return view('/activities/list')->with([
-				'activities' => $activities,
-				'cities'     => $cities,
-				'countries'  => $countries,
-				'categories' => $categories,
-				'icons'      => $icons,
-				'success'    => 'Results For City  -'.$city]);
+			'activities' => $activities,
+			'cities'     => $cities,
+			'countries'  => $countries,
+			'categories' => $categories,
+			'icons'      => $icons,
+			'success'    => 'Results For City  -' . $city,
+		]);
 	}
-	public function searchByCountry($country) {
+	public function searchByCountry($country)
+	{
 		$activities = DB::table('activities')
 			->join('countries', 'countries.fkey', '=', 'activities.id')
 			->where('countries.name', $country)
@@ -807,7 +830,7 @@ class activity_controller extends Controller {
 		/*new code */
 		//  dd($activities);
 		return
-		view('activities/list')->with([
+			view('activities/list')->with([
 				'activities' => $activities,
 				'cities'     => $cities,
 				'countries'  => $countries,
@@ -817,7 +840,8 @@ class activity_controller extends Controller {
 				/*new code */
 			]);
 	}
-	public function searchByCategory($category) {
+	public function searchByCategory($category)
+	{
 		$activities = DB::table('activities')
 			->join('categories', 'categories.fkey', '=', 'activities.id')
 			->where('categories.name', $category)
@@ -833,7 +857,7 @@ class activity_controller extends Controller {
 		/*new code */
 		//  dd($activities);
 		return
-		view('activities/list')->with([
+			view('activities/list')->with([
 				'activities' => $activities,
 				'cities'     => $cities,
 				'countries'  => $countries,
@@ -844,7 +868,8 @@ class activity_controller extends Controller {
 			]);
 	}
 	//implementing search functions of grid view
-	public function grid_search1($price) {
+	public function grid_search1($price)
+	{
 		$activities = DB::table('activities')
 			->where('price', '>', '250')
 			->paginate();
@@ -858,7 +883,7 @@ class activity_controller extends Controller {
 		/*new code */
 		//  dd($activities);
 		return
-		view('activities/list')->with([
+			view('activities/list')->with([
 				'activities' => $activities,
 				'cities'     => $cities,
 				'countries'  => $countries,
@@ -868,8 +893,9 @@ class activity_controller extends Controller {
 				/*new code */
 			]);
 	}
-	public function grid_search2($price) {
-		$price1     = $price+1000;
+	public function grid_search2($price)
+	{
+		$price1     = $price + 1000;
 		$activities = DB::table('activities')
 			->where('price', '>=', '100')
 			->where('price', '<=', '250')
@@ -884,7 +910,7 @@ class activity_controller extends Controller {
 		/*new code */
 		//  dd($activities);
 		return
-		view('activities/list')->with([
+			view('activities/list')->with([
 				'activities' => $activities,
 				'cities'     => $cities,
 				'countries'  => $countries,
@@ -894,7 +920,8 @@ class activity_controller extends Controller {
 				/*new code */
 			]);
 	}
-	public function grid_search3($price) {
+	public function grid_search3($price)
+	{
 		// $price1=$price+1000;
 		$activities = DB::table('activities')
 			->where('price', '>=', '50')
@@ -910,7 +937,7 @@ class activity_controller extends Controller {
 		/*new code */
 		//  dd($activities);
 		return
-		view('activities/list')->with([
+			view('activities/list')->with([
 				'activities' => $activities,
 				'cities'     => $cities,
 				'countries'  => $countries,
@@ -920,7 +947,8 @@ class activity_controller extends Controller {
 				/*new code */
 			]);
 	}
-	public function grid_search4($price) {
+	public function grid_search4($price)
+	{
 		// $price1=$price+1000;
 		$activities = DB::table('activities')
 			->where('price', '>=', '25')
@@ -936,7 +964,7 @@ class activity_controller extends Controller {
 		/*new code */
 		//  dd($activities);
 		return
-		view('activities/list')->with([
+			view('activities/list')->with([
 				'activities' => $activities,
 				'cities'     => $cities,
 				'countries'  => $countries,
@@ -946,7 +974,8 @@ class activity_controller extends Controller {
 				/*new code */
 			]);
 	}
-	public function grid_search5($price) {
+	public function grid_search5($price)
+	{
 		$activities = DB::table('activities')
 			->where('price', '<', $price)
 			->paginate();
@@ -960,7 +989,7 @@ class activity_controller extends Controller {
 		/*new code */
 		//  dd($activities);
 		return
-		view('activities/list')->with([
+			view('activities/list')->with([
 				'activities' => $activities,
 				'cities'     => $cities,
 				'countries'  => $countries,
@@ -970,7 +999,8 @@ class activity_controller extends Controller {
 				/*new code */
 			]);
 	}
-	public function grid_searchByCity($city) {
+	public function grid_searchByCity($city)
+	{
 		$activities = DB::table('activities')
 			->join('cities', 'cities.fkey', '=', 'activities.id')
 			->where('cities.name', $city)
@@ -986,7 +1016,7 @@ class activity_controller extends Controller {
 		/*new code */
 		//  dd($activities);
 		return
-		view('activities/list')->with([
+			view('activities/list')->with([
 				'activities' => $activities,
 				'cities'     => $cities,
 				'countries'  => $countries,
@@ -996,7 +1026,8 @@ class activity_controller extends Controller {
 				/*new code */
 			]);
 	}
-	public function grid_searchByCategory($category) {
+	public function grid_searchByCategory($category)
+	{
 		$cities = DB::table('cities')->select('name')->distinct()->where('of', 'activity')->distinct()->limit('5')->get();
 
 		$countries = DB::table('countries')->select('name')->distinct()->where('of', 'activity')->limit('5')->get();
@@ -1007,7 +1038,7 @@ class activity_controller extends Controller {
 		/*new code */
 		//  dd($activities);
 		return
-		view('activities/list')->with([
+			view('activities/list')->with([
 				'activities' => $activities,
 				'cities'     => $cities,
 				'countries'  => $countries,
@@ -1017,7 +1048,8 @@ class activity_controller extends Controller {
 				/*new code */
 			]);
 	}
-	public function grid_searchByCountry($country) {
+	public function grid_searchByCountry($country)
+	{
 		$activities = DB::table('activities')
 			->join('countries', 'countries.fkey', '=', 'activities.id')
 			->where('countries.name', $country)
@@ -1033,7 +1065,7 @@ class activity_controller extends Controller {
 		/*new code */
 		//  dd($activities);
 		return
-		view('activities/list')->with([
+			view('activities/list')->with([
 				'activities' => $activities,
 				'cities'     => $cities,
 				'countries'  => $countries,
@@ -1043,10 +1075,12 @@ class activity_controller extends Controller {
 				/*new code */
 			]);
 	}
-	public function returnpdf() {
+	public function returnpdf()
+	{
 		return view('activities.pdf');
 	}
-	public function PDF($id) {
+	public function PDF($id)
+	{
 		$activity = DB::table('activities')
 			->where('id', $id)
 			->first();
@@ -1054,49 +1088,60 @@ class activity_controller extends Controller {
 		$pdf->setOptions(['isPhpEnabled' => true, 'isRemoteEnabled' => true]);
 		return $pdf->download('weblinerz.pdf');
 	}
-	public function deletefile() {
+	public function deletefile()
+	{
 		echo "deletefile";
 	}
-	public function deletecategory($id) {
+	public function deletecategory($id)
+	{
 		DB::table('package_cat')
 			->where('id', $id)
 			->delete();
 		$package_cat = DB::table('package_cat')->where('class', 'activity')->get();
 		return view('activities.category', [
-				'package_cat' => $package_cat,
-			]);
+			'package_cat' => $package_cat,
+		]);
 	}
 
 	//new
-	public function All_Activity_Events() {
+	public function All_Activity_Events()
+	{
 		$All_Activity_Events = All_Events::where('event_type', '=', 'Activity')->paginate(6);
-		$Icons               = DB::table('icons')->get();
-		// dd($All_Activity_Events);
-		return view('Activity_Event/All_Activity_Events', ['All_Activity_Events' => $All_Activity_Events, 'icons' => $Icons]);
+		// $Icons               = DB::table('icons')->get();
+		return view('Activity_Event/All_Activity_Events', ['All_Activity_Events' => $All_Activity_Events]);
 	}
 	//city search
-	public function Activity_By_City($id) {
+	public function Activity_By_City($id)
+	{
 		$Get_City = Event_City::Find($id);
-		$city     = DB::table('cities')->where('name', '=', $Get_City->name)->first();
-		//dd($city);
-		if ($city) {
-			dd($city->GetEventsbyCityName);
-			if ($All_Activity_Events = $Get_City->GetEventsbyCityName) {
-				$All_Activity_Events = $All_Activity_Events->where('event_type', '=', 'Activity');
-				dd($All_Activity_Events);
-			}
-			//No Activbity Associated With Searched City
-			 else {
-				return redirect()->route('all.events.activity')->with('error', 'No Activity Found For  '.$Get_City->name);
+		if ($Get_City) {
+			$All_Activity_Events = $Get_City->Activity_Events;
+			if (count($All_Activity_Events->toArray()) > 0) {
+				return view('Activity_Event/All_Activity_Events', ['All_Activity_Events' => $All_Activity_Events, 'Serach_Type' => 'City', 'Search_Param' => $Get_City->name]);
+			} else {
+				return redirect()->route('all.events.activity')->with('error', 'No Activity Event Found For City ' . $Get_City->name);
 			}
 		}
-		//Failed To Find City
-		 else {
-			return redirect()->route('all.events.activity')->with('error', 'No Activity Found For  '.$Get_City->name);
+		//No Activbity Associated With Searched City
+		else {
+			return redirect()->route('all.events.activity')->with('error', 'No Activity Event Found For City ' . $Get_City->name);
 		}
-
-		$Icons = DB::table('icons')->get();
-		return view('Activity_Event/All_Activity_Events', ['All_Activity_Events' => $All_Activity_Events, 'icons' => $Icons]);
 	}
 
+	public function Activity_By_Country($id)
+	{
+		$Get_Country = Event_Country::Find($id);
+		if ($Get_Country) {
+			$All_Activity_Events = $Get_Country->Activity_Events;
+			if (count($All_Activity_Events->toArray()) > 0) {
+				return view('Activity_Event/All_Activity_Events', ['All_Activity_Events' => $All_Activity_Events, 'Serach_Type' => 'Country', 'Search_Param' => $Get_Country->name]);
+			} else {
+				return redirect()->route('all.events.activity')->with('error', 'No Activity Event Found For City ' . $Get_Country->name);
+			}
+		}
+		//No Activbity Associated With Searched City
+		else {
+			return redirect()->route('all.events.activity')->with('error', 'No Activity Event Found For City ' . $Get_Country->name);
+		}
+	}
 }

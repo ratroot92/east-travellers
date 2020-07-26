@@ -136,16 +136,16 @@ $path="../public/";
                         <li><a href="{{url('admin/package_cat/create/-1')}}">Add Package Categories</a>
                         </li>
                     </ul> --}}
-                   {{--
+                    {{--
                     <ul>
                         <li><a href="{{route('package.view')}}">All Packages</a>
-                        </li>
-                        <li><a href="{{route('package.add')}}">Add New Package</a>
-                        </li>
-                        <li><a href="{{route('package.category')}}">All Package Categories</a>
-                        </li>
-                        <li><a href="{{route('package.addcategory')}}">Add Package Categories</a>
-                        </li>
+                    </li>
+                    <li><a href="{{route('package.add')}}">Add New Package</a>
+                    </li>
+                    <li><a href="{{route('package.category')}}">All Package Categories</a>
+                    </li>
+                    <li><a href="{{route('package.addcategory')}}">Add Package Categories</a>
+                    </li>
                     </ul> --}}
 
 
@@ -160,231 +160,247 @@ $path="../public/";
                     <div class="collapsible-body left-sub-menu">
                         <ul>
                             <li><a href="{{route('activity.view')}}">All Activities</a>
-                            </li>
-                            <li><a href="{{route('activity.add')}}">Add New Activity</a>
-                            </li>
-                            <li><a href="{{route('activity.category')}}">All Activity Categories</a>
-                            </li>
-                            <li><a href="{{route('activity.addcategory')}}">Add Activity Categories</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li> --}}
-
-
-
-                <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
-                            aria-hidden="true"></i> Events</a>
-                    <div class="collapsible-body left-sub-menu">
-                        <ul>
-                            <li><a href="{{route('view.add.event',['action'=>'addEvent'])}}">Add Events</a>
-                            </li>
-                            <li><a href="{{route('view.all.events')}}">All Events</a>
-                            </li>
-
-                            <li><a href="{{route('view.add.city',['action'=>'add'])}}"> Add Event City</a>
-                            </li>
-                            <li><a href="{{route('view.all.cities')}}">All Event Cities</a>
-                            </li>
-
-                            <li><a href="{{route('view.add.country',['action'=>'add'])}}"> Add Event Country</a>
-                            </li>
-                            <li><a href="{{route('view.all.countries')}}">All Event Countries</a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
+                <li><a href="{{route('activity.add')}}">Add New Activity</a>
+                </li>
+                <li><a href="{{route('activity.category')}}">All Activity Categories</a>
+                </li>
+                <li><a href="{{route('activity.addcategory')}}">Add Activity Categories</a>
+                </li>
+                </ul>
+            </div>
+            </li> --}}
+
+
+
+            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
+                        aria-hidden="true"></i> Events</a>
+                <div class="collapsible-body left-sub-menu">
+                    <ul>
+                        <li><a href="{{route('view.add.event',['action'=>'addEvent'])}}">Add Events</a>
+                        </li>
+                        <li><a href="{{route('view.all.events')}}">All Events</a>
+                        </li>
+
+                        <li><a href="{{route('view.add.city',['action'=>'add'])}}"> Add Event City</a>
+                        </li>
+                        <li><a href="{{route('view.all.cities')}}">All Event Cities</a>
+                        </li>
+
+                        <li><a href="{{route('view.add.country',['action'=>'add'])}}"> Add Event Country</a>
+                        </li>
+                        <li><a href="{{route('view.all.countries')}}">All Event Countries</a>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </li>
 
 
 
 
-               {{--  <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
-                            aria-hidden="true"></i> Cruises</a>
-                    <div class="collapsible-body left-sub-menu">
-                        <ul>
-                            <li><a href="{{route('cruise.view')}}">All Cruises</a>
-                            </li>
-                            <li><a href="{{route('cruise.add')}}">Add New Cruise</a>
-                            </li>
-                            <li><a href="{{route('cruise.category')}}">All Cruises Categories</a>
-                            </li>
-                            <li><a href="{{route('cruise.addcategory')}}">Add Cruises Categories</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li> --}}
+            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
+                        aria-hidden="true"></i> Events Categories</a>
+                <div class="collapsible-body left-sub-menu">
+                    <ul>
+                        <li><a href="{{route('view.add.category',['action'=>'add'])}}"> Add Event Category</a>
+                        </li>
+                        <li><a href="{{route('view.all.categories')}}">All Event Categories</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
 
 
-                {{-- <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
+            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
+                        aria-hidden="true"></i> Events Icons</a>
+                <div class="collapsible-body left-sub-menu">
+                    <ul>
+                        <li><a href="{{route('view.add.icon',['action'=>'add'])}}"> Add Event Icon</a>
+                        </li>
+                        <li><a href="{{route('view.all.icons')}}">All Event Icons</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+
+
+
+
+
+            {{-- <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
                             aria-hidden="true"></i> Transfer</a>
                     <div class="collapsible-body left-sub-view">
                         <ul>
                             <li><a href="{{route('transfer.view')}}">All Transfer</a>
-                            </li>
-                            <li><a href="{{route('transfer.add')}}">Add New Transfer</a>
-                            </li>
-                            <li><a href="{{route('transfer.category')}}">All Transfer Categories</a>
-                            </li>
-                            <li><a href="{{route('transfer.addcategory')}}">Add Transfer Categories</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
- --}}
-
-
-
-                {{-- --}}
-                <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-picture-o"
-                            aria-hidden="true"></i> Day Tours</a>
-                    <div class="collapsible-body left-sub-menu">
-                        {{-- <ul>
-                                <li><a href="{{route('/')}}/sightseeing/get">All Day Tours</a>
-                </li>
-                <li><a href="{{route('/')}}/sightseeing/create_update/store/-1">Add New Day Tour</a>
-                </li>
-                </ul> --}}
-                <ul>
-                    <li><a href="{{route('daytour.view')}}">All Daytours</a>
-                    </li>
-                    <li><a href="{{route('daytour.add')}}">Add New Daytour</a>
-                    </li>
-                    <li><a href="{{route('daytour.category')}}">All Daytour Categories</a>
-                    </li>
-                    <li><a href="{{route('daytour.addcategory')}}">Add Daytour Categories</a>
-                    </li>
-                </ul>
-            </div>
             </li>
-            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-calendar-o"
-                        aria-hidden="true"></i> Events</a>
-                <div class="collapsible-body left-sub-menu">
-                    <ul>
-                        <li><a href="{{route('events.all')}}">All Events</a>
-
-                        </li>
-                        <li><a href="{{route('events')}}">Add New Events</a>
-                        </li>
-                    </ul>
-                </div>
+            <li><a href="{{route('transfer.add')}}">Add New Transfer</a>
             </li>
-            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-ticket" aria-hidden="true"></i>
-                    Booking & Enquiry</a>
-                <div class="collapsible-body left-sub-menu">
-                    <ul>
-                        <li><a href="{{url('inquiries/get/packages')}}">Package</a></li>
-                        <li><a href="{{url('inquiries/get/daytours')}}">Day Tours</a></li>
-                        <li><a href="{{url('inquiries/get/activities')}}">Activities</a></li>
-                        <li><a href="{{url('inquiries/get/events')}}">Events</a></li>
-                        <li><a href="{{url('inquiries/get/cruises')}}">Cruise</a></li>
-                        <li><a href="{{url('inquiries/get/transfers')}}">Transfers</a></li>
-                    </ul>
-                </div>
+            <li><a href="{{route('transfer.category')}}">All Transfer Categories</a>
             </li>
-            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-rss" aria-hidden="true"></i>
-                    Blog & Articals</a>
-                <div class="collapsible-body left-sub-menu">
-                    <ul>
-                        <li><a href="{{route('blog.get')}}">All Blogs</a>
-                        </li>
-                        <li><a href="{{url('blogs/create_update/create/-1')}}">Add Blog</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-
-            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
-                        aria-hidden="true"></i> Popular Cities</a>
-                <div class="collapsible-body left-sub-menu">
-                    <ul>
-                        <li><a href="{{route('popularcities.get')}}">All Popular Cities</a>
-                        </li>
-                        <li><a href="{{url('popularcities/create_update/create/-1')}}">Add New Popular Cities</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </li>
-
-            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
-                        aria-hidden="true"></i> Gallery</a>
-                <div class="collapsible-body left-sub-menu">
-                    <ul>
-                        <li><a href="{{url('/gallery/add')}}">Add Gallery Video</a>
-                        </li>
-                        <li><a href="{{url('/gallery/all/videos')}}">All Gallery Videos</a>
-                        </li>
-                        <li><a href="{{url('/gallery/add_photos')}}">Add Gallery Photo </a>
-                        </li>
-                        <li><a href="{{route('gallery.all_photos')}}">All Gallery Photos</a>
-                        </li>
-                        <li><a href="{{url('/gallery/add/travellerReviews')}}">Add Traveller Reviews </a>
-                        </li>
-                        <li><a href="{{url('/gallery/all/travellerReviews')}}">All Traveller Reviews </a>
-                        </li>
-
-                        <li><a href="{{route('gallery.add.group.photo.get')}}">Add Group Photo </a>
-                        </li>
-                        <li><a href="{{route('gallery.all.group.photo.get')}}">All Group Photos </a>
-                        </li>
-
-
-                    </ul>
-                </div>
-            </li>
-
-
-
-
-            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
-                        aria-hidden="true"></i> Services</a>
-                <div class="collapsible-body left-sub-menu">
-                    <ul>
-                        <li><a href="{{url('admin/services/view/vision')}}">Add Service</a>
-                        </li>
-
-
-                        <li><a href="{{url('admin/services/all/services')}}">All Services</a>
-                        </li>
-
-
-
-
-                    </ul>
-                </div>
-            </li>
-
-
-
-
-
-
-
-            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
-                        aria-hidden="true"></i> Website Builder</a>
-                <div class="collapsible-body left-sub-menu">
-                    <ul>
-                        <li><a href="{{url('websitebuilder/terms')}}"> Terms and Conditions</a></li>
-                        <li><a href="{{url('websitebuilder/cancellations')}}">>Cancellation Policy</a></li>
-                        <li><a href="{{url('websitebuilder/contactus')}}"> Contact Us</a></li>
-                        <li><a href="{{url('websitebuilder/cookies')}}"> Cookies Policy</a></li>
-                        <li><a href="{{url('websitebuilder/paymentpolicy')}}"> Payment Policy</a></li>
-                        <li><a href="{{url('websitebuilder/faq')}}">FAQs</a></li>
-                        <li><a href="{{url('websitebuilder/aboutus')}}">About Us</a></li>
-
-
-                    </ul>
-                </div>
-            </li>
-            {{-- end settings --}}
-
-            <li>
-                <br>
-                <a href="{{route('signout')}}" class="alert alert-danger"><i class="fa fa-sign-in"
-                        aria-hidden="true"></i> Logout</a>
+            <li><a href="{{route('transfer.addcategory')}}">Add Transfer Categories</a>
             </li>
             </ul>
         </div>
+        </li>
+        --}}
+
+
+
+        {{-- --}}
+        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-picture-o" aria-hidden="true"></i>
+                Day
+                Tours</a>
+            <div class="collapsible-body left-sub-menu">
+                {{-- <ul>
+                                <li><a href="{{route('/')}}/sightseeing/get">All Day Tours</a>
+        </li>
+        <li><a href="{{route('/')}}/sightseeing/create_update/store/-1">Add New Day Tour</a>
+        </li>
+        </ul> --}}
+        <ul>
+            <li><a href="{{route('daytour.view')}}">All Daytours</a>
+            </li>
+            <li><a href="{{route('daytour.add')}}">Add New Daytour</a>
+            </li>
+            <li><a href="{{route('daytour.category')}}">All Daytour Categories</a>
+            </li>
+            <li><a href="{{route('daytour.addcategory')}}">Add Daytour Categories</a>
+            </li>
+        </ul>
+    </div>
+    </li>
+    <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-calendar-o" aria-hidden="true"></i>
+            Events</a>
+        <div class="collapsible-body left-sub-menu">
+            <ul>
+                <li><a href="{{route('events.all')}}">All Events</a>
+
+                </li>
+                <li><a href="{{route('events')}}">Add New Events</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+    <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-ticket" aria-hidden="true"></i>
+            Booking & Enquiry</a>
+        <div class="collapsible-body left-sub-menu">
+            <ul>
+                <li><a href="{{url('inquiries/get/packages')}}">Package</a></li>
+                <li><a href="{{url('inquiries/get/daytours')}}">Day Tours</a></li>
+                <li><a href="{{url('inquiries/get/activities')}}">Activities</a></li>
+                <li><a href="{{url('inquiries/get/events')}}">Events</a></li>
+                <li><a href="{{url('inquiries/get/cruises')}}">Cruise</a></li>
+                <li><a href="{{url('inquiries/get/transfers')}}">Transfers</a></li>
+            </ul>
+        </div>
+    </li>
+    <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-rss" aria-hidden="true"></i>
+            Blog & Articals</a>
+        <div class="collapsible-body left-sub-menu">
+            <ul>
+                <li><a href="{{route('blog.get')}}">All Blogs</a>
+                </li>
+                <li><a href="{{url('blogs/create_update/create/-1')}}">Add Blog</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+
+    <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella" aria-hidden="true"></i>
+            Popular Cities</a>
+        <div class="collapsible-body left-sub-menu">
+            <ul>
+                <li><a href="{{route('popularcities.get')}}">All Popular Cities</a>
+                </li>
+                <li><a href="{{url('popularcities/create_update/create/-1')}}">Add New Popular Cities</a>
+                </li>
+
+            </ul>
+        </div>
+    </li>
+
+    <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella" aria-hidden="true"></i>
+            Gallery</a>
+        <div class="collapsible-body left-sub-menu">
+            <ul>
+                <li><a href="{{url('/gallery/add')}}">Add Gallery Video</a>
+                </li>
+                <li><a href="{{url('/gallery/all/videos')}}">All Gallery Videos</a>
+                </li>
+                <li><a href="{{url('/gallery/add_photos')}}">Add Gallery Photo </a>
+                </li>
+                <li><a href="{{route('gallery.all_photos')}}">All Gallery Photos</a>
+                </li>
+                <li><a href="{{url('/gallery/add/travellerReviews')}}">Add Traveller Reviews </a>
+                </li>
+                <li><a href="{{url('/gallery/all/travellerReviews')}}">All Traveller Reviews </a>
+                </li>
+
+                <li><a href="{{route('gallery.add.group.photo.get')}}">Add Group Photo </a>
+                </li>
+                <li><a href="{{route('gallery.all.group.photo.get')}}">All Group Photos </a>
+                </li>
+
+
+            </ul>
+        </div>
+    </li>
+
+
+
+
+    <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella" aria-hidden="true"></i>
+            Services</a>
+        <div class="collapsible-body left-sub-menu">
+            <ul>
+                <li><a href="{{url('admin/services/view/vision')}}">Add Service</a>
+                </li>
+
+
+                <li><a href="{{url('admin/services/all/services')}}">All Services</a>
+                </li>
+
+
+
+
+            </ul>
+        </div>
+    </li>
+
+
+
+
+
+
+
+    <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella" aria-hidden="true"></i>
+            Website Builder</a>
+        <div class="collapsible-body left-sub-menu">
+            <ul>
+                <li><a href="{{url('websitebuilder/terms')}}"> Terms and Conditions</a></li>
+                <li><a href="{{url('websitebuilder/cancellations')}}">>Cancellation Policy</a></li>
+                <li><a href="{{url('websitebuilder/contactus')}}"> Contact Us</a></li>
+                <li><a href="{{url('websitebuilder/cookies')}}"> Cookies Policy</a></li>
+                <li><a href="{{url('websitebuilder/paymentpolicy')}}"> Payment Policy</a></li>
+                <li><a href="{{url('websitebuilder/faq')}}">FAQs</a></li>
+                <li><a href="{{url('websitebuilder/aboutus')}}">About Us</a></li>
+
+
+            </ul>
+        </div>
+    </li>
+    {{-- end settings --}}
+
+    <li>
+        <br>
+        <a href="{{route('signout')}}" class="alert alert-danger"><i class="fa fa-sign-in" aria-hidden="true"></i>
+            Logout</a>
+    </li>
+    </ul>
+    </div>
     </div>
     </div>
     </div>
