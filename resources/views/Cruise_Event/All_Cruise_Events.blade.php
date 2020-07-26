@@ -13,15 +13,15 @@ nav {
 <section>
     <div class="rows inner_banner inner_banner_5">
         <div class="container">
-            <h2><span>Book -</span> Your Favourite Activitiy Now!</h2>
+            <h2><span>Book -</span> Your Favourite Cruise Now!</h2>
             <ul>
                 <li><a href="#inner-page-title">Home</a>
                 </li>
                 <li><i class="fa fa-angle-right" aria-hidden="true"></i> </li>
-                <li><a href="#inner-page-title" class="bread-acti">Activities</a>
+                <li><a href="#inner-page-title" class="bread-acti">Cruises</a>
                 </li>
             </ul>
-            <p>Book travel activities and enjoy your holidays with distinctive experience</p>
+            <p>Book travel cruises and enjoy your holidays with distinctive experience</p>
         </div>
     </div>
 </section>
@@ -73,7 +73,7 @@ nav {
                                     <div id="cities">
                                         <ul class="">
                                             <li>
-                                                <a href="{{route('all.events.activity')}}"
+                                                <a href="{{route('all.events.cruise')}}"
                                                     style="padding:0px!important;margin:0px!important;color:white; border:none;">
                                                     <div class="checkbox checkbox-info checkbox-circle">
                                                         <input id="all_cities" class="cities city styled"
@@ -156,7 +156,7 @@ nav {
                                     <div id="categories">
                                         <ul class="">
                                             <li>
-                                                <a href="{{route('all.events.activity')}}"
+                                                <a href="{{route('all.events.cruise')}}"
                                                     style="padding:0px!important;margin:0px!important;color:white; border:none;">
                                                     <div class="checkbox checkbox-info checkbox-circle">
                                                         <input id="all_categories" class="categories city styled"
@@ -236,7 +236,7 @@ nav {
                                     <div id="countries">
                                         <ul class="">
                                             <li>
-                                                <a href="{{route('all.events.activity')}}"
+                                                <a href="{{route('all.events.cruise')}}"
                                                     style="padding:0px!important;margin:0px!important;color:white; border:none;">
                                                     <div class="checkbox checkbox-info checkbox-circle">
                                                         <input id="all_countries" class="countries city styled"
@@ -363,7 +363,7 @@ nav {
             <!--END PART 5 : LEFT LISTINGS-->
         </div>
         <div class="col-md-9 " id="searchRendering">
-            @if(isset($All_Activity_Events))
+            @if(isset($All_Cruise_Events))
             @if(isset($Search_Param))
             <div class="row">
                 <div class="col-md-12 alert alert-success">
@@ -374,11 +374,11 @@ nav {
             @else
             <div class="row">
                 <div class="col-md-12 alert alert-success">
-                    <p class="text-dark font-weight-bold">Showing All Activity Events </p>
+                    <p class="text-dark font-weight-bold">Showing All Cruise Events </p>
                 </div>
             </div>
             @endif
-            @foreach($All_Activity_Events as $key=>$item)
+            @foreach($All_Cruise_Events as $key=>$item)
 
             <div class="row" style="border:1px solid #e9ecef;background-color: white!important;margin-bottom: 10px;">
                 <div class="col-md-3 img-thumbnail  " style="padding:0px; margin:0px;border-radius:0px;">
@@ -445,7 +445,7 @@ nav {
    <div class="container-fluid">
       <div class="row">
          <div  class="col-md-12">
-            {{$All_Activity_Events->links()}}
+            {{$All_Cruise_Events->links()}}
 </div>
 </div>
 </div>
@@ -475,17 +475,17 @@ nav {
 <script>
 function getCityNameForSearch(city) {
     console.log(city);
-    window.location.href = "{{URL::to('search/activity/city')}}" + "/" + city;
+    window.location.href = "{{URL::to('search/cruise/city')}}" + "/" + city;
 }
 
 function getCountryNameForSearch(country) {
     console.log(country);
-    window.location.href = "{{URL::to('search/activity/country')}}" + "/" + country;
+    window.location.href = "{{URL::to('search/cruise/country')}}" + "/" + country;
 }
 
 function getCategoryNameForSearch(category) {
     console.log(category);
-    window.location.href = "{{URL::to('search/activity/category')}}" + "/" + category;
+    window.location.href = "{{URL::to('search/cruise/category')}}" + "/" + category;
 }
 
 function getPriceForSearch(price) {
@@ -493,7 +493,7 @@ function getPriceForSearch(price) {
     var price_list = price.split(',');
     var min = price_list[0];
     var max = price_list[1];
-    window.location.href = "{{URL::to('search/activity/price')}}" + "/" + min + "/" + max;
+    window.location.href = "{{URL::to('search/cruise/price')}}" + "/" + min + "/" + max;
 }
 $(document).ready(function() {
     console.log(window.location.href);
@@ -501,8 +501,8 @@ $(document).ready(function() {
     console.log(URL_Array);
     if (URL_Array[4] == 'search') {
         console.log("search");
-        if (URL_Array[5] == 'activity') {
-            console.log("activity");
+        if (URL_Array[5] == 'cruise') {
+            console.log("cruise");
             if (URL_Array[6] == 'city') {
                 $("#moreCitiesDiv").addClass("collpased show");
                 $('#city' + URL_Array[7]).prop("checked", true);
@@ -540,9 +540,9 @@ $(document).ready(function() {
         console.log($('#DisplayStyle').prop("checked"));
         if ($('#DisplayStyle').prop("checked") == false || $('#DisplayStyle').prop("checked") ==
             'false') {
-            window.location.href = "{{URL::to('all/events/activity/grid')}}";
+            window.location.href = "{{URL::to('all/events/cruise/grid')}}";
         } else {
-            window.location.href = "{{URL::to('all/events/activity')}}";
+            window.location.href = "{{URL::to('all/events/cruise')}}";
         }
     })
 })

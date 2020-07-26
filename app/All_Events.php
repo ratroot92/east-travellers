@@ -51,10 +51,12 @@ class All_Events extends Model
     //price
     public function scopePrice($query, $min, $max)
     {
+
         if ($max == '000' || $max == 000) {
             return $query->where('price', '>=', $min);
         } else {
-            return $query->where('price', '>=', $min)->orWhere('price', '<=', $max);
+            //dd($min, $max);
+            return $query->whereBetween('price', [$min, $max]);
         }
     }
 

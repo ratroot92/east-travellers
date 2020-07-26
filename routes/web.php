@@ -23,23 +23,11 @@ Route::get(
 		$cities = (array) $result;
 		$Event_Cities = DB::table('event__cities')->groupby('name')->limit('5')->get();
 		$Event_Countries = DB::table('event__countries')->groupby('name')->limit('5')->get();
-		$activities_search = DB::table('activities')->limit('5')->get();
-		$cruises_search = DB::table('cruises')->limit('5')->get();
-		$daytours_search = DB::table('daytours')->limit('5')->get();
-		$result1 = DB::table('packages')->limit('3')->get();
-		$packages = (array) $result1;
-		$result2 = DB::table('daytours')->limit('3')->get();
-		$daytours = (array) $result2;
 		return view('website.index', [
 			'data'              => $data,
 			'Event_Cities'      => $Event_Cities,
 			'Event_Countries'   => $Event_Countries,
 			'cities'            => $cities,
-			'packages'          => $packages,
-			'activities_search' => $activities_search,
-			'cruises_search'    => $cruises_search,
-			'daytours_search'   => $daytours_search,
-			'daytours'          => $daytours,
 		]);
 	}
 );
@@ -71,221 +59,23 @@ Route::group(['middleware' => ['session']], function () {
 	Route::get('admin/events/delete/{id}', 'EventsController@delete')->name('events.delete');
 });
 //activities
-Route::get('activities', 'ahmed\activity_controller@activities')->name('activity.packages');
-Route::get('activity/detail/{id}', 'ahmed\activity_controller@ActivityDetails')->name('activity.detail');
-//grid and list views
-Route::get('activities/list', 'ahmed\activity_controller@listView')->name('activity.list');
-//search of list (acvitites)
-Route::get('activities/customsearch/category/{category}', 'ahmed\activity_controller@searchByCategory')->name('activity.category');
-Route::get('activities/customsearch/city/{city}', 'ahmed\activity_controller@searchByCity')->name('activity.city');
-Route::get('activities/customsearch/country/{country}', 'ahmed\activity_controller@searchByCountry');
-Route::get('activities/search1/{price}', 'ahmed\activity_controller@search1');
-Route::get('activities/search2/{price}', 'ahmed\activity_controller@search2');
-Route::get('activities/search3/{price}', 'ahmed\activity_controller@search3');
-Route::get('activities/search4/{price}', 'ahmed\activity_controller@search4');
-Route::get('activities/search5/{price}', 'ahmed\activity_controller@search5');
-Route::get('activities/search', 'ahmed\activity_controller@search');
-Route::get('activities/grid', 'ahmed\activity_controller@gridView')->name('activity.grid');
-//search of grid(acvitites)
-Route::get('activities/gridsearch/city/{city}', 'ahmed\activity_controller@grid_searchByCity');
-Route::get('activities/gridsearch/country/{country}', 'ahmed\activity_controller@grid_searchByCountry');
-Route::get('activities/gridsearch/category/{category}', 'ahmed\activity_controller@grid_searchByCategory');
-Route::get('activities/gridsearch1/{price}', 'ahmed\activity_controller@grid_search1');
-Route::get('activities/gridsearch2/{price}', 'ahmed\activity_controller@grid_search2');
-Route::get('activities/gridsearch3/{price}', 'ahmed\activity_controller@grid_search3');
-Route::get('activities/gridsearch4/{price}', 'ahmed\activity_controller@grid_search4');
-Route::get('activities/gridsearch5/{price}', 'ahmed\activity_controller@grid_search5');
-Route::get('activities/gridsearch', 'ahmed\activity_controller@grid_search');
+
 Route::get('/activity/downloadPDF/{id}', 'ahmed\activity_controller@PDF');
 Route::get('/activity/pdf', 'ahmed\activity_controller@returnpdf');
-Route::get('/cityByCountry/{country}', 'ahmed\activity_controller@cityByCountry');
+
 /*Activity Routes defined By Ahmad*/
 Route::prefix('activity')->group(function () {
-	Route::get('view/', 'ahmed\activity_controller@view')->name('activity.view')->middleware(SessionCheck::class);
-	Route::get('add/', 'ahmed\activity_controller@add')->name('activity.add')->middleware(SessionCheck::class);
-	Route::post('insert/', 'ahmed\activity_controller@insert')->name('activity.insert')->middleware(SessionCheck::class);
-	Route::get('/update/{id}', 'ahmed\activity_controller@update')->name('activity.update')->middleware(SessionCheck::class);
-	Route::get('delete/{id}', 'ahmed\activity_controller@delete')->name('activity.delete')->middleware(SessionCheck::class);
-	Route::post('edit', 'ahmed\activity_controller@edit')->name('activity.edit')->middleware(SessionCheck::class);
-	Route::get('category', 'ahmed\activity_controller@category')->name('activity.category')->middleware(SessionCheck::class);
-	Route::get('add/category', 'ahmed\activity_controller@addcategory')->name('activity.addcategory')->middleware(SessionCheck::class);
-	Route::post('category/insert', 'ahmed\activity_controller@insertcategory')->name('activity.insertcategory')->middleware(SessionCheck::class);
-	Route::get('category/delete/{id}', 'ahmed\activity_controller@deletecategory')->middleware(SessionCheck::class);
-	//
 });
-/*Activity Routes defined By Ahmad*/
-Route::get('cruises', 'ahmed\cruise_controller@cruises')->name('cruise.packages');
-Route::get('cruise/detail/{id}', 'ahmed\cruise_controller@CruiseDetails')->name('cruise.detail');
-//grid and list views
-Route::get('cruises/list', 'ahmed\cruise_controller@listView')->name('cruise.list');
-//search of list (acvitites)
-Route::get('cruises/customsearch/category/{category}', 'ahmed\cruise_controller@searchByCategory')->name('cruise.category');
-Route::get('cruises/customsearch/city/{city}', 'ahmed\cruise_controller@searchByCity')->name('cruise.city');
-Route::get('cruises/customsearch/category/{category}', 'ahmed\cruise_controller@searchByCategory');
-Route::get('cruises/customsearch/country/{country}', 'ahmed\cruise_controller@searchByCountry');
-Route::get('cruises/search1/{price}', 'ahmed\cruise_controller@search1');
-Route::get('cruises/search2/{price}', 'ahmed\cruise_controller@search2');
-Route::get('cruises/search3/{price}', 'ahmed\cruise_controller@search3');
-Route::get('cruises/search4/{price}', 'ahmed\cruise_controller@search4');
-Route::get('cruises/search5/{price}', 'ahmed\cruise_controller@search5');
-Route::get('cruises/search', 'ahmed\cruise_controller@search');
-Route::get('cruises/grid', 'ahmed\cruise_controller@gridView')->name('cruise.grid');
-//search of grid(acvitites)
-Route::get('cruises/gridsearch/city/{city}', 'ahmed\cruise_controller@grid_searchByCity');
-Route::get('cruises/gridsearch/country/{country}', 'ahmed\cruise_controller@grid_searchByCountry');
-Route::get('cruises/gridsearch/category/{category}', 'ahmed\cruise_controller@grid_searchByCategory');
-Route::get('cruises/gridsearch1/{price}', 'ahmed\cruise_controller@grid_search1');
-Route::get('cruises/gridsearch2/{price}', 'ahmed\cruise_controller@grid_search2');
-Route::get('cruises/gridsearch3/{price}', 'ahmed\cruise_controller@grid_search3');
-Route::get('cruises/gridsearch4/{price}', 'ahmed\cruise_controller@grid_search4');
-Route::get('cruises/gridsearch5/{price}', 'ahmed\cruise_controller@grid_search5');
-Route::get('cruises/gridsearch', 'ahmed\cruise_controller@grid_search');
+
+
 Route::get('cruise/downloadPDF/{id}', 'ahmed\cruise_controller@PDF');
 Route::get('cruise/pdf', 'ahmed\cruise_controller@returnpdf');
-Route::get('cruise/cityByCountry/{country}', 'ahmed\cruise_controller@cityByCountry');
-/*Cruise Routes defined By Ahmad*/
 Route::prefix('cruise')->group(function () {
-	Route::get('view/', 'ahmed\cruise_controller@view')->name('cruise.view')->middleware(SessionCheck::class);
-	Route::get('add/', 'ahmed\cruise_controller@add')->name('cruise.add')->middleware(SessionCheck::class);
-	Route::post('insert/', 'ahmed\cruise_controller@insert')->name('cruise.insert')->middleware(SessionCheck::class);
-	Route::get('/update/{id}', 'ahmed\cruise_controller@update')->name('cruise.update')->middleware(SessionCheck::class);
-	Route::get('delete/{id}', 'ahmed\cruise_controller@delete')->name('cruise.delete')->middleware(SessionCheck::class);
-	Route::post('edit', 'ahmed\cruise_controller@edit')->name('cruise.edit')->middleware(SessionCheck::class);
-	Route::get('category', 'ahmed\cruise_controller@category')->name('cruise.category')->middleware(SessionCheck::class);
-	Route::get('add/category', 'ahmed\cruise_controller@addcategory')->name('cruise.addcategory')->middleware(SessionCheck::class);
-	Route::post('category/insert', 'ahmed\cruise_controller@insertcategory')->name('cruise.insertcategory')->middleware(SessionCheck::class);
-	Route::get('category/delete/{id}', 'ahmed\cruise_controller@deletecategory')->middleware(SessionCheck::class);
 });
-/*Cruise Routes defined By Ahmad*/
-Route::get('transfers', 'ahmed\transfer_controller@transfers')->name('transfer.packages');
-Route::get('transfers/detail/{id}', 'ahmed\transfer_controller@TransferDetails')->name('transfer.detail');
-Route::get('transfers/grid', 'ahmed\transfer_controller@gridView')->name('transfer.grid');
-//search of grid(acvitites)
-Route::get('transfers/gridsearch/city/{city}', 'ahmed\transfer_controller@grid_searchByCity');
-Route::get('transfers/gridsearch/country/{country}', 'ahmed\transfer_controller@grid_searchByCountry');
-Route::get('transfers/gridsearch/category/{category}', 'ahmed\transfer_controller@grid_searchByCategory');
-Route::get('transfers/gridsearch1/{price}', 'ahmed\transfer_controller@grid_search1');
-Route::get('transfers/gridsearch2/{price}', 'ahmed\transfer_controller@grid_search2');
-Route::get('transfers/gridsearch3/{price}', 'ahmed\transfer_controller@grid_search3');
-Route::get('transfers/gridsearch4/{price}', 'ahmed\transfer_controller@grid_search4');
-Route::get('transfers/gridsearch5/{price}', 'ahmed\transfer_controller@grid_search5');
-Route::get('transfers/gridsearch', 'ahmed\transfer_controller@grid_search');
-Route::get('transfers/list', 'ahmed\transfer_controller@listView')->name('transfer.list');
-//search of list (acvitites)
-Route::get('transfers/customsearch/city/{city}', 'ahmed\transfer_controller@searchByCity')->name('transfer.city');
-Route::get('transfers/customsearch/country/{country}', 'ahmed\transfer_controller@searchByCountry');
-Route::get('transfers/customsearch/category/{category}', 'ahmed\transfer_controller@searchByCategory');
-Route::get('transfers/search1/{price}', 'ahmed\transfer_controller@search1');
-Route::get('transfers/search2/{price}', 'ahmed\transfer_controller@search2');
-Route::get('transfers/search3/{price}', 'ahmed\transfer_controller@search3');
-Route::get('transfers/search4/{price}', 'ahmed\transfer_controller@search4');
-Route::get('transfers/search5/{price}', 'ahmed\transfer_controller@search5');
-Route::get('transfers/search', 'ahmed\transfer_controller@search');
 Route::get('transfers/downloadPDF/{id}', 'ahmed\transfer_controller@PDF');
-// Route::prefix('transfer')->group(function () {
-// Route::get('view/', 'ahmed\transfer_controller@view')->name('transfer.view')->middleware(SessionCheck::class);
-// Route::get('add/', 'ahmed\transfer_controller@add')->name('transfer.add')->middleware(SessionCheck::class);
-// Route::post('insert/', 'ahmed\transfer_controller@insert')->name('transfer.insert')->middleware(SessionCheck::class);
-// Route::get('/update/{id}', 'ahmed\transfer_controller@update')->name('transfer.update')->middleware(SessionCheck::class);
-// Route::get('delete/{id}', 'ahmed\transfer_controller@delete')->name('transfer.delete')->middleware(SessionCheck::class);
-// Route::post('edit', 'ahmed\transfer_controller@edit')->name('transfer.edit')->middleware(SessionCheck::class);
-// Route::get('category', 'ahmed\transfer_controller@category')->name('transfer.category')->middleware(SessionCheck::class);
-// Route::get('add/category', 'ahmed\transfer_controller@addcategory')->name('transfer.addcategory')->middleware(SessionCheck::class);
-// Route::post('category/insert', 'ahmed\transfer_controller@insertcategory')->name('transfer.insertcategory')->middleware(SessionCheck::class);
-// });
-Route::prefix('transfer')->group(function () {
-	Route::get('view/', 'ahmed\transfer_controller@view')->name('transfer.view')->middleware(SessionCheck::class);
-	Route::get('add/', 'ahmed\transfer_controller@add')->name('transfer.add')->middleware(SessionCheck::class);
-	Route::post('insert/', 'ahmed\transfer_controller@insert')->name('transfer.insert')->middleware(SessionCheck::class);
-	Route::get('/update/{id}', 'ahmed\transfer_controller@update')->name('transfer.update')->middleware(SessionCheck::class);
-	Route::get('delete/{id}', 'ahmed\transfer_controller@delete')->name('transfer.delete')->middleware(SessionCheck::class);
-	Route::post('edit', 'ahmed\transfer_controller@edit')->name('transfer.edit')->middleware(SessionCheck::class);
-	Route::get('category', 'ahmed\transfer_controller@category')->name('transfer.category')->middleware(SessionCheck::class);
-	Route::get('add/category', 'ahmed\transfer_controller@addcategory')->name('transfer.addcategory')->middleware(SessionCheck::class);
-	Route::post('category/insert', 'ahmed\transfer_controller@insertcategory')->name('transfer.insertcategory')->middleware(SessionCheck::class);
-	Route::get('category/delete/{id}', 'ahmed\transfer_controller@deletecategory')->middleware(SessionCheck::class);
-});
-//packages
-//grid and list views
-Route::get('packages/list', 'ahmed\package_controller@listView')->name('package.list');
-Route::get('packages/detail/{id}', 'ahmed\package_controller@PackageDetails')->name('package.detail');
-//search of list (acvitites)
-Route::get('packages/customsearch/city/{city}', 'ahmed\package_controller@searchByCity')->name('package.city');
-Route::get('packages/customsearch/country/{country}', 'ahmed\package_controller@searchByCountry');
-Route::get('packages/customsearch/category/{category}', 'ahmed\package_controller@searchByCategory');
-Route::get('packages/search1/{price}', 'ahmed\package_controller@search1');
-Route::get('packages/search2/{price}', 'ahmed\package_controller@search2');
-Route::get('packages/search3/{price}', 'ahmed\package_controller@search3');
-Route::get('packages/search4/{price}', 'ahmed\package_controller@search4');
-Route::get('packages/search5/{price}', 'ahmed\package_controller@search5');
-Route::get('packages/search', 'ahmed\package_controller@search');
-Route::get('packages/grid', 'ahmed\package_controller@gridView')->name('package.grid');
-//search of grid(acvitites)
-Route::get('packages/gridsearch/city/{city}', 'ahmed\package_controller@grid_searchByCity');
-Route::get('packages/gridsearch/country/{country}', 'ahmed\package_controller@grid_searchByCountry');
-Route::get('packages/gridsearch/category/{category}', 'ahmed\package_controller@grid_searchByCategory');
-Route::get('packages/gridsearch1/{price}', 'ahmed\package_controller@grid_search1');
-Route::get('packages/gridsearch2/{price}', 'ahmed\package_controller@grid_search2');
-Route::get('packages/gridsearch3/{price}', 'ahmed\package_controller@grid_search3');
-Route::get('packages/gridsearch4/{price}', 'ahmed\package_controller@grid_search4');
-Route::get('packages/gridsearch5/{price}', 'ahmed\package_controller@grid_search5');
-Route::get('packages/gridsearch', 'ahmed\package_controller@grid_search');
 Route::get('packages/downloadPDF/{id}', 'ahmed\package_controller@PDF');
-/*package Routes defined By Ahmad*/
-Route::prefix('package')->group(function () {
-	Route::get('view/', 'ahmed\package_controller@view')->name('package.view')->middleware(SessionCheck::class);
-	Route::get('add/', 'ahmed\package_controller@add')->name('package.add')->middleware(SessionCheck::class);
-	Route::post('insert/', 'ahmed\package_controller@insert')->name('package.insert')->middleware(SessionCheck::class);
-	Route::get('update/{id}', 'ahmed\package_controller@update')->name('package.update')->middleware(SessionCheck::class);
-	Route::get('delete/{id}', 'ahmed\package_controller@delete')->name('package.delete')->middleware(SessionCheck::class);
-	Route::post('edit', 'ahmed\package_controller@edit')->name('package.edit')->middleware(SessionCheck::class);
-	Route::get('category', 'ahmed\package_controller@category')->name('package.category')->middleware(SessionCheck::class);
-	Route::get('add/category', 'ahmed\package_controller@addcategory')->name('package.addcategory')->middleware(SessionCheck::class);
-	Route::post('category/insert', 'ahmed\package_controller@insertcategory')->name('package.insertcategory')->middleware(SessionCheck::class);
-	//
-});
-Route::get('packages', 'ahmed\package_controller@packages')->name('package.packages');
-/*start sight viewing */
-//grid and list views
-Route::get('daytours/list', 'ahmed\daytour_controller@listView')->name('daytour.list');
-//search of list (acvitites)
-Route::get('daytours/customsearch/city/{city}', 'ahmed\daytour_controller@searchByCity')->name('daytour.city');
-Route::get('daytours/customsearch/country/{country}', 'ahmed\daytour_controller@searchByCountry');
-Route::get('daytours/customsearch/category/{category}', 'ahmed\daytour_controller@searchByCategory');
-Route::get('daytours/search1/{price}', 'ahmed\daytour_controller@search1');
-Route::get('daytours/search2/{price}', 'ahmed\daytour_controller@search2');
-Route::get('daytours/search3/{price}', 'ahmed\daytour_controller@search3');
-Route::get('daytours/search4/{price}', 'ahmed\daytour_controller@search4');
-Route::get('daytours/search5/{price}', 'ahmed\daytour_controller@search5');
-Route::get('daytours/search', 'ahmed\daytour_controller@search');
-Route::get('daytours/grid', 'ahmed\daytour_controller@gridView')->name('daytour.grid');
-//search of grid(acvitites)
-Route::get('daytours/gridsearch/city/{city}', 'ahmed\daytour_controller@grid_searchByCity');
-Route::get('daytours/gridsearch/country/{country}', 'ahmed\daytour_controller@grid_searchByCountry');
-Route::get('daytours/gridsearch/category/{category}', 'ahmed\daytour_controller@grid_searchByCategory');
-Route::get('daytours/gridsearch1/{price}', 'ahmed\daytour_controller@grid_search1');
-Route::get('daytours/gridsearch2/{price}', 'ahmed\daytour_controller@grid_search2');
-Route::get('daytours/gridsearch3/{price}', 'ahmed\daytour_controller@grid_search3');
-Route::get('daytours/gridsearch4/{price}', 'ahmed\daytour_controller@grid_search4');
-Route::get('daytours/gridsearch5/{price}', 'ahmed\daytour_controller@grid_search5');
-Route::get('daytours/gridsearch', 'ahmed\daytour_controller@grid_search');
 Route::get('daytours/downloadPDF/{id}', 'ahmed\daytour_controller@PDF');
-/*package Routes defined By Ahmad*/
-Route::prefix('daytour')->group(function () {
-	Route::get('view/', 'ahmed\daytour_controller@view')->name('daytour.view')->middleware(SessionCheck::class);
-	Route::get('add/', 'ahmed\daytour_controller@add')->name('daytour.add')->middleware(SessionCheck::class);
-	Route::post('insert/', 'ahmed\daytour_controller@insert')->name('daytour.insert')->middleware(SessionCheck::class);
-	Route::get('/update/{id}', 'ahmed\daytour_controller@update')->name('daytour.update')->middleware(SessionCheck::class);
-	Route::get('delete/{id}', 'ahmed\daytour_controller@delete')->name('daytour.delete')->middleware(SessionCheck::class);
-	Route::post('edit', 'ahmed\daytour_controller@edit')->name('daytour.edit')->middleware(SessionCheck::class);
-	Route::get('category', 'ahmed\daytour_controller@category')->name('daytour.category')->middleware(SessionCheck::class);
-	Route::get('add/category', 'ahmed\daytour_controller@addcategory')->name('daytour.addcategory')->middleware(SessionCheck::class);
-	Route::post('category/insert', 'ahmed\daytour_controller@insertcategory')->name('daytour.insertcategory')->middleware(SessionCheck::class);
-	Route::get('category/delete/{id}', 'ahmed\daytour_controller@deletecategory')->middleware(SessionCheck::class);
-	//
-});
-Route::get('daytours', 'ahmed\daytour_controller@packages')->name('daytour.packages');
-Route::get('daytour/detail/{id}', 'ahmed\daytour_controller@DaytourDetails')->name('daytour.detail');
+
 Route::get('sightseeingview', function () {
 	$data['sightseeing'] = DB::table('sightseeing')->get();
 	return view('sightseeing.sightseeingview', $data);
@@ -316,22 +106,8 @@ Route::prefix('blogs')->group(function () {
 });
 Route::get('blog/view', 'ahmed\blog_controller@view')->name('blog.view');
 Route::get('blog/detail/{id}', 'ahmed\blog_controller@detail')->name('blog.detail');
-/*
-Route::prefix('sightseeing')->group(function () {
-Route::get('get', 'Sightseeing_Controller@index')->name('sightseeing.get')->middleware(SessionCheck::class);
-Route::get('/create_update/{action}/{id}', 'Sightseeing_Controller@create_edit')->name('sightseeing.create')->middleware(SessionCheck::class);
-Route::get('create_update/{action}/{id}', 'Sightseeing_Controller@create_edit')->name('sightseeing.edit')->middleware(SessionCheck::class);
-Route::post('store/{id}', 'Sightseeing_Controller@store_update')->name('sightseeing.store')->middleware(SessionCheck::class);
-Route::post('update/{id}', 'Sightseeing_Controller@store_update')->name('sightseeing.update')->middleware(SessionCheck::class);
-Route::get('delete/{id}', 'Sightseeing_Controller@delete')->name('sightseeing.delete')->middleware(SessionCheck::class);
-});
- */
 Route::get('/send/email/verify', 'SendEmail@send_verification');
 Route::get('/send/email/booking', 'SendEmail@send_booking_email');
-/*--------------Packages-------------*/
-/*Route::get('admin/package', 'PackagesController@index')->name('package');
-Route::post('admin/package-add/{action}/{id}', 'PackagesController@store_update')->name('package.create');
-Route::get('admin/package-add/{action}/{id}', 'Blogs_Controller@create_edit')->name('package.edit');*/
 Route::prefix('packages')->group(function () {
 	Route::get('get/', 'PackagesController@index')->name('packages.get')->middleware(SessionCheck::class);
 	Route::get('/create_update/{action}/{id}', 'PackagesController@create_edit')->name('packages.create')->middleware(SessionCheck::class);
@@ -341,9 +117,7 @@ Route::prefix('packages')->group(function () {
 	Route::get('delete/{id}', 'PackagesController@delete')->name('packages.delete')->middleware(SessionCheck::class);
 	Route::get('map/{lng}/{lat}/{city}', 'PackagesController@geolocation')->name('geolocate_packages')->middleware(SessionCheck::class);
 });
-/*Cruise Routes defined By Ahmad*/
-/*Cruise Routes defined By Ahmad*/
-/**/
+
 Route::group(['middleware' => ['session']], function () {
 	/*--------------Packages Categories-------------*/
 	Route::get('admin/package_cat/show', 'PackageCategoriesController@index')->name('package_cat')->middleware(SessionCheck::class);
@@ -566,20 +340,6 @@ Route::get('csrf', function () {
 	return csrf_taken();
 });
 Route::get('/cities', 'ahmed\SearchController@cities_index');
-/*book now page routes*/
-Route::get('/booknow', 'ahmed\BookNowController@index')->name('booknow');
-Route::get('/booknow/list/city/{city}/{type}', 'ahmed\BookNowController@list_city')->name('booknow.list.city');
-Route::get('/booknow/list/category/{category}/{type}', 'ahmed\BookNowController@list_category')->name('booknow.list.category');
-
-Route::get('/booknow/list/country/{country}/{type}', 'ahmed\BookNowController@list_country')->name('booknow.list.country');
-Route::get('/booknow/all_packages', 'ahmed\BookNowController@all_packages')->name('all_packages');
-Route::get('/booknow/all_activities', 'ahmed\BookNowController@all_activities')->name('all_activities');
-Route::get('/booknow/all_cruises', 'ahmed\BookNowController@all_cruises')->name('all_cruises');
-Route::get('/booknow/all_transfers', 'ahmed\BookNowController@all_transfers')->name('all_transfers');
-Route::get('/booknow/all_daytours', 'ahmed\BookNowController@all_daytours')->name('all_daytours');
-Route::get('/booknow/grid', 'ahmed\BookNowController@index_grid')->name('booknow.grid');
-//end book now routes
-
 Route::get('/gallery', 'ahmed\GalleryController@index');
 Route::get('/gallery/add', 'ahmed\GalleryController@add')->name('gallery.add');
 Route::post('/gallery/add_video', 'ahmed\GalleryController@add_url');
@@ -679,9 +439,75 @@ Route::get('all_events/country/{id}', 'ahmed\SearchController@allEventsByCountry
 //All events page --displays all events
 Route::get('list/events/all', 'Event_Controller@listAllEvents')->name('list.all.events');
 
-// Activity Events
+// Activity Events LIST
 Route::get('all/events/activity', 'ahmed\activity_controller@All_Activity_Events')->name('all.events.activity');
 Route::get('search/activity/city/{id}', 'ahmed\activity_controller@Activity_By_City')->name('search.activity.city');
 Route::get('search/activity/country/{id}', 'ahmed\activity_controller@Activity_By_Country')->name('search.activity.country');
 Route::get('search/activity/category/{id}', 'ahmed\activity_controller@Activity_By_Category')->name('search.activity.category');
 Route::get('search/activity/price/{min}/{max}', 'ahmed\activity_controller@Activity_By_Price')->name('search.activity.price');
+// Activity Events GRID
+Route::get('all/events/activity/grid', 'ahmed\activity_controller@All_Activity_Events_Grid')->name('all.events.activity.grid');
+Route::get('search/activity/grid/city/{id}', 'ahmed\activity_controller@Activity_By_City_Grid')->name('search.activity.city.grid');
+Route::get('search/activity/grid/country/{id}', 'ahmed\activity_controller@Activity_By_Country_Grid')->name('search.activity.country.grid');
+Route::get('search/activity/grid/category/{id}', 'ahmed\activity_controller@Activity_By_Category_Grid')->name('search.activity.category.grid');
+Route::get('search/activity/grid/price/{min}/{max}', 'ahmed\activity_controller@Activity_By_Price_Grid')->name('search.activity.price.grid');
+
+
+
+// Cruise Events LIST
+Route::get('all/events/cruise', 'ahmed\cruise_controller@All_Cruise_Events')->name('all.events.cruise');
+Route::get('search/cruise/city/{id}', 'ahmed\cruise_controller@Cruise_By_City')->name('search.cruise.city');
+Route::get('search/cruise/country/{id}', 'ahmed\cruise_controller@Cruise_By_Country')->name('search.cruise.country');
+Route::get('search/cruise/category/{id}', 'ahmed\cruise_controller@Cruise_By_Category')->name('search.cruise.category');
+Route::get('search/cruise/price/{min}/{max}', 'ahmed\cruise_controller@Cruise_By_Price')->name('search.cruise.price');
+// Cruise Events GRID
+Route::get('all/events/cruise/grid', 'ahmed\cruise_controller@All_Cruise_Events_Grid')->name('all.events.cruise.grid');
+Route::get('search/cruise/grid/city/{id}', 'ahmed\cruise_controller@Cruise_By_City_Grid')->name('search.cruise.city.grid');
+Route::get('search/cruise/grid/country/{id}', 'ahmed\cruise_controller@Cruise_By_Country_Grid')->name('search.cruise.country.grid');
+Route::get('search/cruise/grid/category/{id}', 'ahmed\cruise_controller@Cruise_By_Category_Grid')->name('search.cruise.category.grid');
+Route::get('search/cruise/grid/price/{min}/{max}', 'ahmed\cruise_controller@Cruise_By_Price_Grid')->name('search.cruise.price.grid');
+
+
+
+
+// Daytour Events LIST
+Route::get('all/events/daytour', 'ahmed\daytour_controller@All_Daytour_Events')->name('all.events.daytour');
+Route::get('search/daytour/city/{id}', 'ahmed\daytour_controller@Daytour_By_City')->name('search.daytour.city');
+Route::get('search/daytour/country/{id}', 'ahmed\daytour_controller@Daytour_By_Country')->name('search.daytour.country');
+Route::get('search/daytour/category/{id}', 'ahmed\daytour_controller@Daytour_By_Category')->name('search.daytour.category');
+Route::get('search/daytour/price/{min}/{max}', 'ahmed\daytour_controller@Daytour_By_Price')->name('search.daytour.price');
+// Daytour Events GRID
+Route::get('all/events/daytour/grid', 'ahmed\daytour_controller@All_Daytour_Events_Grid')->name('all.events.daytour.grid');
+Route::get('search/daytour/grid/city/{id}', 'ahmed\daytour_controller@Daytour_By_City_Grid')->name('search.daytour.city.grid');
+Route::get('search/daytour/grid/country/{id}', 'ahmed\daytour_controller@Daytour_By_Country_Grid')->name('search.daytour.country.grid');
+Route::get('search/daytour/grid/category/{id}', 'ahmed\daytour_controller@Daytour_By_Category_Grid')->name('search.daytour.category.grid');
+Route::get('search/daytour/grid/price/{min}/{max}', 'ahmed\daytour_controller@Daytour_By_Price_Grid')->name('search.daytour.price.grid');
+
+
+
+// Pacakge Events LIST
+Route::get('all/events/package', 'ahmed\package_controller@All_Package_Events')->name('all.events.package');
+Route::get('search/package/city/{id}', 'ahmed\package_controller@Package_By_City')->name('search.package.city');
+Route::get('search/package/country/{id}', 'ahmed\package_controller@Package_By_Country')->name('search.package.country');
+Route::get('search/package/category/{id}', 'ahmed\package_controller@Package_By_Category')->name('search.package.category');
+Route::get('search/package/price/{min}/{max}', 'ahmed\package_controller@Package_By_Price')->name('search.package.price');
+// Pacakge Events GRID
+Route::get('all/events/package/grid', 'ahmed\package_controller@All_Package_Events_Grid')->name('all.events.package.grid');
+Route::get('search/package/grid/city/{id}', 'ahmed\package_controller@Package_By_City_Grid')->name('search.package.city.grid');
+Route::get('search/package/grid/country/{id}', 'ahmed\package_controller@Package_By_Country_Grid')->name('search.package.country.grid');
+Route::get('search/package/grid/category/{id}', 'ahmed\package_controller@Package_By_Category_Grid')->name('search.package.category.grid');
+Route::get('search/package/grid/price/{min}/{max}', 'ahmed\package_controller@Package_By_Price_Grid')->name('search.package.price.grid');
+
+
+// Transfer Events LIST
+Route::get('all/events/transfer', 'ahmed\transfer_controller@All_Transfer_Events')->name('all.events.transfer');
+Route::get('search/transfer/city/{id}', 'ahmed\transfer_controller@Transfer_By_City')->name('search.transfer.city');
+Route::get('search/transfer/country/{id}', 'ahmed\transfer_controller@Transfer_By_Country')->name('search.transfer.country');
+Route::get('search/transfer/category/{id}', 'ahmed\transfer_controller@Transfer_By_Category')->name('search.transfer.category');
+Route::get('search/transfer/price/{min}/{max}', 'ahmed\transfer_controller@Transfer_By_Price')->name('search.transfer.price');
+// Transfer Events GRID
+Route::get('all/events/transfer/grid', 'ahmed\transfer_controller@All_Transfer_Events_Grid')->name('all.events.transfer.grid');
+Route::get('search/transfer/grid/city/{id}', 'ahmed\transfer_controller@Transfer_By_City_Grid')->name('search.transfer.city.grid');
+Route::get('search/transfer/grid/country/{id}', 'ahmed\transfer_controller@Transfer_By_Country_Grid')->name('search.transfer.country.grid');
+Route::get('search/transfer/grid/category/{id}', 'ahmed\transfer_controller@Transfer_By_Category_Grid')->name('search.transfer.category.grid');
+Route::get('search/transfer/grid/price/{min}/{max}', 'ahmed\transfer_controller@Transfer_By_Price_Grid')->name('search.transfer.price.grid');

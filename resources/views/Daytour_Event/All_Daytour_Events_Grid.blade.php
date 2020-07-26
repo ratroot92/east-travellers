@@ -1,5 +1,7 @@
 @extends('layouts.website')
 @section('content')
+
+
 <style>
 nav {
     background-color: white;
@@ -10,37 +12,11 @@ nav {
 }
 </style>
 
-<section>
-    <div class="rows inner_banner inner_banner_5">
-        <div class="container">
-            <h2><span>Book -</span> Your Favourite Activitiy Now!</h2>
-            <ul>
-                <li><a href="#inner-page-title">Home</a>
-                </li>
-                <li><i class="fa fa-angle-right" aria-hidden="true"></i> </li>
-                <li><a href="#inner-page-title" class="bread-acti">Activities</a>
-                </li>
-            </ul>
-            <p>Book travel activities and enjoy your holidays with distinctive experience</p>
-        </div>
-    </div>
-</section>
+
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-12 " style="margin-top:20px;margin-bottom:20px;">
-            <!-- Material checked -->
-            <div class="switch  pull-right">{{-- start of switch --}}
-                <label>
-                    GRID VIEW
-                    <input type="checkbox" checked="checked" id="DisplayStyle">
-                    <span class="lever"></span> LIST VIEW
-                </label>
-            </div>
-            {{-- end of switch --}}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 text-center">
+        <div class="col-md-12">
+
             <div id="app">
                 @include('flash-message')
                 @yield('content')
@@ -48,9 +24,49 @@ nav {
         </div>
     </div>
 </div>
+
+<section>
+    <div class="rows inner_banner inner_banner_5">
+        <div class="container">
+            <h2><span>Book -</span> Your Favourite Daytours Now!</h2>
+            <ul>
+                <li><a href="#inner-page-title">Home</a>
+                </li>
+                <li><i class="fa fa-angle-right" aria-hidden="true"></i> </li>
+                <li><a href="#inner-page-title" class="bread-acti">Daytours</a>
+                </li>
+            </ul>
+            <p>Book travel daytours and enjoy your holidays with distinctive experience</p>
+        </div>
+    </div>
+</section>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 " style="margin-top:20px;margin-bottom:20px;">
+            <!-- Material checked -->
+            <div class="switch  pull-right">{{-- start of switch --}}
+                <label>
+                    GRID VIEW
+                    <input type="checkbox" id="DisplayStyle">
+                    <span class="lever"></span> LIST VIEW
+                </label>
+            </div>{{-- end of switch --}}
+        </div>
+    </div>
+</div>
+
 <br />
+
+
+
+
+
+
+
 <div class="container">
     <div class="row">
+
         <div class="col-md-3 ">
             <!--PART 4 : LEFT LISTINGS-->
             <div class="panel-group">
@@ -73,7 +89,7 @@ nav {
                                     <div id="cities">
                                         <ul class="">
                                             <li>
-                                                <a href="{{route('all.events.activity')}}"
+                                                <a href="{{route('all.events.daytour')}}"
                                                     style="padding:0px!important;margin:0px!important;color:white; border:none;">
                                                     <div class="checkbox checkbox-info checkbox-circle">
                                                         <input id="all_cities" class="cities city styled"
@@ -156,7 +172,7 @@ nav {
                                     <div id="categories">
                                         <ul class="">
                                             <li>
-                                                <a href="{{route('all.events.activity')}}"
+                                                <a href="{{route('all.events.daytour')}}"
                                                     style="padding:0px!important;margin:0px!important;color:white; border:none;">
                                                     <div class="checkbox checkbox-info checkbox-circle">
                                                         <input id="all_categories" class="categories city styled"
@@ -236,7 +252,7 @@ nav {
                                     <div id="countries">
                                         <ul class="">
                                             <li>
-                                                <a href="{{route('all.events.activity')}}"
+                                                <a href="{{route('all.events.daytour')}}"
                                                     style="padding:0px!important;margin:0px!important;color:white; border:none;">
                                                     <div class="checkbox checkbox-info checkbox-circle">
                                                         <input id="all_countries" class="countries city styled"
@@ -363,7 +379,7 @@ nav {
             <!--END PART 5 : LEFT LISTINGS-->
         </div>
         <div class="col-md-9 " id="searchRendering">
-            @if(isset($All_Activity_Events))
+            @if(isset($All_Daytour_Events))
             @if(isset($Search_Param))
             <div class="row">
                 <div class="col-md-12 alert alert-success">
@@ -374,118 +390,113 @@ nav {
             @else
             <div class="row">
                 <div class="col-md-12 alert alert-success">
-                    <p class="text-dark font-weight-bold">Showing All Activity Events </p>
+                    <p class="text-dark font-weight-bold">Showing All Daytour Events </p>
                 </div>
             </div>
             @endif
-            @foreach($All_Activity_Events as $key=>$item)
+            @foreach($All_Daytour_Events as $key=>$item)
+            <a href="{{  url('event_detail/')}}/{{ $item->id }}">
+                <div class="col-md-6 col-sm-6 col-xs-12 b_packages wow slideInUp" data-wow-duration="0.5s">
+                    <!-- OFFER BRAND -->
+                    @if($item->discount!=0)<div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png"
+                            alt="" /><span class="disc-text">{{$item->discount}}<br>OFF</span></div>
+                    @else
+                    <!--  <div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png" alt="" /><span class="disc-text">No Discount</span></div> -->
+                    @endif
+                    <!--<div class="band">-->
+                    <!--    <div class="box">-->
+                    <!--        <div class="ribbon"><span>{{$item->disc}}%off</span></div>-->
+                    <!--    </div>-->
+                    <!--    {{--<img src="{{url('/theme/travel')}}/images/band.png" alt="" />--}}-->
+                    <!--</div>-->
+                    <!-- IMAGE -->
+                    <div class="v_place_img" style="height: 200px">
+                        <img src="{{$item->banner}}" alt="Tour Booking" title="Tour Booking"
+                            style="height: 100%;width: 100%">
+                    </div>
+                    <!-- TOUR TITLE & ICONS -->
+                    <div class="b_pack rows">
+                        <!-- TOUR TITLE -->
+                        <div class="col-md-8 col-sm-8">
+                            <h4>{{$item->event_name}}<span class="v_pl_name" style="color: black"></span>
+                            </h4>
+                        </div>
 
-            <div class="row" style="border:1px solid #e9ecef;background-color: white!important;margin-bottom: 10px;">
-                <div class="col-md-3 img-thumbnail  " style="padding:0px; margin:0px;border-radius:0px;">
-                    <img src="{{$item->banner}}" width="100%" height="150px" alt="" style="padding:0px; margin:0px;">
-                </div>
-                <div class="col-md-6">
-                    <div class="trav-list-bod">
-                        <a href="{{  url('event_detail/')}}/{{ $item->id }}">
-                            <h3 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
-            font-weight: 700;">{{$item->event_name}}</h3>
-                            <h4 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
-            font-weight: 700;">Event Type : {{$item->event_type}}</h4>
-                        </a>
-                        <p>{!!substr($item->description,0,150)!!}</p>
+
+                        <div class="col-md-4 col-sm-4 pack_icon">
+                            <ul>
+                                <li>
+                                    <a href="{{  url('event_detail/')}}/{{ $item->id }}"><img
+                                            src="{{url('/theme/travel')}}/images/clock.png" alt="Date"
+                                            title="Tour Timing" /> </a>
+                                </li>
+                                <li>
+                                    <a href="{{  url('event_detail/')}}/{{ $item->id }}"><img
+                                            src="{{url('/theme/travel')}}/images/info.png" alt="Details"
+                                            title="View more details" /> </a>
+                                </li>
+                                <li>
+                                    <a href="{{  url('event_detail/')}}/{{ $item->id }}"><img
+                                            src="{{url('/theme/travel')}}/images/price.png" alt="Price" title="Price" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{  url('event_detail/')}}/{{ $item->id }}"><img
+                                            src="{{url('/theme/travel')}}/images/map.png" alt="Location"
+                                            title="Location" /> </a>
+                                </li>
+                            </ul>
+                        </div>
+
+
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="hot-page2-alp-ri-p3 tour-alp-ri-p3">
-                        @if($item->discount !=0)
-                        <div class="hot-page2-alp-r-hot-page-rat pull">{{$item->discount}} % Off</div>
-                        @else
-                        <div class="hot-page2-alp-r-hot-page-rat pull">No Discount</div>
-                        @endif
-                        <span class="hot-list-p3-1">From</span> <span
-                            class="hot-list-p3-2">€{{$item->price}}</span><span class="hot-list-p3-4">
-                            <a href="{{  url('event_detail/')}}/{{ $item->id }}" class="hot-page2-alp-quot-btn">Book
-                                Now</a>
-                        </span> </div>
-                </div>
-                <div>
-                    <div class="trav-ami">
-                        <h4>Detail and Includes</h4>
-                        {{-- --}}
-                        <ul>
-                            @foreach($item->Event_Icons as $Icon)
-
-                            <li href="{{  url('event_detail/')}}/{{ $item->id }}"><img src="{{$Icon->description}}"
-                                    alt="">
-                                <span>{{$Icon->name}}</span></li>
-                            @endforeach
-                        </ul>
-                        <br>
-                        <ul>
-                            @foreach($item->Event_Categories as $category)
-
-                            <li href="{{  url('event_detail/')}}/{{ $item->id }}"><img src="{{$category->description}}"
-                                    alt="">
-                                <span>{{$category->name}}</span></li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-
-
-            </div>
+            </a>
 
             @endforeach
 
         </div>
-        {{-- end  col-md-8 --}}
+        {{--
+          col-md-9 end here
+          --}}
     </div>
 </div>
+
+
 {{--
-   <div class="container-fluid">
-      <div class="row">
-         <div  class="col-md-12">
-            {{$All_Activity_Events->links()}}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            {{$All_Daytour_Events->links()}}
 </div>
 </div>
 </div>
 --}}
+
 @else
-<div class="col-md-9 " id="searchRendering">
-    <div class="row">
-        @if(isset($Search_Param))
-        <div class="col-md-12 alert alert-warning">
-            <p class="text-info font-weight-bold">Found no events for <span
-                    class="text-danger font-weight-bold">{{ $Search_Param->name ?? '' }}</span> </p>
-        </div>
-        @endif
-
-
-    </div>
-</div>
-
-
-</div>
 
 @endif
+
+
 @endsection
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
 <script>
 function getCityNameForSearch(city) {
     console.log(city);
-    window.location.href = "{{URL::to('search/activity/city')}}" + "/" + city;
+    window.location.href = "{{URL::to('search/daytour/grid/city')}}" + "/" + city;
 }
 
 function getCountryNameForSearch(country) {
     console.log(country);
-    window.location.href = "{{URL::to('search/activity/country')}}" + "/" + country;
+    window.location.href = "{{URL::to('search/daytour/grid/country')}}" + "/" + country;
 }
 
 function getCategoryNameForSearch(category) {
     console.log(category);
-    window.location.href = "{{URL::to('search/activity/category')}}" + "/" + category;
+    window.location.href = "{{URL::to('search/daytour/grid/category')}}" + "/" + category;
 }
 
 function getPriceForSearch(price) {
@@ -493,38 +504,31 @@ function getPriceForSearch(price) {
     var price_list = price.split(',');
     var min = price_list[0];
     var max = price_list[1];
-    window.location.href = "{{URL::to('search/activity/price')}}" + "/" + min + "/" + max;
+    window.location.href = "{{URL::to('search/daytour/grid/price')}}" + "/" + min + "/" + max;
 }
 $(document).ready(function() {
-    console.log(window.location.href);
     var URL_Array = window.location.href.split('/');
-    console.log(URL_Array);
     if (URL_Array[4] == 'search') {
-        console.log("search");
-        if (URL_Array[5] == 'activity') {
-            console.log("activity");
-            if (URL_Array[6] == 'city') {
+        if (URL_Array[5] == 'daytour') {
+            if (URL_Array[7] == 'city') {
                 $("#moreCitiesDiv").addClass("collpased show");
-                $('#city' + URL_Array[7]).prop("checked", true);
-            } else if (URL_Array[6] == "category") {
-                console.log(URL_Array[7]);
+                $('#city' + URL_Array[8]).prop("checked", true);
+            } else if (URL_Array[7] == "category") {
                 $("#moreCategoriesDiv").addClass("collpased show");
-                $('#category' + URL_Array[7]).prop("checked", true);
-
-            } else if (URL_Array[6] == "country") {
-                console.log("country");
+                $('#category' + URL_Array[8]).prop("checked", true);
+            } else if (URL_Array[7] == "country") {
                 $("#moreCountriesDiv").addClass("collpased show");
-                $('#country' + URL_Array[7]).prop("checked", true);
-            } else if (URL_Array[6] == "price") {
-                if (URL_Array[7] == '250' && URL_Array[8] == '000') {
+                $('#country' + URL_Array[8]).prop("checked", true);
+            } else if (URL_Array[7] == "price") {
+                if (URL_Array[8] == '250' && URL_Array[9] == '000') {
                     $('#chp51').prop("checked", true);
-                } else if (URL_Array[7] == '100' && URL_Array[8] == '250') {
+                } else if (URL_Array[8] == '100' && URL_Array[9] == '250') {
                     $('#chp52').prop("checked", true);
-                } else if (URL_Array[7] == '50' && URL_Array[8] == '100') {
+                } else if (URL_Array[8] == '50' && URL_Array[9] == '100') {
                     $('#chp53').prop("checked", true);
-                } else if (URL_Array[7] == '25' && URL_Array[8] == '50') {
+                } else if (URL_Array[8] == '25' && URL_Array[9] == '50') {
                     $('#chp54').prop("checked", true);
-                } else if (URL_Array[7] == '0' && URL_Array[8] == '25') {
+                } else if (URL_Array[8] == '0' && URL_Array[9] == '25') {
                     $('#chp55').prop("checked", true);
                 }
 
@@ -540,9 +544,9 @@ $(document).ready(function() {
         console.log($('#DisplayStyle').prop("checked"));
         if ($('#DisplayStyle').prop("checked") == false || $('#DisplayStyle').prop("checked") ==
             'false') {
-            window.location.href = "{{URL::to('all/events/activity/grid')}}";
+            window.location.href = "{{URL::to('all/events/daytour/grid')}}";
         } else {
-            window.location.href = "{{URL::to('all/events/activity')}}";
+            window.location.href = "{{URL::to('all/events/daytour')}}";
         }
     })
 })
