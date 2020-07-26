@@ -182,21 +182,42 @@ $path="../public/";
                         <li><a href="{{route('view.all.events')}}">All Events</a>
                         </li>
 
-                        <li><a href="{{route('view.add.city',['action'=>'add'])}}"> Add Event City</a>
-                        </li>
-                        <li><a href="{{route('view.all.cities')}}">All Event Cities</a>
-                        </li>
 
-                        <li><a href="{{route('view.add.country',['action'=>'add'])}}"> Add Event Country</a>
-                        </li>
-                        <li><a href="{{route('view.all.countries')}}">All Event Countries</a>
-                        </li>
+
 
 
                     </ul>
                 </div>
             </li>
 
+
+            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
+                        aria-hidden="true"></i> Events Countries</a>
+                <div class="collapsible-body left-sub-menu">
+                    <ul>
+                        <li><a href="{{route('view.add.country',['action'=>'add'])}}"> Add Event Country</a>
+                        </li>
+                        <li><a href="{{route('view.all.countries')}}">All Event Countries</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+
+
+
+            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
+                        aria-hidden="true"></i> Events Cities</a>
+                <div class="collapsible-body left-sub-menu">
+                    <ul>
+                        <li><a href="{{route('view.add.city',['action'=>'add'])}}"> Add Event City</a>
+                        </li>
+                        <li><a href="{{route('view.all.cities')}}">All Event Cities</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
 
 
 

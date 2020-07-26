@@ -683,3 +683,5 @@ Route::get('list/events/all', 'Event_Controller@listAllEvents')->name('list.all.
 Route::get('all/events/activity', 'ahmed\activity_controller@All_Activity_Events')->name('all.events.activity');
 Route::get('search/activity/city/{id}', 'ahmed\activity_controller@Activity_By_City')->name('search.activity.city');
 Route::get('search/activity/country/{id}', 'ahmed\activity_controller@Activity_By_Country')->name('search.activity.country');
+Route::get('search/activity/category/{id}', 'ahmed\activity_controller@Activity_By_Category')->name('search.activity.category');
+Route::get('search/activity/price/{min}/{max}', 'ahmed\activity_controller@Activity_By_Price')->name('search.activity.price');

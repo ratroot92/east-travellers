@@ -48,4 +48,18 @@ class All_Events extends Model
     {
         return $this->belongsToMany(Event_Icons::class, 'icon_all__events', 'all__events_id', 'icon_id');
     }
+    //price
+    public function scopePrice($query, $min, $max)
+    {
+        if ($max == '000' || $max == 000) {
+            return $query->where('price', '>=', $min);
+        } else {
+            return $query->where('price', '>=', $min)->orWhere('price', '<=', $max);
+        }
+    }
+
+    public function scopeActivity($query, $type)
+    {
+        return $query->where('event_type', '=', $type);
+    }
 }

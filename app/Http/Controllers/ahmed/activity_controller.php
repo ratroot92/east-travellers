@@ -6,6 +6,7 @@ use App;
 use App\Activity;
 use App\All_Events;
 use App\Event_Country;
+use App\Event_Category;
 use App\Event_City;
 use App\File;
 use App\Http\Controllers\Controller;
@@ -1136,12 +1137,47 @@ class activity_controller extends Controller
 			if (count($All_Activity_Events->toArray()) > 0) {
 				return view('Activity_Event/All_Activity_Events', ['All_Activity_Events' => $All_Activity_Events, 'Serach_Type' => 'Country', 'Search_Param' => $Get_Country->name]);
 			} else {
-				return redirect()->route('all.events.activity')->with('error', 'No Activity Event Found For City ' . $Get_Country->name);
+				return redirect()->route('all.events.activity')->with('error', 'No Activity Event Found For Country ' . $Get_Country->name);
 			}
 		}
-		//No Activbity Associated With Searched City
+		//No Activbity Associated With Searched Country
 		else {
-			return redirect()->route('all.events.activity')->with('error', 'No Activity Event Found For City ' . $Get_Country->name);
+			return redirect()->route('all.events.activity')->with('error', 'No Activity Event Found For Country ' . $Get_Country->name);
+		}
+	}
+	public function Activity_By_Category($id)
+	{
+		$Get_Category = Event_Category::Find($id);
+		if ($Get_Category) {
+			$All_Activity_Events = $Get_Category->Activity_Events;
+			if (count($All_Activity_Events->toArray()) > 0) {
+				return view('Activity_Event/All_Activity_Events', ['All_Activity_Events' => $All_Activity_Events, 'Serach_Type' => 'Category', 'Search_Param' => $Get_Category->name]);
+			} else {
+				return redirect()->route('all.events.activity')->with('error', 'No Activity Event Found For Category ' . $Get_Category->name);
+			}
+		}
+		//No Activbity Associated With Searched Category
+		else {
+			return redirect()->route('all.events.activity')->with('error', 'No Activity Event Found For Category ' . $Get_Category->name);
+		}
+	}
+	public function Activity_By_Price($min, $max)
+	{
+		$type = 'Activity';
+		if ($min == '250' && $max == '000') {
+			$All_Activity_Events = All_Events::price($min, $max)->activity($type)->get();
+			if (count($All_Activity_Events->toArray()) > 0) {
+				if ($max == '000' || $max == 000) {
+					$maxx = 'Maximum';
+					$Price_Range = "Range $" . $min . " , $" . $maxx;
+				} else {
+					$Price_Range = "Range $" . $min . " , $" . $max;
+				}
+
+				return view('Activity_Event/All_Activity_Events', ['All_Activity_Events' => $All_Activity_Events, 'Serach_Type' => 'Price', 'Search_Param' => $Price_Range]);
+			} else {
+				return redirect()->route('all.events.activity')->with('error', 'No Activity Event Found For Given' . $Price_Range);
+			}
 		}
 	}
 }

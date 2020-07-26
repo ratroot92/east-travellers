@@ -24,9 +24,9 @@ class CreateAllEventsTable extends Migration
             // $table->longText('img')->nullable();
             $table->longText('description')->nullable();
             $table->longText('banner')->nullable();
-            $table->longText('discount')->nullable();
+            $table->integer('discount')->nullable();
             // $table->longText('location')->nullable();
-            $table->longText('price')->nullable();
+            $table->integer('price')->nullable();
             // $table->longText('about')->nullable();
             $table->longText('itinerary')->nullable();
             $table->longText('inclusion')->nullable();
