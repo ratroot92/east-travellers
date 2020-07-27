@@ -17,7 +17,7 @@ use PDF;
 //
 use Validator;
 
-class daytour_controller extends Controller
+class Daytour_Controller extends Controller
 {
 
 	private $base_url;

@@ -17,7 +17,7 @@ use PDF;
 //
 use Validator;
 
-class activity_controller extends Controller
+class Activity_Controller extends Controller
 {
 	private $base_url;
 

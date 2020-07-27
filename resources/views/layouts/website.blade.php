@@ -197,6 +197,7 @@ $path="../public/";
                                 <li class="about-menu"><a href="{{route('all.events.transfer')}}"
                                         class="mm-arr">Transfer</a></li>
                                 <li><a href="{{route('events.show')}}">Events</a></li>
+                                <li><a href="{{route('booknow.index')}}">Booknow</a></li>
                                 <li><a href="{{route('blog.view')}}">Blogs</a></li>
                                 <li><a href="{{url('/aboutus')}}">About us</a></li>
                                 <li><a href="{{url('/custominquiry')}}">Custom Inquiry</a></li>
@@ -284,7 +285,7 @@ $path="../public/";
                                         class="mm-arr">Cruises</a></li>
                                 <li class="about-menu"><a href="{{route('all.events.transfer')}}"
                                         class="mm-arr">Transfer</a></li>
-                                <li class="admi-menu"><a href="{{url('/booknow')}}">Booknow</a></li>
+                                <li class="admi-menu"><a href="{{route('booknow.index')}}">Booknow</a></li>
                                 <li class="about-menu"><a href="{{route('events.show')}}">Events</a></li>
                                 <li class="admi-menu"><a href="{{url('/aboutus')}}">About us</a></li>
                                 <li class="about-menu"><a href="{{url('/custominquiry')}}">Custom Inquiry</a></li>
@@ -353,12 +354,14 @@ $path="../public/";
                                     <div class="col-md-6">
                                         <h4><span>Services</span></h4>
                                         <ul style="list-style: none; margin-left: -40px">
-                                            <li><a href="{{ route('package.list') }}">Inbound Package Tour</a>
-                                            <li><a href="{{ route('daytour.list') }}">Day Tours & Excursions</a></li>
-                                            <li><a href="{{ route('activity.list') }}">Indoor & Outdoor Activites</a>
+                                            <li><a href="{{ route('all.events.package') }}">Inbound Package Tour</a>
+                                            <li><a href="{{ route('all.events.daytour') }}">Day Tours & Excursions</a>
                                             </li>
-                                            <li><a href="{{ route('transfer.list') }}">Transportation</a></li>
-                                            <li><a href="{{ route('cruise.list') }}">Cruise Bookings</a></li>
+                                            <li><a href="{{ route('all.events.activity') }}">Indoor & Outdoor
+                                                    Activites</a>
+                                            </li>
+                                            <li><a href="{{ route('all.events.transfer') }}">Transportation</a></li>
+                                            <li><a href="{{ route('all.events.cruise') }}">Cruise Bookings</a></li>
                                             <li><a href="{{ url('custominquiry') }}">Tailor Made Itenerary</a></li>
                                             <li><a href="{{ route('events.show') }}">Events and Conference</a></li>
                                             <li><a href="#">Accomodation</a></li>

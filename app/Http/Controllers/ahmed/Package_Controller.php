@@ -17,7 +17,7 @@ use PDF;
 //
 use Validator;
 
-class package_controller extends Controller
+class Package_Controller extends Controller
 {
 	private $base_url;
 

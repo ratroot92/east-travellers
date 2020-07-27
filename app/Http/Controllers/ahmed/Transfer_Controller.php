@@ -17,7 +17,7 @@ use PDF;
 //
 use Validator;
 
-class transfer_controller extends Controller
+class Transfer_Controller extends Controller
 {
 	private $base_url;
 

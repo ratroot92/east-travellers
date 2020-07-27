@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use PDF;
 
-class cruise_controller extends Controller
+class Cruise_Controller extends Controller
 {
 	private $base_url;
 

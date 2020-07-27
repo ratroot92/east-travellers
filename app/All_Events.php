@@ -64,4 +64,28 @@ class All_Events extends Model
     {
         return $query->where('event_type', '=', $type);
     }
+
+
+
+
+    public function All_Activity_Events($query)
+    {
+        return $query->where('event_type', '=', 'Activity');
+    }
+    public function All_Cruise_Events($query)
+    {
+        return $query->where('event_type', '=', 'Cruise');
+    }
+    public function All_Transfer_Events($query)
+    {
+        return $query->where('event_type', '=', 'Transfer');
+    }
+    public function All_Package_Events($query)
+    {
+        return $query->where('event_type', '=', 'Package');
+    }
+    public function All_Daytour_Events($query)
+    {
+        return $query->where('event_type', '=', 'Daytour');
+    }
 }

@@ -297,7 +297,7 @@ li {
                                         src="{{url('theme/travel/')}}/images/icon/event.png" alt=""> Events</a>
                             </li>
                             <li>
-                                <a href="{{url('/booknow')}}"
+                                <a href="{{route('booknow.index')}}"
                                     class="waves-effect waves-light tourz-pop-ser-btn wow fadeInUp"
                                     data-wow-duration="0.5s"><img style=""
                                         src="{{url('theme/travel/')}}/images/icon/dis2.png" alt="">Booknow</a>
