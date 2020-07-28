@@ -514,3 +514,7 @@ Route::get('search/transfer/grid/price/{min}/{max}', 'ahmed\Transfer_Controller@
 
 //Book Now
 Route::get('booknow/index', 'ahmed\Booknow_Controller@Index')->name('booknow.index');
+Route::get('search/booknow/city/{id}/{tab}', 'ahmed\Booknow_Controller@Booknow_By_City')->name('search.booknow.city');
+Route::get('search/booknow/country/{id}/{tab}', 'ahmed\Booknow_Controller@Booknow_By_Country')->name('search.booknow.country');
+Route::get('search/booknow/category/{id}/{tab}', 'ahmed\Booknow_Controller@Booknow_By_Category')->name('search.booknow.category');
+Route::get('search/booknow/price/{min}/{max}/{tab}', 'ahmed\Booknow_Controller@Booknow_By_Price')->name('search.booknow.price');
