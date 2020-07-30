@@ -35,4 +35,8 @@ class Event_Icons extends Model
     {
         return $this->belongsToMany(All_Events::class, 'icon_all__events', 'icon_id', 'all__events_id')->where('event_type', 'Package');
     }
+    public static function PaginateAllIcons()
+    {
+        return self::query()->paginate(3);
+    }
 }

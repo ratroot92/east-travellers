@@ -35,4 +35,8 @@ class Event_City extends Model
 	{
 		return $this->belongsToMany(All_Events::class, 'city_all__events', 'city_id', 'all__events_id')->where('event_type', 'Package');
 	}
+	public static function PaginateAllCities()
+	{
+		return self::query()->paginate(3);
+	}
 }

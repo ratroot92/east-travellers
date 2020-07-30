@@ -1,44 +1,42 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="sb2-2">
-        <div class="sb2-2-2">
-             <ul>
+<div class="sb2-2">
+    <div class="sb2-2-2">
+        <ul>
             <li><a href="{{asset('/admin/dashboard')}}"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
             </li>
-            <li class="active-bre"><a href="{{route('view.add.event',['action'=>'addEvent'])}}"> Add New Event</a>
-            </li>
-             <li class="active-bre"><a href="{{route('view.all.events')}}"> All Events</a>
-            </li>
-            <li class="active-bre"><a href="{{route('view.add.city',['action'=>'add'])}}">Add Event City </a></li>
-            <li class="active-bre"><a href="{{route('view.all.cities')}}">All Event Cities </a></li>
-            <li class="active-bre"><a href="{{route('view.add.country',['action'=>'add'])}}">Add Event Country </a></li>
-           <li class="active-bre"><a href="{{route('view.all.countries')}}">All Event Countries </a></li>
+
+            <li class="active-bre"><a href="{{route('view.add.country',['action'=>'add'])}}"><b>Add Event Country</b>
+                </a></li>
+            <li class="active-bre"><a href="{{route('view.all.countries')}}"> All Event Countries</a></li>
 
 
         </ul>
-        </div>
-        <div class="sb2-2-add-blog sb2-2-1">
-            <div class="box-inn-sp">
-                <div class="inn-title">
-                    <h4>@if($action=='add') Add Event @else Update Event @endif Country</h4>
-                    <p>Airtport Hotels The Right Way To Start A Short Break Holiday</p>
-                </div>
-                <div class="bor">
-                    @if($action == 'add')
-                    <form method="post" enctype="multipart/form-data" action="{{route("view.add.country.post")}}">
+    </div>
+    <div class="sb2-2-add-blog sb2-2-1">
+        <div class="box-inn-sp">
+            <div class="inn-title">
+                <h4>@if($action=='add') Add Event @else Update Event @endif Country</h4>
+                <p>Airtport Hotels The Right Way To Start A Short Break Holiday</p>
+            </div>
+            <div class="bor">
+                @if($action == 'add')
+                <form method="post" enctype="multipart/form-data" action="{{route("view.add.country.post")}}">
                     @else
-                    <form method="post" enctype="multipart/form-data" action="{{route("view.update.eventcountry.post")}}">
-                    <input type="hidden" name="id" id="id" value="{{ $Event_Country->id }}">
-                    @endif
+                    <form method="post" enctype="multipart/form-data"
+                        action="{{route("view.update.eventcountry.post")}}">
+                        <input type="hidden" name="id" id="id" value="{{ $Event_Country->id }}">
+                        @endif
                         {{csrf_field()}}
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="" type="text" name="name" class="validate" @if($action=='add') @else value="{{ $Event_Country->name ?? '' }}" @endif required="required"/>
+                                <input id="" type="text" name="name" class="validate" @if($action=='add' ) @else
+                                    value="{{ $Event_Country->name ?? '' }}" @endif required="required" />
                                 <label for="Package-auth">Country Name</label>
 
                             </div>
                         </div>
-@if($action == 'add')
+                        @if($action == 'add')
                         <div class="row">
 
                             <div class="input-field col s12">
@@ -54,44 +52,46 @@
                                 </div>
                             </div>
                         </div>
-@else
- <div class="row">
+                        @else
+                        <div class="row">
 
                             <div class="col-md-12 pl-2 pr-2">
                                 <p>Aleady uploaded image</p>
-                            @if(isset($Event_Country->image))
-                            <img src="{{ $Event_Country->image }}" class="img-fluid img-responsive" />
-                            @else
-                            No Image already uploaded
-                            @endif
+                                @if(isset($Event_Country->image))
+                                <img src="{{ $Event_Country->image }}" class="img-fluid img-responsive" />
+                                @else
+                                No Image already uploaded
+                                @endif
 
 
-                            <div class="input-field col s12">
-                                <div class="file-field">
-                                    <div class="btn">
-                                        <span>Country Image <i class="fa fa-file-image-o"></i></span>
-                                        <input type="file" name="image" id="image" accept="image/gif,image/jpeg,image/png" required="required" />
+                                <div class="input-field col s12">
+                                    <div class="file-field">
+                                        <div class="btn">
+                                            <span>Country Image <i class="fa fa-file-image-o"></i></span>
+                                            <input type="file" name="image" id="image"
+                                                accept="image/gif,image/jpeg,image/png" required="required" />
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" placeholder="Upload Image">
+                                        </div>
+
                                     </div>
-                                    <div class="file-path-wrapper">
-                                        <input class="file-path validate" placeholder="Upload Image">
-                                    </div>
-
                                 </div>
-                            </div>
                             </div>
                         </div>
 
 
 
-   <div id="preview"></div>
+                        <div id="preview"></div>
 
 
 
 
-@endif
+                        @endif
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea id="description" class="materialize-textarea" name="description" required="required">@if($action=='add') @else {{ $Event_Country->description ?? '' }} @endif</textarea>
+                                <textarea id="description" class="materialize-textarea" name="description"
+                                    required="required">@if($action=='add') @else {{ $Event_Country->description ?? '' }} @endif</textarea>
                                 <label for="description">Country Descriptions:</label>
                             </div>
                         </div>
@@ -119,22 +119,24 @@
 
                         <div class="row">
                             <div class="input-field col s12">
-                                <button type="submit" class="waves-effect waves-light btn-large">Create <i class="fa fa-paper-plane"></i></button>
+                                <button type="submit" class="waves-effect waves-light btn-large">Create <i
+                                        class="fa fa-paper-plane"></i></button>
                             </div>
                         </div>
                         @else
                         <div class="row">
                             <div class="input-field col s12">
 
-                                <button type="submit" class="waves-effect waves-light btn-large">Update <i class="fa fa-paper-plane"></i></button>
+                                <button type="submit" class="waves-effect waves-light btn-large">Update <i
+                                        class="fa fa-paper-plane"></i></button>
                             </div>
                         </div>
                         @endif
                     </form>
-                </div>
             </div>
         </div>
     </div>
+</div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
@@ -155,8 +157,8 @@ function previewImages() {
         } // else...
 
         var reader = new FileReader();
-preview
-.innerHTML='';
+        preview
+            .innerHTML = '';
         reader.addEventListener("load", function() {
             var image = new Image();
             image.height = 150;

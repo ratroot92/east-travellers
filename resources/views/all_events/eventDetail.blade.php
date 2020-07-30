@@ -656,8 +656,9 @@
                     <div class="col-md-12">
                         <ul class="" style="list-style:none;">
                             @foreach($Event->Event_Countries as $country)
-                            <li><i class="fa fa-flag text-primary mr-2 fa-2x " aria-hidden="true"></i><span
-                                    class="font-weight-bold " style="font-size:18px;">{{$country->name}}</span>
+                            <li><img src="{{$country->description}}" alt="" class="img-fluid mr-2 img-thumbnail"
+                                    style="height:30px;width:30px;"><span class="font-weight-bold "
+                                    style="font-size:18px;">{{$country->name}}</span>
                             </li>
                             @endforeach
                         </ul>
@@ -677,8 +678,9 @@
                         @if($Event->Event_Cities->count() > 0 )
                         <ul class="" style="list-style:none;">
                             @foreach($Event->Event_Cities as $city)
-                            <li><i class="fa fa-building-o text-primary mr-2 fa-2x " aria-hidden="true"></i><span
-                                    class="font-weight-bold " style="font-size:18px;">{{$city->name ?? 'N/A'}}</span>
+                            <li><img src="{{$city->description}}" alt="" class="img-fluid mr-2 img-thumbnail"
+                                    style="height:30px;width:30px;"><span class="font-weight-bold "
+                                    style="font-size:18px;">{{$city->name ?? 'N/A'}}</span>
                             </li>
                             @endforeach
                         </ul>
@@ -701,8 +703,8 @@
                         @if($Event->Event_Categories->count() > 0 )
                         <ul class="" style="list-style:none;">
                             @foreach($Event->Event_Categories as $category)
-                            <li><i class="fa fa-list-alt text-primary mr-2 fa-2x " aria-hidden="true"></i><span
-                                    class="font-weight-bold "
+                            <li><img src="{{$category->description}}" alt="" class="img-fluid mr-2 img-thumbnail"
+                                    style="height:30px;width:30px;"><span class="font-weight-bold "
                                     style="font-size:18px;">{{$category->name ?? 'N/A'}}</span>
                             </li>
                             @endforeach

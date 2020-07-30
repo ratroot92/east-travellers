@@ -36,7 +36,31 @@ $path="../public/";
     <link rel="stylesheet" href="{{url('/theme/admin')}}/css/mob.css">
     <link rel="stylesheet" href="{{url('/theme/admin')}}/css/bootstrap.css">
     <link rel="stylesheet" href="{{url('/theme/admin')}}/css/materialize.css" />
+    <!-- DATATABLES CSS -->
 
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/colreorder/1.5.2/css/colReorder.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/fixedcolumns/3.3.1/css/fixedColumns.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/fixedheader/3.1.7/css/fixedHeader.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/keytable/2.5.2/css/keyTable.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/responsive/2.2.5/css/responsive.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/scroller/2.0.2/css/scroller.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/searchpanes/1.1.1/css/searchPanes.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/select/1.3.1/css/select.bootstrap4.min.css" />
+
+
+    <!-- DATATABLES CSS  -->
 
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
@@ -251,177 +275,146 @@ $path="../public/";
 
 
 
-            {{-- <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
-                            aria-hidden="true"></i> Transfer</a>
-                    <div class="collapsible-body left-sub-view">
-                        <ul>
-                            <li><a href="{{route('transfer.view')}}">All Transfer</a>
+
+
+
+
+
+            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-calendar-o"
+                        aria-hidden="true"></i>
+                    Events</a>
+                <div class="collapsible-body left-sub-menu">
+                    <ul>
+                        <li><a href="{{route('events.all')}}">All Events</a>
+
+                        </li>
+                        <li><a href="{{route('events')}}">Add New Events</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
-            <li><a href="{{route('transfer.add')}}">Add New Transfer</a>
+            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-ticket" aria-hidden="true"></i>
+                    Booking & Enquiry</a>
+                <div class="collapsible-body left-sub-menu">
+                    <ul>
+                        <li><a href="{{url('inquiries/get/packages')}}">Package</a></li>
+                        <li><a href="{{url('inquiries/get/daytours')}}">Day Tours</a></li>
+                        <li><a href="{{url('inquiries/get/activities')}}">Activities</a></li>
+                        <li><a href="{{url('inquiries/get/events')}}">Events</a></li>
+                        <li><a href="{{url('inquiries/get/cruises')}}">Cruise</a></li>
+                        <li><a href="{{url('inquiries/get/transfers')}}">Transfers</a></li>
+                    </ul>
+                </div>
             </li>
-            <li><a href="{{route('transfer.category')}}">All Transfer Categories</a>
+            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-rss" aria-hidden="true"></i>
+                    Blog & Articals</a>
+                <div class="collapsible-body left-sub-menu">
+                    <ul>
+                        <li><a href="{{route('blog.get')}}">All Blogs</a>
+                        </li>
+                        <li><a href="{{url('blogs/create_update/create/-1')}}">Add Blog</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
-            <li><a href="{{route('transfer.addcategory')}}">Add Transfer Categories</a>
+
+            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
+                        aria-hidden="true"></i>
+                    Popular Cities</a>
+                <div class="collapsible-body left-sub-menu">
+                    <ul>
+                        <li><a href="{{route('popularcities.get')}}">All Popular Cities</a>
+                        </li>
+                        <li><a href="{{url('popularcities/create_update/create/-1')}}">Add New Popular Cities</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+
+            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
+                        aria-hidden="true"></i>
+                    Gallery</a>
+                <div class="collapsible-body left-sub-menu">
+                    <ul>
+                        <li><a href="{{url('/gallery/add')}}">Add Gallery Video</a>
+                        </li>
+                        <li><a href="{{url('/gallery/all/videos')}}">All Gallery Videos</a>
+                        </li>
+                        <li><a href="{{url('/gallery/add_photos')}}">Add Gallery Photo </a>
+                        </li>
+                        <li><a href="{{route('gallery.all_photos')}}">All Gallery Photos</a>
+                        </li>
+                        <li><a href="{{url('/gallery/add/travellerReviews')}}">Add Traveller Reviews </a>
+                        </li>
+                        <li><a href="{{url('/gallery/all/travellerReviews')}}">All Traveller Reviews </a>
+                        </li>
+
+                        <li><a href="{{route('gallery.add.group.photo.get')}}">Add Group Photo </a>
+                        </li>
+                        <li><a href="{{route('gallery.all.group.photo.get')}}">All Group Photos </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </li>
+
+
+
+
+            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
+                        aria-hidden="true"></i>
+                    Services</a>
+                <div class="collapsible-body left-sub-menu">
+                    <ul>
+                        <li><a href="{{url('admin/services/view/vision')}}">Add Service</a>
+                        </li>
+
+
+                        <li><a href="{{url('admin/services/all/services')}}">All Services</a>
+                        </li>
+
+
+
+
+                    </ul>
+                </div>
+            </li>
+
+
+
+
+
+
+
+            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella"
+                        aria-hidden="true"></i>
+                    Website Builder</a>
+                <div class="collapsible-body left-sub-menu">
+                    <ul>
+                        <li><a href="{{url('websitebuilder/terms')}}"> Terms and Conditions</a></li>
+                        <li><a href="{{url('websitebuilder/cancellations')}}">>Cancellation Policy</a></li>
+                        <li><a href="{{url('websitebuilder/contactus')}}"> Contact Us</a></li>
+                        <li><a href="{{url('websitebuilder/cookies')}}"> Cookies Policy</a></li>
+                        <li><a href="{{url('websitebuilder/paymentpolicy')}}"> Payment Policy</a></li>
+                        <li><a href="{{url('websitebuilder/faq')}}">FAQs</a></li>
+                        <li><a href="{{url('websitebuilder/aboutus')}}">About Us</a></li>
+
+
+                    </ul>
+                </div>
+            </li>
+            {{-- end settings --}}
+
+            <li>
+                <br>
+                <a href="{{route('signout')}}" class="alert alert-danger"><i class="fa fa-sign-in"
+                        aria-hidden="true"></i>
+                    Logout</a>
             </li>
             </ul>
         </div>
-        </li>
-        --}}
-
-
-
-        {{-- --}}
-        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-picture-o" aria-hidden="true"></i>
-                Day
-                Tours</a>
-            <div class="collapsible-body left-sub-menu">
-                {{-- <ul>
-                                <li><a href="{{route('/')}}/sightseeing/get">All Day Tours</a>
-        </li>
-        <li><a href="{{route('/')}}/sightseeing/create_update/store/-1">Add New Day Tour</a>
-        </li>
-        </ul> --}}
-        <ul>
-            <li><a href="{{route('daytour.view')}}">All Daytours</a>
-            </li>
-            <li><a href="{{route('daytour.add')}}">Add New Daytour</a>
-            </li>
-            <li><a href="{{route('daytour.category')}}">All Daytour Categories</a>
-            </li>
-            <li><a href="{{route('daytour.addcategory')}}">Add Daytour Categories</a>
-            </li>
-        </ul>
-    </div>
-    </li>
-    <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-calendar-o" aria-hidden="true"></i>
-            Events</a>
-        <div class="collapsible-body left-sub-menu">
-            <ul>
-                <li><a href="{{route('events.all')}}">All Events</a>
-
-                </li>
-                <li><a href="{{route('events')}}">Add New Events</a>
-                </li>
-            </ul>
-        </div>
-    </li>
-    <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-ticket" aria-hidden="true"></i>
-            Booking & Enquiry</a>
-        <div class="collapsible-body left-sub-menu">
-            <ul>
-                <li><a href="{{url('inquiries/get/packages')}}">Package</a></li>
-                <li><a href="{{url('inquiries/get/daytours')}}">Day Tours</a></li>
-                <li><a href="{{url('inquiries/get/activities')}}">Activities</a></li>
-                <li><a href="{{url('inquiries/get/events')}}">Events</a></li>
-                <li><a href="{{url('inquiries/get/cruises')}}">Cruise</a></li>
-                <li><a href="{{url('inquiries/get/transfers')}}">Transfers</a></li>
-            </ul>
-        </div>
-    </li>
-    <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-rss" aria-hidden="true"></i>
-            Blog & Articals</a>
-        <div class="collapsible-body left-sub-menu">
-            <ul>
-                <li><a href="{{route('blog.get')}}">All Blogs</a>
-                </li>
-                <li><a href="{{url('blogs/create_update/create/-1')}}">Add Blog</a>
-                </li>
-            </ul>
-        </div>
-    </li>
-
-    <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella" aria-hidden="true"></i>
-            Popular Cities</a>
-        <div class="collapsible-body left-sub-menu">
-            <ul>
-                <li><a href="{{route('popularcities.get')}}">All Popular Cities</a>
-                </li>
-                <li><a href="{{url('popularcities/create_update/create/-1')}}">Add New Popular Cities</a>
-                </li>
-
-            </ul>
-        </div>
-    </li>
-
-    <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella" aria-hidden="true"></i>
-            Gallery</a>
-        <div class="collapsible-body left-sub-menu">
-            <ul>
-                <li><a href="{{url('/gallery/add')}}">Add Gallery Video</a>
-                </li>
-                <li><a href="{{url('/gallery/all/videos')}}">All Gallery Videos</a>
-                </li>
-                <li><a href="{{url('/gallery/add_photos')}}">Add Gallery Photo </a>
-                </li>
-                <li><a href="{{route('gallery.all_photos')}}">All Gallery Photos</a>
-                </li>
-                <li><a href="{{url('/gallery/add/travellerReviews')}}">Add Traveller Reviews </a>
-                </li>
-                <li><a href="{{url('/gallery/all/travellerReviews')}}">All Traveller Reviews </a>
-                </li>
-
-                <li><a href="{{route('gallery.add.group.photo.get')}}">Add Group Photo </a>
-                </li>
-                <li><a href="{{route('gallery.all.group.photo.get')}}">All Group Photos </a>
-                </li>
-
-
-            </ul>
-        </div>
-    </li>
-
-
-
-
-    <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella" aria-hidden="true"></i>
-            Services</a>
-        <div class="collapsible-body left-sub-menu">
-            <ul>
-                <li><a href="{{url('admin/services/view/vision')}}">Add Service</a>
-                </li>
-
-
-                <li><a href="{{url('admin/services/all/services')}}">All Services</a>
-                </li>
-
-
-
-
-            </ul>
-        </div>
-    </li>
-
-
-
-
-
-
-
-    <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella" aria-hidden="true"></i>
-            Website Builder</a>
-        <div class="collapsible-body left-sub-menu">
-            <ul>
-                <li><a href="{{url('websitebuilder/terms')}}"> Terms and Conditions</a></li>
-                <li><a href="{{url('websitebuilder/cancellations')}}">>Cancellation Policy</a></li>
-                <li><a href="{{url('websitebuilder/contactus')}}"> Contact Us</a></li>
-                <li><a href="{{url('websitebuilder/cookies')}}"> Cookies Policy</a></li>
-                <li><a href="{{url('websitebuilder/paymentpolicy')}}"> Payment Policy</a></li>
-                <li><a href="{{url('websitebuilder/faq')}}">FAQs</a></li>
-                <li><a href="{{url('websitebuilder/aboutus')}}">About Us</a></li>
-
-
-            </ul>
-        </div>
-    </li>
-    {{-- end settings --}}
-
-    <li>
-        <br>
-        <a href="{{route('signout')}}" class="alert alert-danger"><i class="fa fa-sign-in" aria-hidden="true"></i>
-            Logout</a>
-    </li>
-    </ul>
-    </div>
     </div>
     </div>
     </div>
@@ -433,6 +426,129 @@ $path="../public/";
     <script src="{{url('/theme/admin')}}/js/bootstrap.min.js"></script>
     <script src="{{url('/theme/admin')}}/js/materialize.min.js"></script>
     <script src="{{url('/theme/admin')}}/js/custom.js"></script>
+    <!-- DATA TABLES JS  -->
+    <script>
+    $(document).ready(function() {
+        $('#CategoryTable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            "paging": false,
+            "ordering": true,
+            "info": true
+        });
+
+    });
+    </script>
+    <script>
+    $(document).ready(function() {
+        $('#Icons_Table').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            "paging": false,
+            "ordering": true,
+            "info": true
+        });
+
+    });
+    </script>
+
+    <script>
+    $(document).ready(function() {
+        $('#City_Table').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            "paging": false,
+            "ordering": true,
+            "info": true
+        });
+
+    });
+    </script>
+
+    <script>
+    $(document).ready(function() {
+        $('#Country_Table').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            "paging": false,
+            "ordering": true,
+            "info": true
+        });
+
+    });
+    </script>
+
+    <script>
+    $(document).ready(function() {
+        $('#Event_Table').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            "paging": false,
+            "ordering": true,
+            "info": true
+        });
+
+    });
+    </script>
+
+    <script>
+    $(document).ready(function() {
+        $('#PopularCity_Table').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            "paging": false,
+            "ordering": true,
+            "info": true
+        });
+
+    });
+    </script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.colVis.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/colreorder/1.5.2/js/dataTables.colReorder.min.js">
+    </script>
+    <script type="text/javascript"
+        src="https://cdn.datatables.net/fixedcolumns/3.3.1/js/dataTables.fixedColumns.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.1.7/js/dataTables.fixedHeader.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdn.datatables.net/keytable/2.5.2/js/dataTables.keyTable.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.5/js/responsive.bootstrap4.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdn.datatables.net/scroller/2.0.2/js/dataTables.scroller.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdn.datatables.net/searchpanes/1.1.1/js/dataTables.searchPanes.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdn.datatables.net/searchpanes/1.1.1/js/searchPanes.bootstrap4.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+
+
+    <!-- DATATBLES JS  -->
 </body>
 @include('layouts.alerts')
 

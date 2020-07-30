@@ -48,7 +48,7 @@ class Event_Controller extends Controller
 
 	public function allEvents()
 	{
-		$All_Events = All_Events::all();
+		$All_Events = All_Events::PaginateAllEvents();
 		return view('all_events/allEvents', ['All_Events' => $All_Events]);
 	}
 
@@ -455,8 +455,10 @@ class Event_Controller extends Controller
 
 	// ALL EVENT CITIES\
 	public function allEventCities()
+
+
 	{
-		$All_Event_Cities = Event_City::all();
+		$All_Event_Cities = Event_City::PaginateAllCities();
 		return view('all_events/allEventCities', ['Event_Cities' => $All_Event_Cities]);
 	}
 	//UPDATE EVENT CITY
@@ -578,7 +580,7 @@ class Event_Controller extends Controller
 	// ALL COUNTRIES
 	public function allEventCountries()
 	{
-		$All_Event_Countries = Event_Country::all();
+		$All_Event_Countries = Event_Country::PaginateAllCountries();
 		return view('all_events/allEventCountries', ['Event_Country' => $All_Event_Countries]);
 	}
 
@@ -698,7 +700,7 @@ class Event_Controller extends Controller
 
 	public function allEventCategories()
 	{
-		$All_Event_Categories = Event_Category::all();
+		$All_Event_Categories = Event_Category::PaginateAllCategories();
 		return view('all_events/allEventCategories', ['Event_Categories' => $All_Event_Categories]);
 	}
 	public function viewupdateEventCategory($action, $id)
@@ -804,7 +806,7 @@ class Event_Controller extends Controller
 
 	public function allEventIcons()
 	{
-		$All_Event_Icons = Event_Icons::all();
+		$All_Event_Icons = Event_Icons::PaginateAllIcons();
 		return view('all_events/allEventIcons', ['Event_Icons' => $All_Event_Icons]);
 	}
 	public function viewupdateEventIcon($action, $id)

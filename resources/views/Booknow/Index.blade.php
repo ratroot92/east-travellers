@@ -11,14 +11,27 @@ nav {
 </style>
 
 <section>
+    <style>
+    .custom-red-text {
+        color: #f4364f !important;
+    }
+
+    .custom-border-red {
+        border: 1px solid #f4364f !important
+    }
+
+    .custom-background-red {
+        background-color: #f4364f !important
+    }
+    </style>
     <div class="rows inner_banner inner_banner_5">
         <div class="container">
-            <h2><span>Book -</span> Your Favourite Activitiy Now!</h2>
+            <h2><span>Book-</span>Now</h2>
             <ul>
                 <li><a href="#inner-page-title">Home</a>
                 </li>
                 <li><i class="fa fa-angle-right" aria-hidden="true"></i> </li>
-                <li><a href="#inner-page-title" class="bread-acti">Activities</a>
+                <li><a href="{{route('booknow.index')}}" class="bread-acti">Booknow</a>
                 </li>
             </ul>
             <p>Book travel activities and enjoy your holidays with distinctive experience</p>
@@ -26,19 +39,21 @@ nav {
     </div>
 </section>
 <div class="container-fluid">
+    {{--
     <div class="row">
         <div class="col-md-12 " style="margin-top:20px;margin-bottom:20px;">
             <!-- Material checked -->
-            <div class="switch  pull-right">{{-- start of switch --}}
-                <label>
-                    GRID VIEW
-                    <input type="checkbox" checked="checked" id="DisplayStyle">
-                    <span class="lever"></span> LIST VIEW
-                </label>
-            </div>
-            {{-- end of switch --}}
-        </div>
-    </div>
+            <div class="switch  pull-right">
+    <label>
+        GRID VIEW
+        <input type="checkbox" checked="checked" id="DisplayStyle">
+        <span class="lever"></span> LIST VIEW
+    </label>
+</div>
+
+</div>
+</div>
+--}}
 
 </div>
 <br />
@@ -53,14 +68,14 @@ nav {
                             <a data-toggle="collapse" href="#collapse1">
                                 <h4><i class="fa fa-map-marker" aria-hidden="true"></i> Select City <button
                                         type="button" class="btn btn-sm btn-primary pull-right " id="sbtn1"
-                                        style="margin:-7px;">Go</button> </h4>
+                                        style="margin:-7px;" onclick="getCityNameForSearch()">Go</button> </h4>
                             </a>
                         </h4>
                     </div>
                     <div id="collapse1" class="panel-collapse collapsed">
                         <div class="hot-page2-alp-l3 hot-page2-alp-l-com">
                             <!--  <h4><i class="fa fa-map-marker" aria-hidden="true" ></i> Select City <button type="button" class="btn btn-sm btn-primary pull-right " id="sbtn1" style="margin: -7px;">Go</button> </h4> -->
-                            <input class="form-control" placeholder="city" id="input1" required />
+                            <input class="form-control" placeholder="city" id="City_Name" required />
                             <div class="hot-page2-alp-l-com1 hot-page2-alp-p4">
                                 <form>
                                     <div id="cities">
@@ -84,7 +99,7 @@ nav {
                                             <li>
                                                 <div class="checkbox checkbox-info checkbox-circle">
                                                     <input id="city{{$city->id}}"
-                                                        onClick="getCityNameForSearch(this.value)" value="{{$city->id}}"
+                                                        onClick="getCityIdForSearch(this.value)" value="{{$city->id}}"
                                                         class="price styled text-capitalize text-truncate"
                                                         type="checkbox">
                                                     <label for="city{{$city->id}}">{{$city->name}}</label>
@@ -108,7 +123,7 @@ nav {
                                             <li>
                                                 <div class="checkbox checkbox-info checkbox-circle">
                                                     <input id="city{{$city->id}}"
-                                                        onClick="getCityNameForSearch(this.value)" value="{{$city->id}}"
+                                                        onClick="getCityIdForSearch(this.value)" value="{{$city->id}}"
                                                         class="price styled text-capitalize text-truncate"
                                                         type="checkbox">
                                                     <label for="city{{$city->id}}">{{$city->name}}</label>
@@ -135,15 +150,16 @@ nav {
                         <h4 class="panel-title">
                             <a data-toggle="collapse" href="#collapse2">
                                 <h4><i class="fa fa-map-marker" aria-hidden="true"></i> Select Categories <button
-                                        type="button" class="btn btn-sm btn-primary pull-right " id="sbtn3"
-                                        style="margin:-7px;">Go</button> </h4>
+                                        type="button" class="btn btn-sm btn-primary pull-right "
+                                        onClick="getCategoryNameForSearch()" id="" style="margin:-7px;">Go</button>
+                                </h4>
                             </a>
                         </h4>
                     </div>
                     <div id="collapse2" class="panel-collapse collapsed">
                         <div class="hot-page2-alp-l3 hot-page2-alp-l-com">
                             <!-- <h4><i class="fa fa-map-marker" aria-hidden="true" ></i> Select Categories <button type="button" class="btn btn-sm btn-primary pull-right " id="sbtn3" style="margin:0px;">Go</button> </h4> -->
-                            <input class="form-control" placeholder="category" id="input3" required />
+                            <input class="form-control" placeholder="category" id="Category_Name" required />
                             <div class="hot-page2-alp-l-com1 hot-page2-alp-p4">
                                 <form>
                                     <div id="categories">
@@ -166,7 +182,7 @@ nav {
                                             <li>
                                                 <div class="checkbox checkbox-info checkbox-circle">
                                                     <input id="category{{$category->id}}"
-                                                        onClick="getCategoryNameForSearch(this.value)"
+                                                        onClick="getCategoryIdForSearch(this.value)"
                                                         value="{{$category->id}}"
                                                         class="price styled text-capitalize text-truncate"
                                                         type="checkbox">
@@ -189,7 +205,7 @@ nav {
                                             <li>
                                                 <div class="checkbox checkbox-info checkbox-circle">
                                                     <input id="category{{$category->id}}"
-                                                        onClick="getCategoryNameForSearch(this.value)"
+                                                        onClick="getCategoryIdForSearch(this.value)"
                                                         value="{{$category->id}}"
                                                         class="price styled text-capitalize text-truncate"
                                                         type="checkbox">
@@ -216,14 +232,14 @@ nav {
                             <a data-toggle="collapse" href="#collapse3">
                                 <h4><i class="fa fa-map-marker" aria-hidden="true"></i> Select Country<button
                                         type="button" class="btn btn-sm btn-primary pull-right " id="sbtn2"
-                                        style="margin:-7px;">Go</button></h4>
+                                        style="margin:-7px;" onclick="getCountryNameForSearch()">Go</button></h4>
                             </a>
                         </h4>
                     </div>
                     <div id="collapse3" class="panel-collapse collapsed">
                         <div class="hot-page2-alp-l3 hot-page2-alp-l-com">
                             <!-- <h4><i class="fa fa-map-marker" aria-hidden="true" ></i> Select  Country<button type="button" class="btn btn-sm btn-primary pull-right " id="sbtn2" style="margin:0px;">Go</button></h4> -->
-                            <input class="form-control" placeholder="country" id="input2" required />
+                            <input class="form-control" placeholder="country" id="Country_Name" required />
                             <div class="hot-page2-alp-l-com1 hot-page2-alp-p4">
                                 <form>
                                     <div id="countries">
@@ -247,7 +263,7 @@ nav {
                                             <li>
                                                 <div class="checkbox checkbox-info checkbox-circle">
                                                     <input id="country{{$country->id}}"
-                                                        onClick="getCountryNameForSearch(this.value)"
+                                                        onClick="getCountryIdForSearch(this.value)"
                                                         value="{{$country->id}}"
                                                         class="price styled text-capitalize text-truncate"
                                                         type="checkbox">
@@ -272,7 +288,7 @@ nav {
                                             <li>
                                                 <div class="checkbox checkbox-info checkbox-circle">
                                                     <input id="country{{$country->id}}"
-                                                        onClick="getCountryNameForSearch(this.value)"
+                                                        onClick="getCountryIdForSearch(this.value)"
                                                         value="{{$country->id}}"
                                                         class="price styled text-capitalize text-truncate"
                                                         type="checkbox">
@@ -371,24 +387,30 @@ nav {
                     <!--  -->
                     <ul class="nav nav-tabs">
                         @if(@isset($Active_Tab))
-                        <li @if($Active_Tab=='All' ) class="active" @endif><a data-toggle="tab" id="All" href="#all">All
+                        <li @if($Active_Tab=='All' ) class="active" @endif><a data-toggle="tab" id="All"
+                                class="custom-red-text" href="#all">All
                             </a>
                         </li>
                         @else
-                        <li class="active"><a data-toggle="tab" id="All" href="#all">All </a>
+                        <li class="active"><a data-toggle="tab" class="custom-red-text" id="All" href="#all">All </a>
                         </li>
                         @endif
 
                         <li @isset($Active_Tab)@if($Active_Tab=='Activity' ) class="active" @else @endif @endisset><a
-                                data-toggle="tab" id="Activity" href="#activities">Activities</a></li>
+                                data-toggle="tab" class="custom-red-text" id="Activity" href="#activities">All
+                                Activities</a></li>
                         <li @isset($Active_Tab) @if($Active_Tab=='Cruise' ) class="active" @else @endif @endisset><a
-                                data-toggle="tab" id="Cruise" href="#cruises">Cruises</a></li>
+                                data-toggle="tab" class="custom-red-text" id="Cruise" href="#cruises">All Cruises</a>
+                        </li>
                         <li @isset($Active_Tab) @if($Active_Tab=='Transfer' ) class="active" @else @endif @endisset><a
-                                data-toggle="tab" id="Transfer" href="#transfers">Transfers</a></li>
+                                data-toggle="tab" class="custom-red-text" id="Transfer" href="#transfers">All
+                                Transfers</a></li>
                         <li @isset($Active_Tab) @if($Active_Tab=='Daytour' ) class="active" @else @endif @endisset><a
-                                data-toggle="tab" id="Daytour" href="#daytours">Daytours</a></li>
+                                data-toggle="tab" class="custom-red-text" id="Daytour" href="#daytours">All Daytours</a>
+                        </li>
                         <li @isset($Active_Tab) @if($Active_Tab=='Package' ) class="active" @else @endif @endisset><a
-                                data-toggle="tab" id="Package" href="#pacakges">Packages</a></li>
+                                data-toggle="tab" class="custom-red-text" id="Package" href="#pacakges">All Packages</a>
+                        </li>
 
 
                     </ul>
@@ -399,12 +421,12 @@ nav {
 
                         @if(@isset($Active_Tab))
                         @if($Active_Tab == 'All')
-                        <div id="activities" class="tab-pane fade active show">
+                        <div id="all" class="tab-pane fade in active show">
                             @else
                             <div id="all" class="tab-pane fade ">
                                 @endif
                                 @else
-                                <div id="all" class="tab-pane fade in active">
+                                <div id="all" class="tab-pane  fade  in active ">
                                     @endif
 
                                     <div class="row">
@@ -412,19 +434,20 @@ nav {
                                             @if(count($All_Events) >0)
 
                                             <div class="row mt-2 mb-2">
-                                                <div class="col-md-12 text-center bg-dark " style="border-radius:5px;">
-                                                    <p class="text-white font-font-weight-bold mt-2"
+                                                <div class="col-md-12 text-center alert alert-info "
+                                                    style="border-radius:5px;">
+                                                    <p class="text-dark font-font-weight-bold mt-2"
                                                         style="font-size:18px;">
                                                         Showing All Events
                                                         @if(@isset($Results_For))
                                                         @if($Results_For == 'All_City')
-                                                        For City {{$Param_Name ?? '' }}
-                                                        @elseif
-                                                        ($Results_For == 'All_Country')
-                                                        For Country {{$Param_Name ?? ''}}
-                                                        @elseif
-                                                        ($Results_For == 'All_Category')
-                                                        For Category {{$Param_Name ?? ''}}
+                                                        For City " {{$Param_Name }} "
+                                                        @elseif($Results_For == 'All_Country')
+                                                        For Country " {{$Param_Name }} "
+                                                        @elseif($Results_For == 'All_Category')
+                                                        For Category " {{$Param_Name }} "
+                                                        @elseif($Results_For == 'All_Price')
+                                                        For Price " {{$Param_Name }} "
                                                         @endif
                                                         @endif
                                                     </p>
@@ -432,7 +455,7 @@ nav {
                                             </div>
                                             @foreach($All_Events as $key=>$item)
 
-                                            <div class="row"
+                                            <div class="row mt-3 mb-5 border border-primary"
                                                 style="border:1px solid #e9ecef;background-color: white!important;margin-bottom: 10px;">
                                                 <div class="col-md-3 img-thumbnail  "
                                                     style="padding:0px; margin:0px;border-radius:0px;">
@@ -468,10 +491,10 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                 Now</a>
                                                         </span> </div>
                                                 </div>
-                                                <div>
-                                                    <div class="trav-ami">
-                                                        <h4>Detail and Includes</h4>
-                                                        {{-- --}}
+                                                <div class="">
+                                                    <div class="trav-ami ">
+                                                        <h4>Event Detail and Includes</h4>
+
                                                         <ul>
                                                             @foreach($item->Event_Icons as $Icon)
 
@@ -479,14 +502,26 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                 <img src="{{$Icon->description}}" alt="">
                                                                 <span>{{$Icon->name}}</span></li>
                                                             @endforeach
-                                                        </ul>
-                                                        <br>
-                                                        <ul>
+
                                                             @foreach($item->Event_Categories as $category)
 
                                                             <li href="{{  url('event_detail/')}}/{{ $item->id }}">
                                                                 <img src="{{$category->description}}" alt="">
                                                                 <span>{{$category->name}}</span></li>
+                                                            @endforeach
+
+                                                            @foreach($item->Event_Countries as $country)
+
+                                                            <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                                <img src="{{$country->description}}" alt="">
+                                                                <span>{{$country->name}}</span></li>
+                                                            @endforeach
+
+                                                            @foreach($item->Event_Cities as $city)
+
+                                                            <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                                <img src="{{$city->description}}" alt="">
+                                                                <span>{{$city->name}}</span></li>
                                                             @endforeach
                                                         </ul>
                                                     </div>
@@ -508,7 +543,7 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                 <!-- ALL TAB ENDS HERE -->
                                 @if(@isset($Active_Tab))
                                 @if($Active_Tab == 'Activity')
-                                <div id="activities" class="tab-pane fade active show">
+                                <div id="activities" class="tab-pane fade active in ">
                                     @else
                                     <div id="activities" class="tab-pane fade">
                                         @endif
@@ -520,25 +555,28 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                 <div class="col-md-12">
                                                     @if(count($All_Activity_Events) >0)
                                                     <div class="row mt-2 mb-2">
-                                                        <div class="col-md-12 text-center bg-dark "
+                                                        <div class="col-md-12 text-center alert alert-info "
                                                             style="border-radius:5px;">
-                                                            <p class="text-white font-font-weight-bold mt-2"
+                                                            <p class="text-dark font-font-weight-bold mt-2"
                                                                 style="font-size:18px;">
                                                                 Showing All Activity Events
-                                                                @isset($Results_For)@if($Results_For
-                                                                ==
-                                                                'Activity_City')
-                                                                For City {{$Param_Name ?? '' }} @elseif ($Results_For ==
-                                                                'Activity_Country') For Country {{$Param_Name ?? ''}}
-                                                                @elseif ($Results_For ==
-                                                                'Activity_Category') For Category {{$Param_Name ?? ''}}
-                                                                @else @endif @endisset
+                                                                @if(@isset($Results_For))
+                                                                @if($Results_For == 'Activity_City')
+                                                                For City " {{$Param_Name }} "
+                                                                @elseif($Results_For == 'Activity_Country')
+                                                                For Country " {{$Param_Name }} "
+                                                                @elseif($Results_For == 'Activity_Category')
+                                                                For Category " {{$Param_Name }} "
+                                                                @elseif($Results_For == 'Activity_Price')
+                                                                For Price " {{$Param_Name }} "
+                                                                @endif
+                                                                @endif
                                                             </p>
                                                         </div>
                                                     </div>
                                                     @foreach($All_Activity_Events as $key=>$item)
 
-                                                    <div class="row"
+                                                    <div class="row mt-3 mb-5 border border-success"
                                                         style="border:1px solid #e9ecef;background-color: white!important;margin-bottom: 10px;">
                                                         <div class="col-md-3 img-thumbnail  "
                                                             style="padding:0px; margin:0px;border-radius:0px;">
@@ -577,8 +615,7 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                         </div>
                                                         <div>
                                                             <div class="trav-ami">
-                                                                <h4>Detail and Includes</h4>
-                                                                {{-- --}}
+                                                                <h4>Event Detail and Includes</h4>
                                                                 <ul>
                                                                     @foreach($item->Event_Icons as $Icon)
 
@@ -587,15 +624,29 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                         <img src="{{$Icon->description}}" alt="">
                                                                         <span>{{$Icon->name}}</span></li>
                                                                     @endforeach
-                                                                </ul>
-                                                                <br>
-                                                                <ul>
+
                                                                     @foreach($item->Event_Categories as $category)
 
                                                                     <li
                                                                         href="{{  url('event_detail/')}}/{{ $item->id }}">
                                                                         <img src="{{$category->description}}" alt="">
                                                                         <span>{{$category->name}}</span></li>
+                                                                    @endforeach
+
+                                                                    @foreach($item->Event_Countries as $country)
+
+                                                                    <li
+                                                                        href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                                        <img src="{{$country->description}}" alt="">
+                                                                        <span>{{$country->name}}</span></li>
+                                                                    @endforeach
+
+                                                                    @foreach($item->Event_Cities as $city)
+
+                                                                    <li
+                                                                        href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                                        <img src="{{$city->description}}" alt="">
+                                                                        <span>{{$city->name}}</span></li>
                                                                     @endforeach
                                                                 </ul>
                                                             </div>
@@ -607,9 +658,9 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                     @endforeach
                                                     @else
                                                     <div class="row mt-2 mb-2">
-                                                        <div class="col-md-12 text-center bg-dark "
+                                                        <div class="col-md-12 text-center alert alert-info "
                                                             style="border-radius:5px;">
-                                                            <p class="text-white font-font-weight-bold mt-2"
+                                                            <p class="text-dark font-font-weight-bold mt-2"
                                                                 style="font-size:18px;">
                                                                 No Activity Events To Show
                                                             </p>
@@ -624,7 +675,7 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                         </div>
                                         @if(@isset($Active_Tab))
                                         @if($Active_Tab == 'Cruise')
-                                        <div id="cruises" class="tab-pane fade active show">
+                                        <div id="cruises" class="tab-pane fade active ">
                                             @else
                                             <div id="cruises" class="tab-pane fade">
                                                 @endif
@@ -636,22 +687,28 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                         <div class="col-md-12">
                                                             @if(count($All_Cruise_Events) >0)
                                                             <div class="row mt-2 mb-2">
-                                                                <div class="col-md-12 text-center bg-dark "
+                                                                <div class="col-md-12 text-center alert alert-info "
                                                                     style="border-radius:5px;">
-                                                                    <p class="text-white font-font-weight-bold mt-2"
+                                                                    <p class="text-dark font-font-weight-bold mt-2"
                                                                         style="font-size:18px;">
                                                                         Showing All Cruise Events
-                                                                        @isset($Results_For)@if($Results_For
-                                                                        ==
-                                                                        'Cruise_City')
-                                                                        For City {{$Param_Name ?? '' }}@else @endif
-                                                                        @endisset
+                                                                        @if(@isset($Results_For))
+                                                                        @if($Results_For == 'Cruise_City')
+                                                                        For City " {{$Param_Name }} "
+                                                                        @elseif($Results_For == 'Cruise_Country')
+                                                                        For Country " {{$Param_Name }} "
+                                                                        @elseif($Results_For == 'Cruise_Category')
+                                                                        For Category " {{$Param_Name }} "
+                                                                        @elseif($Results_For == 'Cruise_Price')
+                                                                        For Price " {{$Param_Name }} "
+                                                                        @endif
+                                                                        @endif
                                                                     </p>
                                                                 </div>
                                                             </div>
                                                             @foreach($All_Cruise_Events as $key=>$item)
 
-                                                            <div class="row"
+                                                            <div class="row mt-3 mb-5 border border-secondary"
                                                                 style="border:1px solid #e9ecef;background-color: white!important;margin-bottom: 10px;">
                                                                 <div class="col-md-3 img-thumbnail  "
                                                                     style="padding:0px; margin:0px;border-radius:0px;">
@@ -693,8 +750,7 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                 </div>
                                                                 <div>
                                                                     <div class="trav-ami">
-                                                                        <h4>Detail and Includes</h4>
-                                                                        {{-- --}}
+                                                                        <h4>Event Detail and Includes</h4>
                                                                         <ul>
                                                                             @foreach($item->Event_Icons as $Icon)
 
@@ -704,9 +760,7 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                                     alt="">
                                                                                 <span>{{$Icon->name}}</span></li>
                                                                             @endforeach
-                                                                        </ul>
-                                                                        <br>
-                                                                        <ul>
+
                                                                             @foreach($item->Event_Categories as
                                                                             $category)
 
@@ -715,6 +769,24 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                                 <img src="{{$category->description}}"
                                                                                     alt="">
                                                                                 <span>{{$category->name}}</span></li>
+                                                                            @endforeach
+
+                                                                            @foreach($item->Event_Countries as $country)
+
+                                                                            <li
+                                                                                href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                                                <img src="{{$country->description}}"
+                                                                                    alt="">
+                                                                                <span>{{$country->name}}</span></li>
+                                                                            @endforeach
+
+                                                                            @foreach($item->Event_Cities as $city)
+
+                                                                            <li
+                                                                                href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                                                <img src="{{$city->description}}"
+                                                                                    alt="">
+                                                                                <span>{{$city->name}}</span></li>
                                                                             @endforeach
                                                                         </ul>
                                                                     </div>
@@ -726,9 +798,9 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                             @endforeach
                                                             @else
                                                             <div class="row mt-2 mb-2">
-                                                                <div class="col-md-12 text-center bg-dark "
+                                                                <div class="col-md-12 text-center alert alert-info "
                                                                     style="border-radius:5px;">
-                                                                    <p class="text-white font-font-weight-bold mt-2"
+                                                                    <p class="text-dark font-font-weight-bold mt-2"
                                                                         style="font-size:18px;">
                                                                         No Cruise Events To Show
                                                                     </p>
@@ -743,7 +815,7 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                 </div>
                                                 @if(@isset($Active_Tab))
                                                 @if($Active_Tab == 'Transfer')
-                                                <div id="transfers" class="tab-pane fade active show">
+                                                <div id="transfers" class="tab-pane fade active ">
                                                     @else
                                                     <div id="transfers" class="tab-pane fade">
                                                         @endif
@@ -755,22 +827,31 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                 <div class="col-md-12">
                                                                     @if(count($All_Transfer_Events) >0)
                                                                     <div class="row mt-2 mb-2">
-                                                                        <div class="col-md-12 text-center bg-dark "
+                                                                        <div class="col-md-12 text-center alert alert-info "
                                                                             style="border-radius:5px;">
-                                                                            <p class="text-white font-font-weight-bold mt-2"
+                                                                            <p class="text-dark font-font-weight-bold mt-2"
                                                                                 style="font-size:18px;">
                                                                                 Showing All Transfer Events
-                                                                                @isset($Results_For)@if($Results_For
-                                                                                ==
-                                                                                'Transfer_City')
-                                                                                For City {{$Param_Name ?? '' }}@else
-                                                                                @endif @endisset
+                                                                                @if(@isset($Results_For))
+                                                                                @if($Results_For == 'Transfer_City')
+                                                                                For City " {{$Param_Name }} "
+                                                                                @elseif($Results_For ==
+                                                                                'Transfer_Country')
+                                                                                For Country " {{$Param_Name }} "
+                                                                                @elseif($Results_For ==
+                                                                                'Transfer_Category')
+                                                                                For Category " {{$Param_Name }} "
+                                                                                @elseif($Results_For ==
+                                                                                'Transfer_Price')
+                                                                                For Price " {{$Param_Name }} "
+                                                                                @endif
+                                                                                @endif
                                                                             </p>
                                                                         </div>
                                                                     </div>
                                                                     @foreach($All_Transfer_Events as $key=>$item)
 
-                                                                    <div class="row"
+                                                                    <div class="row mt-3 mb-5 border border-danger"
                                                                         style="border:1px solid #e9ecef;background-color: white!important;margin-bottom: 10px;">
                                                                         <div class="col-md-3 img-thumbnail  "
                                                                             style="padding:0px; margin:0px;border-radius:0px;">
@@ -817,8 +898,7 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                         </div>
                                                                         <div>
                                                                             <div class="trav-ami">
-                                                                                <h4>Detail and Includes</h4>
-                                                                                {{-- --}}
+                                                                                <h4>Event Detail and Includes</h4>
                                                                                 <ul>
                                                                                     @foreach($item->Event_Icons as
                                                                                     $Icon)
@@ -830,9 +910,7 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                                         <span>{{$Icon->name}}</span>
                                                                                     </li>
                                                                                     @endforeach
-                                                                                </ul>
-                                                                                <br>
-                                                                                <ul>
+
                                                                                     @foreach($item->Event_Categories as
                                                                                     $category)
 
@@ -841,6 +919,28 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                                         <img src="{{$category->description}}"
                                                                                             alt="">
                                                                                         <span>{{$category->name}}</span>
+                                                                                    </li>
+                                                                                    @endforeach
+
+                                                                                    @foreach($item->Event_Countries as
+                                                                                    $country)
+
+                                                                                    <li
+                                                                                        href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                                                        <img src="{{$country->description}}"
+                                                                                            alt="">
+                                                                                        <span>{{$country->name}}</span>
+                                                                                    </li>
+                                                                                    @endforeach
+
+                                                                                    @foreach($item->Event_Cities as
+                                                                                    $city)
+
+                                                                                    <li
+                                                                                        href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                                                        <img src="{{$city->description}}"
+                                                                                            alt="">
+                                                                                        <span>{{$city->name}}</span>
                                                                                     </li>
                                                                                     @endforeach
                                                                                 </ul>
@@ -853,9 +953,9 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                     @endforeach
                                                                     @else
                                                                     <div class="row mt-2 mb-2">
-                                                                        <div class="col-md-12 text-center bg-dark "
+                                                                        <div class="col-md-12 text-center alert alert-info "
                                                                             style="border-radius:5px;">
-                                                                            <p class="text-white font-font-weight-bold mt-2"
+                                                                            <p class="text-dark font-font-weight-bold mt-2"
                                                                                 style="font-size:18px;">
                                                                                 No Transfer Events To Show
                                                                             </p>
@@ -870,7 +970,7 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                         </div>
                                                         @if(@isset($Active_Tab))
                                                         @if($Active_Tab == 'Daytour')
-                                                        <div id="daytours" class="tab-pane fade active show">
+                                                        <div id="daytours" class="tab-pane fade active ">
                                                             @else
                                                             <div id="daytours" class="tab-pane fade">
                                                                 @endif
@@ -882,17 +982,27 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                         <div class="col-md-12">
                                                                             @if(count($All_Daytour_Events) >0)
                                                                             <div class="row mt-2 mb-2">
-                                                                                <div class="col-md-12 text-center bg-dark "
+                                                                                <div class="col-md-12 text-center alert alert-info "
                                                                                     style="border-radius:5px;">
-                                                                                    <p class="text-white font-font-weight-bold mt-2"
+                                                                                    <p class="text-dark font-font-weight-bold mt-2"
                                                                                         style="font-size:18px;">
                                                                                         Showing All Daytour Events
-                                                                                        @isset($Results_For)@if($Results_For
-                                                                                        ==
+                                                                                        @if(@isset($Results_For))
+                                                                                        @if($Results_For ==
                                                                                         'Daytour_City')
-                                                                                        For City
-                                                                                        {{$Param_Name ?? '' }}@else
-                                                                                        @endif @endisset
+                                                                                        For City " {{$Param_Name }} "
+                                                                                        @elseif($Results_For ==
+                                                                                        'Daytour_Country')
+                                                                                        For Country " {{$Param_Name }} "
+                                                                                        @elseif($Results_For ==
+                                                                                        'Daytour_Category')
+                                                                                        For Category " {{$Param_Name }}
+                                                                                        ""
+                                                                                        @elseif($Results_For ==
+                                                                                        'Daytour_Price')
+                                                                                        For Price " {{$Param_Name }} "
+                                                                                        @endif
+                                                                                        @endif
                                                                                     </p>
                                                                                 </div>
                                                                             </div>
@@ -947,8 +1057,8 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                                 </div>
                                                                                 <div>
                                                                                     <div class="trav-ami">
-                                                                                        <h4>Detail and Includes</h4>
-                                                                                        {{-- --}}
+                                                                                        <h4>Event Detail and Includes
+                                                                                        </h4>
                                                                                         <ul>
                                                                                             @foreach($item->Event_Icons
                                                                                             as $Icon)
@@ -960,9 +1070,7 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                                                 <span>{{$Icon->name}}</span>
                                                                                             </li>
                                                                                             @endforeach
-                                                                                        </ul>
-                                                                                        <br>
-                                                                                        <ul>
+
                                                                                             @foreach($item->Event_Categories
                                                                                             as $category)
 
@@ -971,6 +1079,28 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                                                 <img src="{{$category->description}}"
                                                                                                     alt="">
                                                                                                 <span>{{$category->name}}</span>
+                                                                                            </li>
+                                                                                            @endforeach
+
+                                                                                            @foreach($item->Event_Countries
+                                                                                            as $country)
+
+                                                                                            <li
+                                                                                                href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                                                                <img src="{{$country->description}}"
+                                                                                                    alt="">
+                                                                                                <span>{{$country->name}}</span>
+                                                                                            </li>
+                                                                                            @endforeach
+
+                                                                                            @foreach($item->Event_Cities
+                                                                                            as $city)
+
+                                                                                            <li
+                                                                                                href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                                                                <img src="{{$city->description}}"
+                                                                                                    alt="">
+                                                                                                <span>{{$city->name}}</span>
                                                                                             </li>
                                                                                             @endforeach
                                                                                         </ul>
@@ -983,9 +1113,9 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                             @endforeach
                                                                             @else
                                                                             <div class="row mt-2 mb-2">
-                                                                                <div class="col-md-12 text-center bg-dark "
+                                                                                <div class="col-md-12 text-center alert alert-info "
                                                                                     style="border-radius:5px;">
-                                                                                    <p class="text-white font-font-weight-bold mt-2"
+                                                                                    <p class="text-dark font-font-weight-bold mt-2"
                                                                                         style="font-size:18px;">
                                                                                         No Daytour Events To Show
                                                                                     </p>
@@ -999,7 +1129,7 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                 </div>
                                                                 @if(@isset($Active_Tab))
                                                                 @if($Active_Tab == 'Package')
-                                                                <div id="pacakges" class="tab-pane fade active show">
+                                                                <div id="pacakges" class="tab-pane fade active ">
                                                                     @else
                                                                     <div id="pacakges" class="tab-pane fade">
                                                                         @endif
@@ -1012,18 +1142,31 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                                     @if(count($All_Package_Events) >
                                                                                     0)
                                                                                     <div class="row mt-2 mb-2">
-                                                                                        <div class="col-md-12 text-center bg-dark "
+                                                                                        <div class="col-md-12 text-center alert alert-info "
                                                                                             style="border-radius:5px;">
-                                                                                            <p class="text-white font-font-weight-bold mt-2"
+                                                                                            <p class="text-dark font-font-weight-bold mt-2"
                                                                                                 style="font-size:18px;">
                                                                                                 Showing All Package
                                                                                                 Events
-                                                                                                @isset($Results_For)@if($Results_For
-                                                                                                ==
+                                                                                                @if(@isset($Results_For))
+                                                                                                @if($Results_For ==
                                                                                                 'Package_City')
                                                                                                 For City
-                                                                                                {{$Param_Name ?? '' }}@else
-                                                                                                @endif @endisset
+                                                                                                " {{$Param_Name }} "
+                                                                                                @elseif($Results_For ==
+                                                                                                'Package_Country')
+                                                                                                For Country
+                                                                                                " {{$Param_Name }} "
+                                                                                                @elseif($Results_For ==
+                                                                                                'Package_Category')
+                                                                                                For Category
+                                                                                                " {{$Param_Name }} "
+                                                                                                @elseif($Results_For ==
+                                                                                                'Package_Price')
+                                                                                                For Price "
+                                                                                                {{$Param_Name }} "
+                                                                                                @endif
+                                                                                                @endif
                                                                                             </p>
                                                                                         </div>
                                                                                     </div>
@@ -1083,7 +1226,6 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                                             <div class="trav-ami">
                                                                                                 <h4>Detail and
                                                                                                     Includes</h4>
-                                                                                                {{-- --}}
                                                                                                 <ul>
                                                                                                     @foreach($item->Event_Icons
                                                                                                     as $Icon)
@@ -1095,9 +1237,7 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                                                         <span>{{$Icon->name}}</span>
                                                                                                     </li>
                                                                                                     @endforeach
-                                                                                                </ul>
-                                                                                                <br>
-                                                                                                <ul>
+
                                                                                                     @foreach($item->Event_Categories
                                                                                                     as $category)
 
@@ -1106,6 +1246,28 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                                                         <img src="{{$category->description}}"
                                                                                                             alt="">
                                                                                                         <span>{{$category->name}}</span>
+                                                                                                    </li>
+                                                                                                    @endforeach
+
+                                                                                                    @foreach($item->Event_Countries
+                                                                                                    as $country)
+
+                                                                                                    <li
+                                                                                                        href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                                                                        <img src="{{$country->description}}"
+                                                                                                            alt="">
+                                                                                                        <span>{{$country->name}}</span>
+                                                                                                    </li>
+                                                                                                    @endforeach
+
+                                                                                                    @foreach($item->Event_Cities
+                                                                                                    as $city)
+
+                                                                                                    <li
+                                                                                                        href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                                                                        <img src="{{$city->description}}"
+                                                                                                            alt="">
+                                                                                                        <span>{{$city->name}}</span>
                                                                                                     </li>
                                                                                                     @endforeach
                                                                                                 </ul>
@@ -1118,9 +1280,9 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                                     @endforeach
                                                                                     @else
                                                                                     <div class="row mt-2 mb-2">
-                                                                                        <div class="col-md-12 text-center bg-dark "
+                                                                                        <div class="col-md-12 text-center alert alert-info "
                                                                                             style="border-radius:5px;">
-                                                                                            <p class="text-white font-font-weight-bold mt-2"
+                                                                                            <p class="text-dark font-font-weight-bold mt-2"
                                                                                                 style="font-size:18px;">
                                                                                                 No Package Events To
                                                                                                 Show
@@ -1155,23 +1317,8 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                 </script>
 
                                                 <script>
-                                                function Get_Active_Tab() {
-                                                    var Get_Active_Tab = $('.nav-tabs li.active a');
-                                                    console.log(Get_Active_Tab.attr("id"))
-                                                    // return;
-                                                }
-                                                $(document).ready(function() {
-                                                    console.log(Get_Active_Tab());
-                                                })
-
-
-
-
-
-
-
                                                 //
-                                                function getCityNameForSearch(city) {
+                                                function getCityIdForSearch(city) {
                                                     console.log(city);
                                                     var Get_Active_Tab = $('.nav-tabs li.active a');
                                                     var Active_Tab = Get_Active_Tab.attr("id");
@@ -1181,7 +1328,7 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                         "/" + Active_Tab;
                                                 }
 
-                                                function getCountryNameForSearch(country) {
+                                                function getCountryIdForSearch(country) {
                                                     console.log(country);
                                                     var Get_Active_Tab = $('.nav-tabs li.active a');
                                                     var Active_Tab = Get_Active_Tab.attr("id");
@@ -1192,7 +1339,7 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                         Active_Tab;
                                                 }
 
-                                                function getCategoryNameForSearch(category) {
+                                                function getCategoryIdForSearch(category) {
                                                     console.log(category);
                                                     var Get_Active_Tab = $('.nav-tabs li.active a');
                                                     var Active_Tab = Get_Active_Tab.attr("id");
@@ -1208,7 +1355,6 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                     var Get_Active_Tab = $('.nav-tabs li.active a');
                                                     var Active_Tab = Get_Active_Tab.attr("id");
                                                     console.log(Active_Tab);
-                                                    var Active_Tab = Get_Active_Tab();;
                                                     var price_list = price.split(',');
                                                     var min = price_list[0];
                                                     var max = price_list[1];
@@ -1292,4 +1438,54 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
 
 
                                                 })
+                                                </script>
+
+                                                <script>
+                                                function getCategoryNameForSearch() {
+                                                    var Category_Name = $('#Category_Name').val();
+                                                    if (Category_Name == '' || Category_Name == null) {
+                                                        alert("Please enter category name ")
+                                                    } else {
+                                                        console.log(Category_Name);
+                                                        var Get_Active_Tab = $('.nav-tabs li.active a');
+                                                        var Active_Tab = Get_Active_Tab.attr("id");
+                                                        console.log(Active_Tab);
+                                                        window.location.href =
+                                                            "{{URL::to('search/booknow/categoryname')}}" + "/" +
+                                                            Category_Name + "/" +
+                                                            Active_Tab;
+                                                    }
+                                                }
+
+                                                function getCityNameForSearch() {
+                                                    var City_Name = $('#City_Name').val();
+                                                    if (City_Name == '' || City_Name == null) {
+                                                        alert("Please enter city name ")
+                                                    } else {
+                                                        console.log(City_Name);
+                                                        var Get_Active_Tab = $('.nav-tabs li.active a');
+                                                        var Active_Tab = Get_Active_Tab.attr("id");
+                                                        console.log(Active_Tab);
+                                                        window.location.href =
+                                                            "{{URL::to('search/booknow/cityname')}}" + "/" +
+                                                            City_Name + "/" +
+                                                            Active_Tab;
+                                                    }
+                                                }
+
+                                                function getCountryNameForSearch() {
+                                                    var Country_Name = $('#Country_Name').val();
+                                                    if (Country_Name == '' || Country_Name == null) {
+                                                        alert("Please enter city name ")
+                                                    } else {
+                                                        console.log(Country_Name);
+                                                        var Get_Active_Tab = $('.nav-tabs li.active a');
+                                                        var Active_Tab = Get_Active_Tab.attr("id");
+                                                        console.log(Active_Tab);
+                                                        window.location.href =
+                                                            "{{URL::to('search/booknow/countryname')}}" + "/" +
+                                                            Country_Name + "/" +
+                                                            Active_Tab;
+                                                    }
+                                                }
                                                 </script>

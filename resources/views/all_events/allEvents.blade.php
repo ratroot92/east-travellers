@@ -6,6 +6,39 @@ tr {
     min-height: 25px;
     height: 25px;
 }
+
+<style>#desc {
+    width: 20% !important;
+}
+
+nav {
+    background-color: transparent !important;
+}
+
+.dt-buttons {
+    margin-top: 10px;
+
+}
+
+.dt-buttons {
+    background: #167ee6 !important;
+    font-weight: bold;
+
+}
+
+.buttons-html5 {
+    background: #167ee6 !important;
+    font-weight: bold;
+
+}
+
+.buttons-print {
+    background: #167ee6 !important;
+    font-weight: bold;
+
+}
+</style>
+
 </style>
 <div class="sb2-2">
     <div class="sb2-2-2">
@@ -16,10 +49,7 @@ tr {
             </li>
             <li class="active-bre"><a href="{{route('view.all.events')}}"> All Events</a>
             </li>
-            <li class="active-bre"><a href="{{route('view.add.city',['action'=>'add'])}}">Add Event City </a></li>
-            <li class="active-bre"><a href="{{route('view.all.cities')}}">All Event Cities </a></li>
-            <li class="active-bre"><a href="{{route('view.add.country',['action'=>'add'])}}">Add Event Country </a></li>
-            <li class="active-bre"><a href="{{route('view.all.countries')}}">All Event Countries </a></li>
+
 
 
         </ul>
@@ -27,46 +57,49 @@ tr {
     <div class="sb2-2-1">
         <h2>All Events</h2>
         <div class="table-responsive">
-            <table class="table">
+            <table class="table" id="Event_Table">
                 <thead>
                     <tr>
-                        <th>Event Type</th>
-                        <th>Activity Name</th>
-                        <th>City</th>
-                        <th>Category</th>
-                        <th style="width: 200px;">Image</th>
-                        <th>Tour Code</th>
-                        <th>Discount</th>
-                        {{-- <th>Location</th> --}}
-                        <th>Price</th>
+                        <th class="text-center font-weight-bold text-primary">Event Type</th>
+                        <th class="text-center font-weight-bold text-primary">Activity Name</th>
+                        <th class="text-center font-weight-bold text-primary">City</th>
+                        <th class="text-center font-weight-bold text-primary">Category</th>
+                        <th class="text-center font-weight-bold text-primary" style="width: 200px;">Image</th>
+                        <th class="text-center font-weight-bold text-primary">Tour Code</th>
+                        <th class="text-center font-weight-bold text-primary">Discount</th>
+                        {{-- <th class="text-center font-weight-bold text-primary">Location</th> --}}
+                        <th class="text-center font-weight-bold text-primary">Price</th>
 
-                        {{-- <th>Date</th> --}}
-                        <th>Operations</th>
+                        {{-- <th class="text-center font-weight-bold text-primary">Date</th> --}}
+                        <th class="text-center font-weight-bold text-primary">Operations</th>
 
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($All_Events as $key=>$item)
                     <tr>
-                        <td>{{$item->event_type}}</td>
-                        <td>{{$item->event_name}}</td>
-                        <td>
-                            @foreach($item->Event_Cities as $city)
+                        <td class="text-center" style="vertical-align:middle;">{{$item->event_type}}</td>
+                        <td class="text-center" style="vertical-align:middle;">{{$item->event_name}}</td>
+                        <td class="text-center" style="vertical-align:middle;">
+                            @foreach($item->Event_Cities as $key=>$city)
                             {{$city->name}}<br>
                             @endforeach
                         </td>
-                        <td> @foreach($item->Event_Categories as $cat)
+                        <td class="text-center" style="vertical-align:middle;"> @foreach($item->Event_Categories as
+                            $key=>$cat)
                             {{$cat->name}}<br>
                             @endforeach</td>
-                        <td><img src="{{str_replace('http://localhost:8000/public/','http://localhost:8000/',$item->banner)}}"
-                                alt="{{$item->event_name}}" class="img" style="width: 100%;height: 80px"></td>
-                        {{-- <td>{{$item->country}}</td> --}}
-                        <td>{{$item->tour_code}}</td>
-                        <td>{{$item->discount}}</td>
-                        {{-- <td>{{$item->loc}}</td> --}}
-                        <td>{{$item->price}}</td>
-                        {{-- <td>{{$item->date}}</td> --}}
-                        <td><a href="{{ url('view_update_event/updateEvent')}}/{{$item->id}}" class="sb2-2-1-edit"><i
+                        <td class="text-center" style="vertical-align:middle;"><img
+                                src="{{str_replace('http://localhost:8000/public/','http://localhost:8000/',$item->banner)}}"
+                                alt="{{$item->event_name}}" class="img" style="width: 100%;height: 120px"></td>
+                        {{-- <td class="text-center"style="vertical-align:middle;">{{$item->country}}</td> --}}
+                        <td class="text-center" style="vertical-align:middle;">{{$item->tour_code}}</td>
+                        <td class="text-center" style="vertical-align:middle;">{{$item->discount}}</td>
+                        {{-- <td class="text-center"style="vertical-align:middle;">{{$item->loc}}</td> --}}
+                        <td class="text-center" style="vertical-align:middle;">{{$item->price}}</td>
+                        {{-- <td class="text-center"style="vertical-align:middle;">{{$item->date}}</td> --}}
+                        <td class="text-center" style="vertical-align:middle;"><a
+                                href="{{ url('view_update_event/updateEvent')}}/{{$item->id}}" class="sb2-2-1-edit"><i
                                     class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             <i onclick="confirm_delete('{{$item->id}}')"
                                 href="{{  url('delete_event') }}/{{ $item->id }}" class="sb2-2-1-edit"><i
@@ -83,6 +116,13 @@ tr {
                     @endforeach
                 </tbody>
             </table>
+            <div class="row">
+
+                <div class="col-md-12">
+                    {{$All_Events->links()}}
+                </div>
+
+            </div>
         </div>
     </div>
 </div>

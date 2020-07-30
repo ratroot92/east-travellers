@@ -41,12 +41,13 @@ Route::get('booking/{id}', 'BookingController@index')->name('bookings');
 Route::get('events', 'EventsController@AllEvents')->name('events.show');
 Route::get('events/detail/{id}', 'EventsController@DetailEvents')->name('events.detail');
 Route::get('/admin/dashboard', function () {
-	$data['total_packages'] = DB::table('packages')->count();
+	$data['total_packages'] = DB::table('all__events')->where('event_type', 'Pacakge')->count();
 	$data['total_sight'] = DB::table('sightseeing')->count();
 	$data['total_events'] = DB::table('events')->count();
-	$data['total_activities'] = DB::table('activities')->count();
-	$data['total_cruises'] = DB::table('cruises')->count();
-	$data['total_transfers'] = DB::table('transfers')->count();
+	$data['total_activities'] = DB::table('all__events')->where('event_type', 'Activity')->count();
+	$data['total_cruises'] = DB::table('all__events')->where('event_type', 'Cruise')->count();
+	$data['total_transfers'] = DB::table('all__events')->where('event_type', 'Transfer')->count();
+	$data['total_daytours'] = DB::table('all__events')->where('event_type', 'Daytour')->count();
 	//    $data['total_packages'] = DB::table('packages')->count();
 	return view('admin.index', $data);
 })->middleware(SessionCheck::class);
@@ -512,9 +513,13 @@ Route::get('search/transfer/grid/country/{id}', 'ahmed\Transfer_Controller@Trans
 Route::get('search/transfer/grid/category/{id}', 'ahmed\Transfer_Controller@Transfer_By_Category_Grid')->name('search.transfer.category.grid');
 Route::get('search/transfer/grid/price/{min}/{max}', 'ahmed\Transfer_Controller@Transfer_By_Price_Grid')->name('search.transfer.price.grid');
 
-//Book Now
+//Book Now and search by id
 Route::get('booknow/index', 'ahmed\Booknow_Controller@Index')->name('booknow.index');
 Route::get('search/booknow/city/{id}/{tab}', 'ahmed\Booknow_Controller@Booknow_By_City')->name('search.booknow.city');
 Route::get('search/booknow/country/{id}/{tab}', 'ahmed\Booknow_Controller@Booknow_By_Country')->name('search.booknow.country');
 Route::get('search/booknow/category/{id}/{tab}', 'ahmed\Booknow_Controller@Booknow_By_Category')->name('search.booknow.category');
 Route::get('search/booknow/price/{min}/{max}/{tab}', 'ahmed\Booknow_Controller@Booknow_By_Price')->name('search.booknow.price');
+//Boonow seach by name
+Route::get('search/booknow/categoryname/{name}/{tab}', 'ahmed\Booknow_Controller@Booknow_By_CategoryName')->name('search.booknow.categoryname');
+Route::get('search/booknow/cityname/{name}/{tab}', 'ahmed\Booknow_Controller@Booknow_By_CityName')->name('search.booknow.citynamename');
+Route::get('search/booknow/countryname/{name}/{tab}', 'ahmed\Booknow_Controller@Booknow_By_CountryName')->name('search.booknow.countryname');

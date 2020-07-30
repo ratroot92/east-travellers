@@ -37,4 +37,8 @@ class Event_Country extends Model
 	{
 		return $this->belongsToMany(All_Events::class, 'country_all__events', 'country_id', 'all__events_id')->where('event_type', 'Package');
 	}
+	public static function PaginateAllCountries()
+	{
+		return self::query()->paginate(3);
+	}
 }

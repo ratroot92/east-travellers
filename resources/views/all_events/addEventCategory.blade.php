@@ -5,14 +5,10 @@
         <ul>
             <li><a href="{{asset('/admin/dashboard')}}"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
             </li>
-            <li class="active-bre"><a href="{{route('view.add.event',['action'=>'addEvent'])}}"> Add New Event</a>
+            <li class="active-bre"><a href="{{route('view.add.category',['action'=>'add'])}}"> <b>Add Event Category</b>
+                </a>
             </li>
-            <li class="active-bre"><a href="{{route('view.all.events')}}"> All Events</a>
-            </li>
-            <li class="active-bre"><a href="{{route('view.add.city',['action'=>'add'])}}">Add Event City </a></li>
-            <li class="active-bre"><a href="{{route('view.all.cities')}}">All Event Cities </a></li>
-            <li class="active-bre"><a href="{{route('view.add.country',['action'=>'add'])}}">Add Event Country </a></li>
-            <li class="active-bre"><a href="{{route('view.all.countries')}}">All Event Countries </a></li>
+            <li class="active-bre"><a href="{{route('view.all.categories')}}">All Event Categories </a></li>
 
 
         </ul>

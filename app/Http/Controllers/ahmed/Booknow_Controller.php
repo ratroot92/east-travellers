@@ -204,6 +204,19 @@ class Booknow_Controller extends Controller
 			return redirect()->route('booknow.index')->with('error', 'No Activity Event Found For City ' . $Get_City->name);
 		}
 	}
+
+	public function Booknow_By_CityName($name, $tab)
+	{
+		$Get_City = Event_City::whereRaw(
+			'? LIKE CONCAT("%", name, "%")',
+			[$name]
+		)->first();
+		if ($Get_City == null) {
+			return redirect()->route('booknow.index')->with('error', 'City ' . $name . ' does not exsist');
+		} else {
+			return $this->Booknow_By_City($Get_City->id, $tab);
+		}
+	}
 	//###############################################################################################################
 	//###############################################################################################################
 	public function Booknow_By_Country($id, $tab)
@@ -356,6 +369,21 @@ class Booknow_Controller extends Controller
 			return redirect()->route('booknow.index')->with('error', 'No Activity Event Found For Country ' . $Get_Country->name);
 		}
 	}
+	public function Booknow_By_CountryName($name, $tab)
+	{
+		$Get_Country = Event_Country::whereRaw(
+			'? LIKE CONCAT("%", name, "%")',
+			[$name]
+		)->first();
+		if ($Get_Country == null) {
+			return redirect()->route('booknow.index')->with('error', 'Country ' . $name . ' does not exsist');
+		} else {
+			return $this->Booknow_By_Country($Get_Country->id, $tab);
+		}
+	}
+	/////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////
+
 	public function Booknow_By_Category($id, $tab)
 	{
 		$Get_Category = Event_Category::Find($id);
@@ -506,22 +534,196 @@ class Booknow_Controller extends Controller
 			return redirect()->route('booknow.index')->with('error', 'No Activity Event Found For Category ' . $Get_Category->name);
 		}
 	}
-	public function Booknow_By_Price($min, $max)
+	public function Booknow_By_CategoryName($name, $tab)
 	{
-		$type = 'Activity';
-
-		$All_Activity_Events = All_Events::price($min, $max)->activity($type)->get();
-		if (count($All_Activity_Events->toArray()) > 0) {
-			if ($max == '000' || $max == 000) {
-				$maxx = 'Maximum';
-				$Price_Range = "Range $" . $min . " , $" . $maxx;
-			} else {
-				$Price_Range = "Range $" . $min . " , $" . $max;
-			}
-
-			return view('Booknow/Index', ['All_Activity_Events' => $All_Activity_Events, 'Serach_Type' => 'Price', 'Search_Param' => $Price_Range]);
+		$Get_Category = Event_Category::whereRaw(
+			'? LIKE CONCAT("%", name, "%")',
+			[$name]
+		)->first();
+		if ($Get_Category == null) {
+			return redirect()->route('booknow.index')->with('error', 'Category ' . $name . ' does not exsist');
 		} else {
-			return redirect()->route('booknow.index')->with('error', 'No Activity Event Found For Given Price Range');
+			return $this->Booknow_By_Category($Get_Category->id, $tab);
+		}
+	}
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public function Booknow_By_Price($min, $max, $tab)
+	{
+		if ($max == '000' || $max == 000) {
+			$maxx = 'Maximum';
+			$Price_Range = "Range $" . $min . " , $" . $maxx;
+		} else {
+			$Price_Range = "Range $" . $min . " , $" . $max;
+		}
+		if ($tab == 'All') {
+
+			$All_Events = All_Events::price($min, $max)->get();
+			if (count($All_Events->toArray()) > 0) {
+
+				$All_Activity_Events = All_Events::where('event_type', 'Activity')->get();
+				$All_Transfer_Events = All_Events::where('event_type', 'Transfer')->get();
+				$All_Cruise_Events = All_Events::where('event_type', 'Cruise')->get();
+				$All_Package_Events = All_Events::where('event_type', 'Package')->get();
+				$All_Daytour_Events = All_Events::where('event_type', 'Daytour')->get();
+				//dd($tab . "_Category");
+				return view('Booknow/Index', [
+					'All_Events' => $All_Events,
+					'All_Activity_Events' => $All_Activity_Events,
+					'All_Cruise_Events' => $All_Cruise_Events,
+					'All_Transfer_Events' => $All_Transfer_Events,
+					'All_Package_Events' => $All_Package_Events,
+					'All_Daytour_Events' => $All_Daytour_Events,
+					'Active_Tab' => $tab,
+					'Results_For' => $tab . "_Price",
+					'Param_Name' => $Price_Range
+				]);
+			} else {
+				return redirect()->route('booknow.index')->with('error', 'No  Event Found For Price ' . $Price_Range);
+			}
+		} else if ($tab == 'Activity') {
+			$type = $tab;
+			$All_Activity_Events = All_Events::price($min, $max)->activity($type)->get();
+			if (count($All_Activity_Events->toArray()) > 0) {
+				if ($max == '000' || $max == 000) {
+					$maxx = 'Maximum';
+					$Price_Range = "Range $" . $min . " , $" . $maxx;
+				} else {
+					$Price_Range = "Range $" . $min . " , $" . $max;
+				}
+				$All_Events = All_Events::all();
+				$All_Transfer_Events = All_Events::where('event_type', 'Transfer')->get();
+				$All_Cruise_Events = All_Events::where('event_type', 'Cruise')->get();
+				$All_Package_Events = All_Events::where('event_type', 'Package')->get();
+				$All_Daytour_Events = All_Events::where('event_type', 'Daytour')->get();
+				//dd($tab . "_Category");
+				return view('Booknow/Index', [
+					'All_Events' => $All_Events,
+					'All_Activity_Events' => $All_Activity_Events,
+					'All_Cruise_Events' => $All_Cruise_Events,
+					'All_Transfer_Events' => $All_Transfer_Events,
+					'All_Package_Events' => $All_Package_Events,
+					'All_Daytour_Events' => $All_Daytour_Events,
+					'Active_Tab' => $tab,
+					'Results_For' => $tab . "_Price",
+					'Param_Name' => $Price_Range
+				]);
+			} else {
+				return redirect()->route('booknow.index')->with('error', 'No  Event Found For Price ' . $Price_Range);
+			}
+		} else if ($tab == 'Cruise') {
+			$type = $tab;
+			$All_Cruise_Events = All_Events::price($min, $max)->activity($type)->get();
+			if (count($All_Cruise_Events->toArray()) > 0) {
+				if ($max == '000' || $max == 000) {
+					$maxx = 'Maximum';
+					$Price_Range = "Range $" . $min . " , $" . $maxx;
+				} else {
+					$Price_Range = "Range $" . $min . " , $" . $max;
+				}
+				$All_Events = All_Events::all();
+				$All_Transfer_Events = All_Events::where('event_type', 'Transfer')->get();
+				$All_Activity_Events = All_Events::where('event_type', 'Activity')->get();
+				$All_Package_Events = All_Events::where('event_type', 'Package')->get();
+				$All_Daytour_Events = All_Events::where('event_type', 'Daytour')->get();
+				//dd($tab . "_Category");
+				return view('Booknow/Index', [
+					'All_Events' => $All_Events,
+					'All_Activity_Events' => $All_Activity_Events,
+					'All_Cruise_Events' => $All_Cruise_Events,
+					'All_Transfer_Events' => $All_Transfer_Events,
+					'All_Package_Events' => $All_Package_Events,
+					'All_Daytour_Events' => $All_Daytour_Events,
+					'Active_Tab' => $tab,
+					'Results_For' => $tab . "_Price",
+					'Param_Name' => $Price_Range
+				]);
+			} else {
+				return redirect()->route('booknow.index')->with('error', 'No  Event Found For Price ' . $Price_Range);
+			}
+		} else if ($tab == 'Daytour') {
+			$type = $tab;
+			$All_Daytour_Events = All_Events::price($min, $max)->activity($type)->get();
+			if (count($All_Daytour_Events->toArray()) > 0) {
+				if ($max == '000' || $max == 000) {
+					$maxx = 'Maximum';
+					$Price_Range = "Range $" . $min . " , $" . $maxx;
+				} else {
+					$Price_Range = "Range $" . $min . " , $" . $max;
+				}
+				$All_Events = All_Events::all();
+				$All_Transfer_Events = All_Events::where('event_type', 'Transfer')->get();
+				$All_Activity_Events = All_Events::where('event_type', 'Activity')->get();
+				$All_Package_Events = All_Events::where('event_type', 'Package')->get();
+				$All_Cruise_Events = All_Events::where('event_type', 'Cruise')->get();
+				//dd($tab . "_Category");
+				return view('Booknow/Index', [
+					'All_Events' => $All_Events,
+					'All_Activity_Events' => $All_Activity_Events,
+					'All_Daytour_Events' => $All_Daytour_Events,
+					'All_Transfer_Events' => $All_Transfer_Events,
+					'All_Package_Events' => $All_Package_Events,
+					'All_Cruise_Events' => $All_Cruise_Events,
+					'Active_Tab' => $tab,
+					'Results_For' => $tab . "_Price",
+					'Param_Name' => $Price_Range
+				]);
+			} else {
+				return redirect()->route('booknow.index')->with('error', 'No  Event Found For Price ' . $Price_Range);
+			}
+		} else if ($tab == 'Package') {
+			$type = $tab;
+			$All_Package_Events = All_Events::price($min, $max)->activity($type)->get();
+			if (count($All_Package_Events->toArray()) > 0) {
+				if ($max == '000' || $max == 000) {
+					$maxx = 'Maximum';
+					$Price_Range = "Range $" . $min . " , $" . $maxx;
+				} else {
+					$Price_Range = "Range $" . $min . " , $" . $max;
+				}
+				$All_Events = All_Events::all();
+				$All_Transfer_Events = All_Events::where('event_type', 'Transfer')->get();
+				$All_Activity_Events = All_Events::where('event_type', 'Activity')->get();
+				$All_Daytour_Events = All_Events::where('event_type', 'Daytour')->get();
+				$All_Cruise_Events = All_Events::where('event_type', 'Cruise')->get();
+				//dd($tab . "_Category");
+				return view('Booknow/Index', [
+					'All_Events' => $All_Events,
+					'All_Activity_Events' => $All_Activity_Events,
+					'All_Package_Events' => $All_Package_Events,
+					'All_Transfer_Events' => $All_Transfer_Events,
+					'All_Daytour_Events' => $All_Daytour_Events,
+					'All_Cruise_Events' => $All_Cruise_Events,
+					'Active_Tab' => $tab,
+					'Results_For' => $tab . "_Price",
+					'Param_Name' => $Price_Range
+				]);
+			}
+		} else if ($tab == 'Transfer') {
+			$type = $tab;
+			$All_Transfer_Events = All_Events::price($min, $max)->activity($type)->get();
+			if (count($All_Transfer_Events->toArray()) > 0) {
+
+				$All_Events = All_Events::all();
+				$All_Package_Events = All_Events::where('event_type', 'Transfer')->get();
+				$All_Activity_Events = All_Events::where('event_type', 'Activity')->get();
+				$All_Daytour_Events = All_Events::where('event_type', 'Daytour')->get();
+				$All_Cruise_Events = All_Events::where('event_type', 'Cruise')->get();
+				//dd($tab . "_Category");
+				return view('Booknow/Index', [
+					'All_Events' => $All_Events,
+					'All_Activity_Events' => $All_Activity_Events,
+					'All_Package_Events' => $All_Package_Events,
+					'All_Transfer_Events' => $All_Transfer_Events,
+					'All_Daytour_Events' => $All_Daytour_Events,
+					'All_Cruise_Events' => $All_Cruise_Events,
+					'Active_Tab' => $tab,
+					'Results_For' => $tab . "_Price",
+					'Param_Name' => $Price_Range
+				]);
+			} else {
+				return redirect()->route('booknow.index')->with('error', 'No  Event Found For Price ' . $Price_Range);
+			}
 		}
 	}
 }

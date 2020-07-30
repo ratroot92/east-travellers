@@ -88,4 +88,9 @@ class All_Events extends Model
     {
         return $query->where('event_type', '=', 'Daytour');
     }
+
+    public static function PaginateAllEvents()
+    {
+        return self::query()->paginate(3);
+    }
 }
