@@ -394,7 +394,7 @@ $path="../public/";
                 <div class="collapsible-body left-sub-menu">
                     <ul>
                         <li><a href="{{url('websitebuilder/terms')}}"> Terms and Conditions</a></li>
-                        <li><a href="{{url('websitebuilder/cancellations')}}">>Cancellation Policy</a></li>
+                        <li><a href="{{url('websitebuilder/cancellations')}}">Cancellation Policy</a></li>
                         <li><a href="{{url('websitebuilder/contactus')}}"> Contact Us</a></li>
                         <li><a href="{{url('websitebuilder/cookies')}}"> Cookies Policy</a></li>
                         <li><a href="{{url('websitebuilder/paymentpolicy')}}"> Payment Policy</a></li>
@@ -516,6 +516,65 @@ $path="../public/";
     });
     </script>
 
+
+    <script>
+    $(document).ready(function() {
+        $('#TravellerReview_Table').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            "paging": false,
+            "ordering": true,
+            "info": true
+        });
+
+    });
+    </script>
+
+    <script>
+    $(document).ready(function() {
+        $('#AllgroupPhotos_Table').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            "paging": false,
+            "ordering": true,
+            "info": true
+        });
+
+    });
+    </script>
+    <script>
+    $(document).ready(function() {
+        $('#AllGalleryPhotos_Table').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            "paging": false,
+            "ordering": true,
+            "info": true
+        });
+
+    });
+    </script>
+    <script>
+    $(document).ready(function() {
+        $('#AllGalleryVideo_Table').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            "paging": false,
+            "ordering": true,
+            "info": true
+        });
+
+    });
+    </script>
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
@@ -547,7 +606,113 @@ $path="../public/";
     </script>
     <script type="text/javascript" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
 
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+    <style>
+    #chartdiv {
+        width: 100%;
+        height: 500px;
+    }
+    </style>
 
+    <!-- Resources -->
+
+    <!-- Chart code -->
+    <script>
+    am4core.ready(function() {
+
+        // Themes begin
+        am4core.useTheme(am4themes_animated);
+        // Themes end
+
+        var chart = am4core.create("chartdiv", am4charts.XYChart);
+        chart.padding(40, 40, 40, 40);
+
+        var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+        categoryAxis.renderer.grid.template.location = 0;
+        categoryAxis.dataFields.category = "Object_Name";
+        categoryAxis.renderer.minGridDistance = 1;
+        categoryAxis.renderer.inversed = true;
+        categoryAxis.renderer.grid.template.disabled = true;
+
+        var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
+        valueAxis.min = 0;
+
+        var series = chart.series.push(new am4charts.ColumnSeries());
+        series.dataFields.categoryY = "Object_Name";
+        series.dataFields.valueX = "Count";
+        series.tooltipText = "{valueX.value}"
+        series.columns.template.strokeOpacity = 0;
+        series.columns.template.column.cornerRadiusBottomRight = 5;
+        series.columns.template.column.cornerRadiusTopRight = 5;
+
+        var labelBullet = series.bullets.push(new am4charts.LabelBullet())
+        labelBullet.label.horizontalCenter = "left";
+        labelBullet.label.dx = 10;
+        labelBullet.label.text = "{values.valueX.workingValue.formatNumber('#.0as')}";
+        labelBullet.locationX = 1;
+
+        // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
+        series.columns.template.adapter.add("fill", function(fill, target) {
+            return chart.colors.getIndex(target.dataItem.index);
+        });
+
+        categoryAxis.sortBySeries = series;
+        chart.data = [{
+                "Object_Name": "Activities",
+                "Count": 2255250000
+            },
+            {
+                "Object_Name": "Cruises",
+                "Count": 430000000
+            },
+            {
+                "Object_Name": "Packages",
+                "Count": 1000000000
+            },
+            {
+                "Object_Name": "Daytours",
+                "Count": 246500000
+            },
+            {
+                "Object_Name": "Transfers",
+                "Count": 355000000
+            },
+            {
+                "Object_Name": "Events",
+                "Count": 500000000
+            },
+            {
+                "Object_Name": "Booking",
+                "Count": 624000000
+            },
+            {
+                "Object_Name": "Event Cities",
+                "Count": 329500000
+            },
+            {
+                "Object_Name": "Event Categories",
+                "Count": 1000000000
+            },
+            {
+                "Object_Name": "Event Icons",
+                "Count": 431000000
+            },
+            {
+                "Object_Name": "Event Countries",
+                "Count": 1433333333
+            },
+            {
+                "Object_Name": "Traveller Reviews",
+                "Count": 1900000000
+            }
+        ]
+
+
+
+    }); // end am4core.ready()
+    </script>
     <!-- DATATBLES JS  -->
 </body>
 @include('layouts.alerts')

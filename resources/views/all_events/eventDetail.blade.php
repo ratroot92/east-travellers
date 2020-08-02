@@ -158,7 +158,8 @@
                         </h3>
                     </div>
                     <div class="col-md-12">
-                        {{$Event->itinerary ?? 'N/A'}}
+
+                        @php echo $Event->itinerary; @endphp
                     </div>
 
                 </div>
@@ -233,7 +234,8 @@
                         </h3>
                     </div>
                     <div class="col-md-12">
-                        {{$Event->terms_conditions ?? 'N/A'}}
+
+                        @php echo $Event->terms_conditions; @endphp
                     </div>
 
                 </div>
@@ -245,7 +247,8 @@
                         </h3>
                     </div>
                     <div class="col-md-12">
-                        {{$Event->payment_policy ?? 'N/A'}}
+
+                        @php echo $Event->payment_policy; @endphp
                     </div>
 
                 </div>
@@ -259,7 +262,8 @@
                         </h3>
                     </div>
                     <div class="col-md-12">
-                        {{$Event->cancellation_policy ?? 'N/A'}}
+
+                        @php echo $Event->cancellation_policy; @endphp
                     </div>
 
                 </div>
@@ -272,7 +276,8 @@
                         </h3>
                     </div>
                     <div class="col-md-12">
-                        {{$Event->visa_info ?? 'N/A'}}
+
+                        @php echo $Event->visa_info; @endphp
                     </div>
 
                 </div>
@@ -285,7 +290,8 @@
                         </h3>
                     </div>
                     <div class="col-md-12">
-                        {{$Event->notes ?? 'N/A'}}
+
+                        @php echo $Event->notes; @endphp
                     </div>
 
                 </div>
@@ -298,7 +304,8 @@
                         </h3>
                     </div>
                     <div class="col-md-12">
-                        {{$Event->questions ?? 'N/A'}}
+
+                        @php echo $Event->questions; @endphp
                     </div>
 
                 </div>
@@ -517,7 +524,10 @@
                     {{--<a class="link-btn">Book Now</a>--}}
                 </div>
 
-                {{ $Event->code }}
+                <div>
+                    {{-- $Event->code --}}
+                    @php echo $Event->code; @endphp
+                </div>
 
                 <!--====== TRIP INFORMATION ==========-->
                 <div class="tour_right tour_incl tour-ri-com">

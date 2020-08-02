@@ -15,6 +15,24 @@
 
         </ul>
     </div>
+
+    <!-- CHRAT -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12" id="chartdiv">
+
+
+                <!-- HTML -->
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- CHART -->
+
+
     <!--== DASHBOARD INFO ==-->
     <div class="ad-v2-hom-info">
         <div class="ad-v2-hom-info-inn">
@@ -39,15 +57,7 @@
                         </div>
                     </div>
                 </li>
-                <!--<li>-->
-                <!--    <div class="ad-hom-box ad-hom-box-3">-->
-                <!--        <span class="ad-hom-col-com ad-hom-col-3"><i class="fa fa-address-card-o"></i></span>-->
-                <!--        <div class="ad-hom-view-com">-->
-                <!--            <p style="color:orange;font-weight:bold;"><i class="fa  fa-arrow-up up"></i> Bookings</p>-->
-                <!--            <h3>0</h3>-->
-                <!--        </div>-->
-                <!--    </div>-->
-                <!--</li>-->
+
                 <li>
                     <div class="ad-hom-box ad-hom-box-4">
                         <span class="ad-hom-col-com ad-hom-col-4"><i class="fa fa-envelope-open-o"></i></span>
@@ -62,7 +72,48 @@
         </div>
     </div>
 
+    <div class="ad-v2-hom-info">
+        <div class="ad-v2-hom-info-inn">
+            <ul>
+                <li>
+                    <div class="ad-hom-box ad-hom-box-1">
+                        <span class="ad-hom-col-com ad-hom-col-1"><i class="fa fa-bar-chart"></i></span>
+                        <div class="ad-hom-view-com">
+                            <p style="color:orange;font-weight:bold;"><i class="fa  fa-arrow-up up"></i> Total Daytours
+                            </p>
+                            <h3>{{$total_packages}}</h3>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="ad-hom-box ad-hom-box-2">
+                        <span class="ad-hom-col-com ad-hom-col-2"><i class="fa fa-usd"></i></span>
+                        <div class="ad-hom-view-com">
+                            <p style="color:orange;font-weight:bold;"><i class="fa  fa-arrow-up up"></i> Total Transfers
+                            </p>
+                            <h3>{{$total_events}}</h3>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="ad-hom-box ad-hom-box-4">
+                        <span class="ad-hom-col-com ad-hom-col-4"><i class="fa fa-envelope-open-o"></i></span>
+                        <div class="ad-hom-view-com">
+                            <p style="color:orange;font-weight:bold;"><i class="fa  fa-arrow-up up"></i> Total Cruises
+                            </p>
+                            <h3>{{$total_sight}}</h3>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
     {{-- --}}
+
+
+
     <!--== DASHBOARD INFO ==-->
     <div class="ad-v2-hom-info">
         <div class="ad-v2-hom-info-inn">
@@ -96,7 +147,7 @@
                         </div>
                     </div>
                 </li>
-                <li>
+                <!-- <li>
                     <div class="ad-hom-box ad-hom-box-4">
                         <span class="ad-hom-col-com ad-hom-col-4"><i class="fa fa-envelope-open-o"></i></span>
                         <div class="ad-hom-view-com">
@@ -105,7 +156,7 @@
                             <h3>{{$total_transfers}}</h3>
                         </div>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>

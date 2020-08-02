@@ -91,6 +91,33 @@ class All_Events extends Model
 
     public static function PaginateAllEvents()
     {
-        return self::query()->paginate(3);
+        return self::query()->paginate(5);
+    }
+
+    public static function PaginateAllActivities()
+    {
+        return self::query()->where('event_type', '=', 'Activity')->get();
+    }
+
+    public static function PaginateAllPackages()
+    {
+        return self::query()->where('event_type', '=', 'Package')->get();
+    }
+
+
+    public static function PaginateAllTransfers()
+    {
+        return self::query()->where('event_type', '=', 'Transfer')->get();
+    }
+
+    public static function PaginateAllCruises()
+    {
+        return self::query()->where('event_type', '=', 'Cruise')->get();
+    }
+
+
+    public static function PaginateAllDaytours()
+    {
+        return self::query()->where('event_type', '=', 'Daytour')->get();
     }
 }

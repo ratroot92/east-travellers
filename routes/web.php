@@ -21,12 +21,14 @@ Route::get(
 		$data['sightseeing'] = DB::table('sightseeing')->where(DB::raw('MONTH(sight_date)'), date('m'))->get();
 		$result = DB::table('popularcities')->limit('10')->get();
 		$cities = (array) $result;
-		$Event_Cities = DB::table('event__cities')->groupby('name')->limit('5')->get();
-		$Event_Countries = DB::table('event__countries')->groupby('name')->limit('5')->get();
+		$Event_Cities = DB::table('event__cities')->groupby('name')->get();
+		$Event_Countries = DB::table('event__countries')->groupby('name')->get();
+		$Event_Categories = DB::table('event__categories')->groupby('name')->get();
 		return view('website.index', [
 			'data'              => $data,
 			'Event_Cities'      => $Event_Cities,
 			'Event_Countries'   => $Event_Countries,
+			'Event_Categories'   => $Event_Categories,
 			'cities'            => $cities,
 		]);
 	}
@@ -48,7 +50,13 @@ Route::get('/admin/dashboard', function () {
 	$data['total_cruises'] = DB::table('all__events')->where('event_type', 'Cruise')->count();
 	$data['total_transfers'] = DB::table('all__events')->where('event_type', 'Transfer')->count();
 	$data['total_daytours'] = DB::table('all__events')->where('event_type', 'Daytour')->count();
+	$data['total_cities'] = DB::table('event__cities')->count();
+	$data['total_icons'] = DB::table('event__icons')->count();
+	$data['total_countries'] = DB::table('event__countries')->count();
+	$data['total_categories'] = DB::table('event__categories')->count();
+	$data['total_popularcities'] = DB::table('event__categories')->count();
 	//    $data['total_packages'] = DB::table('packages')->count();
+
 	return view('admin.index', $data);
 })->middleware(SessionCheck::class);
 Route::group(['middleware' => ['session']], function () {
@@ -434,6 +442,7 @@ Route::get('delete/event_icon/{id}', 'Event_Controller@deleteEventIcon')->name('
 // automcplete
 // Autocomplete cities and countries
 Route::post('autocomplete/fetch', 'ahmed\blog_controller@autocompleteFetch');
+Route::post('autocomplete/event/countries', 'ahmed\blog_controller@Autocomplete_Countries');
 //city search all events
 Route::get('all_events/city/{id}', 'ahmed\SearchController@allEventsByCity')->name('allevents.search.city');
 Route::get('all_events/country/{id}', 'ahmed\SearchController@allEventsByCountry')->name('allevents.search.country');

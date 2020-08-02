@@ -8,6 +8,21 @@ nav {
     align-content: center;
     height: auto;
 }
+
+.alert {
+    font-size: 13px !important;
+    font-weight: bold !important;
+    height: 35px !important;
+    text-align: left !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f4364f !important;
+    letter-spacing: 3px;
+    border-radius: 0px !important;
+    margin-top: 5px;
+    ;
+}
 </style>
 
 <section>
@@ -25,7 +40,7 @@ nav {
     }
     </style>
     <div class="rows inner_banner inner_banner_5">
-        <div class="container">
+        <div class="container-fluid">
             <h2><span>Book-</span>Now</h2>
             <ul>
                 <li><a href="#inner-page-title">Home</a>
@@ -38,7 +53,7 @@ nav {
         </div>
     </div>
 </section>
-<div class="container-fluid">
+<div class="container">
     {{--
     <div class="row">
         <div class="col-md-12 " style="margin-top:20px;margin-bottom:20px;">
@@ -58,7 +73,7 @@ nav {
 </div>
 <br />
 <div class="container">
-    <div class="row">
+    <div class="row p-5">
         <div class="col-md-3 ">
             <!--PART 4 : LEFT LISTINGS-->
             <div class="panel-group">
@@ -122,9 +137,8 @@ nav {
                                             as $key=>$city)
                                             <li>
                                                 <div class="checkbox checkbox-info checkbox-circle">
-                                                    <input id="city{{$city->id}}"
-                                                        onClick="getCityIdForSearch(this.value)" value="{{$city->id}}"
-                                                        class="price styled text-capitalize text-truncate"
+                                                    <input id="city{{$city->id}}" onClick="getCityIcontainer-fluid
+container-fluiddForSearch(this.value)" value="{{$city->id}}" class="price styled text-capitalize text-truncate"
                                                         type="checkbox">
                                                     <label for="city{{$city->id}}">{{$city->name}}</label>
                                                 </div>
@@ -376,16 +390,16 @@ nav {
         <div class="col-md-9 " id="searchRendering">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <div id="app">
-                        @include('flash-message')
-                        @yield('content')
-                    </div>
+
+                    @include('flash-message')
+                    @yield('content')
+
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12  border ">
                     <!--  -->
-                    <ul class="nav nav-tabs">
+                    <ul class="nav nav-tabs d-flex flex-row justify-content-md-around align-items-center">
                         @if(@isset($Active_Tab))
                         <li @if($Active_Tab=='All' ) class="active" @endif><a data-toggle="tab" id="All"
                                 class="custom-red-text" href="#all">All
@@ -430,39 +444,39 @@ nav {
                                     @endif
 
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-12  ">
                                             @if(count($All_Events) >0)
 
-                                            <div class="row mt-2 mb-2">
-                                                <div class="col-md-12 text-center alert alert-info "
-                                                    style="border-radius:5px;">
-                                                    <p class="text-dark font-font-weight-bold mt-2"
-                                                        style="font-size:18px;">
-                                                        Showing All Events
-                                                        @if(@isset($Results_For))
-                                                        @if($Results_For == 'All_City')
-                                                        For City " {{$Param_Name }} "
-                                                        @elseif($Results_For == 'All_Country')
-                                                        For Country " {{$Param_Name }} "
-                                                        @elseif($Results_For == 'All_Category')
-                                                        For Category " {{$Param_Name }} "
-                                                        @elseif($Results_For == 'All_Price')
-                                                        For Price " {{$Param_Name }} "
-                                                        @endif
-                                                        @endif
-                                                    </p>
-                                                </div>
+                                            <div class="alert alert-secondary text-white">
+                                                <i class="fa fa-bell text-danger fa-2x ml-3 mr-3"
+                                                    aria-hidden="true"></i> Showing All Events
+                                                @if(@isset($Results_For))
+                                                @if($Results_For == 'All_City')
+                                                For City <span class="text-primary font-weight-bold  ">"
+                                                    {{$Param_Name }} "</span>
+                                                @elseif($Results_For == 'All_Country')
+                                                For Country <span class="text-primary font-weight-bold  ">"
+                                                    {{$Param_Name }} "</span>
+                                                @elseif($Results_For == 'All_Category')
+                                                For Category <span class="text-primary font-weight-bold  ">"
+                                                    {{$Param_Name }} "</span>
+                                                @elseif($Results_For == 'All_Price')
+                                                For Price <span class="text-primary font-weight-bold  ">"
+                                                    {{$Param_Name }} "</span>
+                                                @endif
+                                                @endif
+
                                             </div>
                                             @foreach($All_Events as $key=>$item)
 
-                                            <div class="row mt-3 mb-5 border border-primary"
+                                            <div class="row mt-3 mb-5 "
                                                 style="border:1px solid #e9ecef;background-color: white!important;margin-bottom: 10px;">
-                                                <div class="col-md-3 img-thumbnail  "
+                                                <div class="col-md-4 img-thumbnail  "
                                                     style="padding:0px; margin:0px;border-radius:0px;">
-                                                    <img src="{{$item->banner}}" width="100%" height="150px" alt=""
+                                                    <img src="{{$item->banner}}" width="100%" height="100%" alt=""
                                                         style="padding:0px; margin:0px;">
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-5">
                                                     <div class="trav-list-bod">
                                                         <a href="{{  url('event_detail/')}}/{{ $item->id }}">
                                                             <h3 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
@@ -470,18 +484,27 @@ font-weight: 700;">{{$item->event_name}}</h3>
                                                             <h4 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
 font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                         </a>
+                                                        <p><span class="text-dark font-weight-bold">Event Description
+                                                            </span></p>
                                                         <p>{!!substr($item->description,0,150)!!}</p>
+                                                        <p><span class=" text-dark font-weight-bold">Start Location
+                                                            </span>
+                                                            {{$item->start_location ?? ''}}</p>
+                                                        <p><span class="text-dark font-weight-bold">End Location</span>
+                                                            {{$item->end_location ?? ''}}</p>
+
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="hot-page2-alp-ri-p3 tour-alp-ri-p3">
                                                         @if($item->discount !=0)
                                                         <div class="hot-page2-alp-r-hot-page-rat pull">
-                                                            {{$item->discount}} % Off
+                                                            {{$item->discount}} %
+                                                            Off
                                                         </div>
                                                         @else
-                                                        <div class="hot-page2-alp-r-hot-page-rat pull">No Discount
-                                                        </div>
+                                                        <div class="hot-page2-alp-r-hot-page-rat pull">No
+                                                            Discount</div>
                                                         @endif
                                                         <span class="hot-list-p3-1">From</span> <span
                                                             class="hot-list-p3-2">€{{$item->price}}</span><span
@@ -491,11 +514,10 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                                                 Now</a>
                                                         </span> </div>
                                                 </div>
-                                                <div class="">
-                                                    <div class="trav-ami ">
+                                                <div>
+                                                    <div class="trav-ami">
                                                         <h4>Event Detail and Includes</h4>
-
-                                                        <ul>
+                                                        <ul class="">
                                                             @foreach($item->Event_Icons as $Icon)
 
                                                             <li href="{{  url('event_detail/')}}/{{ $item->id }}">
@@ -531,961 +553,1146 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                             </div>
 
                                             @endforeach
-                                            @else
-                                            <p>No Events </p>
-                                            @endif
+                                            {{-- <div class="row">
+                                                <div class="col-md-12">
+                                                    {{$All_Events->links()}}
+                                        </div>
+                                    </div>
+                                    --}}
+                                    @else
+                                    <div class="row mt-2 mb-2">
+                                        <div class="alert alert-warning text-white">
+                                            <i class="fa fa-bell text-danger fa-2x ml-3 mr-3" aria-hidden="true"></i>
+                                            No Events To Show
 
                                         </div>
                                     </div>
-
+                                    @endif
 
                                 </div>
-                                <!-- ALL TAB ENDS HERE -->
-                                @if(@isset($Active_Tab))
-                                @if($Active_Tab == 'Activity')
-                                <div id="activities" class="tab-pane fade active in ">
-                                    @else
-                                    <div id="activities" class="tab-pane fade">
-                                        @endif
-                                        @else
-                                        <div id="activities" class="tab-pane fade">
-                                            @endif
-
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    @if(count($All_Activity_Events) >0)
-                                                    <div class="row mt-2 mb-2">
-                                                        <div class="col-md-12 text-center alert alert-info "
-                                                            style="border-radius:5px;">
-                                                            <p class="text-dark font-font-weight-bold mt-2"
-                                                                style="font-size:18px;">
-                                                                Showing All Activity Events
-                                                                @if(@isset($Results_For))
-                                                                @if($Results_For == 'Activity_City')
-                                                                For City " {{$Param_Name }} "
-                                                                @elseif($Results_For == 'Activity_Country')
-                                                                For Country " {{$Param_Name }} "
-                                                                @elseif($Results_For == 'Activity_Category')
-                                                                For Category " {{$Param_Name }} "
-                                                                @elseif($Results_For == 'Activity_Price')
-                                                                For Price " {{$Param_Name }} "
-                                                                @endif
-                                                                @endif
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    @foreach($All_Activity_Events as $key=>$item)
-
-                                                    <div class="row mt-3 mb-5 border border-success"
-                                                        style="border:1px solid #e9ecef;background-color: white!important;margin-bottom: 10px;">
-                                                        <div class="col-md-3 img-thumbnail  "
-                                                            style="padding:0px; margin:0px;border-radius:0px;">
-                                                            <img src="{{$item->banner}}" width="100%" height="150px"
-                                                                alt="" style="padding:0px; margin:0px;">
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="trav-list-bod">
-                                                                <a href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                    <h3 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
-font-weight: 700;">{{$item->event_name}}</h3>
-                                                                    <h4 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
-font-weight: 700;">Event Type : {{$item->event_type}}</h4>
-                                                                </a>
-                                                                <p>{!!substr($item->description,0,150)!!}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <div class="hot-page2-alp-ri-p3 tour-alp-ri-p3">
-                                                                @if($item->discount !=0)
-                                                                <div class="hot-page2-alp-r-hot-page-rat pull">
-                                                                    {{$item->discount}} %
-                                                                    Off
-                                                                </div>
-                                                                @else
-                                                                <div class="hot-page2-alp-r-hot-page-rat pull">No
-                                                                    Discount</div>
-                                                                @endif
-                                                                <span class="hot-list-p3-1">From</span> <span
-                                                                    class="hot-list-p3-2">€{{$item->price}}</span><span
-                                                                    class="hot-list-p3-4">
-                                                                    <a href="{{  url('event_detail/')}}/{{ $item->id }}"
-                                                                        class="hot-page2-alp-quot-btn">Book
-                                                                        Now</a>
-                                                                </span> </div>
-                                                        </div>
-                                                        <div>
-                                                            <div class="trav-ami">
-                                                                <h4>Event Detail and Includes</h4>
-                                                                <ul>
-                                                                    @foreach($item->Event_Icons as $Icon)
-
-                                                                    <li
-                                                                        href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                        <img src="{{$Icon->description}}" alt="">
-                                                                        <span>{{$Icon->name}}</span></li>
-                                                                    @endforeach
-
-                                                                    @foreach($item->Event_Categories as $category)
-
-                                                                    <li
-                                                                        href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                        <img src="{{$category->description}}" alt="">
-                                                                        <span>{{$category->name}}</span></li>
-                                                                    @endforeach
-
-                                                                    @foreach($item->Event_Countries as $country)
-
-                                                                    <li
-                                                                        href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                        <img src="{{$country->description}}" alt="">
-                                                                        <span>{{$country->name}}</span></li>
-                                                                    @endforeach
-
-                                                                    @foreach($item->Event_Cities as $city)
-
-                                                                    <li
-                                                                        href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                        <img src="{{$city->description}}" alt="">
-                                                                        <span>{{$city->name}}</span></li>
-                                                                    @endforeach
-                                                                </ul>
-                                                            </div>
-                                                        </div>
+                            </div>
 
 
-                                                    </div>
+                        </div>
+                        <!-- ALL TAB ENDS HERE -->
+                        @if(@isset($Active_Tab))
+                        @if($Active_Tab == 'Activity')
+                        <div id="activities" class="tab-pane fade active in ">
+                            @else
+                            <div id="activities" class="tab-pane fade">
+                                @endif
+                                @else
+                                <div id="activities" class="tab-pane fade">
+                                    @endif
 
-                                                    @endforeach
-                                                    @else
-                                                    <div class="row mt-2 mb-2">
-                                                        <div class="col-md-12 text-center alert alert-info "
-                                                            style="border-radius:5px;">
-                                                            <p class="text-dark font-font-weight-bold mt-2"
-                                                                style="font-size:18px;">
-                                                                No Activity Events To Show
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    @endif
+                                    <div class="row">
+                                        <div class="col-md-12  ">
+                                            @if(count($All_Activity_Events) >0)
 
-                                                </div>
+                                            <div class="alert alert-secondary text-white">
+                                                <i class="fa fa-bell text-danger fa-2x ml-3 mr-3"
+                                                    aria-hidden="true"></i>
+                                                Showing
+                                                All Activity Events
+                                                @if(@isset($Results_For))
+                                                @if($Results_For == 'Activity_City')
+                                                For City <span class="text-primary font-weight-bold  ">"
+                                                    {{$Param_Name }} "</span>
+                                                @elseif($Results_For == 'Activity_Country')
+                                                For Country <span class="text-primary font-weight-bold  ">"
+                                                    {{$Param_Name }} "</span>
+                                                @elseif($Results_For == 'Activity_Category')
+                                                For Category <span class="text-primary font-weight-bold  ">"
+                                                    {{$Param_Name }} "</span>
+                                                @elseif($Results_For == 'Activity_Price')
+                                                For Price <span class="text-primary font-weight-bold  ">"
+                                                    {{$Param_Name }} "</span>
+                                                @endif
+                                                @endif
                                             </div>
 
+                                            @foreach($All_Activity_Events as $key=>$item)
+                                            {{-- <div class="row">
+                                                <div class="col-md-3 border m-0 p-0 ">
+                                                    <img src="{{$item->banner}}" class="img-fluid w-100 h-100" alt="">
+                                        </div>
+                                        <!-- col-md-6 -->
+                                        <div class="col-md-6 border">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h3 class="text-danger font-weight-bold text-uppercase">
+                                                        {{$item->event_name}}</h3>
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <p>
+                                                        <a class="btn btn-success" data-toggle="collapse"
+                                                            href="#collapseExample" role="button" aria-expanded="false"
+                                                            aria-controls="collapseExample">
+                                                            Event Description
+                                                        </a>
+
+                                                    </p>
+                                                    <div class="collapse" id="collapseExample">
+
+                                                        {!!substr($item->description,0,150)!!}
+
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="col-md-6 text-left  font-weight-bold">Start Location
+                                                </div>
+                                                <div class="col-md-6 text-left text-danger  font-weight-bold">
+                                                    {{$item->start_location ?? ''}} </div>
+                                                <div class="col-md-6 mt-1 text-left  font-weight-bold">End
+                                                    Location </div>
+                                                <div class="col-md-6 mt-1 text-left text-danger font-weight-bold">
+                                                    {{$item->end_location ?? ''}}</div>
+
+
+
+
+                                            </div>
 
                                         </div>
-                                        @if(@isset($Active_Tab))
-                                        @if($Active_Tab == 'Cruise')
-                                        <div id="cruises" class="tab-pane fade active ">
-                                            @else
-                                            <div id="cruises" class="tab-pane fade">
-                                                @endif
+
+                                        <!-- col-md-6 -->
+                                        <div class="col-md-3 border">
+                                            <div class="hot-page2-alp-ri-p3 tour-alp-ri-p3">
+                                                @if($item->discount !=0)
+                                                <div class="hot-page2-alp-r-hot-page-rat pull">
+                                                    {{$item->discount}} %
+                                                    Off
+                                                </div>
                                                 @else
-                                                <div id="cruises" class="tab-pane fade">
-                                                    @endif
-
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            @if(count($All_Cruise_Events) >0)
-                                                            <div class="row mt-2 mb-2">
-                                                                <div class="col-md-12 text-center alert alert-info "
-                                                                    style="border-radius:5px;">
-                                                                    <p class="text-dark font-font-weight-bold mt-2"
-                                                                        style="font-size:18px;">
-                                                                        Showing All Cruise Events
-                                                                        @if(@isset($Results_For))
-                                                                        @if($Results_For == 'Cruise_City')
-                                                                        For City " {{$Param_Name }} "
-                                                                        @elseif($Results_For == 'Cruise_Country')
-                                                                        For Country " {{$Param_Name }} "
-                                                                        @elseif($Results_For == 'Cruise_Category')
-                                                                        For Category " {{$Param_Name }} "
-                                                                        @elseif($Results_For == 'Cruise_Price')
-                                                                        For Price " {{$Param_Name }} "
-                                                                        @endif
-                                                                        @endif
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            @foreach($All_Cruise_Events as $key=>$item)
-
-                                                            <div class="row mt-3 mb-5 border border-secondary"
-                                                                style="border:1px solid #e9ecef;background-color: white!important;margin-bottom: 10px;">
-                                                                <div class="col-md-3 img-thumbnail  "
-                                                                    style="padding:0px; margin:0px;border-radius:0px;">
-                                                                    <img src="{{$item->banner}}" width="100%"
-                                                                        height="150px" alt=""
-                                                                        style="padding:0px; margin:0px;">
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="trav-list-bod">
-                                                                        <a
-                                                                            href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                            <h3 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
-font-weight: 700;">{{$item->event_name}}</h3>
-                                                                            <h4 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
-font-weight: 700;">Event Type : {{$item->event_type}}</h4>
-                                                                        </a>
-                                                                        <p>{!!substr($item->description,0,150)!!}</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <div class="hot-page2-alp-ri-p3 tour-alp-ri-p3">
-                                                                        @if($item->discount !=0)
-                                                                        <div class="hot-page2-alp-r-hot-page-rat pull">
-                                                                            {{$item->discount}} %
-                                                                            Off
-                                                                        </div>
-                                                                        @else
-                                                                        <div class="hot-page2-alp-r-hot-page-rat pull">
-                                                                            No
-                                                                            Discount</div>
-                                                                        @endif
-                                                                        <span class="hot-list-p3-1">From</span> <span
-                                                                            class="hot-list-p3-2">€{{$item->price}}</span><span
-                                                                            class="hot-list-p3-4">
-                                                                            <a href="{{  url('event_detail/')}}/{{ $item->id }}"
-                                                                                class="hot-page2-alp-quot-btn">Book
-                                                                                Now</a>
-                                                                        </span> </div>
-                                                                </div>
-                                                                <div>
-                                                                    <div class="trav-ami">
-                                                                        <h4>Event Detail and Includes</h4>
-                                                                        <ul>
-                                                                            @foreach($item->Event_Icons as $Icon)
-
-                                                                            <li
-                                                                                href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                                <img src="{{$Icon->description}}"
-                                                                                    alt="">
-                                                                                <span>{{$Icon->name}}</span></li>
-                                                                            @endforeach
-
-                                                                            @foreach($item->Event_Categories as
-                                                                            $category)
-
-                                                                            <li
-                                                                                href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                                <img src="{{$category->description}}"
-                                                                                    alt="">
-                                                                                <span>{{$category->name}}</span></li>
-                                                                            @endforeach
-
-                                                                            @foreach($item->Event_Countries as $country)
-
-                                                                            <li
-                                                                                href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                                <img src="{{$country->description}}"
-                                                                                    alt="">
-                                                                                <span>{{$country->name}}</span></li>
-                                                                            @endforeach
-
-                                                                            @foreach($item->Event_Cities as $city)
-
-                                                                            <li
-                                                                                href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                                <img src="{{$city->description}}"
-                                                                                    alt="">
-                                                                                <span>{{$city->name}}</span></li>
-                                                                            @endforeach
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-
-
-                                                            </div>
-
+                                                <div class="hot-page2-alp-r-hot-page-rat pull">No
+                                                    Discount</div>
+                                                @endif
+                                                <span class="hot-list-p3-1">From</span> <span
+                                                    class="hot-list-p3-2">€{{$item->price}}</span><span
+                                                    class="hot-list-p3-4">
+                                                    <a href="{{  url('event_detail/')}}/{{ $item->id }}"
+                                                        class="hot-page2-alp-quot-btn">Book
+                                                        Now</a>
+                                                </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                                <a class="btn btn-sm btn-info text-white font-weight-bold"
+                                                    data-toggle="collapse" href="#multiCollapseExample1" role="button"
+                                                    aria-expanded="false" aria-controls="multiCollapseExample1">Event
+                                                    Countries
+                                                </a>
+                                                <a class="btn btn-sm btn-info text-white font-weight-bold" role="button"
+                                                    data-toggle="collapse" data-target="#multiCollapseExample2"
+                                                    aria-expanded="false" aria-controls="multiCollapseExample2">Event
+                                                    Cities</a>
+                                                <a class="btn btn-sm btn-info text-white font-weight-bold" role="button"
+                                                    data-toggle="collapse" data-target=".multi-collapse"
+                                                    aria-expanded="false"
+                                                    aria-controls="multiCollapseExample1 multiCollapseExample2">Cities
+                                                    & Countries</a>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                                        <div class="card card-body">
+                                                            @foreach($item->Event_Countries as
+                                                            $key=>$country)
+                                                            <span class="w-100"
+                                                                style="font-size:12px;">{{$key+1}}-{{$country->name}}</span>
                                                             @endforeach
-                                                            @else
-                                                            <div class="row mt-2 mb-2">
-                                                                <div class="col-md-12 text-center alert alert-info "
-                                                                    style="border-radius:5px;">
-                                                                    <p class="text-dark font-font-weight-bold mt-2"
-                                                                        style="font-size:18px;">
-                                                                        No Cruise Events To Show
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            @endif
-
                                                         </div>
                                                     </div>
-
-
                                                 </div>
-                                                @if(@isset($Active_Tab))
-                                                @if($Active_Tab == 'Transfer')
-                                                <div id="transfers" class="tab-pane fade active ">
-                                                    @else
-                                                    <div id="transfers" class="tab-pane fade">
-                                                        @endif
-                                                        @else
-                                                        <div id="transfers" class="tab-pane fade">
-                                                            @endif
+                                                <div class="col">
+                                                    <div class="collapse multi-collapse" id="multiCollapseExample2">
+                                                        <div class="card card-body">
+                                                            @foreach($item->Event_Cities as
+                                                            $key=>$city)
+                                                            <span class="w-100"
+                                                                style="font-size:12px;">{{$key+1}}-{{$city->name}}</span>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="trav-ami col-md-12">
+                                            <h4>Event Detail and Includes</h4>
+                                            <ul class="">
+                                                @foreach($item->Event_Icons as $Icon)
 
-                                                            <div class="row">
+                                                <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                    <img src="{{$Icon->description}}" alt="">
+                                                    <span>{{$Icon->name}}</span></li>
+                                                @endforeach
+
+                                                @foreach($item->Event_Categories as $category)
+
+                                                <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                    <img src="{{$category->description}}" alt="">
+                                                    <span>{{$category->name}}</span></li>
+                                                @endforeach
+
+                                                @foreach($item->Event_Countries as $country)
+
+                                                <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                    <img src="{{$country->description}}" alt="">
+                                                    <span>{{$country->name}}</span></li>
+                                                @endforeach
+
+                                                @foreach($item->Event_Cities as $city)
+
+                                                <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                    <img src="{{$city->description}}" alt="">
+                                                    <span>{{$city->name}}</span></li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    --}}
+
+                                    <div class="row mt-3 mb-5 "
+                                        style="border:1px solid #e9ecef;background-color: white!important;margin-bottom: 10px;">
+                                        <div class="col-md-4 img-thumbnail  "
+                                            style="padding:0px; margin:0px;border-radius:0px;">
+                                            <img src="{{$item->banner}}" width="100%" height="100%" alt=""
+                                                style="padding:0px; margin:0px;">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="trav-list-bod">
+                                                <a href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                    <h3 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
+font-weight: 700;">{{$item->event_name}}</h3>
+                                                    <h4 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
+font-weight: 700;">Event Type : {{$item->event_type}}</h4>
+                                                </a>
+                                                <p><span class="text-dark font-weight-bold">Event Description
+                                                    </span></p>
+                                                <p>{!!substr($item->description,0,150)!!}</p>
+                                                <p><span class=" text-dark font-weight-bold">Start Location
+                                                    </span>
+                                                    {{$item->start_location ?? ''}}</p>
+                                                <p><span class="text-dark font-weight-bold">End Location</span>
+                                                    {{$item->end_location ?? ''}}</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="hot-page2-alp-ri-p3 tour-alp-ri-p3">
+                                                @if($item->discount !=0)
+                                                <div class="hot-page2-alp-r-hot-page-rat pull">
+                                                    {{$item->discount}} %
+                                                    Off
+                                                </div>
+                                                @else
+                                                <div class="hot-page2-alp-r-hot-page-rat pull">No
+                                                    Discount</div>
+                                                @endif
+                                                <span class="hot-list-p3-1">From</span> <span
+                                                    class="hot-list-p3-2">€{{$item->price}}</span><span
+                                                    class="hot-list-p3-4">
+                                                    <a href="{{  url('event_detail/')}}/{{ $item->id }}"
+                                                        class="hot-page2-alp-quot-btn">Book
+                                                        Now</a>
+                                                </span> </div>
+                                        </div>
+                                        <div>
+                                            <div class="trav-ami">
+                                                <h4>Event Detail and Includes</h4>
+                                                <ul class="">
+                                                    @foreach($item->Event_Icons as $Icon)
+
+                                                    <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                        <img src="{{$Icon->description}}" alt="">
+                                                        <span>{{$Icon->name}}</span></li>
+                                                    @endforeach
+
+                                                    @foreach($item->Event_Categories as $category)
+
+                                                    <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                        <img src="{{$category->description}}" alt="">
+                                                        <span>{{$category->name}}</span></li>
+                                                    @endforeach
+
+                                                    @foreach($item->Event_Countries as $country)
+
+                                                    <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                        <img src="{{$country->description}}" alt="">
+                                                        <span>{{$country->name}}</span></li>
+                                                    @endforeach
+
+                                                    @foreach($item->Event_Cities as $city)
+
+                                                    <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                        <img src="{{$city->description}}" alt="">
+                                                        <span>{{$city->name}}</span></li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    @endforeach
+                                    {{-- <div class="row">
+                                                        <div class="col-md-12">
+                                                            {{$All_Activity_Events->links()}}
+                                </div>
+                            </div>
+                            --}}
+                            @else
+                            <div class="row mt-2 mb-2">
+                                <div class="alert alert-warning text-white">
+                                    <i class="fa fa-bell text-danger fa-2x ml-3 mr-3" aria-hidden="true"></i>
+                                    No Activity Events To Show
+
+                                </div>
+                            </div>
+                            @endif
+
+                        </div>
+                    </div>
+
+
+                </div>
+                @if(@isset($Active_Tab))
+                @if($Active_Tab == 'Cruise')
+                <div id="cruises" class="tab-pane fade show active ">
+                    @else
+                    <div id="cruises" class="tab-pane fade">
+                        @endif
+                        @else
+                        <div id="cruises" class="tab-pane fade">
+                            @endif
+
+                            <div class="row">
+                                <div class="col-md-12  ">
+                                    @if(count($All_Cruise_Events) >0)
+                                    <div class="alert alert-secondary text-white">
+                                        <i class="fa fa-bell text-danger fa-2x ml-3 mr-3" aria-hidden="true"></i>
+                                        Showing All Cruise Events
+                                        @if(@isset($Results_For))
+                                        @if($Results_For == 'Cruise_City')
+                                        For City <span class="text-primary font-weight-bold  ">"
+                                            {{$Param_Name }} "</span>
+                                        @elseif($Results_For == 'Cruise_Country')
+                                        For Country <span class="text-primary font-weight-bold  ">"
+                                            {{$Param_Name }} "</span>
+                                        @elseif($Results_For == 'Cruise_Category')
+                                        For Category <span class="text-primary font-weight-bold  ">"
+                                            {{$Param_Name }} "</span>
+                                        @elseif($Results_For == 'Cruise_Price')
+                                        For Price <span class="text-primary font-weight-bold  ">"
+                                            {{$Param_Name }} "</span>
+                                        @endif
+                                        @endif
+
+                                    </div>
+                                    @foreach($All_Cruise_Events as $key=>$item)
+
+                                    <div class="row mt-3 mb-5 "
+                                        style="border:1px solid #e9ecef;background-color: white!important;margin-bottom: 10px;">
+                                        <div class="col-md-4 img-thumbnail  "
+                                            style="padding:0px; margin:0px;border-radius:0px;">
+                                            <img src="{{$item->banner}}" width="100%" height="100%" alt=""
+                                                style="padding:0px; margin:0px;">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="trav-list-bod">
+                                                <a href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                    <h3 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
+font-weight: 700;">{{$item->event_name}}</h3>
+                                                    <h4 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
+font-weight: 700;">Event Type : {{$item->event_type}}</h4>
+                                                </a>
+                                                <p><span class="text-dark font-weight-bold">Event Description
+                                                    </span></p>
+                                                <p>{!!substr($item->description,0,150)!!}</p>
+                                                <p><span class=" text-dark font-weight-bold">Start Location
+                                                    </span>
+                                                    {{$item->start_location ?? ''}}</p>
+                                                <p><span class="text-dark font-weight-bold">End Location</span>
+                                                    {{$item->end_location ?? ''}}</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="hot-page2-alp-ri-p3 tour-alp-ri-p3">
+                                                @if($item->discount !=0)
+                                                <div class="hot-page2-alp-r-hot-page-rat pull">
+                                                    {{$item->discount}} %
+                                                    Off
+                                                </div>
+                                                @else
+                                                <div class="hot-page2-alp-r-hot-page-rat pull">No
+                                                    Discount</div>
+                                                @endif
+                                                <span class="hot-list-p3-1">From</span> <span
+                                                    class="hot-list-p3-2">€{{$item->price}}</span><span
+                                                    class="hot-list-p3-4">
+                                                    <a href="{{  url('event_detail/')}}/{{ $item->id }}"
+                                                        class="hot-page2-alp-quot-btn">Book
+                                                        Now</a>
+                                                </span> </div>
+                                        </div>
+                                        <div>
+                                            <div class="trav-ami">
+                                                <h4>Event Detail and Includes</h4>
+                                                <ul class="">
+                                                    @foreach($item->Event_Icons as $Icon)
+
+                                                    <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                        <img src="{{$Icon->description}}" alt="">
+                                                        <span>{{$Icon->name}}</span></li>
+                                                    @endforeach
+
+                                                    @foreach($item->Event_Categories as $category)
+
+                                                    <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                        <img src="{{$category->description}}" alt="">
+                                                        <span>{{$category->name}}</span></li>
+                                                    @endforeach
+
+                                                    @foreach($item->Event_Countries as $country)
+
+                                                    <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                        <img src="{{$country->description}}" alt="">
+                                                        <span>{{$country->name}}</span></li>
+                                                    @endforeach
+
+                                                    @foreach($item->Event_Cities as $city)
+
+                                                    <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                        <img src="{{$city->description}}" alt="">
+                                                        <span>{{$city->name}}</span></li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    @endforeach
+                                    {{-- <div class="row">
                                                                 <div class="col-md-12">
-                                                                    @if(count($All_Transfer_Events) >0)
-                                                                    <div class="row mt-2 mb-2">
-                                                                        <div class="col-md-12 text-center alert alert-info "
-                                                                            style="border-radius:5px;">
-                                                                            <p class="text-dark font-font-weight-bold mt-2"
-                                                                                style="font-size:18px;">
-                                                                                Showing All Transfer Events
-                                                                                @if(@isset($Results_For))
-                                                                                @if($Results_For == 'Transfer_City')
-                                                                                For City " {{$Param_Name }} "
-                                                                                @elseif($Results_For ==
-                                                                                'Transfer_Country')
-                                                                                For Country " {{$Param_Name }} "
-                                                                                @elseif($Results_For ==
-                                                                                'Transfer_Category')
-                                                                                For Category " {{$Param_Name }} "
-                                                                                @elseif($Results_For ==
-                                                                                'Transfer_Price')
-                                                                                For Price " {{$Param_Name }} "
-                                                                                @endif
-                                                                                @endif
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                    @foreach($All_Transfer_Events as $key=>$item)
+                                                                    {{$All_Cruise_Events->links()}}
+                                </div>
+                            </div>
+                            --}}
+                            @else
+                            <div class="row mt-2 mb-2">
+                                <div class="alert alert-warning text-white">
+                                    <i class="fa fa-bell text-danger fa-2x ml-3 mr-3" aria-hidden="true"></i>
+                                    No Cruise Events To Show
 
-                                                                    <div class="row mt-3 mb-5 border border-danger"
-                                                                        style="border:1px solid #e9ecef;background-color: white!important;margin-bottom: 10px;">
-                                                                        <div class="col-md-3 img-thumbnail  "
-                                                                            style="padding:0px; margin:0px;border-radius:0px;">
-                                                                            <img src="{{$item->banner}}" width="100%"
-                                                                                height="150px" alt=""
-                                                                                style="padding:0px; margin:0px;">
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <div class="trav-list-bod">
-                                                                                <a
-                                                                                    href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                                    <h3 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
+                                </div>
+                            </div>
+                            @endif
+
+                        </div>
+                    </div>
+
+
+                </div>
+                @if(@isset($Active_Tab))
+                @if($Active_Tab == 'Transfer')
+                <div id="transfers" class="tab-pane fade show active ">
+                    @else
+                    <div id="transfers" class="tab-pane fade">
+                        @endif
+                        @else
+                        <div id="transfers" class="tab-pane fade">
+                            @endif
+
+                            <div class="row">
+                                <div class="col-md-12  ">
+                                    @if(count($All_Transfer_Events) >0)
+                                    <div class="alert alert-secondary text-white">
+                                        <i class="fa fa-bell text-danger fa-2x ml-3 mr-3" aria-hidden="true"></i>
+                                        Showing All Transfer Events
+                                        @if(@isset($Results_For))
+                                        @if($Results_For == 'Transfer_City')
+                                        For City <span class="text-primary font-weight-bold  ">"
+                                            {{$Param_Name }} "</span>
+                                        @elseif($Results_For ==
+                                        'Transfer_Country')
+                                        For Country <span class="text-primary font-weight-bold  ">"
+                                            {{$Param_Name }} "</span>
+                                        @elseif($Results_For ==
+                                        'Transfer_Category')
+                                        For Category <span class="text-primary font-weight-bold  ">"
+                                            {{$Param_Name }} "</span>
+                                        @elseif($Results_For ==
+                                        'Transfer_Price')
+                                        For Price <span class="text-primary font-weight-bold  ">"
+                                            {{$Param_Name }} "</span>
+                                        @endif
+                                        @endif
+
+                                    </div>
+                                    @foreach($All_Transfer_Events as $key=>$item)
+
+                                    <div class="row mt-3 mb-5 "
+                                        style="border:1px solid #e9ecef;background-color: white!important;margin-bottom: 10px;">
+                                        <div class="col-md-4 img-thumbnail  "
+                                            style="padding:0px; margin:0px;border-radius:0px;">
+                                            <img src="{{$item->banner}}" width="100%" height="100%" alt=""
+                                                style="padding:0px; margin:0px;">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="trav-list-bod">
+                                                <a href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                    <h3 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
 font-weight: 700;">{{$item->event_name}}</h3>
-                                                                                    <h4 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
+                                                    <h4 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
 font-weight: 700;">Event Type : {{$item->event_type}}</h4>
-                                                                                </a>
-                                                                                <p>{!!substr($item->description,0,150)!!}
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-3">
-                                                                            <div
-                                                                                class="hot-page2-alp-ri-p3 tour-alp-ri-p3">
-                                                                                @if($item->discount !=0)
-                                                                                <div
-                                                                                    class="hot-page2-alp-r-hot-page-rat pull">
-                                                                                    {{$item->discount}} %
-                                                                                    Off
-                                                                                </div>
-                                                                                @else
-                                                                                <div
-                                                                                    class="hot-page2-alp-r-hot-page-rat pull">
-                                                                                    No
-                                                                                    Discount</div>
-                                                                                @endif
-                                                                                <span class="hot-list-p3-1">From</span>
-                                                                                <span
-                                                                                    class="hot-list-p3-2">€{{$item->price}}</span><span
-                                                                                    class="hot-list-p3-4">
-                                                                                    <a href="{{  url('event_detail/')}}/{{ $item->id }}"
-                                                                                        class="hot-page2-alp-quot-btn">Book
-                                                                                        Now</a>
-                                                                                </span> </div>
-                                                                        </div>
-                                                                        <div>
-                                                                            <div class="trav-ami">
-                                                                                <h4>Event Detail and Includes</h4>
-                                                                                <ul>
-                                                                                    @foreach($item->Event_Icons as
-                                                                                    $Icon)
+                                                </a>
+                                                <p><span class="text-dark font-weight-bold">Event Description
+                                                    </span></p>
+                                                <p>{!!substr($item->description,0,150)!!}</p>
+                                                <p><span class=" text-dark font-weight-bold">Start Location
+                                                    </span>
+                                                    {{$item->start_location ?? ''}}</p>
+                                                <p><span class="text-dark font-weight-bold">End Location</span>
+                                                    {{$item->end_location ?? ''}}</p>
 
-                                                                                    <li
-                                                                                        href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                                        <img src="{{$Icon->description}}"
-                                                                                            alt="">
-                                                                                        <span>{{$Icon->name}}</span>
-                                                                                    </li>
-                                                                                    @endforeach
-
-                                                                                    @foreach($item->Event_Categories as
-                                                                                    $category)
-
-                                                                                    <li
-                                                                                        href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                                        <img src="{{$category->description}}"
-                                                                                            alt="">
-                                                                                        <span>{{$category->name}}</span>
-                                                                                    </li>
-                                                                                    @endforeach
-
-                                                                                    @foreach($item->Event_Countries as
-                                                                                    $country)
-
-                                                                                    <li
-                                                                                        href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                                        <img src="{{$country->description}}"
-                                                                                            alt="">
-                                                                                        <span>{{$country->name}}</span>
-                                                                                    </li>
-                                                                                    @endforeach
-
-                                                                                    @foreach($item->Event_Cities as
-                                                                                    $city)
-
-                                                                                    <li
-                                                                                        href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                                        <img src="{{$city->description}}"
-                                                                                            alt="">
-                                                                                        <span>{{$city->name}}</span>
-                                                                                    </li>
-                                                                                    @endforeach
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-
-
-                                                                    </div>
-
-                                                                    @endforeach
-                                                                    @else
-                                                                    <div class="row mt-2 mb-2">
-                                                                        <div class="col-md-12 text-center alert alert-info "
-                                                                            style="border-radius:5px;">
-                                                                            <p class="text-dark font-font-weight-bold mt-2"
-                                                                                style="font-size:18px;">
-                                                                                No Transfer Events To Show
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                    @endif
-
-                                                                </div>
-                                                            </div>
-
-
-                                                        </div>
-                                                        @if(@isset($Active_Tab))
-                                                        @if($Active_Tab == 'Daytour')
-                                                        <div id="daytours" class="tab-pane fade active ">
-                                                            @else
-                                                            <div id="daytours" class="tab-pane fade">
-                                                                @endif
-                                                                @else
-                                                                <div id="daytours" class="tab-pane fade">
-                                                                    @endif
-
-                                                                    <div class="row">
-                                                                        <div class="col-md-12">
-                                                                            @if(count($All_Daytour_Events) >0)
-                                                                            <div class="row mt-2 mb-2">
-                                                                                <div class="col-md-12 text-center alert alert-info "
-                                                                                    style="border-radius:5px;">
-                                                                                    <p class="text-dark font-font-weight-bold mt-2"
-                                                                                        style="font-size:18px;">
-                                                                                        Showing All Daytour Events
-                                                                                        @if(@isset($Results_For))
-                                                                                        @if($Results_For ==
-                                                                                        'Daytour_City')
-                                                                                        For City " {{$Param_Name }} "
-                                                                                        @elseif($Results_For ==
-                                                                                        'Daytour_Country')
-                                                                                        For Country " {{$Param_Name }} "
-                                                                                        @elseif($Results_For ==
-                                                                                        'Daytour_Category')
-                                                                                        For Category " {{$Param_Name }}
-                                                                                        ""
-                                                                                        @elseif($Results_For ==
-                                                                                        'Daytour_Price')
-                                                                                        For Price " {{$Param_Name }} "
-                                                                                        @endif
-                                                                                        @endif
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                            @foreach($All_Daytour_Events as $key=>$item)
-
-                                                                            <div class="row"
-                                                                                style="border:1px solid #e9ecef;background-color: white!important;margin-bottom: 10px;">
-                                                                                <div class="col-md-3 img-thumbnail  "
-                                                                                    style="padding:0px; margin:0px;border-radius:0px;">
-                                                                                    <img src="{{$item->banner}}"
-                                                                                        width="100%" height="150px"
-                                                                                        alt=""
-                                                                                        style="padding:0px; margin:0px;">
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <div class="trav-list-bod">
-                                                                                        <a
-                                                                                            href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                                            <h3 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
-font-weight: 700;">{{$item->event_name}}</h3>
-                                                                                            <h4 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
-font-weight: 700;">Event Type : {{$item->event_type}}</h4>
-                                                                                        </a>
-                                                                                        <p>{!!substr($item->description,0,150)!!}
-                                                                                        </p>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-3">
-                                                                                    <div
-                                                                                        class="hot-page2-alp-ri-p3 tour-alp-ri-p3">
-                                                                                        @if($item->discount !=0)
-                                                                                        <div
-                                                                                            class="hot-page2-alp-r-hot-page-rat pull">
-                                                                                            {{$item->discount}} %
-                                                                                            Off
-                                                                                        </div>
-                                                                                        @else
-                                                                                        <div
-                                                                                            class="hot-page2-alp-r-hot-page-rat pull">
-                                                                                            No
-                                                                                            Discount</div>
-                                                                                        @endif
-                                                                                        <span
-                                                                                            class="hot-list-p3-1">From</span>
-                                                                                        <span
-                                                                                            class="hot-list-p3-2">€{{$item->price}}</span><span
-                                                                                            class="hot-list-p3-4">
-                                                                                            <a href="{{  url('event_detail/')}}/{{ $item->id }}"
-                                                                                                class="hot-page2-alp-quot-btn">Book
-                                                                                                Now</a>
-                                                                                        </span> </div>
-                                                                                </div>
-                                                                                <div>
-                                                                                    <div class="trav-ami">
-                                                                                        <h4>Event Detail and Includes
-                                                                                        </h4>
-                                                                                        <ul>
-                                                                                            @foreach($item->Event_Icons
-                                                                                            as $Icon)
-
-                                                                                            <li
-                                                                                                href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                                                <img src="{{$Icon->description}}"
-                                                                                                    alt="">
-                                                                                                <span>{{$Icon->name}}</span>
-                                                                                            </li>
-                                                                                            @endforeach
-
-                                                                                            @foreach($item->Event_Categories
-                                                                                            as $category)
-
-                                                                                            <li
-                                                                                                href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                                                <img src="{{$category->description}}"
-                                                                                                    alt="">
-                                                                                                <span>{{$category->name}}</span>
-                                                                                            </li>
-                                                                                            @endforeach
-
-                                                                                            @foreach($item->Event_Countries
-                                                                                            as $country)
-
-                                                                                            <li
-                                                                                                href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                                                <img src="{{$country->description}}"
-                                                                                                    alt="">
-                                                                                                <span>{{$country->name}}</span>
-                                                                                            </li>
-                                                                                            @endforeach
-
-                                                                                            @foreach($item->Event_Cities
-                                                                                            as $city)
-
-                                                                                            <li
-                                                                                                href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                                                <img src="{{$city->description}}"
-                                                                                                    alt="">
-                                                                                                <span>{{$city->name}}</span>
-                                                                                            </li>
-                                                                                            @endforeach
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-
-
-                                                                            </div>
-
-                                                                            @endforeach
-                                                                            @else
-                                                                            <div class="row mt-2 mb-2">
-                                                                                <div class="col-md-12 text-center alert alert-info "
-                                                                                    style="border-radius:5px;">
-                                                                                    <p class="text-dark font-font-weight-bold mt-2"
-                                                                                        style="font-size:18px;">
-                                                                                        No Daytour Events To Show
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                            @endif
-                                                                        </div>
-                                                                    </div>
-
-
-                                                                </div>
-                                                                @if(@isset($Active_Tab))
-                                                                @if($Active_Tab == 'Package')
-                                                                <div id="pacakges" class="tab-pane fade active ">
-                                                                    @else
-                                                                    <div id="pacakges" class="tab-pane fade">
-                                                                        @endif
-                                                                        @else
-                                                                        <div id="pacakges" class="tab-pane fade">
-                                                                            @endif
-
-                                                                            <div class="row">
-                                                                                <div class="col-md-12">
-                                                                                    @if(count($All_Package_Events) >
-                                                                                    0)
-                                                                                    <div class="row mt-2 mb-2">
-                                                                                        <div class="col-md-12 text-center alert alert-info "
-                                                                                            style="border-radius:5px;">
-                                                                                            <p class="text-dark font-font-weight-bold mt-2"
-                                                                                                style="font-size:18px;">
-                                                                                                Showing All Package
-                                                                                                Events
-                                                                                                @if(@isset($Results_For))
-                                                                                                @if($Results_For ==
-                                                                                                'Package_City')
-                                                                                                For City
-                                                                                                " {{$Param_Name }} "
-                                                                                                @elseif($Results_For ==
-                                                                                                'Package_Country')
-                                                                                                For Country
-                                                                                                " {{$Param_Name }} "
-                                                                                                @elseif($Results_For ==
-                                                                                                'Package_Category')
-                                                                                                For Category
-                                                                                                " {{$Param_Name }} "
-                                                                                                @elseif($Results_For ==
-                                                                                                'Package_Price')
-                                                                                                For Price "
-                                                                                                {{$Param_Name }} "
-                                                                                                @endif
-                                                                                                @endif
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    @foreach($All_Package_Events as
-                                                                                    $key=>$item)
-
-                                                                                    <div class="row"
-                                                                                        style="border:1px solid #e9ecef;background-color: white!important;margin-bottom: 10px;">
-                                                                                        <div class="col-md-3 img-thumbnail  "
-                                                                                            style="padding:0px; margin:0px;border-radius:0px;">
-                                                                                            <img src="{{$item->banner}}"
-                                                                                                width="100%"
-                                                                                                height="150px" alt=""
-                                                                                                style="padding:0px; margin:0px;">
-                                                                                        </div>
-                                                                                        <div class="col-md-6">
-                                                                                            <div class="trav-list-bod">
-                                                                                                <a
-                                                                                                    href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                                                    <h3 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
-font-weight: 700;">{{$item->event_name}}</h3>
-                                                                                                    <h4 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
-font-weight: 700;">Event Type : {{$item->event_type}}</h4>
-                                                                                                </a>
-                                                                                                <p>{!!substr($item->description,0,150)!!}
-                                                                                                </p>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-3">
-                                                                                            <div
-                                                                                                class="hot-page2-alp-ri-p3 tour-alp-ri-p3">
-                                                                                                @if($item->discount
-                                                                                                !=0)
-                                                                                                <div
-                                                                                                    class="hot-page2-alp-r-hot-page-rat pull">
-                                                                                                    {{$item->discount}}
-                                                                                                    %
-                                                                                                    Off
-                                                                                                </div>
-                                                                                                @else
-                                                                                                <div
-                                                                                                    class="hot-page2-alp-r-hot-page-rat pull">
-                                                                                                    No
-                                                                                                    Discount</div>
-                                                                                                @endif
-                                                                                                <span
-                                                                                                    class="hot-list-p3-1">From</span>
-                                                                                                <span
-                                                                                                    class="hot-list-p3-2">€{{$item->price}}</span><span
-                                                                                                    class="hot-list-p3-4">
-                                                                                                    <a href="{{  url('event_detail/')}}/{{ $item->id }}"
-                                                                                                        class="hot-page2-alp-quot-btn">Book
-                                                                                                        Now</a>
-                                                                                                </span> </div>
-                                                                                        </div>
-                                                                                        <div>
-                                                                                            <div class="trav-ami">
-                                                                                                <h4>Detail and
-                                                                                                    Includes</h4>
-                                                                                                <ul>
-                                                                                                    @foreach($item->Event_Icons
-                                                                                                    as $Icon)
-
-                                                                                                    <li
-                                                                                                        href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                                                        <img src="{{$Icon->description}}"
-                                                                                                            alt="">
-                                                                                                        <span>{{$Icon->name}}</span>
-                                                                                                    </li>
-                                                                                                    @endforeach
-
-                                                                                                    @foreach($item->Event_Categories
-                                                                                                    as $category)
-
-                                                                                                    <li
-                                                                                                        href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                                                        <img src="{{$category->description}}"
-                                                                                                            alt="">
-                                                                                                        <span>{{$category->name}}</span>
-                                                                                                    </li>
-                                                                                                    @endforeach
-
-                                                                                                    @foreach($item->Event_Countries
-                                                                                                    as $country)
-
-                                                                                                    <li
-                                                                                                        href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                                                        <img src="{{$country->description}}"
-                                                                                                            alt="">
-                                                                                                        <span>{{$country->name}}</span>
-                                                                                                    </li>
-                                                                                                    @endforeach
-
-                                                                                                    @foreach($item->Event_Cities
-                                                                                                    as $city)
-
-                                                                                                    <li
-                                                                                                        href="{{  url('event_detail/')}}/{{ $item->id }}">
-                                                                                                        <img src="{{$city->description}}"
-                                                                                                            alt="">
-                                                                                                        <span>{{$city->name}}</span>
-                                                                                                    </li>
-                                                                                                    @endforeach
-                                                                                                </ul>
-                                                                                            </div>
-                                                                                        </div>
-
-
-                                                                                    </div>
-
-                                                                                    @endforeach
-                                                                                    @else
-                                                                                    <div class="row mt-2 mb-2">
-                                                                                        <div class="col-md-12 text-center alert alert-info "
-                                                                                            style="border-radius:5px;">
-                                                                                            <p class="text-dark font-font-weight-bold mt-2"
-                                                                                                style="font-size:18px;">
-                                                                                                No Package Events To
-                                                                                                Show
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    @endif
-
-                                                                                </div>
-                                                                            </div>
-
-
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <!--  -->
-                                                                </div>
-                                                            </div>
-
-
-                                                        </div>
-                                                        <!-- COL-MD-9 ENDS HERE -->
-                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="hot-page2-alp-ri-p3 tour-alp-ri-p3">
+                                                @if($item->discount !=0)
+                                                <div class="hot-page2-alp-r-hot-page-rat pull">
+                                                    {{$item->discount}} %
+                                                    Off
                                                 </div>
-                                                <!-- END CONTAINER -->
-                                                <button id="button">asd</button>
-                                                @endsection
-                                                <script
-                                                    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
-                                                    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-                                                    crossorigin="anonymous">
-                                                </script>
+                                                @else
+                                                <div class="hot-page2-alp-r-hot-page-rat pull">No
+                                                    Discount</div>
+                                                @endif
+                                                <span class="hot-list-p3-1">From</span> <span
+                                                    class="hot-list-p3-2">€{{$item->price}}</span><span
+                                                    class="hot-list-p3-4">
+                                                    <a href="{{  url('event_detail/')}}/{{ $item->id }}"
+                                                        class="hot-page2-alp-quot-btn">Book
+                                                        Now</a>
+                                                </span> </div>
+                                        </div>
+                                        <div>
+                                            <div class="trav-ami">
+                                                <h4>Event Detail and Includes</h4>
+                                                <ul class="">
+                                                    @foreach($item->Event_Icons as $Icon)
 
-                                                <script>
-                                                //
-                                                function getCityIdForSearch(city) {
-                                                    console.log(city);
-                                                    var Get_Active_Tab = $('.nav-tabs li.active a');
-                                                    var Active_Tab = Get_Active_Tab.attr("id");
-                                                    console.log(Active_Tab);
-                                                    window.location.href = "{{URL::to('search/booknow/city')}}" +
-                                                        "/" + city +
-                                                        "/" + Active_Tab;
-                                                }
+                                                    <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                        <img src="{{$Icon->description}}" alt="">
+                                                        <span>{{$Icon->name}}</span></li>
+                                                    @endforeach
 
-                                                function getCountryIdForSearch(country) {
-                                                    console.log(country);
-                                                    var Get_Active_Tab = $('.nav-tabs li.active a');
-                                                    var Active_Tab = Get_Active_Tab.attr("id");
-                                                    console.log(Active_Tab);
-                                                    window.location.href = "{{URL::to('search/booknow/country')}}" +
-                                                        "/" +
-                                                        country + "/" +
-                                                        Active_Tab;
-                                                }
+                                                    @foreach($item->Event_Categories as $category)
 
-                                                function getCategoryIdForSearch(category) {
-                                                    console.log(category);
-                                                    var Get_Active_Tab = $('.nav-tabs li.active a');
-                                                    var Active_Tab = Get_Active_Tab.attr("id");
-                                                    console.log(Active_Tab);
-                                                    window.location.href =
-                                                        "{{URL::to('search/booknow/category')}}" + "/" +
-                                                        category + "/" +
-                                                        Active_Tab;
-                                                }
+                                                    <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                        <img src="{{$category->description}}" alt="">
+                                                        <span>{{$category->name}}</span></li>
+                                                    @endforeach
 
-                                                function getPriceForSearch(price) {
-                                                    console.log(price)
-                                                    var Get_Active_Tab = $('.nav-tabs li.active a');
-                                                    var Active_Tab = Get_Active_Tab.attr("id");
-                                                    console.log(Active_Tab);
-                                                    var price_list = price.split(',');
-                                                    var min = price_list[0];
-                                                    var max = price_list[1];
-                                                    window.location.href = "{{URL::to('search/booknow/price')}}" +
-                                                        "/" + min +
-                                                        "/" + max + "/" +
-                                                        Active_Tab;
-                                                }
-                                                $(document).ready(function() {
-                                                    console.log(window.location.href);
-                                                    var URL_Array = window.location.href.split('/');
-                                                    console.log(URL_Array);
-                                                    if (URL_Array[4] == 'search') {
-                                                        console.log("search");
-                                                        if (URL_Array[5] == 'booknow') {
+                                                    @foreach($item->Event_Countries as $country)
 
-                                                            if (URL_Array[6] == 'city') {
-                                                                $("#moreCitiesDiv").addClass(
-                                                                    "collpased show");
-                                                                $('#city' + URL_Array[7]).prop("checked",
-                                                                    true);
-                                                            } else if (URL_Array[6] == "category") {
-                                                                console.log(URL_Array[7]);
-                                                                $("#moreCategoriesDiv").addClass(
-                                                                    "collpased show");
-                                                                $('#category' + URL_Array[7]).prop(
-                                                                    "checked", true);
+                                                    <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                        <img src="{{$country->description}}" alt="">
+                                                        <span>{{$country->name}}</span></li>
+                                                    @endforeach
 
-                                                            } else if (URL_Array[6] == "country") {
-                                                                console.log("country");
-                                                                $("#moreCountriesDiv").addClass(
-                                                                    "collpased show");
-                                                                $('#country' + URL_Array[7]).prop("checked",
-                                                                    true);
-                                                            } else if (URL_Array[6] == "price") {
-                                                                if (URL_Array[7] == '250' && URL_Array[8] ==
-                                                                    '000') {
-                                                                    $('#chp51').prop("checked", true);
-                                                                } else if (URL_Array[7] == '100' &&
-                                                                    URL_Array[8] ==
-                                                                    '250') {
-                                                                    $('#chp52').prop("checked", true);
-                                                                } else if (URL_Array[7] == '50' &&
-                                                                    URL_Array[8] ==
-                                                                    '100') {
-                                                                    $('#chp53').prop("checked", true);
-                                                                } else if (URL_Array[7] == '25' &&
-                                                                    URL_Array[8] ==
-                                                                    '50') {
-                                                                    $('#chp54').prop("checked", true);
-                                                                } else if (URL_Array[7] == '0' && URL_Array[
-                                                                        8] ==
-                                                                    '25') {
-                                                                    $('#chp55').prop("checked", true);
-                                                                }
+                                                    @foreach($item->Event_Cities as $city)
 
-                                                            }
+                                                    <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                        <img src="{{$city->description}}" alt="">
+                                                        <span>{{$city->name}}</span></li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
 
 
-                                                        }
-                                                    }
-                                                })
+                                    </div>
 
-                                                $(document).ready(function() {
-                                                    $('#DisplayStyle').on('click', function() {
-                                                        console.log($('#DisplayStyle').prop(
-                                                            "checked"));
-                                                        if ($('#DisplayStyle').prop("checked") ==
-                                                            false || $(
-                                                                '#DisplayStyle').prop(
-                                                                "checked") ==
-                                                            'false') {
-                                                            window.location.href =
-                                                                "{{URL::to('booknow/grid')}}";
-                                                        } else {
-                                                            window.location.href =
-                                                                "{{URL::to('booknow')}}";
-                                                        }
-                                                    })
+                                    @endforeach
+                                    {{-- <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            {{$All_Transfer_Events->links()}}
+                                </div>
+                            </div>
+                            --}}
+                            @else
+                            <div class="row mt-2 mb-2">
+                                <div class="alert alert-warning text-white">
+                                    <i class="fa fa-bell text-danger fa-2x ml-3 mr-3" aria-hidden="true"></i>
+                                    No Transfer Events To Show
+
+                                </div>
+                            </div>
+                            @endif
+
+                        </div>
+                    </div>
+
+
+                </div>
+                @if(@isset($Active_Tab))
+                @if($Active_Tab == 'Daytour')
+                <div id="daytours" class="tab-pane fade show active ">
+                    @else
+                    <div id="daytours" class="tab-pane fade">
+                        @endif
+                        @else
+                        <div id="daytours" class="tab-pane fade">
+                            @endif
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @if(count($All_Daytour_Events) >0)
+                                    <div class="alert alert-secondary text-white">
+                                        <i class="fa fa-bell text-danger fa-2x ml-3 mr-3" aria-hidden="true"></i>
+                                        Showing All Daytour Events
+                                        @if(@isset($Results_For))
+                                        @if($Results_For ==
+                                        'Daytour_City')
+                                        For City <span class="text-primary font-weight-bold  ">"
+                                            {{$Param_Name }} "</span>
+                                        @elseif($Results_For ==
+                                        'Daytour_Country')
+                                        For Country <span class="text-primary font-weight-bold  ">"
+                                            {{$Param_Name }} "</span>
+                                        @elseif($Results_For ==
+                                        'Daytour_Category')
+                                        For Category " {{$Param_Name }}
+                                        ""
+                                        @elseif($Results_For ==
+                                        'Daytour_Price')
+                                        For Price <span class="text-primary font-weight-bold  ">"
+                                            {{$Param_Name }} "</span>
+                                        @endif
+                                        @endif
+
+                                    </div>
+                                    @foreach($All_Daytour_Events as $key=>$item)
+
+                                    <div class="row mt-3 mb-5 "
+                                        style="border:1px solid #e9ecef;background-color: white!important;margin-bottom: 10px;">
+                                        <div class="col-md-4 img-thumbnail  "
+                                            style="padding:0px; margin:0px;border-radius:0px;">
+                                            <img src="{{$item->banner}}" width="100%" height="100%" alt=""
+                                                style="padding:0px; margin:0px;">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="trav-list-bod">
+                                                <a href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                    <h3 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
+font-weight: 700;">{{$item->event_name}}</h3>
+                                                    <h4 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
+font-weight: 700;">Event Type : {{$item->event_type}}</h4>
+                                                </a>
+                                                <p><span class="text-dark font-weight-bold">Event Description
+                                                    </span></p>
+                                                <p>{!!substr($item->description,0,150)!!}</p>
+                                                <p><span class=" text-dark font-weight-bold">Start Location
+                                                    </span>
+                                                    {{$item->start_location ?? ''}}</p>
+                                                <p><span class="text-dark font-weight-bold">End Location</span>
+                                                    {{$item->end_location ?? ''}}</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="hot-page2-alp-ri-p3 tour-alp-ri-p3">
+                                                @if($item->discount !=0)
+                                                <div class="hot-page2-alp-r-hot-page-rat pull">
+                                                    {{$item->discount}} %
+                                                    Off
+                                                </div>
+                                                @else
+                                                <div class="hot-page2-alp-r-hot-page-rat pull">No
+                                                    Discount</div>
+                                                @endif
+                                                <span class="hot-list-p3-1">From</span> <span
+                                                    class="hot-list-p3-2">€{{$item->price}}</span><span
+                                                    class="hot-list-p3-4">
+                                                    <a href="{{  url('event_detail/')}}/{{ $item->id }}"
+                                                        class="hot-page2-alp-quot-btn">Book
+                                                        Now</a>
+                                                </span> </div>
+                                        </div>
+                                        <div>
+                                            <div class="trav-ami">
+                                                <h4>Event Detail and Includes</h4>
+                                                <ul class="">
+                                                    @foreach($item->Event_Icons as $Icon)
+
+                                                    <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                        <img src="{{$Icon->description}}" alt="">
+                                                        <span>{{$Icon->name}}</span></li>
+                                                    @endforeach
+
+                                                    @foreach($item->Event_Categories as $category)
+
+                                                    <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                        <img src="{{$category->description}}" alt="">
+                                                        <span>{{$category->name}}</span></li>
+                                                    @endforeach
+
+                                                    @foreach($item->Event_Countries as $country)
+
+                                                    <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                        <img src="{{$country->description}}" alt="">
+                                                        <span>{{$country->name}}</span></li>
+                                                    @endforeach
+
+                                                    @foreach($item->Event_Cities as $city)
+
+                                                    <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                        <img src="{{$city->description}}" alt="">
+                                                        <span>{{$city->name}}</span></li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    @endforeach
+                                    {{-- <div class="row">
+                                                                                <div class="col-md-12">
+                                                                                    {{$All_Daytour_Events->links()}}
+                                </div>
+                            </div>
+                            --}}
+                            @else
+                            <div class="row mt-2 mb-2">
+                                <div class="alert alert-warning text-white">
+                                    <i class="fa fa-bell text-danger fa-2x ml-3 mr-3" aria-hidden="true"></i>
+                                    No Daytour Events To Show
+
+                                </div>
+                            </div>
+                            @endif
+                        </div>
+                    </div>
+
+
+                </div>
+                @if(@isset($Active_Tab))
+                @if($Active_Tab == 'Package')
+                <div id="pacakges" class="tab-pane fade show active ">
+                    @else
+                    <div id="pacakges" class="tab-pane fade">
+                        @endif
+                        @else
+                        <div id="pacakges" class="tab-pane fade">
+                            @endif
+
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    @if(count($All_Package_Events) >
+                                    0)
+                                    <div class="alert alert-secondary text-white">
+                                        <i class="fa fa-bell text-danger fa-2x ml-3 mr-3" aria-hidden="true"></i>
+                                        Showing All Package
+                                        Events
+                                        @if(@isset($Results_For))
+                                        @if($Results_For ==
+                                        'Package_City')
+                                        For City
+                                        <span class="text-primary font-weight-bold  ">" {{$Param_Name }}
+                                            "</span>
+                                        @elseif($Results_For ==
+                                        'Package_Country')
+                                        For Country
+                                        <span class="text-primary font-weight-bold  ">" {{$Param_Name }}
+                                            "</span>
+                                        @elseif($Results_For ==
+                                        'Package_Category')
+                                        For Category
+                                        <span class="text-primary font-weight-bold  ">" {{$Param_Name }}
+                                            "</span>
+                                        @elseif($Results_For ==
+                                        'Package_Price')
+                                        For Price "
+                                        {{$Param_Name }} "
+                                        @endif
+                                        @endif
+
+                                    </div>
+                                    @foreach($All_Package_Events as
+                                    $key=>$item)
+
+                                    <div class="row mt-3 mb-5 "
+                                        style="border:1px solid #e9ecef;background-color: white!important;margin-bottom: 10px;">
+                                        <div class="col-md-4 img-thumbnail  "
+                                            style="padding:0px; margin:0px;border-radius:0px;">
+                                            <img src="{{$item->banner}}" width="100%" height="100%" alt=""
+                                                style="padding:0px; margin:0px;">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="trav-list-bod">
+                                                <a href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                    <h3 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
+font-weight: 700;">{{$item->event_name}}</h3>
+                                                    <h4 style="color:#f4364f;font-family: 'Quicksand', sans-serif;
+font-weight: 700;">Event Type : {{$item->event_type}}</h4>
+                                                </a>
+                                                <p><span class="text-dark font-weight-bold">Event Description
+                                                    </span></p>
+                                                <p>{!!substr($item->description,0,150)!!}</p>
+                                                <p><span class=" text-dark font-weight-bold">Start Location
+                                                    </span>
+                                                    {{$item->start_location ?? ''}}</p>
+                                                <p><span class="text-dark font-weight-bold">End Location</span>
+                                                    {{$item->end_location ?? ''}}</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="hot-page2-alp-ri-p3 tour-alp-ri-p3">
+                                                @if($item->discount !=0)
+                                                <div class="hot-page2-alp-r-hot-page-rat pull">
+                                                    {{$item->discount}} %
+                                                    Off
+                                                </div>
+                                                @else
+                                                <div class="hot-page2-alp-r-hot-page-rat pull">No
+                                                    Discount</div>
+                                                @endif
+                                                <span class="hot-list-p3-1">From</span> <span
+                                                    class="hot-list-p3-2">€{{$item->price}}</span><span
+                                                    class="hot-list-p3-4">
+                                                    <a href="{{  url('event_detail/')}}/{{ $item->id }}"
+                                                        class="hot-page2-alp-quot-btn">Book
+                                                        Now</a>
+                                                </span> </div>
+                                        </div>
+                                        <div>
+                                            <div class="trav-ami">
+                                                <h4>Event Detail and Includes</h4>
+                                                <ul class="">
+                                                    @foreach($item->Event_Icons as $Icon)
+
+                                                    <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                        <img src="{{$Icon->description}}" alt="">
+                                                        <span>{{$Icon->name}}</span></li>
+                                                    @endforeach
+
+                                                    @foreach($item->Event_Categories as $category)
+
+                                                    <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                        <img src="{{$category->description}}" alt="">
+                                                        <span>{{$category->name}}</span></li>
+                                                    @endforeach
+
+                                                    @foreach($item->Event_Countries as $country)
+
+                                                    <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                        <img src="{{$country->description}}" alt="">
+                                                        <span>{{$country->name}}</span></li>
+                                                    @endforeach
+
+                                                    @foreach($item->Event_Cities as $city)
+
+                                                    <li href="{{  url('event_detail/')}}/{{ $item->id }}">
+                                                        <img src="{{$city->description}}" alt="">
+                                                        <span>{{$city->name}}</span></li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    @endforeach
+                                    {{-- <div class="row">
+                                                                                        <div class="col-md-12">
+                                                                                            {{$All_Package_Events->links()}}
+                                </div>
+                            </div>
+                            --}}
+                            @else
+                            <div class="row mt-2 mb-2">
+                                <div class="alert alert-warning text-white">
+                                    <i class="fa fa-bell text-danger fa-2x ml-3 mr-3" aria-hidden="true"></i>
+                                    No Package Events To
+                                    Show
+
+                                </div>
+                            </div>
+                            @endif
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <!--  -->
+        </div>
+    </div>
+
+
+</div>
+<!-- COL-MD-9 ENDS HERE -->
+</div>
+</div>
+<!-- END CONTAINER -->
+<button id="button">asd</button>
+@endsection
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+</script>
+
+<script>
+//
+function getCityIdForSearch(city) {
+    console.log(city);
+    var Get_Active_Tab = $('.nav-tabs li.active a');
+    var Active_Tab = Get_Active_Tab.attr("id");
+    console.log(Active_Tab);
+    window.location.href = "{{URL::to('search/booknow/city')}}" +
+        "/" + city +
+        "/" + Active_Tab;
+}
+
+function getCountryIdForSearch(country) {
+    console.log(country);
+    var Get_Active_Tab = $('.nav-tabs li.active a');
+    var Active_Tab = Get_Active_Tab.attr("id");
+    console.log(Active_Tab);
+    window.location.href = "{{URL::to('search/booknow/country')}}" +
+        "/" +
+        country + "/" +
+        Active_Tab;
+}
+
+function getCategoryIdForSearch(category) {
+    console.log(category);
+    var Get_Active_Tab = $('.nav-tabs li.active a');
+    var Active_Tab = Get_Active_Tab.attr("id");
+    console.log(Active_Tab);
+    window.location.href =
+        "{{URL::to('search/booknow/category')}}" + "/" +
+        category + "/" +
+        Active_Tab;
+}
+
+function getPriceForSearch(price) {
+    console.log(price)
+    var Get_Active_Tab = $('.nav-tabs li.active a');
+    var Active_Tab = Get_Active_Tab.attr("id");
+    console.log(Active_Tab);
+    var price_list = price.split(',');
+    var min = price_list[0];
+    var max = price_list[1];
+    window.location.href = "{{URL::to('search/booknow/price')}}" +
+        "/" + min +
+        "/" + max + "/" +
+        Active_Tab;
+}
+$(document).ready(function() {
+    console.log(window.location.href);
+    var URL_Array = window.location.href.split('/');
+    console.log(URL_Array);
+    if (URL_Array[4] == 'search') {
+        console.log("search");
+        if (URL_Array[5] == 'booknow') {
+
+            if (URL_Array[6] == 'city') {
+                $("#moreCitiesDiv").addClass(
+                    "collpased show");
+                $('#city' + URL_Array[7]).prop("checked",
+                    true);
+            } else if (URL_Array[6] == "category") {
+                console.log(URL_Array[7]);
+                $("#moreCategoriesDiv").addClass(
+                    "collpased show");
+                $('#category' + URL_Array[7]).prop(
+                    "checked", true);
+
+            } else if (URL_Array[6] == "country") {
+                console.log("country");
+                $("#moreCountriesDiv").addClass(
+                    "collpased show");
+                $('#country' + URL_Array[7]).prop("checked",
+                    true);
+            } else if (URL_Array[6] == "price") {
+                if (URL_Array[7] == '250' && URL_Array[8] ==
+                    '000') {
+                    $('#chp51').prop("checked", true);
+                } else if (URL_Array[7] == '100' &&
+                    URL_Array[8] ==
+                    '250') {
+                    $('#chp52').prop("checked", true);
+                } else if (URL_Array[7] == '50' &&
+                    URL_Array[8] ==
+                    '100') {
+                    $('#chp53').prop("checked", true);
+                } else if (URL_Array[7] == '25' &&
+                    URL_Array[8] ==
+                    '50') {
+                    $('#chp54').prop("checked", true);
+                } else if (URL_Array[7] == '0' && URL_Array[
+                        8] ==
+                    '25') {
+                    $('#chp55').prop("checked", true);
+                }
+
+            }
+
+
+        }
+    }
+})
+
+$(document).ready(function() {
+    $('#DisplayStyle').on('click', function() {
+        console.log($('#DisplayStyle').prop(
+            "checked"));
+        if ($('#DisplayStyle').prop("checked") ==
+            false || $(
+                '#DisplayStyle').prop(
+                "checked") ==
+            'false') {
+            window.location.href =
+                "{{URL::to('booknow/grid')}}";
+        } else {
+            window.location.href =
+                "{{URL::to('booknow')}}";
+        }
+    })
 
 
 
-                                                })
-                                                </script>
+})
+</script>
 
-                                                <script>
-                                                function getCategoryNameForSearch() {
-                                                    var Category_Name = $('#Category_Name').val();
-                                                    if (Category_Name == '' || Category_Name == null) {
-                                                        alert("Please enter category name ")
-                                                    } else {
-                                                        console.log(Category_Name);
-                                                        var Get_Active_Tab = $('.nav-tabs li.active a');
-                                                        var Active_Tab = Get_Active_Tab.attr("id");
-                                                        console.log(Active_Tab);
-                                                        window.location.href =
-                                                            "{{URL::to('search/booknow/categoryname')}}" + "/" +
-                                                            Category_Name + "/" +
-                                                            Active_Tab;
-                                                    }
-                                                }
+<script>
+function getCategoryNameForSearch() {
+    var Category_Name = $('#Category_Name').val();
+    if (Category_Name == '' || Category_Name == null) {
+        alert("Please enter category name ")
+    } else {
+        console.log(Category_Name);
+        var Get_Active_Tab = $('.nav-tabs li.active a');
+        var Active_Tab = Get_Active_Tab.attr("id");
+        console.log(Active_Tab);
+        window.location.href =
+            "{{URL::to('search/booknow/categoryname')}}" + "/" +
+            Category_Name + "/" +
+            Active_Tab;
+    }
+}
 
-                                                function getCityNameForSearch() {
-                                                    var City_Name = $('#City_Name').val();
-                                                    if (City_Name == '' || City_Name == null) {
-                                                        alert("Please enter city name ")
-                                                    } else {
-                                                        console.log(City_Name);
-                                                        var Get_Active_Tab = $('.nav-tabs li.active a');
-                                                        var Active_Tab = Get_Active_Tab.attr("id");
-                                                        console.log(Active_Tab);
-                                                        window.location.href =
-                                                            "{{URL::to('search/booknow/cityname')}}" + "/" +
-                                                            City_Name + "/" +
-                                                            Active_Tab;
-                                                    }
-                                                }
+function getCityNameForSearch() {
+    var City_Name = $('#City_Name').val();
+    if (City_Name == '' || City_Name == null) {
+        alert("Please enter city name ")
+    } else {
+        console.log(City_Name);
+        var Get_Active_Tab = $('.nav-tabs li.active a');
+        var Active_Tab = Get_Active_Tab.attr("id");
+        console.log(Active_Tab);
+        window.location.href =
+            "{{URL::to('search/booknow/cityname')}}" + "/" +
+            City_Name + "/" +
+            Active_Tab;
+    }
+}
 
-                                                function getCountryNameForSearch() {
-                                                    var Country_Name = $('#Country_Name').val();
-                                                    if (Country_Name == '' || Country_Name == null) {
-                                                        alert("Please enter city name ")
-                                                    } else {
-                                                        console.log(Country_Name);
-                                                        var Get_Active_Tab = $('.nav-tabs li.active a');
-                                                        var Active_Tab = Get_Active_Tab.attr("id");
-                                                        console.log(Active_Tab);
-                                                        window.location.href =
-                                                            "{{URL::to('search/booknow/countryname')}}" + "/" +
-                                                            Country_Name + "/" +
-                                                            Active_Tab;
-                                                    }
-                                                }
-                                                </script>
+function getCountryNameForSearch() {
+    var Country_Name = $('#Country_Name').val();
+    if (Country_Name == '' || Country_Name == null) {
+        alert("Please enter city name ")
+    } else {
+        console.log(Country_Name);
+        var Get_Active_Tab = $('.nav-tabs li.active a');
+        var Active_Tab = Get_Active_Tab.attr("id");
+        console.log(Active_Tab);
+        window.location.href =
+            "{{URL::to('search/booknow/countryname')}}" + "/" +
+            Country_Name + "/" +
+            Active_Tab;
+    }
+}
+</script>
+
+<script>
+$(document).ready(function() {
+    var URL_Array = window.location.href.split('/');
+    console.log(URL_Array[8]);
+    if (URL_Array[8] == 'Transfer') {
+        $('#Activity,#Cruise,#Daytour,#All,#Package').on('click', function() {
+            $('#transfers').removeClass("show")
+
+        });
+        $('#Transfer').on('click', function() {
+            $('#transfers').addClass("show")
+        })
+    }
+    if (URL_Array[8] == 'Cruise') {
+        $('#Activity,#Transfer,#Daytour,#All,#Package').on('click', function() {
+            $('#cruises').removeClass("show")
+
+        });
+        $('#Cruise').on('click', function() {
+            $('#cruises').addClass("show")
+        })
+    }
+
+
+    if (URL_Array[8] == 'Package') {
+        $('#Activity,#Transfer,#Daytour,#All,#Cruise').on('click', function() {
+            $('#packages').removeClass("show")
+
+        });
+        $('#Package').on('click', function() {
+            $('#packages').addClass("show")
+        })
+    }
+
+
+    if (URL_Array[8] == 'Daytour') {
+        $('#Activity,#Transfer,#Package,#All,#Cruise').on('click', function() {
+            $('#daytours').removeClass("show")
+
+        });
+        $('#Daytour').on('click', function() {
+            $('#daytours').addClass("show")
+        })
+    }
+
+    if (URL_Array[8] == 'Activity') {
+        $('#Daytour,#Transfer,#Package,#All,#Cruise').on('click', function() {
+            $('#activities').removeClass("show")
+
+        });
+        $('#Activity').on('click', function() {
+            $('#activities').addClass("show")
+        })
+    }
+
+    if (URL_Array[8] == 'All') {
+        $('#Daytour,#Transfer,#Package,#Activity,#Cruise').on('click', function() {
+            $('#all').removeClass("show")
+
+        });
+        $('#All').on('click', function() {
+            $('#all').addClass("show")
+        })
+    }
+})
+</script>

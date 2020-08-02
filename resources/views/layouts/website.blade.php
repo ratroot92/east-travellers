@@ -502,14 +502,111 @@ $path="../public/";
     </section>
     <!--========= Scripts ===========-->
     <script src="{{url('/theme/travel')}}/js/jquery-latest.min.js"></script>
+    <script>
+    // Or with jQuery
 
+    $(document).ready(function() {
+        $('select').formSelect();
+    });
+
+    $(document).ready(function() {
+        $('#Search_Btn_CutomCity').on('click', function() {
+            console.log("cutom city clicked ");
+            var City_Name = $('#Autocomplete_Cities').val();
+            if (City_Name === '') {
+                alert("Please Enter City Name ");
+            } else {
+                var Event_Type_CustomCity = $('#Event_Type_CustomCity').find(":selected").val();
+                if (Event_Type_CustomCity === '' || Event_Type_CustomCity === null) {
+                    alert("Please Select Event Type");
+                } else {
+
+                    window.location.href = "{{URL::to('search/booknow/cityname')}}" + "/" + City_Name +
+                        "/" + Event_Type_CustomCity;
+
+                }
+            }
+        })
+
+
+        $('#Search_Btn_CutomCountry').on('click', function() {
+            console.log("cutom country clicked ");
+            var Country_Name = $('#autocomplete-input').val();
+            if (Country_Name === '') {
+                alert("Please Enter City Name ");
+            } else {
+                var Event_Type_CustomCountry = $('#Event_Type_CustomCountry').find(":selected").val();
+                console.log(Event_Type_CustomCountry)
+                if (Event_Type_CustomCountry === '' || Event_Type_CustomCountry === null) {
+                    alert("Please Select Event Type");
+                } else {
+
+                    window.location.href = "{{URL::to('search/booknow/countryname')}}" + "/" +
+                        Country_Name +
+                        "/" + Event_Type_CustomCountry;
+
+                }
+            }
+        })
+
+
+
+
+        $('#Search_Btn_City').on('click', function() {
+                var Event_Type_City = $('#Event_Type_City').find(":selected").val();
+                var Event_City = $('#Event_City').find(":selected").val();
+                console.log(Event_Type_City)
+                console.log(Event_City)
+                if (Event_Type_City != '' && Event_City != '') {
+                    window.location.href = "{{URL::to('search/booknow/city')}}" + "/" + Event_City +
+                        "/" + Event_Type_City;
+                } else {
+                    alert("Please Fill All The Fields ")
+                }
+
+
+
+
+            }
+
+        )
+
+        $('#Search_Btn_Country').on('click', function() {
+            var Event_Type_Country = $('#Event_Type_Country').find(":selected").val();
+            var Event_Country = $('#Event_Country').find(":selected").val();
+            console.log(Event_Type_Country)
+            console.log(Event_Country)
+            if (Event_Type_Country != '' && Event_Country != '') {
+                window.location.href = "{{URL::to('search/booknow/country')}}" + "/" + Event_Country +
+                    "/" + Event_Type_Country;
+            } else {
+                alert("Please Fill All The Fields ")
+            }
+
+        });
+
+
+
+        $('.Search_Btn_Category').on('click', function() {
+            var Event_Type_Category = $('#Event_Type_Category').find(":selected").val();
+            var Event_Category = $('#Event_Category').find(":selected").val();
+            console.log(Event_Type_Category)
+            console.log(Event_Category)
+            if (Event_Type_Category != '' && Event_Category != '') {
+                window.location.href = "{{URL::to('search/booknow/category')}}" + "/" + Event_Category +
+                    "/" + Event_Type_Category;
+            } else {
+                alert("Please Fill All The Fields ")
+            }
+        })
+    });
+    </script>
     <script>
     $(document).ready(function() {
-        $('#search_div').hide();
         //start of automcomplte cities
-        $('#country_name').keyup(function() {
-            var selected_type = $("input[type='radio'][name='options']:checked").val();;
-            console.log(selected_type);
+        $('#Autocomplete_Cities').keyup(function() {
+            // var selected_type = $("input[type='radio'][name='options']:checked").val();;
+
             var query = $(this).val();
             if (query != '') {
                 var _token = $('input[name="_token"]').val();
@@ -519,67 +616,101 @@ $path="../public/";
                     data: {
                         query: query,
                         _token: _token,
-                        selected_type: selected_type
+
                     },
                     success: function(data) {
-                        $('#country_list').fadeIn();
-                        $('#country_list').empty().html(data)
+                        $('#Cities_List').fadeIn();
+                        $('#Cities_List').empty().html(data)
                         console.log(data)
                     }
                 })
             }
-        })
 
-        $('#country_list').on('click', '.search_list_name', function() {
+        }) //
+
+        $('#Cities_List').on('click', '.search_list_name', function() {
 
             var value = $(this).text();
             console.log(value);
-            $('#country_name').val(value);
-            $('#country_list').empty().html()
+            $('#Autocomplete_Cities').val(value);
+            $('#Cities_List').empty().html()
         })
+        $('#Autocomplete_Countries').keyup(function() {
+            //start of automcomplte countries
+            var query = $(this).val();
+            if (query != '') {
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    // url: "{{ url('autocomplete/event/countries') }}",
+                    // method: "POST",
+                    type: 'GET',
+                    url: 'https://restcountries.eu/rest/v2/all?fields=name',
+                    data: {
+                        query: query,
+                        _token: _token,
 
-        $('.list_3').on('click', function() {
-            console.log("cliked")
-            var value = $(this).text();
-            console.log(value);
-            $('#country_name').val(value);
-            setTimeout(function() {
-
-                $('#search_btn').trigger('click');
-
-
-
-            }, 1);
-
-        })
-        //end of automcomplte
-
-        //start of search div
-
-        $('#country_name').on('click', function() {
-            var vis = document.getElementById('search_div');
-            vis_status = vis.style.display;
-            console.log(vis);
-            if (vis_status == 'none') {
-                vis_status = vis.style.display = 'block';
-            } else {
-                vis_status = vis.style.display = 'none';
+                    },
+                    success: function(response) {
+                        var countryArray = response;
+                        var dataCountry = {};
+                        for (var i = 0; i < countryArray.length; i++) {
+                            //console.log(countryArray[i].name);
+                            dataCountry[countryArray[i].name] = countryArray[i]
+                                .flag; //countryArray[i].flag or null
+                        }
+                        $('input.autocomplete').autocomplete({
+                            data: dataCountry,
+                            limit: 5, // The max amount of results that can be shown at once. Default: Infinity.
+                        });
+                    }
+                })
             }
 
-        })
+        });
+
+
 
 
     })
     </script>
+
     <script src="{{url('/theme/travel')}}/js/bootstrap.js"></script>
     <script src="{{url('/theme/travel')}}/js/wow.min.js"></script>
     <script src="{{url('/theme/travel')}}/js/materialize.min.js"></script>
+    <script>
+    $(document).ready(function() {
+
+
+        $(document).ready(function() {
+            //Autocomplete
+            $(function() {
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://restcountries.eu/rest/v2/all?fields=name',
+                    success: function(response) {
+                        var countryArray = response;
+                        var dataCountry = {};
+                        for (var i = 0; i < countryArray.length; i++) {
+                            //console.log(countryArray[i].name);
+                            dataCountry[countryArray[i].name] = countryArray[i]
+                                .flag; //countryArray[i].flag or null
+                        }
+                        $('input.autocomplete').autocomplete({
+                            data: dataCountry,
+                            limit: 5, // The max amount of results that can be shown at once. Default: Infinity.
+                        });
+                    }
+                });
+            });
+        });
+
+    });
+    </script>
     <script src="{{url('/theme/travel')}}/js/custom.js"></script>
-    {{-- <script src="{{asset('public/js/actvities_packages.js')}}" ></script> --}}
-    {{-- <script src="{{asset('public/js/cruises_packages.js')}}" ></script>
-    <script src="{{asset('public/js/transfers_packages.js')}}"></script> --}}
-    {{-- <script src="{{asset('public/js/city.js')}}" ></script> --}}
     <script src="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/owl.carousel.js"></script>
+
+
+
     <script>
     $('.owl-carousel').owlCarousel({
         loop: true,
@@ -619,7 +750,9 @@ $path="../public/";
     </script>
 
 
+
 </body>
+
 @include('layouts.alerts')
 
 </html>

@@ -1,12 +1,14 @@
 @extends('layouts.website')
 @section('content')
-{{-- <style>
-table {
-display: block;
-overflow-x: auto;
-white-space: nowrap;
-}
-</style>--}}
+{{--
+<style>
+   table {
+   display: block;
+   overflow-x: auto;
+   white-space: nowrap;
+   }
+</style>
+--}}
 <style>
 @media screen and (min-width: 1230px) {
     .hot-page2-alp-quot-btn {
@@ -62,8 +64,14 @@ input.waves-button-input {
 }
 
 .select-wrapper input.select-dropdown {
-    height: 45px;
+    /* height: 45px; */
+    /* background-color: white; */
+    border: 2px solid white;
+    color: white;
+    font-weight: bold;
 }
+
+
 
 .autocomplete-items div {
     padding: 10px;
@@ -139,10 +147,48 @@ i.waves-effect.waves-light.tourz-sear-btn.waves-input-wrapper {
 li {
     cursor: pointer !important;
 }
+
+/* Search Autocomplte CSS */
+#autocomplete-input {
+    border: 2px solid #fff;
+    height: 40px !important;
+    background-color: transparent !important;
+    color: #fff;
+}
+
+
+#Search_Btn_Category,
+#Search_Btn_CutomCity,
+#Search_Btn_CutomCountry,
+#Search_Btn_City,
+#Search_Btn_Country {
+    height: 40px !important;
+    border: 2px solid #fff;
+    font-weight: bold;
+    font-size: 15px;
+
+}
+
+#Autocomplete_Cities::-webkit-input-placeholder {
+    color: #fff;
+    padding-left: 7px;
+    font-weight: bold;
+    ;
+}
+
+#Autocomplete_Cities {
+    border: 2px solid #fff;
+    border-radius: 0px !important;
+    height: 40px !important;
+    color: #fff;
+    font-weight: bold;
+    background-color: transparent !important;
+}
+
+/* End  */
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
 <section>
     <div id="fb-root"></div>
     <div class="fb-customerchat" attribution=setup_tool page_id="411933035571511">
@@ -153,109 +199,305 @@ li {
                 <div class="tourz-search-1">
                     <h1>Discover the Best of Central Europe!</h1>
                     <p>Make your choice and plan your trip at the best price in just a few minutes.</p>
-                    <form class="row" action="{{url('search/result')}}">
 
-                        <div class="col-sm-8 col-lg-8" class="autocomplete" style="padding: 0px;margin: 0px">
-                            <div class="radio-toolbar">
-                                <input type="radio" id="radioPackages" name="options" value="1" checked>
-                                <label for="radioPackages">Packages</label>
-                                <input type="radio" id="radioDaytours" name="options" value="2">
-                                <label for="radioDaytours">DayTour</label>
-                                <input type="radio" id="radioActivites" name="options" value="3">
-                                <label for="radioActivites">Activites</label>
-                                <input type="radio" id="radioCruises" name="options" value="4">
-                                <label for="radioCruises">Cruises</label>
-                                <input type="radio" id="radioTransfer" name="options" value="5">
-                                <label for="radioTransfer">Transfers</label>
-                            </div>
-                            <input type="text" name="country_name" id="country_name" class=" typeahead form-control "
-                                autocomplete="off" placeholder="Enter Destination (city or country)" />
-                            {{ csrf_field() }}
+                    <!--  -->
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <ul class="nav nav-tabs border-0">
+                                <li class="active"><a data-toggle="tab" class="text-danger border"
+                                        href="#City_Search_Tab">Search By City</a></li>
+                                <li><a data-toggle="tab" class="text-danger border" href="#Country_Search_Tab">Search By
+                                        Country</a></li>
+                                <li><a data-toggle="tab" class="text-danger border" href="#Category_Search_Tab">Search
+                                        By
+                                        Category</a></li>
+                                <li><a data-toggle="tab" class="text-danger border" href="#CustomCity_Search_Tab">Custom
+                                        City Search</a></li>
+                                <li><a data-toggle="tab" class="text-danger border"
+                                        href="#CustomCountry_Search_Tab">Custom
+                                        Country Search</a></li>
 
-                            <div id="country_list"></div>
-                            <div style="text-align: left;width:100%;background-color:white!important;position: absolute; z-index:99;  padding: 10px 10px;"
-                                id="search_div">
-                                <div class="d-flex flex-row justify-content-around align-items-center">
-                                    <span>
-                                        <a href="{{url('/cities')}}">
-                                            <h2 style="color: #253d52; ">Popular <span
-                                                    style="color: #f4364f;font-size: 2rem;">Cities</span></h2>
-                                    </span>
-                                    <span>
-                                        <a href="{{url('/cities')}}">
-                                            <h2 style="color: #253d52; ">Popular <span
-                                                    style="color: #f4364f;font-size: 2rem;">Countries</span></h2>
-                                    </span>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="City_Search_Tab" class="tab-pane fade in active">
+                                    <div class="row d-flex flex-row justify-content-center align-items-center">
+
+                                        <div class="input-field col-md-4 s12 m12 l12 mt-5 mb-5">
+
+                                            <select name="Event_Type" class="Event_Type_City" id="Event_Type_City">
+                                                <option value="" disabled selected>Event Type</option>
+                                                <option value="All">
+                                                    All</option>
+                                                <option value="Activity">
+                                                    Activity
+                                                </option>
+                                                <option value="Cruise">
+                                                    Cruise
+                                                </option>
+                                                <option value="Transfer">
+                                                    Transfer
+                                                </option>
+                                                <option value="Daytour">
+                                                    Daytour
+                                                </option>
+                                                <option value="Package">
+                                                    Package
+                                                </option>
+                                            </select>
+                                            <label class="text-white font-weight-bold">Event
+                                                Type</label>
+                                        </div>
+
+
+
+
+                                        <div class="input-field col-md-4 s12 m12 l12 mt-5 mb-5 m-0 p-0">
+
+                                            <select name="Event_City" class="Event_City" id="Event_City">
+                                                <option value="" disabled selected>Choose City</option>
+                                                @foreach($Event_Cities as $City)
+
+                                                <option value="{{$City->id}}">
+                                                    {{$City->name}}</option>
+                                                @endforeach
+
+                                            </select>
+                                            <label class="text-white font-weight-bold">Event
+                                                City</label>
+                                        </div>
+
+                                        <div class="col-md-4 mt-2">
+                                            <button type="button" class="btn btn-danger btn-block Search_Btn_City"
+                                                id="Search_Btn_City">Search</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                </a>
-                                <!-- put row here -->
+                                <div id="Country_Search_Tab" class="tab-pane fade">
+                                    <div class="row d-flex flex-row justify-content-center align-items-center">
+                                        <div class="input-field col-md-4 s12 m12 l12 mt-5 mb-5">
 
-
-                                <ul class="col-md-6 list-unstyled text-left mt-2" style="margin:0px;padding:0px;">
-
-
-                                    @foreach($Event_Cities as $city)
-                                    <h2 style="color: #253d52;"> <span style="color: #f4364f;font-size: 16px;"></span>
-                                    </h2>
-                                    <a href="{{ route('allevents.search.city',['id'=>$city->id]) }}">
-                                        <li class="list_3" id="{{$city->id ?? ''}}"
-                                            style="font-weight:bold;margin-left:10px">{{$city->name ?? ''}}</li>
-                                    </a>
-                                    @endforeach
-
-                                </ul>
-
-                                <ul class="col-md-6 list-unstyled  mt-2" style="margin:0px;padding:0px;">
-
-
-                                    @foreach($Event_Countries as $country)
-                                    <h2 style="color: #253d52;"> <span style="color: #f4364f;font-size: 16px;"></span>
-                                    </h2>
-                                    <li class="list_3" id="{{$country->id ?? ''}}"
-                                        style="font-weight:bold;margin-left:10px">{{$country->name ?? ''}}</li>
-                                    @endforeach
-
-                                </ul>
-
-
+                                            <select name="Event_Type" class="Event_Type_Country"
+                                                id="Event_Type_Country">
+                                                <option value="" disabled selected>Event Type</option>
+                                                <option value="All">
+                                                    All</option>
+                                                <option value="Activity">
+                                                    Activity
+                                                </option>
+                                                <option value="Cruise">
+                                                    Cruise
+                                                </option>
+                                                <option value="Transfer">
+                                                    Transfer
+                                                </option>
+                                                <option value="Daytour">
+                                                    Daytour
+                                                </option>
+                                                <option value="Package">
+                                                    Package
+                                                </option>
+                                            </select>
+                                            <label class="text-white font-weight-bold">Event
+                                                Type</label>
+                                        </div>
 
 
 
 
+                                        <div class="input-field col-md-4 s12 m12 l12 mt-5 mb-5 p-0 m-0">
+
+                                            <select name="Event_Country" class="Event_Country" id="Event_Country">
+                                                <option value="" disabled selected>Choose Country</option>
+                                                @foreach($Event_Countries as $Country)
+
+                                                <option value="{{$Country->id}}">
+                                                    {{$Country->name}}</option>
+                                                @endforeach
+
+                                            </select>
+                                            <label class="text-white font-weight-bold">Event
+                                                Country</label>
+                                        </div>
+
+                                        <div class="col-md-4 mt-2">
+                                            <button type="button" class="btn btn-danger btn-block Search_Btn_Country"
+                                                id="Search_Btn_Country">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--  -->
+                                <div id="Category_Search_Tab" class="tab-pane fade">
+                                    <div class="row d-flex flex-row justify-content-center align-items-center">
+                                        <div class="input-field col-md-4 s12 m12 l12 mt-5 mb-5 m-0 p-0">
+
+                                            <select name="Event_Type_Category" class="Event_Type_Category"
+                                                id="Event_Type_Category">
+                                                <option value="" disabled selected>Event Type</option>
+                                                <option value="All">
+                                                    All</option>
+                                                <option value="Activity">
+                                                    Activity
+                                                </option>
+                                                <option value="Cruise">
+                                                    Cruise
+                                                </option>
+                                                <option value="Transfer">
+                                                    Transfer
+                                                </option>
+                                                <option value="Daytour">
+                                                    Daytour
+                                                </option>
+                                                <option value="Package">
+                                                    Package
+                                                </option>
+                                            </select>
+                                            <label class="text-white font-weight-bold">Event
+                                                Type</label>
+                                        </div>
 
 
+
+
+                                        <div class="input-field col-md-4 s12 m12 l12 mt-5 mb-5 ">
+
+                                            <select name="Event_Category" class="Event_Category" id="Event_Category">
+                                                <option value="" disabled selected>Choose Category</option>
+                                                @foreach($Event_Categories as $Category)
+
+                                                <option value="{{$Category->id}}">
+                                                    {{$Category->name}}</option>
+                                                @endforeach
+
+                                            </select>
+                                            <label class="text-white font-weight-bold">Event
+                                                Country</label>
+                                        </div>
+
+                                        <div class="col-md-4 mt-2">
+                                            <button type="button" class="btn btn-danger btn-block Search_Btn_Category"
+                                                id="Search_Btn_Category">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--  -->
+
+
+                                <!--  -->
+                                <div id="CustomCity_Search_Tab" class="tab-pane fade">
+                                    <div class="row d-flex flex-row justify-content-center align-items-center">
+                                        <div class="input-field col-md-4 s12 m12 l12 mt-5 mb-5">
+
+                                            <select name="Event_Type_CustomCity" class="Event_Type_CustomCity"
+                                                id="Event_Type_CustomCity">
+                                                <option value="" disabled selected>Event Type</option>
+                                                <option value="All">
+                                                    All</option>
+                                                <option value="Activity">
+                                                    Activity
+                                                </option>
+                                                <option value="Cruise">
+                                                    Cruise
+                                                </option>
+                                                <option value="Transfer">
+                                                    Transfer
+                                                </option>
+                                                <option value="Daytour">
+                                                    Daytour
+                                                </option>
+                                                <option value="Package">
+                                                    Package
+                                                </option>
+                                            </select>
+                                            <label class="text-white font-weight-bold">Event
+                                                Type</label>
+                                        </div>
+
+
+
+
+                                        <div class="input-field col-md-4 s12 m12 l12 mt-5 mb-5 m-0 p-0 ">
+
+                                            <input type="text" name="Autocomplete_Cities" id="Autocomplete_Cities"
+                                                class=" typeahead form-control  " autocomplete="off"
+                                                placeholder="Enter  City Name" />
+                                            <div id="Cities_List" class=""></div>
+                                            {{ csrf_field() }}
+                                        </div>
+
+                                        <div class="col-md-4 mt-2">
+                                            <button type="button" class="btn btn-danger btn-block Search_Btn_CutomCity"
+                                                id="Search_Btn_CutomCity">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--  -->
+                                <!--  -->
+                                <div id="CustomCountry_Search_Tab" class="tab-pane fade">
+                                    <div class="row d-flex flex-row justify-content-center align-items-center">
+                                        <div class="input-field col-md-4 s12 m12 l12 mt-5 mb-5">
+
+                                            <select name="Event_Type_CustomCountry" class="Event_Type_CustomCountry"
+                                                id="Event_Type_CustomCountry">
+                                                <option value="" disabled selected>Event Type</option>
+                                                <option value="All">
+                                                    All</option>
+                                                <option value="Activity">
+                                                    Activity
+                                                </option>
+                                                <option value="Cruise">
+                                                    Cruise
+                                                </option>
+                                                <option value="Transfer">
+                                                    Transfer
+                                                </option>
+                                                <option value="Daytour">
+                                                    Daytour
+                                                </option>
+                                                <option value="Package">
+                                                    Package
+                                                </option>
+                                            </select>
+                                            <label class="text-white font-weight-bold">Event
+                                                Type</label>
+                                        </div>
+
+
+
+
+
+
+
+
+                                        <div class="input-field col s12 m-0 p-0">
+
+                                            <input type="text" id="autocomplete-input" class="autocomplete">
+                                            <label for="autocomplete-input" class="text-white font-weight-bold "
+                                                style="margin-top:-5px;">Enter
+                                                Country
+                                                Name</label>
+                                        </div>
+
+
+
+
+                                        <div class="col-md-4 mt-2">
+                                            <button type="button"
+                                                class="btn btn-danger btn-block Search_Btn_CutomCountry"
+                                                id="Search_Btn_CutomCountry">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--  -->
 
 
 
                             </div>
-
-
-
-
-
-
-
-
-
                         </div>
-                        <!--<div class="col-sm-2 col-lg-2" class="autocomplete" style="padding: 0px;margin: 0px">-->
-                        <!--    <div class="form-group" style="background-color:white">-->
 
-                        <!--        <select   id="options" name="options" style="width:100%;" required="required">-->
-                        <!--            <option>Select</option>-->
-                        <!--            <option value="1" style="font-size:12px!important;">Packages</option>-->
-                        <!--            <option value="2" style="font-size:12px!important">Day Tours</option>-->
-                        <!--            <option value="3" style="font-size:12px!important">Activities</option>-->
-                        <!--            <option value="4" style="font-size:12px!important">Cruises</option>-->
-                        <!--            <option value="5" style="font-size:12px!important">Transfers</option>-->
-                        <!--        </select>-->
-                        <!--    </div>-->
-                        <!--</div>-->
-                        <div class="col-sm-12 col-lg-4" style="display: flex; align-items: flex-end;">
-                            <input type="submit" value="search" id="search_btn"
-                                class="waves-effect waves-light tourz-sear-btn" style="width: 100%;">
-                        </div>
-                    </form>
+                    </div>
+                    <!--  -->
                     <div class="tourz-hom-ser">
                         <ul>
                             <li>
@@ -306,8 +548,8 @@ li {
                     </div>
                 </div>
             </div>
+
         </div>
-    </div>
 </section>
 <!--====== POPULAR TOUR PLACES ==========-->
 <section>
@@ -333,9 +575,9 @@ li {
                             <div class="col-md-12 col-sm-12 col-xs-12 b_packages wow slideInUp p-t-10"
                                 data-wow-duration="0.5s">
                                 <!-- OFFER BRAND -->
-                                @if($s->discount!=0)<div class="band"> <img
-                                        src="{{url('/theme/travel')}}/images/icon/ribbon.png" alt="" /><span
-                                        class="disc-text">{{$s->discount}}<br>OFF</span></div>
+                                @if($s->discount!=0)
+                                <div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png"
+                                        alt="" /><span class="disc-text">{{$s->discount}}<br>OFF</span></div>
                                 @else
                                 <!--  <div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png" alt="" /><span class="disc-text">No Discount</span></div> -->
                                 @endif
@@ -399,29 +641,31 @@ li {
             <!-- TITLE & DESCRIPTION -->
             <div class="spe-title">
                 <h2>Top <span>
-                        Day Tours</span></h2>
+                        Day Tours</span>
+                </h2>
                 <div class="title-line">
                     <div class="tl-1"></div>
                     <div class="tl-2"></div>
                     <div class="tl-3"></div>
                 </div>
                 <p>We offer days tours all over Europe find the perfect days tours that best suits your needs.</p>
-                {{-- <p>World's leading tour and travels Booking website,Over 30,000 Events worldwide.</p>--}}
+                {{--
+            <p>World's leading tour and travels Booking website,Over 30,000 Events worldwide.</p>
+            --}}
             </div>
             <!-- TOUR PLACE 1 -->
             <div class="carousel-wrap">
                 <div class="owl-carousel">
                     @foreach(DB::table('all__events')->where('event_type','Daytour')->orderBy('id','desc')->get() as
                     $key=>$s)
-
                     <div class="item">
                         <a href="{{  url('event_detail') }}/{{ $s->id }}">
                             <div class="col-md-12 col-sm-12 col-xs-12 b_packages wow slideInUp p-t-10"
                                 data-wow-duration="0.5s">
                                 <!-- OFFER BRAND -->
-                                @if($s->discount!=0)<div class="band"> <img
-                                        src="{{url('/theme/travel')}}/images/icon/ribbon.png" alt="" /><span
-                                        class="disc-text">{{$s->discount}}<br>OFF</span></div>
+                                @if($s->discount!=0)
+                                <div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png"
+                                        alt="" /><span class="disc-text">{{$s->discount}}<br>OFF</span></div>
                                 @else
                                 <!--  <div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png" alt="" /><span class="disc-text">No Discount</span></div> -->
                                 @endif
@@ -467,7 +711,6 @@ li {
                             </div>
                         </a>
                     </div>
-
                     @endforeach
                 </div>
             </div>
@@ -485,14 +728,104 @@ li {
             <!-- TITLE & DESCRIPTION -->
             <div class="spe-title">
                 <h2>Top <span>
-                        Activities</span></h2>
+                        Transfers</span>
+                </h2>
+                <div class="title-line">
+                    <div class="tl-1"></div>
+                    <div class="tl-2"></div>
+                    <div class="tl-3"></div>
+                </div>
+                <p>We offer days tours all over Europe find the perfect days tours that best suits your needs.</p>
+                {{--
+            <p>World's leading tour and travels Booking website,Over 30,000 Events worldwide.</p>
+            --}}
+            </div>
+            <!-- TOUR PLACE 1 -->
+            <div class="carousel-wrap">
+                <div class="owl-carousel">
+                    @foreach(DB::table('all__events')->where('event_type','Transfer')->orderBy('id','desc')->get() as
+                    $key=>$s)
+                    <div class="item">
+                        <a href="{{  url('event_detail') }}/{{ $s->id }}">
+                            <div class="col-md-12 col-sm-12 col-xs-12 b_packages wow slideInUp p-t-10"
+                                data-wow-duration="0.5s">
+                                <!-- OFFER BRAND -->
+                                @if($s->discount!=0)
+                                <div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png"
+                                        alt="" /><span class="disc-text">{{$s->discount}}<br>OFF</span></div>
+                                @else
+                                <!--  <div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png" alt="" /><span class="disc-text">No Discount</span></div> -->
+                                @endif
+                                <!--    <div class="band">-->
+                                <!--    <div class="box">-->
+                                <!--        <div class="ribbon"><span>{{$s->discount}}</span></div>-->
+                                <!--    </div>-->
+                                <!--    {{--<span class="w3-tag w3-yellow"></span>--}}-->
+                                <!--    {{--  <img src="{{url('/theme/travel')}}/images/band.png" alt="" />--}}-->
+                                <!--</div>-->
+                                <!-- IMAGE -->
+                                <div class="v_place_img" style="height: 200px">
+                                    <img src="{{$s->banner}}" alt="Tour Booking" title="Tour Booking"
+                                        style="height: 100%;width: 100%">
+                                    <!--<img src="{{url('/').App\StoragePath::path()}}/storage/activities/{{$s->banner}}" alt="Tour Booking" title="Tour Booking" style="height: 100%;width: 100%">-->
+                                </div>
+                                <!-- TOUR TITLE & ICONS -->
+                                <div class="b_pack rows">
+                                    <!-- TOUR TITLE -->
+                                    <div class="col-md-8 col-sm-8">
+                                        <h4>{{$s->event_name}}<span class="v_pl_name" style="color: black"></span></h4>
+                                    </div>
+                                    <!-- TOUR ICONS -->
+                                    <div class="col-md-4 col-sm-4 pack_icon">
+                                        <a href="{{  url('event_detail') }}/{{ $s->id }}"
+                                            class="hot-page2-alp-quot-btn">Book Now</a>
+                                        <!--<ul>-->
+                                        <!--    <li>-->
+                                        <!--        <a href="#"><img src="{{url('/theme/travel')}}/images/clock.png" alt="Date" title="Tour Timing" /> </a>-->
+                                        <!--    </li>-->
+                                        <!--    <li>-->
+                                        <!--        <a href="#"><img src="{{url('/theme/travel')}}/images/info.png" alt="Details" title="View more details" /> </a>-->
+                                        <!--    </li>-->
+                                        <!--    <li>-->
+                                        <!--        <a href="#"><img src="{{url('/theme/travel')}}/images/price.png" alt="Price" title="Price" /> </a>-->
+                                        <!--    </li>-->
+                                        <!--    <li>-->
+                                        <!--        <a href="#"><img src="{{url('/theme/travel')}}/images/map.png" alt="Location" title="Location" /> </a>-->
+                                        <!--    </li>-->
+                                        <!--</ul>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        <center>
+            <div class="container">
+                <a class="link-btn" href="{{route('all.events.transfer')}}"> See All Transfers</a>
+            </div>
+        </center>
+    </div>
+</section>
+<section>
+    <div class="rows pad-bot-redu tb-spaces">
+        <div class="container-fluid">
+            <!-- TITLE & DESCRIPTION -->
+            <div class="spe-title">
+                <h2>Top <span>
+                        Activities</span>
+                </h2>
                 <div class="title-line">
                     <div class="tl-1"></div>
                     <div class="tl-2"></div>
                     <div class="tl-3"></div>
                 </div>
                 <p>We offer activities all over Europe find the perfect activities that best suits your needs.</p>
-                {{-- <p>World's leading tour and travels Booking website,Over 30,000 Events worldwide.</p>--}}
+                {{--
+            <p>World's leading tour and travels Booking website,Over 30,000 Events worldwide.</p>
+            --}}
             </div>
             <!-- TOUR PLACE 1 -->
             <div class="carousel-wrap">
@@ -504,9 +837,9 @@ li {
                             <div class="col-md-12 col-sm-12 col-xs-12 b_packages wow slideInUp p-t-10"
                                 data-wow-duration="0.5s">
                                 <!-- OFFER BRAND -->
-                                @if($s->discount!=0)<div class="band"> <img
-                                        src="{{url('/theme/travel')}}/images/icon/ribbon.png" alt="" /><span
-                                        class="disc-text">{{$s->discount}}<br>OFF</span></div>
+                                @if($s->discount!=0)
+                                <div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png"
+                                        alt="" /><span class="disc-text">{{$s->discount}}<br>OFF</span></div>
                                 @else
                                 <!--  <div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png" alt="" /><span class="disc-text">No Discount</span></div> -->
                                 @endif
@@ -570,14 +903,17 @@ li {
             <!-- TITLE & DESCRIPTION -->
             <div class="spe-title">
                 <h2>Top <span>
-                        Cruises</span></h2>
+                        Cruises</span>
+                </h2>
                 <div class="title-line">
                     <div class="tl-1"></div>
                     <div class="tl-2"></div>
                     <div class="tl-3"></div>
                 </div>
                 <p>We cruises tours all over Europe find the perfect cruises that best suits your needs.</p>
-                {{-- <p>World's leading tour and travels Booking website,Over 30,000 Events worldwide.</p>--}}
+                {{--
+            <p>World's leading tour and travels Booking website,Over 30,000 Events worldwide.</p>
+            --}}
             </div>
             <!-- TOUR PLACE 1 -->
             <div class="carousel-wrap">
@@ -589,9 +925,9 @@ li {
                             <div class="col-md-12 col-sm-12 col-xs-12 b_packages wow slideInUp p-t-10"
                                 data-wow-duration="0.5s">
                                 <!-- OFFER BRAND -->
-                                @if($s->discount!=0)<div class="band"> <img
-                                        src="{{url('/theme/travel')}}/images/icon/ribbon.png" alt="" /><span
-                                        class="disc-text">{{$s->discount}}<br>OFF</span></div>
+                                @if($s->discount!=0)
+                                <div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png"
+                                        alt="" /><span class="disc-text">{{$s->discount}}<br>OFF</span></div>
                                 @else
                                 <!--  <div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png" alt="" /><span class="disc-text">No Discount</span></div> -->
                                 @endif
@@ -669,7 +1005,8 @@ li {
                         <div class="tour-mig-lc-img">
                             <img src="{{$item[0]->banner}}" alt="" title="{{ $item[0]->description }}"
                                 {{--style="height: 100%;width: 100%"--}}>
-                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}} </div>
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
                         <div class="tour-mig-lc-con">
                             <h5>{{$item[0]->name}}</h5>
                             <p><span>{{--12 Packages--}}</span>
@@ -758,10 +1095,10 @@ li {
                                 alt=""
                                 title="Moscow, on the Moskva River in western Russia, is the nation’s cosmopolitan capital. In its historic core is the Kremlin, a complex that’s home to the president and tsarist treasures in the Armoury. Outside its walls is Red Square, Russia's symbolic center. It's home to Lenin’s Mausoleum, the State Historical Museum's comprehensive collection and St. Basil’s Cathedral, known for its colorful, onion-shaped domes."
                                 style="height: 200px;width: 100%;">
-                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}} </div>
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
                         <div class="tour-mig-lc-con">
                             <h5>Moscow</h5>
-
                         </div>
                     </div>
                 </a>
@@ -776,16 +1113,15 @@ li {
                                 alt=""
                                 title="Tokyo, Japan’s busy capital, mixes the ultramodern and the traditional, from neon-lit skyscrapers to historic temples. The opulent Meiji Shinto Shrine is known for its towering gate and surrounding woods. The Imperial Palace sits amid large public gardens. The city's many museums offer exhibits ranging from classical art (in the Tokyo National Museum) to a reconstructed kabuki theater (in the Edo-Tokyo Museum)."
                                 style="height: 200px;width: 100%;">
-                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}} </div>
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
                         <div class="tour-mig-lc-con">
                             <h5>Tokyo</h5>
-
                         </div>
                     </div>
                 </a>
             </div>
             {{-- end --}}
-
             {{-- start --}}
             <div class="col-md-3 ">
                 <a href="">
@@ -795,10 +1131,10 @@ li {
                                 alt=""
                                 title="Moscow, on the Moskva River in western Russia, is the nation’s cosmopolitan capital. In its historic core is the Kremlin, a complex that’s home to the president and tsarist treasures in the Armoury. Outside its walls is Red Square, Russia's symbolic center. It's home to Lenin’s Mausoleum, the State Historical Museum's comprehensive collection and St. Basil’s Cathedral, known for its colorful, onion-shaped domes."
                                 style="height: 200px;width: 100%;">
-                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}} </div>
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
                         <div class="tour-mig-lc-con">
                             <h5>Moscow</h5>
-
                         </div>
                     </div>
                 </a>
@@ -813,10 +1149,10 @@ li {
                                 alt=""
                                 title="Tokyo, Japan’s busy capital, mixes the ultramodern and the traditional, from neon-lit skyscrapers to historic temples. The opulent Meiji Shinto Shrine is known for its towering gate and surrounding woods. The Imperial Palace sits amid large public gardens. The city's many museums offer exhibits ranging from classical art (in the Tokyo National Museum) to a reconstructed kabuki theater (in the Edo-Tokyo Museum)."
                                 style="height: 200px;width: 100%;">
-                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}} </div>
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
                         <div class="tour-mig-lc-con">
                             <h5>Tokyo</h5>
-
                         </div>
                     </div>
                 </a>
@@ -833,7 +1169,8 @@ li {
                         <div class="tour-mig-lc-img">
                             <img src="{{$item[6]->banner}}" alt="" title="{{ $item[6]->description }}"
                                 style="height: 150px;width: 100%;">
-                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}} </div>
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
                         <div class="tour-mig-lc-con">
                             <h5>{{$item[6]->name}}</h5>
                             <p><span>{{--12 Packages--}}</span>
@@ -849,7 +1186,8 @@ li {
                         <div class="tour-mig-lc-img">
                             <img src="{{$item[7]->banner}}" alt="" title="{{ $item[7]->description }}"
                                 style="height: 150px;width: 100%;">
-                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}} </div>
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
                         <div class="tour-mig-lc-con">
                             <h5>{{$item[7]->name}}</h5>
                             <p><span>{{--12 Packages--}}</span>
@@ -865,7 +1203,8 @@ li {
                         <div class="tour-mig-lc-img">
                             <img src="{{$item[9]->banner}}" alt="" title="{{ $item[0]->description }}"
                                 style="height: 150px;width: 100%;">
-                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}} </div>
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
                         <div class="tour-mig-lc-con">
                             <h5>{{$item[6]->name}}</h5>
                             <p><span>{{--12 Packages--}}</span>
@@ -881,7 +1220,8 @@ li {
                         <div class="tour-mig-lc-img">
                             <img src="{{$item[8]->banner}}" alt="" title="{{ $item[0]->description }}"
                                 style="height: 150px;width: 100%;">
-                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}} </div>
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
                         <div class="tour-mig-lc-con">
                             <h5>{{$item[6]->name}}</h5>
                             <p><span>{{--12 Packages--}}</span>
@@ -970,10 +1310,10 @@ li {
                                 alt=""
                                 title="Moscow, on the Moskva River in western Russia, is the nation’s cosmopolitan capital. In its historic core is the Kremlin, a complex that’s home to the president and tsarist treasures in the Armoury. Outside its walls is Red Square, Russia's symbolic center. It's home to Lenin’s Mausoleum, the State Historical Museum's comprehensive collection and St. Basil’s Cathedral, known for its colorful, onion-shaped domes."
                                 style="height: 200px;width: 100%;">
-                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}} </div>
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
                         <div class="tour-mig-lc-con">
                             <h5>Moscow</h5>
-
                         </div>
                     </div>
                 </a>
@@ -988,16 +1328,15 @@ li {
                                 alt=""
                                 title="Tokyo, Japan’s busy capital, mixes the ultramodern and the traditional, from neon-lit skyscrapers to historic temples. The opulent Meiji Shinto Shrine is known for its towering gate and surrounding woods. The Imperial Palace sits amid large public gardens. The city's many museums offer exhibits ranging from classical art (in the Tokyo National Museum) to a reconstructed kabuki theater (in the Edo-Tokyo Museum)."
                                 style="height: 200px;width: 100%;">
-                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}} </div>
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
                         <div class="tour-mig-lc-con">
                             <h5>Tokyo</h5>
-
                         </div>
                     </div>
                 </a>
             </div>
             {{-- end --}}
-
             {{-- start --}}
             <div class="col-md-3 ">
                 <a href="">
@@ -1007,10 +1346,10 @@ li {
                                 alt=""
                                 title="Moscow, on the Moskva River in western Russia, is the nation’s cosmopolitan capital. In its historic core is the Kremlin, a complex that’s home to the president and tsarist treasures in the Armoury. Outside its walls is Red Square, Russia's symbolic center. It's home to Lenin’s Mausoleum, the State Historical Museum's comprehensive collection and St. Basil’s Cathedral, known for its colorful, onion-shaped domes."
                                 style="height: 200px;width: 100%;">
-                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}} </div>
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
                         <div class="tour-mig-lc-con">
                             <h5>Moscow</h5>
-
                         </div>
                     </div>
                 </a>
@@ -1025,10 +1364,10 @@ li {
                                 alt=""
                                 title="Tokyo, Japan’s busy capital, mixes the ultramodern and the traditional, from neon-lit skyscrapers to historic temples. The opulent Meiji Shinto Shrine is known for its towering gate and surrounding woods. The Imperial Palace sits amid large public gardens. The city's many museums offer exhibits ranging from classical art (in the Tokyo National Museum) to a reconstructed kabuki theater (in the Edo-Tokyo Museum)."
                                 style="height: 200px;width: 100%;">
-                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}} </div>
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
                         <div class="tour-mig-lc-con">
                             <h5>Tokyo</h5>
-
                         </div>
                     </div>
                 </a>
@@ -1052,25 +1391,26 @@ li {
 @endsection
 {{-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script> --}}
-{{-- <script>
-window.fbAsyncInit = function() {
-FB.init({
-appId      : '205766477231808',
-autoLogAppEvents : true,
-xfbml      : true,
-version    : 'v5.0'
-});
-FB.AppEvents.logPageView();
 
-};
-(function(d, s, id){
-var js, fjs = d.getElementsByTagName(s)[0];
-if (d.getElementById(id)) {return;}
-js = d.createElement(s);
- js.id = id;
-js.src = "https://connect.facebook.net/en_US/sdk.js";
-fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+{{-- <script>
+   window.fbAsyncInit = function() {
+   FB.init({
+   appId      : '205766477231808',
+   autoLogAppEvents : true,
+   xfbml      : true,
+   version    : 'v5.0'
+   });
+   FB.AppEvents.logPageView();
+
+   };
+   (function(d, s, id){
+   var js, fjs = d.getElementsByTagName(s)[0];
+   if (d.getElementById(id)) {return;}
+   js = d.createElement(s);
+    js.id = id;
+   js.src = "https://connect.facebook.net/en_US/sdk.js";
+   fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
 </script> --}}
 <script>
 window.fbAsyncInit = function() {
@@ -1089,9 +1429,9 @@ window.fbAsyncInit = function() {
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 </script>
-
-{{-- <div class="fb-customerchat"
-page_id="411933035571511">
-</div> --}}
+{{--
+<div class="fb-customerchat"
+   page_id="411933035571511"></div>
+--}}
 <!-- Load Facebook SDK for JavaScript -->
 <!-- Your customer chat code -->

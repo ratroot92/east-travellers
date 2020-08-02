@@ -1,232 +1,239 @@
 @extends('layouts.website')
 @section('content')
-    <!--====== BANNER ==========-->
-    <section>
-        @if(isset($activity->banner))
-        <div class="rows inner_banner" style="background-image: url('{{$activity->banner}}');background-size: cover;">
-            <!--<div class="container">-->
-            <!--    <ul>-->
-            <!--        <li><a href="#inner-page-title">Home</a>-->
-            <!--        </li>-->
-            <!--        <li><i class="fa fa-angle-right" aria-hidden="true"></i> </li>-->
-            <!--        <li><a href="#inner-page-title" class="bread-acti">@foreach($countries as $item){{$item->name}}/@endforeach</a>-->
-            <!--        </li>-->
-            <!--    </ul>-->
-            <!--    <h3 style="color: white">{{$activity->name}} | @foreach($categories as $item){{$item->name}}/@endforeach</h3>-->
-            <!--</div>-->
-        </div>
-        @else
-        @endif
-    </section>
-    <!--====== TOUR DETAILS - BOOKING ==========-->
-    <section>
-        <div class="rows banner_book" id="inner-page-title">
-            <div class="container">
-                <div class="banner_book_1">
-                    <ul>
-                        <li class="dl2">Location :@if(count($cities)>1)
-                                                Multiple Cities
-                                                @else
-                                                @foreach($cities as $item)
-                                                {{$item->name}}
-                                                @endforeach
-                                                @endif</li>
-                        <li class="dl2">Price : €{{$activity->price}}</li>
-                        <li class="dl2">Duration : {{$activity->duration}}</li>
-                    </ul>
-                </div>
+<!--====== BANNER ==========-->
+<section>
+    @if(isset($activity->banner))
+    <div class="rows inner_banner" style="background-image: url('{{$activity->banner}}');background-size: cover;">
+        <!--<div class="container">-->
+        <!--    <ul>-->
+        <!--        <li><a href="#inner-page-title">Home</a>-->
+        <!--        </li>-->
+        <!--        <li><i class="fa fa-angle-right" aria-hidden="true"></i> </li>-->
+        <!--        <li><a href="#inner-page-title" class="bread-acti">@foreach($countries as $item){{$item->name}}/@endforeach</a>-->
+        <!--        </li>-->
+        <!--    </ul>-->
+        <!--    <h3 style="color: white">{{$activity->name}} | @foreach($categories as $item){{$item->name}}/@endforeach</h3>-->
+        <!--</div>-->
+    </div>
+    @else
+    @endif
+</section>
+<!--====== TOUR DETAILS - BOOKING ==========-->
+<section>
+    <div class="rows banner_book" id="inner-page-title">
+        <div class="container">
+            <div class="banner_book_1">
+                <ul>
+                    <li class="dl2">Location :@if(count($cities)>1)
+                        Multiple Cities
+                        @else
+                        @foreach($cities as $item)
+                        {{$item->name}}
+                        @endforeach
+                        @endif</li>
+                    <li class="dl2">Price : €{{$activity->price}}</li>
+                    <li class="dl2">Duration : {{$activity->duration}}</li>
+                </ul>
             </div>
         </div>
-    </section>
-    <!--====== TOUR DETAILS ==========-->
-    <section>
-        <div class="rows inn-page-bg com-colo">
-            <div class="container inn-page-con-bg tb-space">
-                <div class="col-md-8 col-md-push">
-                    <!--====== TOUR TITLE ==========-->
-                    <div class="tour_head">
-                        <h2>{{$activity->name}}</h2>
+    </div>
+</section>
+<!--====== TOUR DETAILS ==========-->
+<section>
+    <div class="rows inn-page-bg com-colo">
+        <div class="container inn-page-con-bg tb-space">
+            <div class="col-md-8 col-md-push">
+                <!--====== TOUR TITLE ==========-->
+                <div class="tour_head">
+                    <h2>{{$activity->name}}</h2>
 
 
 
-                    </div>
+                </div>
 
-                    <!--====== TOUR DESCRIPTION ==========-->
-                    <div class="">
-                        <h3><i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i> Description</h3>
-                        <p>{{$activity->desc}}</p>
-                    </div>
-                    <!--====== ROOMS: HOTEL BOOKING ==========-->
-                    <div class="hotel-book-room">
-                        <h3><i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i> Photo Gallery</h3>
+                <!--====== TOUR DESCRIPTION ==========-->
+                <div class="">
+                    <h3><i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i> Description
+                    </h3>
+                    <p>{{$activity->desc}}</p>
+                </div>
+                <!--====== ROOMS: HOTEL BOOKING ==========-->
+                <div class="hotel-book-room">
+                    <h3><i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i> Photo
+                        Gallery</h3>
 
-@if(count($images)>0)
-<div id="myCarousel1" class="carousel slide photo-gallery-slider" data-ride="carousel">
-                            <!-- Indicators -->
-                            <ol class="carousel-indicators carousel-indicators-1">
-                                 @foreach($images as $key => $slider)
-                                <li data-target="#myCarousel1" data-slide-to="{{$key}}"><img src="{{$slider->src}}" alt="banner">
-                                </li>
-                                 @endforeach
-                            </ol>
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner carousel-inner1" role="listbox">
-                               @foreach($images as $key => $slider)
-                                <div class="item  {{$key == 0 ? 'active' : '' }}"> <img src="{{$slider->src}}" alt="Chania" width="460" height="345"> </div>
-                                @endforeach
+                    @if(count($images)>0)
+                    <div id="myCarousel1" class="carousel slide photo-gallery-slider" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators carousel-indicators-1">
+                            @foreach($images as $key => $slider)
+                            <li data-target="#myCarousel1" data-slide-to="{{$key}}"><img src="{{$slider->src}}"
+                                    alt="banner">
+                            </li>
+                            @endforeach
+                        </ol>
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner carousel-inner1" role="listbox">
+                            @foreach($images as $key => $slider)
+                            <div class="item  {{$key == 0 ? 'active' : '' }}"> <img src="{{$slider->src}}" alt="Chania"
+                                    width="460" height="345"> </div>
+                            @endforeach
 
-                            </div>
-                            <!-- Left and right controls -->
-                            <a class="left carousel-control" href="#myCarousel1" role="button" data-slide="prev"> <span><i class="fa fa-angle-left hotel-gal-arr" aria-hidden="true"></i></span> </a>
-                            <a class="right carousel-control" href="#myCarousel1" role="button" data-slide="next"> <span><i class="fa fa-angle-right hotel-gal-arr hotel-gal-arr1" aria-hidden="true"></i></span> </a>
                         </div>
- @else
- <p>no images </p>
-@endif
-
-
-
-
-
-
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel1" role="button" data-slide="prev"> <span><i
+                                    class="fa fa-angle-left hotel-gal-arr" aria-hidden="true"></i></span> </a>
+                        <a class="right carousel-control" href="#myCarousel1" role="button" data-slide="next"> <span><i
+                                    class="fa fa-angle-right hotel-gal-arr hotel-gal-arr1"
+                                    aria-hidden="true"></i></span> </a>
                     </div>
-                    <div class="row">
-                        <h3>
-                            <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
-                            About The Tour
-                        </h3>
+                    @else
+                    <p>no images </p>
+                    @endif
 
-                        @php echo  $activity->about@endphp
-                    </div>
 
-                    <div class="row">
-                        <h3>
-                            <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
-                            Detailed Day Wise Itinerary
-                        </h3>
 
-                        @php echo  $activity->day_detail@endphp
-                    </div>
-   <!--                 <div class="row">-->
-   <!--                     <div class="col-md-12"style="padding: 0;">-->
-   <!--                         <div class="db-2" style="width: 100%;margin: 0;">-->
-            <!--    <div class="db-2-com db-2-main">-->
-            <!--        <h4>More Information</h4>-->
-            <!--        <div class="db-2-main-com db-2-main-com-table">-->
-            <!--            <table class="responsive-table">-->
-            <!--                <tbody>-->
-            <!--                    <tr>-->
-            <!--                        <td>Group Size</td>-->
-            <!--                        <td>:</td>-->
-            <!--                        <td>@php echo  $activity->grpsize@endphp</td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td>Tour Style</td>-->
-            <!--                        <td>:</td>-->
-            <!--                        <td>@php echo  $activity->tourstyle@endphp</td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td>Tour Language</td>-->
-            <!--                        <td>:</td>-->
-            <!--                        <td>@php echo  $activity->tourlanguage@endphp</td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td>Start/End Location</td>-->
-            <!--                        <td>:</td>-->
-            <!--                        <td>@php echo  $activity->startloc@endphp</td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td>Availablity</td>-->
-            <!--                        <td>:</td>-->
-            <!--                        <td>@php echo  $activity->avalibilitydetails@endphp</td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td>Transport Details</td>-->
-            <!--                        <td>:</td>-->
-            <!--                        <td>@php echo  $activity->tranportdetails@endphp</td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td>Accomodation Details</td>-->
-            <!--                        <td>:</td>-->
-            <!--                        <td>@php echo  $activity->accomodationdetails@endphp</td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td>Meal Details</td>-->
-            <!--                        <td>:</td>-->
-            <!--                        <td>@php echo  $activity->mealdetails@endphp</td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td>Guide Details</td>-->
-            <!--                        <td>:</td>-->
-            <!--                        <td>@php echo  $activity->guidedetails@endphp</td>-->
-            <!--                    </tr>-->
-            <!--                </tbody>-->
-            <!--            </table>-->
-            <!--        </div>-->
-            <!--    </div>-->
-            <!--</div>-->
-   <!--                     </div>-->
-   <!--                 </div>-->
-                    <div class="row">
-                        <h3>
-                            <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
-                            Terms & Conditions
-                        </h3>
 
-                        @php echo  $activity->terms@endphp
-                    </div>
-                    <div class="row">
-                        <h3>
-                            <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
-                            Payment Policy
-                        </h3>
 
-                        @php echo  $activity->payment_policy@endphp
-                    </div>
-                    <div class="row">
-                        <h3>
-                            <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
-                            Cancellation Policy
-                        </h3>
 
-                        @php echo  $activity->cancellation_policy@endphp
-                    </div>
-                    <div class="row">
-                        <h3>
-                            <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
-                            Visa Info
-                        </h3>
+                </div>
+                <div class="row">
+                    <h3>
+                        <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
+                        About The Tour
+                    </h3>
 
-                        @php echo  $activity->visa_info@endphp
-                    </div>
-                    <div class="row">
-                        <h3>
-                            <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
-                            Other Notes
-                        </h3>
+                    @php echo $activity->about@endphp
+                </div>
 
-                        @php echo  $activity->notes@endphp
-                    </div>
-                    <div class="row">
-                        <h3>
-                            <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
-                            FAQ
-                        </h3>
+                <div class="row">
+                    <h3>
+                        <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
+                        Detailed Day Wise Itinerary
+                    </h3>
 
-                        @php echo  $activity->questions@endphp
-                    </div>
-                    <!--<div class="row p-t-10">-->
-                    <!--   <div class="col-md-12">-->
-                    <!--      <a type="button" class="btn btn-danger btn-lg" style="border-radius: 0px;font-weight: bold;font-size:12px;"id="Btnpdf" href="{{URL::to('/activity/downloadPDF/').'/'.$activity->id}}">Download As PDF</a>-->
-                    <!--   </div>-->
-                    <!--</div>-->
-                    <!--====== TOUR LOCATION ==========-->
-                   {{-- <div class="tour_head1 tout-map map-container">
+                    @php echo $activity->day_detail@endphp
+                </div>
+                <!--                 <div class="row">-->
+                <!--                     <div class="col-md-12"style="padding: 0;">-->
+                <!--                         <div class="db-2" style="width: 100%;margin: 0;">-->
+                <!--    <div class="db-2-com db-2-main">-->
+                <!--        <h4>More Information</h4>-->
+                <!--        <div class="db-2-main-com db-2-main-com-table">-->
+                <!--            <table class="responsive-table">-->
+                <!--                <tbody>-->
+                <!--                    <tr>-->
+                <!--                        <td>Group Size</td>-->
+                <!--                        <td>:</td>-->
+                <!--                        <td>@php echo  $activity->grpsize@endphp</td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                        <td>Tour Style</td>-->
+                <!--                        <td>:</td>-->
+                <!--                        <td>@php echo  $activity->tourstyle@endphp</td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                        <td>Tour Language</td>-->
+                <!--                        <td>:</td>-->
+                <!--                        <td>@php echo  $activity->tourlanguage@endphp</td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                        <td>Start/End Location</td>-->
+                <!--                        <td>:</td>-->
+                <!--                        <td>@php echo  $activity->startloc@endphp</td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                        <td>Availablity</td>-->
+                <!--                        <td>:</td>-->
+                <!--                        <td>@php echo  $activity->avalibilitydetails@endphp</td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                        <td>Transport Details</td>-->
+                <!--                        <td>:</td>-->
+                <!--                        <td>@php echo  $activity->tranportdetails@endphp</td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                        <td>Accomodation Details</td>-->
+                <!--                        <td>:</td>-->
+                <!--                        <td>@php echo  $activity->accomodationdetails@endphp</td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                        <td>Meal Details</td>-->
+                <!--                        <td>:</td>-->
+                <!--                        <td>@php echo  $activity->mealdetails@endphp</td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                        <td>Guide Details</td>-->
+                <!--                        <td>:</td>-->
+                <!--                        <td>@php echo  $activity->guidedetails@endphp</td>-->
+                <!--                    </tr>-->
+                <!--                </tbody>-->
+                <!--            </table>-->
+                <!--        </div>-->
+                <!--    </div>-->
+                <!--</div>-->
+                <!--                     </div>-->
+                <!--                 </div>-->
+                <div class="row">
+                    <h3>
+                        <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
+                        Terms & Conditions
+                    </h3>
+
+                    @php echo $activity->terms@endphp
+                </div>
+                <div class="row">
+                    <h3>
+                        <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
+                        Payment Policy
+                    </h3>
+
+                    @php echo $activity->payment_policy@endphp
+                </div>
+                <div class="row">
+                    <h3>
+                        <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
+                        Cancellation Policy
+                    </h3>
+
+                    @php echo $activity->cancellation_policy@endphp
+                </div>
+                <div class="row">
+                    <h3>
+                        <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
+                        Visa Info
+                    </h3>
+
+                    @php echo $activity->visa_info@endphp
+                </div>
+                <div class="row">
+                    <h3>
+                        <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
+                        Other Notes
+                    </h3>
+
+                    @php echo $activity->notes@endphp
+                </div>
+                <div class="row">
+                    <h3>
+                        <i class="fa fa-umbrella" style="background-color: darkorange;font-size: 20px"></i>
+                        FAQ
+                    </h3>
+
+                    @php echo $activity->questions@endphp
+                </div>
+                <!--<div class="row p-t-10">-->
+                <!--   <div class="col-md-12">-->
+                <!--      <a type="button" class="btn btn-danger btn-lg" style="border-radius: 0px;font-weight: bold;font-size:12px;"id="Btnpdf" href="{{URL::to('/activity/downloadPDF/').'/'.$activity->id}}">Download As PDF</a>-->
+                <!--   </div>-->
+                <!--</div>-->
+                <!--====== TOUR LOCATION ==========-->
+                {{-- <div class="tour_head1 tout-map map-container">
                         <h3>Location</h3>
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6290415.157581651!2d-93.99661009218904!3d39.661150926343694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880b2d386f6e2619%3A0x7f15825064115956!2sIllinois%2C+USA!5e0!3m2!1sen!2sin!4v1467884030780" allowfullscreen></iframe>
                     </div>--}}
-                    <!--====== ABOUT THE TOUR ==========-->
-                    {{--<div class="tour_head1">
+                <!--====== ABOUT THE TOUR ==========-->
+                {{--<div class="tour_head1">
                         <h3>About The Tour</h3>
                         <table>
                             <tr>
@@ -261,8 +268,8 @@
                             </tr>
                         </table>
                     </div>--}}
-                    <!--====== DURATION ==========-->
-                    {{--<div class="tour_head1 l-info-pack-days days">
+                <!--====== DURATION ==========-->
+                {{--<div class="tour_head1 l-info-pack-days days">
                         <h3>Detailed Day Wise Itinerary</h3>
                         <ul>
                             <li class="l-info-pack-plac"> <i class="fa fa-clock-o" aria-hidden="true"></i>
@@ -403,153 +410,159 @@
                             </div>
                         </div>
                     </div>--}}
-                </div>
-                <div class="col-md-4 col-md-pull tour_r">
-                    <!--====== SPECIAL OFFERS ==========-->
-                    <div class="tour_right ">
-                        <div class="col-sm-6" style="padding: 1px;">
-                              <button type="button" class="btn btn-danger btn-lg" style="border-radius: 0px;font-weight: bold;font-size:12px; width: 100%" data-toggle="modal" data-target="#emailenquiry">Email Inquiry</button>
-                            <!--<a type="button" href="#" onclick="javascript:window.location='mailto:?subject=Email Inquiry&body=I want some more detail about the package below: ' + window.location;" class="btn btn-danger btn-lg" style="border-radius: 0px;font-weight: bold;font-size:12px; width: 100%">Email Inquiry</a>-->
-                        </div>
-                        <div class="col-sm-6" style="padding: 1px;">
-                            <a type="button" class="btn btn-danger btn-lg" style="border-radius: 0px;font-weight: bold;font-size:12px; width: 100%"id="Btnpdf" href="{{URL::to('/activity/downloadPDF/').'/'.$activity->id}}">Download PDF</a>
-                        </div>
+            </div>
+            <div class="col-md-4 col-md-pull tour_r">
+                <!--====== SPECIAL OFFERS ==========-->
+                <div class="tour_right ">
+                    <div class="col-sm-6" style="padding: 1px;">
+                        <button type="button" class="btn btn-danger btn-lg"
+                            style="border-radius: 0px;font-weight: bold;font-size:12px; width: 100%" data-toggle="modal"
+                            data-target="#emailenquiry">Email Inquiry</button>
+                        <!--<a type="button" href="#" onclick="javascript:window.location='mailto:?subject=Email Inquiry&body=I want some more detail about the package below: ' + window.location;" class="btn btn-danger btn-lg" style="border-radius: 0px;font-weight: bold;font-size:12px; width: 100%">Email Inquiry</a>-->
                     </div>
-                    <div class="tour_right tour_offer" style="background: transparent">
-                        <div class="band1"><img src="images/offer.png" alt="" /> </div>
+                    <div class="col-sm-6" style="padding: 1px;">
+                        <a type="button" class="btn btn-danger btn-lg"
+                            style="border-radius: 0px;font-weight: bold;font-size:12px; width: 100%" id="Btnpdf"
+                            href="{{URL::to('/activity/downloadPDF/').'/'.$activity->id}}">Download PDF</a>
+                    </div>
+                </div>
+                <div class="tour_right tour_offer" style="background: transparent">
+                    <div class="band1"><img src="images/offer.png" alt="" /> </div>
 
-                        {{--<p class="h3 text text-primary">Price $ {{$packages[0]->price}}</p>--}}
-                        {{--<a class="link-btn">Book Now</a>--}} </div>
+                    {{--<p class="h3 text text-primary">Price $ {{$packages[0]->price}}</p>--}}
+                    {{--<a class="link-btn">Book Now</a>--}}
+                </div>
 
                 @php echo $activity->code; @endphp
 
                 <!--====== TRIP INFORMATION ==========-->
-                    <div class="tour_right tour_incl tour-ri-com">
-                        <h3>Trip Information</h3>
-                        <ul>
-                            <li>Tour Code: @php echo  $activity->tourcode@endphp</li>
-                            <li>Location: @if(count($cities)>1)
-                                                Multiple Cities
-                                                @else
-                                                @foreach($cities as $item)
-                                                {{$item->name}}
-                                                @endforeach
-                                                @endif</li>
+                <div class="tour_right tour_incl tour-ri-com">
+                    <h3>Trip Information</h3>
+                    <ul>
+                        <li>Tour Code: @php echo $activity->tourcode@endphp</li>
+                        <li>Location: @if(count($cities)>1)
+                            Multiple Cities
+                            @else
+                            @foreach($cities as $item)
+                            {{$item->name}}
+                            @endforeach
+                            @endif</li>
 
-                            <li>Duration: {{$activity->duration}}</li>
-                            <li>Group Size: @php echo  $activity->grpsize@endphp</li>
-                            <li>Tour Style: @php echo  $activity->tourstyle@endphp</li>
-                            <li>Tour Language: @php echo  $activity->tourlanguage@endphp</li>
-                            <li>Start/End Location: @php echo  $activity->startloc@endphp</li>
-                            <li>Availablity: @php echo  $activity->avalibilitydetails@endphp</li>
-                            <li>Transport Details: @php echo  $activity->tranportdetails@endphp</li>
-                            <li>Accomodation Details: @php echo  $activity->accomodationdetails@endphp</li>
-                            <li>Meal Details: @php echo  $activity->mealdetails@endphp</li>
-                            <li>Guide Details: @php echo  $activity->guidedetails@endphp</li>
-                            </ul>
-                    </div>
-            <!--        <div class="db-2" style="width: 100%;margin: 0;padding: 20px 0;">-->
-            <!--    <div class="db-2-com db-2-main">-->
-            <!--        <h4>Trip Information</h4>-->
-            <!--        <div class="db-2-main-com db-2-main-com-table">-->
-            <!--            <table class="responsive-table">-->
-            <!--                <tbody>-->
-            <!--                    <tr>-->
-            <!--                        <td>Tour Code</td>-->
-            <!--                        <td>:</td>-->
-            <!--                        <td>@php echo  $activity->tourcode@endphp</td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td>Location</td>-->
-            <!--                        <td>:</td>-->
-            <!--                        <td>@if(count($cities)>1)-->
-            <!--                                    Multiple Cities-->
-            <!--                                    @else-->
-            <!--                                    @foreach($cities as $item)-->
-            <!--                                    {{$item->name}}-->
-            <!--                                    @endforeach-->
-            <!--                                    @endif</td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td>Duration</td>-->
-            <!--                        <td>:</td>-->
-            <!--                        <td>{{$activity->duration}}</td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td>Group Size</td>-->
-            <!--                        <td>:</td>-->
-            <!--                        <td>@php echo  $activity->grpsize@endphp</td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td>Tour Style</td>-->
-            <!--                        <td>:</td>-->
-            <!--                        <td>@php echo  $activity->tourstyle@endphp</td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td>Tour Language</td>-->
-            <!--                        <td>:</td>-->
-            <!--                        <td>@php echo  $activity->tourlanguage@endphp</td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td>Start/End Location</td>-->
-            <!--                        <td>:</td>-->
-            <!--                        <td>@php echo  $activity->startloc@endphp</td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td>Availablity</td>-->
-            <!--                        <td>:</td>-->
-            <!--                        <td>@php echo  $activity->avalibilitydetails@endphp</td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td>Transport Details</td>-->
-            <!--                        <td>:</td>-->
-            <!--                        <td>@php echo  $activity->tranportdetails@endphp</td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td>Accomodation Details</td>-->
-            <!--                        <td>:</td>-->
-            <!--                        <td>@php echo  $activity->accomodationdetails@endphp</td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td>Meal Details</td>-->
-            <!--                        <td>:</td>-->
-            <!--                        <td>@php echo  $activity->mealdetails@endphp</td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td>Guide Details</td>-->
-            <!--                        <td>:</td>-->
-            <!--                        <td>@php echo  $activity->guidedetails@endphp</td>-->
-            <!--                    </tr>-->
-            <!--                </tbody>-->
-            <!--            </table>-->
-            <!--        </div>-->
-            <!--    </div>-->
-            <!--</div>-->
-                 <!--====== PACKAGE SHARE ==========-->
-                    <div class="tour_right head_right tour_social tour-ri-com">
-                        <h3>Share This Package</h3>
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
-                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
-                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
-                            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
-                            <li><a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a> </li>
-                        </ul>
-                    </div>
-                    <!--====== HELP PACKAGE ==========-->
-                    <div class="tour_right head_right tour_help tour-ri-com">
-                        <h3>Help & Support</h3>
-                        <div class="tour_help_1">
-                            <h4 class="tour_help_1_call">Call Us Now</h4>
-                            <h4><i class="fa fa-phone" aria-hidden="true"></i> +421-917-251-996</h4> </div>
-                    </div>
-
+                        <li>Duration: {{$activity->duration}}</li>
+                        <li>Group Size: @php echo $activity->grpsize@endphp</li>
+                        <li>Tour Style: @php echo $activity->tourstyle@endphp</li>
+                        <li>Tour Language: @php echo $activity->tourlanguage@endphp</li>
+                        <li>Start/End Location: @php echo $activity->startloc@endphp</li>
+                        <li>Availablity: @php echo $activity->avalibilitydetails@endphp</li>
+                        <li>Transport Details: @php echo $activity->tranportdetails@endphp</li>
+                        <li>Accomodation Details: @php echo $activity->accomodationdetails@endphp</li>
+                        <li>Meal Details: @php echo $activity->mealdetails@endphp</li>
+                        <li>Guide Details: @php echo $activity->guidedetails@endphp</li>
+                    </ul>
                 </div>
+                <!--        <div class="db-2" style="width: 100%;margin: 0;padding: 20px 0;">-->
+                <!--    <div class="db-2-com db-2-main">-->
+                <!--        <h4>Trip Information</h4>-->
+                <!--        <div class="db-2-main-com db-2-main-com-table">-->
+                <!--            <table class="responsive-table">-->
+                <!--                <tbody>-->
+                <!--                    <tr>-->
+                <!--                        <td>Tour Code</td>-->
+                <!--                        <td>:</td>-->
+                <!--                        <td>@php echo  $activity->tourcode@endphp</td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                        <td>Location</td>-->
+                <!--                        <td>:</td>-->
+                <!--                        <td>@if(count($cities)>1)-->
+                <!--                                    Multiple Cities-->
+                <!--                                    @else-->
+                <!--                                    @foreach($cities as $item)-->
+                <!--                                    {{$item->name}}-->
+                <!--                                    @endforeach-->
+                <!--                                    @endif</td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                        <td>Duration</td>-->
+                <!--                        <td>:</td>-->
+                <!--                        <td>{{$activity->duration}}</td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                        <td>Group Size</td>-->
+                <!--                        <td>:</td>-->
+                <!--                        <td>@php echo  $activity->grpsize@endphp</td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                        <td>Tour Style</td>-->
+                <!--                        <td>:</td>-->
+                <!--                        <td>@php echo  $activity->tourstyle@endphp</td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                        <td>Tour Language</td>-->
+                <!--                        <td>:</td>-->
+                <!--                        <td>@php echo  $activity->tourlanguage@endphp</td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                        <td>Start/End Location</td>-->
+                <!--                        <td>:</td>-->
+                <!--                        <td>@php echo  $activity->startloc@endphp</td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                        <td>Availablity</td>-->
+                <!--                        <td>:</td>-->
+                <!--                        <td>@php echo  $activity->avalibilitydetails@endphp</td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                        <td>Transport Details</td>-->
+                <!--                        <td>:</td>-->
+                <!--                        <td>@php echo  $activity->tranportdetails@endphp</td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                        <td>Accomodation Details</td>-->
+                <!--                        <td>:</td>-->
+                <!--                        <td>@php echo  $activity->accomodationdetails@endphp</td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                        <td>Meal Details</td>-->
+                <!--                        <td>:</td>-->
+                <!--                        <td>@php echo  $activity->mealdetails@endphp</td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                        <td>Guide Details</td>-->
+                <!--                        <td>:</td>-->
+                <!--                        <td>@php echo  $activity->guidedetails@endphp</td>-->
+                <!--                    </tr>-->
+                <!--                </tbody>-->
+                <!--            </table>-->
+                <!--        </div>-->
+                <!--    </div>-->
+                <!--</div>-->
+                <!--====== PACKAGE SHARE ==========-->
+                <div class="tour_right head_right tour_social tour-ri-com">
+                    <h3>Share This Package</h3>
+                    <ul>
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
+                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
+                        <li><a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a> </li>
+                    </ul>
+                </div>
+                <!--====== HELP PACKAGE ==========-->
+                <div class="tour_right head_right tour_help tour-ri-com">
+                    <h3>Help & Support</h3>
+                    <div class="tour_help_1">
+                        <h4 class="tour_help_1_call">Call Us Now</h4>
+                        <h4><i class="fa fa-phone" aria-hidden="true"></i> +421-917-251-996</h4>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </section>
-    <!--====== TIPS BEFORE TRAVEL ==========-->
-    {{--<section>
+    </div>
+</section>
+<!--====== TIPS BEFORE TRAVEL ==========-->
+{{--<section>
         <div class="rows tips tips-home tb-space home_title">
             <div class="container tips_1">
                 <!-- TIPS BEFORE TRAVEL -->
@@ -604,53 +617,57 @@
 @endsection
 
 <!-- The Modal -->
-  <div class="modal" id="emailenquiry">
+<div class="modal" id="emailenquiry">
     <div class="modal-dialog">
-      <div class="modal-content">
+        <div class="modal-content">
 
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Email Inquiry <button style="float: right" type="button" class="close" data-dismiss="modal">&times;</button></h4>
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Email Inquiry <button style="float: right" type="button" class="close"
+                        data-dismiss="modal">&times;</button></h4>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="{{ url('activity/detail_inquiry ') }}" method="post">
+                    {{csrf_field()}}
+                    <input type="hidden" name="event_name" value="activity" />
+                    <input type="hidden" name="event_id" value="{{ $activity->id }}" />
+                    <div class="form-group">
+                        <label for="name" style="font-size: 18px;">Name*:</label>
+                        <input type="text" class="form-control" placeholder="Your Name" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" style="font-size: 18px;">Email*:</label>
+                        <input type="email" class="form-control" placeholder="Your email" id="email" name="email"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" style="font-size: 18px;">Phone*:</label>
+                        <input type="phone" class="form-control" placeholder="Phone number" id="phone" name="phone"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="adult" style="font-size: 18px;">Adults*:</label>
+                        <input type="text" class="form-control" placeholder="Adults" id="adult" name="adult" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="child" style="font-size: 18px;">Childrens*:</label>
+                        <input type="text" class="form-control" placeholder="Childrens" id="child" name="child"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date" style="font-size: 18px;">Select a date*:</label>
+                        <input type="date" class="form-control" placeholder="date" id="date" name="date" required>
+                    </div>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger">Send Inquiry</button>
+            </div>
+            </form>
         </div>
-
-        <!-- Modal body -->
-        <div class="modal-body">
-          <form action="{{ url('activity/detail_inquiry ') }}" method="post">
-  {{csrf_field()}}
-  <input type="hidden" name="event_name" value="activity" />
-    <input type="hidden" name="event_id" value="{{ $activity->id }}" />
-              <div class="form-group">
-    <label for="name" style="font-size: 18px;">Name*:</label>
-    <input type="text" class="form-control" placeholder="Your Name" id="name"  name="name"required>
-  </div>
-  <div class="form-group">
-    <label for="email" style="font-size: 18px;">Email*:</label>
-    <input type="email" class="form-control" placeholder="Your email" id="email" name="email" required>
-  </div>
-  <div class="form-group">
-    <label for="phone" style="font-size: 18px;">Phone*:</label>
-    <input type="phone" class="form-control" placeholder="Phone number" id="phone" name="phone" required>
-  </div>
-  <div class="form-group">
-    <label for="adult" style="font-size: 18px;">Adults*:</label>
-    <input type="text" class="form-control" placeholder="Adults" id="adult" name="adult" required>
-  </div>
-  <div class="form-group">
-    <label for="child" style="font-size: 18px;">Childrens*:</label>
-    <input type="text" class="form-control" placeholder="Childrens" id="child" name="child" required>
-  </div>
-  <div class="form-group">
-    <label for="date" style="font-size: 18px;">Select a date*:</label>
-    <input type="date" class="form-control" placeholder="date" id="date" name="date" required>
-  </div>
-
-        </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-danger">Send Inquiry</button>
-        </div>
-        </form>
-      </div>
     </div>
-  </div>
+</div>

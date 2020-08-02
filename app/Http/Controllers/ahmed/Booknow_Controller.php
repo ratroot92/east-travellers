@@ -20,12 +20,12 @@ class Booknow_Controller extends Controller
 
 	public function Index()
 	{
-		$All_Events = All_Events::all();
-		$All_Activity_Events = All_Events::where('event_type', 'Activity')->get();
-		$All_Transfer_Events = All_Events::where('event_type', 'Transfer')->get();
-		$All_Cruise_Events = All_Events::where('event_type', 'Cruise')->get();
-		$All_Package_Events = All_Events::where('event_type', 'Package')->get();
-		$All_Daytour_Events = All_Events::where('event_type', 'Daytour')->get();
+		$All_Events = All_Events::PaginateAllEvents();
+		$All_Activity_Events = All_Events::PaginateAllActivities();
+		$All_Transfer_Events = All_Events::PaginateAllTransfers();
+		$All_Cruise_Events = All_Events::PaginateAllCruises();
+		$All_Package_Events = All_Events::PaginateAllPackages();
+		$All_Daytour_Events = All_Events::PaginateAllDaytours();
 
 		// dd($All_Activity_Events->toArray());
 		return view('Booknow/Index', [
@@ -68,6 +68,7 @@ class Booknow_Controller extends Controller
 					$All_Package_Events = All_Events::where('event_type', 'Package')->get();
 					$All_Daytour_Events = All_Events::where('event_type', 'Daytour')->get();
 					//dd($tab . "_City");
+
 					return view('Booknow/Index', [
 						'All_Events' => $All_Events,
 						'All_Activity_Events' => $All_Activity_Events,
