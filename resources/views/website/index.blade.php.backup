@@ -997,146 +997,94 @@ li {
                 <p>We offer tours all over Europe find the perfect tours that best suits your needs.</p>
             </div>
             <!-- CITY -->
-            @if($cities->count() == 9 )
-            @foreach($cities as $key=>$item)
-@if($key==0)
-{{-- start of first col-md-6 with 3 pics    --}}
-<div class="col-md-6">
-<div class="col-md-12 ">
-    <a href="">
-        <div class="tour-mig-like-com">
-            <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}" style="height:530px;" >
+            @if(count($cities)>5)
+            @foreach($cities as $item)
+            <div class="col-md-6">
+                <a href="">
+                    <div class="tour-mig-like-com">
+                        <div class="tour-mig-lc-img">
+                            <img src="{{$item[0]->banner}}" alt="" title="{{ $item[0]->description }}"
+                                {{--style="height: 100%;width: 100%"--}}>
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
+                        <div class="tour-mig-lc-con">
+                            <h5>{{$item[0]->name}}</h5>
+                            <p><span>{{--12 Packages--}}</span>
+                                {{$item[0]->country}}{{--{{substr($item[0][0]->description,0,50)}}--}}{{--Starting from $2400--}}
+                            </p>
+                        </div>
+                    </div>
+                </a>
             </div>
-            <div class="tour-mig-lc-con">
-                <h5>{{$item->name}}</h5>
-                <p><span>{{--12 Packages--}}</span> {{$item->country}}</p>
+            <div class="col-md-3">
+                <a href="">
+                    <div class="tour-mig-like-com">
+                        <div class="tour-mig-lc-img">
+                            <img src="{{$item[1]->banner}}" alt="" title="{{ $item[1]->description }}"
+                                style="height: 150px;width: 100%;">
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home3.jpg" alt="">--}}
+                        </div>
+                        <div class="tour-mig-lc-con tour-mig-lc-con2">
+                            <h5>{{$item[1]->name}}</h5>
+                            <p><span>{{--12 Packages--}}</span>
+                                {{$item[1]->country}}{{--{{substr($item[0][0]->description,0,50)}}--}}{{--Starting from $2400--}}
+                            </p>
+                        </div>
+                    </div>
+                </a>
             </div>
-        </div>
-    </a>
-</div>
-@elseif($key==1)
-<div class="col-md-6 ">
-    <a href="">
-        <div class="tour-mig-like-com">
-            <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}" style="height:255px;" >
+            <div class="col-md-3">
+                <a href="">
+                    <div class="tour-mig-like-com">
+                        <div class="tour-mig-lc-img">
+                            {{-- <img src="{{url('/theme/travel')}}/images/listing/home2.jpg" alt="">--}}
+                            <img src="{{$item[2]->banner}}" alt="" title="{{ $item[2]->description }}"
+                                style="height: 150px;width: 100%;">
+                        </div>
+                        <div class="tour-mig-lc-con tour-mig-lc-con2">
+                            <h5>{{$item[2]->name}}</h5>
+                            <p><span>{{--12 Packages--}}</span>
+                                {{$item[2]->country}}{{--{{substr($item[0][0]->description,0,50)}}--}}{{--Starting from $2400--}}
+                            </p>
+                        </div>
+                    </div>
+                </a>
             </div>
-            <div class="tour-mig-lc-con">
-                <h5>{{$item->name}}</h5>
-                <p><span>{{--12 Packages--}}</span> {{$item->country}}</p>
+            <div class="col-md-3">
+                <a href="">
+                    <div class="tour-mig-like-com">
+                        <div class="tour-mig-lc-img">
+                            <img src="{{$item[3]->banner}}" alt="" title="{{ $item[3]->description }}"
+                                style="height: 150px;width: 100%;">
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home3.jpg" alt="">--}}
+                        </div>
+                        <div class="tour-mig-lc-con tour-mig-lc-con2">
+                            <h5>{{$item[3]->name}}</h5>
+                            <p><span>{{--12 Packages--}}</span>
+                                {{$item[3]->country}}{{--{{substr($item[0][0]->description,0,50)}}--}}{{--Starting from $2400--}}
+                            </p>
+                        </div>
+                    </div>
+                </a>
             </div>
-        </div>
-    </a>
-</div>
-@elseif($key==2)
-<div class="col-md-6 ">
-    <a href="">
-        <div class="tour-mig-like-com">
-            <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:255px;"  >
+            <div class="col-md-3">
+                <a href="">
+                    <div class="tour-mig-like-com">
+                        <div class="tour-mig-lc-img">
+                            {{-- <img src="{{url('/theme/travel')}}/images/listing/home2.jpg" alt="">--}}
+                            <img src="{{$item[4]->banner}}" alt="" title="{{ $item[4]->description }}"
+                                style="height: 150px;width: 100%;">
+                        </div>
+                        <div class="tour-mig-lc-con tour-mig-lc-con2">
+                            <h5>{{$item[4]->name}}</h5>
+                            <p><span>{{--12 Packages--}}</span>
+                                {{$item[4]->country}}{{--{{substr($item[0][0]->description,0,50)}}--}}{{--Starting from $2400--}}
+                            </p>
+                        </div>
+                    </div>
+                </a>
             </div>
-            <div class="tour-mig-lc-con">
-                <h5>{{$item->name}}</h5>
-                <p><span>{{--12 Packages--}}</span> {{$item->country}}</p>
-            </div>
-        </div>
-    </a>
-</div>
-</div>
-{{-- end of first with 3 pics  col-md-6  --}}
-{{-- start  of second with 3 pics  col-md-6  --}}
-@elseif($key==3)
-<div class="col-md-6">
-<div class="col-md-6 ">
-    <a href="">
-        <div class="tour-mig-like-com">
-            <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:255px;"  >
-            </div>
-            <div class="tour-mig-lc-con">
-                <h5>{{$item->name}}</h5>
-                <p><span>{{--12 Packages--}}</span> {{$item->country}}</p>
-            </div>
-        </div>
-    </a>
-</div>
-@elseif($key==4)
-<div class="col-md-6 ">
-    <a href="">
-        <div class="tour-mig-like-com">
-            <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:255px;"  >
-            </div>
-            <div class="tour-mig-lc-con">
-                <h5>{{$item->name}}</h5>
-                <p><span>{{--12 Packages--}}</span> {{$item->country}}</p>
-            </div>
-        </div>
-    </a>
-</div>
-
-{{--  --}}
-@elseif($key==5)
-<div class="col-md-6 ">
-    <a href="">
-        <div class="tour-mig-like-com">
-            <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:255px;"  >
-            </div>
-            <div class="tour-mig-lc-con">
-                <h5>{{$item->name}}</h5>
-                <p><span>{{--12 Packages--}}</span> {{$item->country}}</p>
-            </div>
-        </div>
-    </a>
-</div>
-@elseif($key==6)
-<div class="col-md-6 ">
-    <a href="">
-        <div class="tour-mig-like-com">
-            <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:255px;"  >
-            </div>
-            <div class="tour-mig-lc-con">
-                <h5>{{$item->name}}</h5>
-                <p><span>{{--12 Packages--}}</span> {{$item->country}}</p>
-            </div>
-        </div>
-    </a>
-</div>
-{{--  --}}
-@elseif($key==7)
-<div class="col-md-6 ">
-    <a href="">
-        <div class="tour-mig-like-com">
-            <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:255px;"  >
-            </div>
-            <div class="tour-mig-lc-con">
-                <h5>{{$item->name}}</h5>
-                <p><span>{{--12 Packages--}}</span> {{$item->country}}</p>
-            </div>
-        </div>
-    </a>
-</div>
-@elseif($key==8)
-<div class="col-md-6 ">
-    <a href="">
-        <div class="tour-mig-like-com">
-            <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:255px;"  >
-            </div>
-            <div class="tour-mig-lc-con">
-                <h5>{{$item->name}}</h5>
-                <p><span>{{--12 Packages--}}</span> {{$item->country}}</p>
-            </div>
-        </div>
-    </a>
-</div>
-</div>
-@endif
-@endforeach
+            @endforeach
             @else
             {{-- start --}}
             <div class="col-md-3 ">
@@ -1213,6 +1161,219 @@ li {
             @endif
             <div style="height:300px">
             </div>
+            @if(count($cities)>5)
+            @foreach($cities as $item)
+            <div class="col-md-3 ">
+                <a href="">
+                    <div class="tour-mig-like-com">
+                        <div class="tour-mig-lc-img">
+                            <img src="{{$item[6]->banner}}" alt="" title="{{ $item[6]->description }}"
+                                style="height: 150px;width: 100%;">
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
+                        <div class="tour-mig-lc-con">
+                            <h5>{{$item[6]->name}}</h5>
+                            <p><span>{{--12 Packages--}}</span>
+                                {{$item[6]->country}}{{--{{substr($item[0][0]->description,0,50)}}--}}{{--Starting from $2400--}}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 ">
+                <a href="">
+                    <div class="tour-mig-like-com">
+                        <div class="tour-mig-lc-img">
+                            <img src="{{$item[7]->banner}}" alt="" title="{{ $item[7]->description }}"
+                                style="height: 150px;width: 100%;">
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
+                        <div class="tour-mig-lc-con">
+                            <h5>{{$item[7]->name}}</h5>
+                            <p><span>{{--12 Packages--}}</span>
+                                {{$item[7]->country}}{{--{{substr($item[0][0]->description,0,50)}}--}}{{--Starting from $2400--}}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 ">
+                <a href="">
+                    <div class="tour-mig-like-com">
+                        <div class="tour-mig-lc-img">
+                            <img src="{{$item[9]->banner}}" alt="" title="{{ $item[0]->description }}"
+                                style="height: 150px;width: 100%;">
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
+                        <div class="tour-mig-lc-con">
+                            <h5>{{$item[6]->name}}</h5>
+                            <p><span>{{--12 Packages--}}</span>
+                                {{$item[6]->country}}{{--{{substr($item[0][0]->description,0,50)}}--}}{{--Starting from $2400--}}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 ">
+                <a href="">
+                    <div class="tour-mig-like-com">
+                        <div class="tour-mig-lc-img">
+                            <img src="{{$item[8]->banner}}" alt="" title="{{ $item[0]->description }}"
+                                style="height: 150px;width: 100%;">
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
+                        <div class="tour-mig-lc-con">
+                            <h5>{{$item[6]->name}}</h5>
+                            <p><span>{{--12 Packages--}}</span>
+                                {{$item[6]->country}}{{--{{substr($item[0][0]->description,0,50)}}--}}{{--Starting from $2400--}}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="">
+                    <div class="tour-mig-like-com">
+                        <div class="tour-mig-lc-img">
+                            <img src="{{$item[7]->banner}}" alt="" title="{{ $item[0]->description }}"
+                                style="height: 150px;width: 100%;">
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home3.jpg" alt="">--}}
+                        </div>
+                        <div class="tour-mig-lc-con tour-mig-lc-con2">
+                            <h5>{{$item[7]->name}}</h5>
+                            <p><span>{{--12 Packages--}}</span>
+                                {{$item[7]->country}}{{--{{substr($item[0][0]->description,0,50)}}--}}{{--Starting from $2400--}}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="">
+                    <div class="tour-mig-like-com">
+                        <div class="tour-mig-lc-img">
+                            {{-- <img src="{{url('/theme/travel')}}/images/listing/home2.jpg" alt="">--}}
+                            <img src="{{$item[8]->banner}}" alt="" title="{{ $item[0]->description }}"
+                                style="height: 150px;width: 100%;">
+                        </div>
+                        <div class="tour-mig-lc-con tour-mig-lc-con2">
+                            <h5>{{$item[8]->name}}</h5>
+                            <p><span>{{--12 Packages--}}</span>
+                                {{$item[8]->country}}{{--{{substr($item[0][0]->description,0,50)}}--}}{{--Starting from $2400--}}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="">
+                    <div class="tour-mig-like-com">
+                        <div class="tour-mig-lc-img">
+                            <img src="{{$item[9]->banner}}" alt="" title="{{ $item[0]->description }}"
+                                style="height: 150px;width: 100%;">
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home3.jpg" alt="">--}}
+                        </div>
+                        <div class="tour-mig-lc-con tour-mig-lc-con2">
+                            <h5>{{$item[9]->name}}</h5>
+                            <p><span>{{--12 Packages--}}</span>
+                                {{$item[9]->country}}{{--{{substr($item[0][0]->description,0,50)}}--}}{{--Starting from $2400--}}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="">
+                    <div class="tour-mig-like-com">
+                        <div class="tour-mig-lc-img">
+                            {{-- <img src="{{url('/theme/travel')}}/images/listing/home2.jpg" alt="">--}}
+                            <img src="{{$item[5]->banner}}" alt="" title="{{ $item[0]->description }}"
+                                style="height: 150px;width: 100%;">
+                        </div>
+                        <div class="tour-mig-lc-con tour-mig-lc-con2">
+                            <h5>{{$item[5]->name}}</h5>
+                            <p><span>{{--12 Packages--}}</span>
+                                {{$item[5]->country}}{{--{{substr($item[0][0]->description,0,50)}}--}}{{--Starting from $2400--}}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            @endforeach
+            @else
+            {{-- start --}}
+            <div class="col-md-3 ">
+                <a href="">
+                    <div class="tour-mig-like-com">
+                        <div class="tour-mig-lc-img">
+                            <img src="https://1.bp.blogspot.com/-xp-Lh56Y3OU/VWXZt2cZqxI/AAAAAAAAQpM/8QaXlnwyvfc/s1600/most-beautiful-places-to-visit-in-Spain-2.jpg"
+                                alt=""
+                                title="Moscow, on the Moskva River in western Russia, is the nation’s cosmopolitan capital. In its historic core is the Kremlin, a complex that’s home to the president and tsarist treasures in the Armoury. Outside its walls is Red Square, Russia's symbolic center. It's home to Lenin’s Mausoleum, the State Historical Museum's comprehensive collection and St. Basil’s Cathedral, known for its colorful, onion-shaped domes."
+                                style="height: 200px;width: 100%;">
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
+                        <div class="tour-mig-lc-con">
+                            <h5>Moscow</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {{-- end --}}
+            {{-- start --}}
+            <div class="col-md-3 ">
+                <a href="">
+                    <div class="tour-mig-like-com">
+                        <div class="tour-mig-lc-img">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS0cHMNmEDwm6liafyMIl_A4qO-CEj6fwVY3xNQbDxyncBfHAjG&usqp=CAU"
+                                alt=""
+                                title="Tokyo, Japan’s busy capital, mixes the ultramodern and the traditional, from neon-lit skyscrapers to historic temples. The opulent Meiji Shinto Shrine is known for its towering gate and surrounding woods. The Imperial Palace sits amid large public gardens. The city's many museums offer exhibits ranging from classical art (in the Tokyo National Museum) to a reconstructed kabuki theater (in the Edo-Tokyo Museum)."
+                                style="height: 200px;width: 100%;">
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
+                        <div class="tour-mig-lc-con">
+                            <h5>Tokyo</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {{-- end --}}
+            {{-- start --}}
+            <div class="col-md-3 ">
+                <a href="">
+                    <div class="tour-mig-like-com">
+                        <div class="tour-mig-lc-img">
+                            <img src="https://1.bp.blogspot.com/-xp-Lh56Y3OU/VWXZt2cZqxI/AAAAAAAAQpM/8QaXlnwyvfc/s1600/most-beautiful-places-to-visit-in-Spain-2.jpg"
+                                alt=""
+                                title="Moscow, on the Moskva River in western Russia, is the nation’s cosmopolitan capital. In its historic core is the Kremlin, a complex that’s home to the president and tsarist treasures in the Armoury. Outside its walls is Red Square, Russia's symbolic center. It's home to Lenin’s Mausoleum, the State Historical Museum's comprehensive collection and St. Basil’s Cathedral, known for its colorful, onion-shaped domes."
+                                style="height: 200px;width: 100%;">
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
+                        <div class="tour-mig-lc-con">
+                            <h5>Moscow</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {{-- end --}}
+            {{-- start --}}
+            <div class="col-md-3 ">
+                <a href="">
+                    <div class="tour-mig-like-com">
+                        <div class="tour-mig-lc-img">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS0cHMNmEDwm6liafyMIl_A4qO-CEj6fwVY3xNQbDxyncBfHAjG&usqp=CAU"
+                                alt=""
+                                title="Tokyo, Japan’s busy capital, mixes the ultramodern and the traditional, from neon-lit skyscrapers to historic temples. The opulent Meiji Shinto Shrine is known for its towering gate and surrounding woods. The Imperial Palace sits amid large public gardens. The city's many museums offer exhibits ranging from classical art (in the Tokyo National Museum) to a reconstructed kabuki theater (in the Edo-Tokyo Museum)."
+                                style="height: 200px;width: 100%;">
+                            {{--<img src="{{url('/theme/travel')}}/images/listing/home.jpg" alt="">--}}
+                        </div>
+                        <div class="tour-mig-lc-con">
+                            <h5>Tokyo</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {{-- end --}}
+            @endif
             <div class="col-md-12 col-md-offset-2 mx-auto text-center" style="margin: 15px 0;">
                 <a class="link-btn" href="{{ route('popularcities.all') }}"> All Destinations</a>
             </div>

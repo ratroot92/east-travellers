@@ -69,7 +69,7 @@ class PopularCitiesController extends Controller
 	}
 	public function all()
 	{
-		$cities = DB::table('popularcities')->paginate('6');
+		$cities = DB::table('popularcities')->get();
 		return view('popularcities/all_popularcities', [
 			'all_popularcities' => $cities,
 		]);

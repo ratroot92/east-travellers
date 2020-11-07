@@ -69,10 +69,10 @@ nav {
                     <td style="width: 20%!important;vertical-align:middle;">{{substr($item->description, 0, 100)}}
                         .......</td>
                     <td class="text-center " style="vertical-align:middle;">
-                        <!-- <div class="col-sm-12"> -->
+
                         <img src="{{$item->banner}}" alt="{{$item->name}}" class="img"
                             style="width: 100%;height: 150px">
-                        <!-- </div>-->
+
                     </td>
                     <td class="text-center " style="vertical-align:middle;">{{$item->created_at}}</td>
                     <td class="text-center " style="vertical-align:middle;"><a
@@ -89,6 +89,7 @@ nav {
             </tbody>
         </table>
         <div class="row">
+          
             <div class="col-md-12">
                 {{$popularcities->links()}}
             </div>

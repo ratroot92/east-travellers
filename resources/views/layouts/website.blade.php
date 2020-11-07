@@ -33,6 +33,7 @@ $path="../public/";
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Poppins%7CQuicksand:400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
     <!-- FONT-AWESOME ICON CSS -->
     <link rel="stylesheet" href="{{url('/theme/travel')}}/css/font-awesome.min.css">
     <!--== ALL CSS FILES ==-->
