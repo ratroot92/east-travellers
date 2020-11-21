@@ -88,19 +88,19 @@ CREATE TABLE `all__events` (
 --
 
 INSERT INTO `all__events` (`id`, `event_type`, `event_name`, `description`, `banner`, `discount`, `price`, `itinerary`, `inclusion`, `exclusion`, `code`, `duration`, `added_by`, `terms_conditions`, `payment_policy`, `payment_methods`, `cancellation_policy`, `visa_info`, `notes`, `questions`, `group_size`, `tour_code`, `destinations`, `start_location`, `end_location`, `tour_style`, `tour_language`, `avalibility_details`, `transport_details`, `accomodation_details`, `meals_details`, `guide_details`, `status`, `created_at`, `updated_at`) VALUES
-(47, 'Package', 'Munich in 6 Dyas', '<p>Included</p>', 'http://www.enkitravel.com/public/storage/Event_Images/16059108884603_.jpg', 0, 599, '<p>Included</p>\r\n\r\n<p>IncludedIncluded</p>\r\n\r\n<p>IncludedIncluded</p>\r\n\r\n<p>IncludedIncluded</p>\r\n\r\n<p>IncludedIncluded</p>\r\n\r\n<p>IncludedIncluded</p>\r\n\r\n<p>IncludedIncluded</p>\r\n\r\n<p>IncludedIncluded</p>\r\n\r\n<p>IncludedIncluded</p>\r\n\r\n<p>IncludedIncluded</p>\r\n\r\n<p>&nbsp;</p>', '<p>Included</p>\r\n\r\n<p>Included</p>\r\n\r\n<p>Included</p>\r\n\r\n<p>Included</p>', '<ul>\r\n	<li>Included</li>\r\n	<li>Included</li>\r\n	<li>Included</li>\r\n	<li>Included</li>\r\n</ul>', 'Included', '5 day', 'Vienna', '<p>IncludedIncluded</p>', '<p>IncludedIncluded</p>', '<p>IncludedIncluded</p>', '<p>IncludedIncluded</p>', '<p>IncludedIncluded</p>', '<p>IncludedIncluded</p>', '<p>IncludedIncluded</p>', 'Min 2 / Max 2', 'IncludedIncluded', '<p>IncludedIncluded</p>', 'Vienna', 'Vienna', 'IncludedIncluded', 'eniglish', 'IncludedIncluded', 'IncludedIncluded', 'IncludedIncluded', 'IncludedIncluded', 'IncludedIncluded', '1', '2020-10-12 22:23:08', '2020-11-21 05:21:28'),
-(60, 'Package', 'Vienna in 3 days', NULL, 'http://www.enkitravel.com/public/storage/Event_Images/16053603071060_.jpg', 0, 360, NULL, NULL, NULL, NULL, '3 Days', 'Vienna', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Vienna', 'Vienna', NULL, 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'ViennaVienna', 'Vienna', '1', '2020-11-14 20:23:59', '2020-11-14 20:25:07'),
-(61, 'Package', 'Bratislava in 2 Days', NULL, 'http://www.enkitravel.com/public/storage/Event_Images/16053604136972_.jpg', 5, 220, NULL, NULL, NULL, NULL, '2 days', 'Bratislava', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Bratislava', 'Bratislava', NULL, 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', '1', '2020-11-14 20:26:53', '2020-11-14 20:26:53'),
-(50, 'Daytour', 'Vienna in 1 day', '<p>Vienna</p>', 'http://www.enkitravel.com/public/storage/Event_Images/16051054686249_.jpg', 0, 289, '<p>Vienna</p>', '<p>Vienna</p>', '<p>Vienna</p>', 'Vienna', 'Vienna', 'Vienna', '<p>Vienna</p>', '<p>Vienna</p>', '<p>Vienna</p>', '<p>Vienna</p>', '<p>Vienna</p>', '<p>Vienna</p>', '<p>Vienna</p>', 'Vienna', 'Vienna', '<p>Vienna</p>', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', '1', '2020-11-11 21:37:48', '2020-11-11 21:37:48'),
-(51, 'Daytour', 'Bratislava in 1 day', '<p>Bratislava</p>', 'http://www.enkitravel.com/public/storage/Event_Images/16051056482962_.jpg', 0, 320, '<p>Bratislava</p>', '<p>Bratislava</p>', '<p>Bratislava</p>', 'Bratislava', 'Bratislava', 'Bratislava', '<p>Bratislava</p>', '<p>Bratislava</p>', '<p>Bratislava</p>', '<p>Bratislava</p>', '<p>Bratislava</p>', '<p>Bratislava</p>', '<p>Bratislava</p>', 'Bratislava', 'Bratislava', '<p>Bratislava</p>', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', '1', '2020-11-11 21:40:48', '2020-11-11 21:40:48'),
-(52, 'Daytour', 'Munich in 1 day', '<p>Munich</p>', 'http://www.enkitravel.com/public/storage/Event_Images/16051057639065_.jpg', 0, 415, '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', 'Munich', 'Munich', 'Munich', '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', 'Munich', 'Munich', '<p>Munich</p>', 'Munich', 'Munich', 'Munich', 'Munich', 'Munich', 'Munich', 'Munich', 'Munich', 'Munich', '1', '2020-11-11 21:42:43', '2020-11-11 21:42:43'),
-(53, 'Activity', 'Dolphin show Munich', '<p>Munich</p>', 'http://www.enkitravel.com/public/storage/Event_Images/16053607679911_.jpg', 0, 140, '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', 'Munich', '5', 'Munich', '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', 'Munich', 'Munich', '<p>Munich</p>', 'Munich', 'Munich', 'Munich', 'Munich', 'Munich', 'Munich', 'Munich', 'Munich', 'Munich', '1', '2020-11-11 21:46:19', '2020-11-14 20:32:47'),
-(54, 'Activity', 'go kart in Vienna', '<p>go kart</p>', 'http://www.enkitravel.com/public/storage/Event_Images/16053649529203_.jpg', 0, 120, '<p>go kart</p>', '<p>go kart</p>', '<p>go kart</p>', 'go kart', '1', 'go kart', '<p>go kart</p>', '<p>go kart</p>', '<p>go kart</p>', '<p>go kart</p>', '<p>go kart</p>', '<p>go kart</p>', '<p>go kart</p>', 'go kart', 'go kart', '<p>go kart</p>', 'go kart', 'go kart', 'go kart', 'go kart', 'go kart', 'go kart', 'go kart', 'go kart', 'go kart', '1', '2020-11-11 21:49:20', '2020-11-14 21:42:32'),
-(55, 'Activity', 'skydiving in Munich', '<p>skydiving</p>', 'http://www.enkitravel.com/public/storage/Event_Images/16051063059990_.jpg', 0, 230, '<p>skydiving</p>', '<p>skydiving</p>', '<p>skydiving</p>', 'skydiving', 'skydiving', 'skydiving', '<p>skydiving</p>', '<p>skydiving</p>', '<p>skydiving</p>', '<p>skydiving</p>', '<p>skydiving</p>', '<p>skydiving</p>', '<p>skydiving</p>', 'skydiving', 'skydiving', '<p>skydiving</p>', 'skydiving', 'skydiving', 'skydiving', 'skydiving', 'skydiving', 'skydiving', 'skydiving', 'skydiving', 'skydiving', '1', '2020-11-11 21:51:45', '2020-11-11 21:51:45'),
-(56, 'Transfer', 'Vienna for 8 hours', '<p>mercedes</p>', 'http://www.enkitravel.com/public/storage/Event_Images/16053609026294_.jpg', 0, 50, '<p>mercedes</p>', '<p>mercedes</p>', '<p>mercedes</p>', 'mercedes', 'mercedes', 'mercedes', '<p>mercedes</p>', '<p>mercedes</p>', '<p>mercedes</p>', '<p>mercedes</p>', '<p>mercedes</p>', '<p>mercedes</p>', '<p>mercedes</p>', 'mercedes', 'mercedes', '<p>mercedes</p>', 'mercedes', 'mercedes', 'mercedes', 'mercedes', 'mercedes', 'mercedes', 'mercedes', 'mercedes', 'mercedes', '1', '2020-11-11 21:56:23', '2020-11-14 20:35:02'),
-(57, 'Transfer', 'Vienna Transfer in 6 hour', '<p>vienna</p>', 'http://www.enkitravel.com/public/storage/Event_Images/16051073003374_.jpg', 0, 100, '<p>vienna</p>', '<p>vienna</p>', '<p>vienna</p>', 'vienna', '5', 'vienna', '<p>vienna</p>', '<p>vienna</p>', '<p>vienna</p>', '<p>vienna</p>', '<p>vienna</p>', '<p>vienna</p>', '<p>vienna</p>', 'vienna', 'vienna', '<p>vienna</p>', 'vienna', 'vienna', 'vienna', 'vienna', 'vienna', 'vienna', 'vienna', 'vienna', 'vienna', '1', '2020-11-11 22:08:20', '2020-11-11 22:08:20'),
-(58, 'Transfer', 'Vienna Airport Transfer', NULL, 'http://www.enkitravel.com/public/storage/Event_Images/16051074647902_.jpg', 0, 50, NULL, NULL, NULL, 'Vienna', '5', 'Vienna', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Vienna', 'Vienna', NULL, 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', '1', '2020-11-11 22:11:04', '2020-11-11 22:11:04'),
-(59, 'Cruise', 'Cruise from Munich to Vienna', NULL, 'http://www.enkitravel.com/public/storage/Event_Images/16051077552621_.jpg', 0, 1300, NULL, NULL, NULL, 'danube Cruise', '5', 'danube Cruise', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'danube Cruise', 'danube Cruise', NULL, 'danube Cruise', 'danube Cruise', 'danube Cruise', 'danube Cruise', 'danube Cruise', 'danube Cruise', 'danube Cruise', 'danube Cruise', 'danube Cruise', '1', '2020-11-11 22:15:55', '2020-11-11 22:15:55');
+(47, 'Package', 'Munich in 6 Dyas', '<p>Included</p>', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16059108884603_.jpg', 0, 599, '<p>Included</p>\r\n\r\n<p>IncludedIncluded</p>\r\n\r\n<p>IncludedIncluded</p>\r\n\r\n<p>IncludedIncluded</p>\r\n\r\n<p>IncludedIncluded</p>\r\n\r\n<p>IncludedIncluded</p>\r\n\r\n<p>IncludedIncluded</p>\r\n\r\n<p>IncludedIncluded</p>\r\n\r\n<p>IncludedIncluded</p>\r\n\r\n<p>IncludedIncluded</p>\r\n\r\n<p>&nbsp;</p>', '<p>Included</p>\r\n\r\n<p>Included</p>\r\n\r\n<p>Included</p>\r\n\r\n<p>Included</p>', '<ul>\r\n	<li>Included</li>\r\n	<li>Included</li>\r\n	<li>Included</li>\r\n	<li>Included</li>\r\n</ul>', 'Included', '5 day', 'Vienna', '<p>IncludedIncluded</p>', '<p>IncludedIncluded</p>', '<p>IncludedIncluded</p>', '<p>IncludedIncluded</p>', '<p>IncludedIncluded</p>', '<p>IncludedIncluded</p>', '<p>IncludedIncluded</p>', 'Min 2 / Max 2', 'IncludedIncluded', '<p>IncludedIncluded</p>', 'Vienna', 'Vienna', 'IncludedIncluded', 'eniglish', 'IncludedIncluded', 'IncludedIncluded', 'IncludedIncluded', 'IncludedIncluded', 'IncludedIncluded', '1', '2020-10-12 22:23:08', '2020-11-21 05:21:28'),
+(60, 'Package', 'Vienna in 3 days', NULL, 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16053603071060_.jpg', 0, 360, NULL, NULL, NULL, NULL, '3 Days', 'Vienna', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Vienna', 'Vienna', NULL, 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'ViennaVienna', 'Vienna', '1', '2020-11-14 20:23:59', '2020-11-14 20:25:07'),
+(61, 'Package', 'Bratislava in 2 Days', NULL, 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16053604136972_.jpg', 5, 220, NULL, NULL, NULL, NULL, '2 days', 'Bratislava', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Bratislava', 'Bratislava', NULL, 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', '1', '2020-11-14 20:26:53', '2020-11-14 20:26:53'),
+(50, 'Daytour', 'Vienna in 1 day', '<p>Vienna</p>', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16051054686249_.jpg', 0, 289, '<p>Vienna</p>', '<p>Vienna</p>', '<p>Vienna</p>', 'Vienna', 'Vienna', 'Vienna', '<p>Vienna</p>', '<p>Vienna</p>', '<p>Vienna</p>', '<p>Vienna</p>', '<p>Vienna</p>', '<p>Vienna</p>', '<p>Vienna</p>', 'Vienna', 'Vienna', '<p>Vienna</p>', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', '1', '2020-11-11 21:37:48', '2020-11-11 21:37:48'),
+(51, 'Daytour', 'Bratislava in 1 day', '<p>Bratislava</p>', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16051056482962_.jpg', 0, 320, '<p>Bratislava</p>', '<p>Bratislava</p>', '<p>Bratislava</p>', 'Bratislava', 'Bratislava', 'Bratislava', '<p>Bratislava</p>', '<p>Bratislava</p>', '<p>Bratislava</p>', '<p>Bratislava</p>', '<p>Bratislava</p>', '<p>Bratislava</p>', '<p>Bratislava</p>', 'Bratislava', 'Bratislava', '<p>Bratislava</p>', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', 'Bratislava', '1', '2020-11-11 21:40:48', '2020-11-11 21:40:48'),
+(52, 'Daytour', 'Munich in 1 day', '<p>Munich</p>', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16051057639065_.jpg', 0, 415, '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', 'Munich', 'Munich', 'Munich', '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', 'Munich', 'Munich', '<p>Munich</p>', 'Munich', 'Munich', 'Munich', 'Munich', 'Munich', 'Munich', 'Munich', 'Munich', 'Munich', '1', '2020-11-11 21:42:43', '2020-11-11 21:42:43'),
+(53, 'Activity', 'Dolphin show Munich', '<p>Munich</p>', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16053607679911_.jpg', 0, 140, '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', 'Munich', '5', 'Munich', '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', '<p>Munich</p>', 'Munich', 'Munich', '<p>Munich</p>', 'Munich', 'Munich', 'Munich', 'Munich', 'Munich', 'Munich', 'Munich', 'Munich', 'Munich', '1', '2020-11-11 21:46:19', '2020-11-14 20:32:47'),
+(54, 'Activity', 'go kart in Vienna', '<p>go kart</p>', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16053649529203_.jpg', 0, 120, '<p>go kart</p>', '<p>go kart</p>', '<p>go kart</p>', 'go kart', '1', 'go kart', '<p>go kart</p>', '<p>go kart</p>', '<p>go kart</p>', '<p>go kart</p>', '<p>go kart</p>', '<p>go kart</p>', '<p>go kart</p>', 'go kart', 'go kart', '<p>go kart</p>', 'go kart', 'go kart', 'go kart', 'go kart', 'go kart', 'go kart', 'go kart', 'go kart', 'go kart', '1', '2020-11-11 21:49:20', '2020-11-14 21:42:32'),
+(55, 'Activity', 'skydiving in Munich', '<p>skydiving</p>', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16051063059990_.jpg', 0, 230, '<p>skydiving</p>', '<p>skydiving</p>', '<p>skydiving</p>', 'skydiving', 'skydiving', 'skydiving', '<p>skydiving</p>', '<p>skydiving</p>', '<p>skydiving</p>', '<p>skydiving</p>', '<p>skydiving</p>', '<p>skydiving</p>', '<p>skydiving</p>', 'skydiving', 'skydiving', '<p>skydiving</p>', 'skydiving', 'skydiving', 'skydiving', 'skydiving', 'skydiving', 'skydiving', 'skydiving', 'skydiving', 'skydiving', '1', '2020-11-11 21:51:45', '2020-11-11 21:51:45'),
+(56, 'Transfer', 'Vienna for 8 hours', '<p>mercedes</p>', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16053609026294_.jpg', 0, 50, '<p>mercedes</p>', '<p>mercedes</p>', '<p>mercedes</p>', 'mercedes', 'mercedes', 'mercedes', '<p>mercedes</p>', '<p>mercedes</p>', '<p>mercedes</p>', '<p>mercedes</p>', '<p>mercedes</p>', '<p>mercedes</p>', '<p>mercedes</p>', 'mercedes', 'mercedes', '<p>mercedes</p>', 'mercedes', 'mercedes', 'mercedes', 'mercedes', 'mercedes', 'mercedes', 'mercedes', 'mercedes', 'mercedes', '1', '2020-11-11 21:56:23', '2020-11-14 20:35:02'),
+(57, 'Transfer', 'Vienna Transfer in 6 hour', '<p>vienna</p>', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16051073003374_.jpg', 0, 100, '<p>vienna</p>', '<p>vienna</p>', '<p>vienna</p>', 'vienna', '5', 'vienna', '<p>vienna</p>', '<p>vienna</p>', '<p>vienna</p>', '<p>vienna</p>', '<p>vienna</p>', '<p>vienna</p>', '<p>vienna</p>', 'vienna', 'vienna', '<p>vienna</p>', 'vienna', 'vienna', 'vienna', 'vienna', 'vienna', 'vienna', 'vienna', 'vienna', 'vienna', '1', '2020-11-11 22:08:20', '2020-11-11 22:08:20'),
+(58, 'Transfer', 'Vienna Airport Transfer', NULL, 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16051074647902_.jpg', 0, 50, NULL, NULL, NULL, 'Vienna', '5', 'Vienna', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Vienna', 'Vienna', NULL, 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', 'Vienna', '1', '2020-11-11 22:11:04', '2020-11-11 22:11:04'),
+(59, 'Cruise', 'Cruise from Munich to Vienna', NULL, 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16051077552621_.jpg', 0, 1300, NULL, NULL, NULL, 'danube Cruise', '5', 'danube Cruise', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'danube Cruise', 'danube Cruise', NULL, 'danube Cruise', 'danube Cruise', 'danube Cruise', 'danube Cruise', 'danube Cruise', 'danube Cruise', 'danube Cruise', 'danube Cruise', 'danube Cruise', '1', '2020-11-11 22:15:55', '2020-11-11 22:15:55');
 
 -- --------------------------------------------------------
 
@@ -355,11 +355,11 @@ CREATE TABLE `event__categories` (
 --
 
 INSERT INTO `event__categories` (`id`, `name`, `description`, `image`, `for`, `created_at`, `updated_at`) VALUES
-(7, 'Outside Tours', 'https://image.flaticon.com/icons/png/512/3000/3000640.png', 'http://www.enkitravel.com/public/storage/Event_Category/15959951888361_.jpg', NULL, '2020-07-26 09:15:50', '2020-07-29 09:59:48'),
-(6, 'Mountain Treking', 'https://image.flaticon.com/icons/svg/3050/3050455.svg', 'http://www.enkitravel.com/public/storage/Event_Category/15959952381986_.jpg', NULL, '2020-07-26 09:15:30', '2020-07-29 10:00:38'),
-(8, 'Cruiser', 'https://image.flaticon.com/icons/svg/1048/1048354.svg', 'http://www.enkitravel.com/public/storage/Event_Category/15959952905835_.jpg', NULL, '2020-07-26 09:48:46', '2020-07-29 10:01:30'),
-(9, 'Activity', 'https://image.flaticon.com/icons/svg/854/854894.svg', 'http://www.enkitravel.com/public/storage/Event_Category/15959953582877_.jpg', NULL, '2020-07-26 09:49:07', '2020-07-29 10:02:38'),
-(10, 'Forest Ride', 'https://image.flaticon.com/icons/svg/3175/3175232.svg', 'http://www.enkitravel.com/public/storage/Event_Category/15959954009666_.jpg', NULL, '2020-07-26 21:39:21', '2020-07-29 10:03:20');
+(7, 'Outside Tours', 'https://image.flaticon.com/icons/png/512/3000/3000640.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Category/15959951888361_.jpg', NULL, '2020-07-26 09:15:50', '2020-07-29 09:59:48'),
+(6, 'Mountain Treking', 'https://image.flaticon.com/icons/svg/3050/3050455.svg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Category/15959952381986_.jpg', NULL, '2020-07-26 09:15:30', '2020-07-29 10:00:38'),
+(8, 'Cruiser', 'https://image.flaticon.com/icons/svg/1048/1048354.svg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Category/15959952905835_.jpg', NULL, '2020-07-26 09:48:46', '2020-07-29 10:01:30'),
+(9, 'Activity', 'https://image.flaticon.com/icons/svg/854/854894.svg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Category/15959953582877_.jpg', NULL, '2020-07-26 09:49:07', '2020-07-29 10:02:38'),
+(10, 'Forest Ride', 'https://image.flaticon.com/icons/svg/3175/3175232.svg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Category/15959954009666_.jpg', NULL, '2020-07-26 21:39:21', '2020-07-29 10:03:20');
 
 -- --------------------------------------------------------
 
@@ -382,14 +382,14 @@ CREATE TABLE `event__cities` (
 --
 
 INSERT INTO `event__cities` (`id`, `name`, `description`, `image`, `for`, `created_at`, `updated_at`) VALUES
-(13, 'Berlin', 'https://image.flaticon.com/icons/svg/2728/2728338.svg', 'http://www.enkitravel.com/public/storage/Event_City/15959961816297_.jpg', NULL, '2020-07-26 09:50:17', '2020-07-29 10:16:21'),
-(14, 'Lahore', 'https://image.flaticon.com/icons/svg/1/1022.svg', 'http://www.enkitravel.com/public/storage/Event_City/15959962148371_.jpg', NULL, '2020-07-26 10:14:17', '2020-07-29 10:16:54'),
-(15, 'Budapest', 'https://www.flaticon.com/premium-icon/icons/svg/2414/2414625.svg', 'http://www.enkitravel.com/public/storage/Event_City/15959962481547_.jpg', NULL, '2020-07-27 01:10:33', '2020-07-29 10:17:28'),
-(16, 'Berlin', 'Berlin', 'http://www.enkitravel.com/public/storage/Event_City/15957906587968_.jpg', NULL, '2020-07-27 01:10:58', '2020-07-27 01:10:58'),
-(10, 'Islamabad', 'https://image.flaticon.com/icons/svg/495/495686.svg', 'http://www.enkitravel.com/public/storage/Event_City/15959961075101_.jpg', NULL, '2020-07-26 09:17:28', '2020-07-29 10:15:07'),
-(11, 'Delhi', 'https://image.flaticon.com/icons/svg/2322/2322367.svg', 'http://www.enkitravel.com/public/storage/Event_City/15959962931065_.jpg', NULL, '2020-07-26 09:18:09', '2020-07-29 10:18:13'),
-(12, 'Paris', 'https://image.flaticon.com/icons/svg/3127/3127434.svg', 'http://www.enkitravel.com/public/storage/Event_City/15959963354576_.jpg', NULL, '2020-07-26 09:50:00', '2020-07-29 10:18:55'),
-(17, 'Vienna', 'www.flaticon.com%2Ffreeicon%2Fststephenscathedral_804389&psig=AOvVaw39Fu68TJtT9iMyuZ8NTwNt&ust=1605189649855000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNjm88nT-uwCFQAAAAAdAAAAABAD', 'http://www.enkitravel.com/public/storage/Event_City/16051033257741_.svg', NULL, '2020-11-11 20:35:56', '2020-11-11 21:02:05');
+(13, 'Berlin', 'https://image.flaticon.com/icons/svg/2728/2728338.svg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_City/15959961816297_.jpg', NULL, '2020-07-26 09:50:17', '2020-07-29 10:16:21'),
+(14, 'Lahore', 'https://image.flaticon.com/icons/svg/1/1022.svg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_City/15959962148371_.jpg', NULL, '2020-07-26 10:14:17', '2020-07-29 10:16:54'),
+(15, 'Budapest', 'https://www.flaticon.com/premium-icon/icons/svg/2414/2414625.svg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_City/15959962481547_.jpg', NULL, '2020-07-27 01:10:33', '2020-07-29 10:17:28'),
+(16, 'Berlin', 'Berlin', 'https://www.eastravels.com/neweasttravel/public/storage/Event_City/15957906587968_.jpg', NULL, '2020-07-27 01:10:58', '2020-07-27 01:10:58'),
+(10, 'Islamabad', 'https://image.flaticon.com/icons/svg/495/495686.svg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_City/15959961075101_.jpg', NULL, '2020-07-26 09:17:28', '2020-07-29 10:15:07'),
+(11, 'Delhi', 'https://image.flaticon.com/icons/svg/2322/2322367.svg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_City/15959962931065_.jpg', NULL, '2020-07-26 09:18:09', '2020-07-29 10:18:13'),
+(12, 'Paris', 'https://image.flaticon.com/icons/svg/3127/3127434.svg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_City/15959963354576_.jpg', NULL, '2020-07-26 09:50:00', '2020-07-29 10:18:55'),
+(17, 'Vienna', 'www.flaticon.com%2Ffreeicon%2Fststephenscathedral_804389&psig=AOvVaw39Fu68TJtT9iMyuZ8NTwNt&ust=1605189649855000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNjm88nT-uwCFQAAAAAdAAAAABAD', 'http://eastravels.com/neweasttravel/public/storage/Event_City/16051033257741_.svg', NULL, '2020-11-11 20:35:56', '2020-11-11 21:02:05');
 
 -- --------------------------------------------------------
 
@@ -412,14 +412,14 @@ CREATE TABLE `event__countries` (
 --
 
 INSERT INTO `event__countries` (`id`, `name`, `description`, `image`, `for`, `created_at`, `updated_at`) VALUES
-(8, 'France', 'https://image.flaticon.com/icons/svg/555/555602.svg', 'http://www.enkitravel.com/public/storage/Event_Country/15959955115523_.jpg', NULL, '2020-07-26 09:50:42', '2020-07-29 10:05:11'),
-(7, 'India', 'https://image.flaticon.com/icons/svg/555/555462.svg', 'http://www.enkitravel.com/public/storage/Event_Country/15959955908433_.jpg', NULL, '2020-07-26 09:17:52', '2020-07-29 10:06:30'),
-(6, 'Pakistan', 'https://image.flaticon.com/icons/svg/630/630699.svg', 'http://www.enkitravel.com/public/storage/Event_Country/15959956487321_.jpg', NULL, '2020-07-26 09:16:59', '2020-07-29 10:07:28'),
-(9, 'Germany', 'https://image.flaticon.com/icons/svg/555/555613.svg', 'http://www.enkitravel.com/public/storage/Event_Country/15959956867665_.jpg', NULL, '2020-07-26 09:51:00', '2020-07-29 10:08:06'),
-(10, 'Austria', 'https://image.flaticon.com/icons/svg/555/555490.svg', 'http://www.enkitravel.com/public/storage/Event_Country/15959957342311_.jpg', NULL, '2020-07-27 00:31:24', '2020-07-29 10:08:54'),
-(11, 'United States', 'https://image.flaticon.com/icons/svg/555/555526.svg', 'http://www.enkitravel.com/public/storage/Event_Country/15959957676037_.jpg', NULL, '2020-07-27 00:33:41', '2020-07-29 10:09:27'),
-(12, 'Australia', 'https://image.flaticon.com/icons/svg/940/940158.svg', 'http://www.enkitravel.com/public/storage/Event_Country/15960022574407_.jpg', NULL, '2020-07-29 11:57:37', '2020-07-29 11:57:37'),
-(13, 'Spain', 'Spain', 'http://www.enkitravel.com/public/storage/Event_Country/16028914571315_.png', NULL, '2020-10-17 05:37:38', '2020-10-17 05:37:38');
+(8, 'France', 'https://image.flaticon.com/icons/svg/555/555602.svg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Country/15959955115523_.jpg', NULL, '2020-07-26 09:50:42', '2020-07-29 10:05:11'),
+(7, 'India', 'https://image.flaticon.com/icons/svg/555/555462.svg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Country/15959955908433_.jpg', NULL, '2020-07-26 09:17:52', '2020-07-29 10:06:30'),
+(6, 'Pakistan', 'https://image.flaticon.com/icons/svg/630/630699.svg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Country/15959956487321_.jpg', NULL, '2020-07-26 09:16:59', '2020-07-29 10:07:28'),
+(9, 'Germany', 'https://image.flaticon.com/icons/svg/555/555613.svg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Country/15959956867665_.jpg', NULL, '2020-07-26 09:51:00', '2020-07-29 10:08:06'),
+(10, 'Austria', 'https://image.flaticon.com/icons/svg/555/555490.svg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Country/15959957342311_.jpg', NULL, '2020-07-27 00:31:24', '2020-07-29 10:08:54'),
+(11, 'United States', 'https://image.flaticon.com/icons/svg/555/555526.svg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Country/15959957676037_.jpg', NULL, '2020-07-27 00:33:41', '2020-07-29 10:09:27'),
+(12, 'Australia', 'https://image.flaticon.com/icons/svg/940/940158.svg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Country/15960022574407_.jpg', NULL, '2020-07-29 11:57:37', '2020-07-29 11:57:37'),
+(13, 'Spain', 'Spain', 'http://eastravels.com/neweasttravel/public/storage/Event_Country/16028914571315_.png', NULL, '2020-10-17 05:37:38', '2020-10-17 05:37:38');
 
 -- --------------------------------------------------------
 
@@ -442,19 +442,19 @@ CREATE TABLE `event__icons` (
 --
 
 INSERT INTO `event__icons` (`id`, `name`, `description`, `image`, `for`, `created_at`, `updated_at`) VALUES
-(4, 'Breakfast', 'https://image.flaticon.com/icons/svg/741/741412.svg', 'http://www.enkitravel.com/public/storage/Event_Icons/15957771227926_.jpg', NULL, '2020-07-26 09:16:38', '2020-07-26 21:25:22'),
-(3, 'Icon1', 'https://image.flaticon.com/icons/svg/741/741407.svg', 'http://www.enkitravel.com/public/storage/Event_Icons/15957333773903_.jpg', NULL, '2020-07-26 09:16:17', '2020-07-26 09:16:17'),
-(6, 'Sightseeings', 'https://image.flaticon.com/icons/svg/741/741407.svg', 'http://www.enkitravel.com/public/storage/Event_Icons/15957446482318_.jpg', NULL, '2020-07-26 11:47:39', '2020-07-26 12:24:08'),
-(7, 'Breakfast', 'https://image.flaticon.com/icons/png/512/84/84072.png', 'http://www.enkitravel.com/public/storage/Event_Icons/15957425095167_.jpg', NULL, '2020-07-26 11:48:29', '2020-07-26 11:48:29'),
-(8, 'Hotel', 'https://image.flaticon.com/icons/png/512/84/84072.png', 'http://www.enkitravel.com/public/storage/Event_Icons/15957425463340_.jpg', NULL, '2020-07-26 11:49:06', '2020-07-26 11:49:06'),
-(9, 'Transfer', 'https://image.flaticon.com/icons/png/512/84/84072.png', 'http://www.enkitravel.com/public/storage/Event_Icons/15957425723418_.jpg', NULL, '2020-07-26 11:49:32', '2020-07-26 11:49:32'),
-(10, 'Days', 'https://image.flaticon.com/icons/png/512/84/84072.png', 'http://www.enkitravel.com/public/storage/Event_Icons/15957425967320_.jpg', NULL, '2020-07-26 11:49:56', '2020-07-26 11:49:56'),
-(11, 'Multi City', 'http://simpleicon.com/wp-content/uploads/car.png', 'http://www.enkitravel.com/public/storage/Event_Icons/15957426183561_.jpg', NULL, '2020-07-26 11:50:18', '2020-07-26 11:50:18'),
-(12, 'Transfer', 'http://simpleicon.com/wp-content/uploads/car.png', 'http://www.enkitravel.com/public/storage/Event_Icons/15957426435629_.jpg', NULL, '2020-07-26 11:50:43', '2020-07-26 11:50:43'),
-(13, 'Cruise', 'https://www.pngrepo.com/png/193576/170/cruiser-war.png', 'http://www.enkitravel.com/public/storage/Event_Icons/15957426642646_.jpg', NULL, '2020-07-26 11:51:04', '2020-07-26 11:51:04'),
-(14, 'Flight', 'http://cdn.onlinewebfonts.com/svg/img_528940.png', 'http://www.enkitravel.com/public/storage/Event_Icons/15957426844003_.jpg', NULL, '2020-07-26 11:51:24', '2020-07-26 11:51:24'),
-(15, 'Activity', 'https://cdn1.iconfinder.com/data/icons/recreational-activities-1/64/16-512.png', 'http://www.enkitravel.com/public/storage/Event_Icons/15957427053549_.jpg', NULL, '2020-07-26 11:51:45', '2020-07-26 11:51:45'),
-(16, 'Australia', 'https://image.flaticon.com/icons/svg/940/940158.svg', 'http://www.enkitravel.com/public/storage/Event_Icons/15960022873321_.jpg', NULL, '2020-07-29 11:58:07', '2020-07-29 11:58:07');
+(4, 'Breakfast', 'https://image.flaticon.com/icons/svg/741/741412.svg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Icons/15957771227926_.jpg', NULL, '2020-07-26 09:16:38', '2020-07-26 21:25:22'),
+(3, 'Icon1', 'https://image.flaticon.com/icons/svg/741/741407.svg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Icons/15957333773903_.jpg', NULL, '2020-07-26 09:16:17', '2020-07-26 09:16:17'),
+(6, 'Sightseeings', 'https://image.flaticon.com/icons/svg/741/741407.svg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Icons/15957446482318_.jpg', NULL, '2020-07-26 11:47:39', '2020-07-26 12:24:08'),
+(7, 'Breakfast', 'https://image.flaticon.com/icons/png/512/84/84072.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Icons/15957425095167_.jpg', NULL, '2020-07-26 11:48:29', '2020-07-26 11:48:29'),
+(8, 'Hotel', 'https://image.flaticon.com/icons/png/512/84/84072.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Icons/15957425463340_.jpg', NULL, '2020-07-26 11:49:06', '2020-07-26 11:49:06'),
+(9, 'Transfer', 'https://image.flaticon.com/icons/png/512/84/84072.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Icons/15957425723418_.jpg', NULL, '2020-07-26 11:49:32', '2020-07-26 11:49:32'),
+(10, 'Days', 'https://image.flaticon.com/icons/png/512/84/84072.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Icons/15957425967320_.jpg', NULL, '2020-07-26 11:49:56', '2020-07-26 11:49:56'),
+(11, 'Multi City', 'http://simpleicon.com/wp-content/uploads/car.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Icons/15957426183561_.jpg', NULL, '2020-07-26 11:50:18', '2020-07-26 11:50:18'),
+(12, 'Transfer', 'http://simpleicon.com/wp-content/uploads/car.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Icons/15957426435629_.jpg', NULL, '2020-07-26 11:50:43', '2020-07-26 11:50:43'),
+(13, 'Cruise', 'https://www.pngrepo.com/png/193576/170/cruiser-war.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Icons/15957426642646_.jpg', NULL, '2020-07-26 11:51:04', '2020-07-26 11:51:04'),
+(14, 'Flight', 'http://cdn.onlinewebfonts.com/svg/img_528940.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Icons/15957426844003_.jpg', NULL, '2020-07-26 11:51:24', '2020-07-26 11:51:24'),
+(15, 'Activity', 'https://cdn1.iconfinder.com/data/icons/recreational-activities-1/64/16-512.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Icons/15957427053549_.jpg', NULL, '2020-07-26 11:51:45', '2020-07-26 11:51:45'),
+(16, 'Australia', 'https://image.flaticon.com/icons/svg/940/940158.svg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Icons/15960022873321_.jpg', NULL, '2020-07-29 11:58:07', '2020-07-29 11:58:07');
 
 -- --------------------------------------------------------
 
@@ -491,18 +491,18 @@ CREATE TABLE `gallery_photos` (
 --
 
 INSERT INTO `gallery_photos` (`id`, `title`, `desc`, `url`, `created_at`, `updated_at`) VALUES
-(11, 'team 2', 'team 2', 'http://www.enkitravel.com/public/storage/Gallery_Photos/15919625791459_.jpg', '2020-06-12 17:49:39', '2020-06-12 17:49:39'),
-(12, 'team 3', 'team 3', 'http://www.enkitravel.com/public/storage/Gallery_Photos/15919626619650_.jpg', '2020-06-12 17:51:01', '2020-06-12 17:51:01'),
-(13, 'team 4', 'team 4', 'http://www.enkitravel.com/public/storage/Gallery_Photos/15919626781256_.jpg', '2020-06-12 17:51:18', '2020-06-12 17:51:18'),
-(14, 'team 5', 'team 5', 'http://www.enkitravel.com/public/storage/Gallery_Photos/15919627055371_.jpg', '2020-06-12 17:51:45', '2020-06-12 17:51:45'),
-(15, 'team 6', 'team 6', 'http://www.enkitravel.com/public/storage/Gallery_Photos/15919627319658_.jpg', '2020-06-12 17:52:11', '2020-06-12 17:52:11'),
-(16, 'team 7', 'team 7', 'http://www.enkitravel.com/public/storage/Gallery_Photos/15919627564165_.jpg', '2020-06-12 17:52:36', '2020-06-12 17:52:36'),
-(17, 'team 8', 'team 8', 'http://www.enkitravel.com/public/storage/Gallery_Photos/15919627746674_.jpg', '2020-06-12 17:52:54', '2020-06-12 17:52:54'),
-(18, 'team 9', 'team 9', 'http://www.enkitravel.com/public/storage/Gallery_Photos/15919628827535_.jpg', '2020-06-12 17:53:54', '2020-06-12 17:53:54'),
-(19, 'team 10', 'team 10', 'http://www.enkitravel.com/public/storage/Gallery_Photos/15919628341162_.jpg', '2020-06-12 17:53:54', '2020-06-12 17:53:54'),
-(20, 'team 11', 'team 11', 'http://www.enkitravel.com/public/storage/Gallery_Photos/15919629277821_.jpg', '2020-06-12 17:55:27', '2020-06-12 17:55:27'),
-(21, 'team 12', 'team 12', 'http://www.enkitravel.com/public/storage/Gallery_Photos/15919629422420_.jpg', '2020-06-12 17:55:42', '2020-06-12 17:55:42'),
-(22, 'team 13', 'team 13', 'http://www.enkitravel.com/public/storage/Gallery_Photos/15919629558057_.jpg', '2020-06-12 17:55:55', '2020-06-12 17:55:55');
+(11, 'team 2', 'team 2', 'http://eastravels.com/neweasttravel/public/storage/Gallery_Photos/15919625791459_.jpg', '2020-06-12 17:49:39', '2020-06-12 17:49:39'),
+(12, 'team 3', 'team 3', 'http://eastravels.com/neweasttravel/public/storage/Gallery_Photos/15919626619650_.jpg', '2020-06-12 17:51:01', '2020-06-12 17:51:01'),
+(13, 'team 4', 'team 4', 'http://eastravels.com/neweasttravel/public/storage/Gallery_Photos/15919626781256_.jpg', '2020-06-12 17:51:18', '2020-06-12 17:51:18'),
+(14, 'team 5', 'team 5', 'http://eastravels.com/neweasttravel/public/storage/Gallery_Photos/15919627055371_.jpg', '2020-06-12 17:51:45', '2020-06-12 17:51:45'),
+(15, 'team 6', 'team 6', 'http://eastravels.com/neweasttravel/public/storage/Gallery_Photos/15919627319658_.jpg', '2020-06-12 17:52:11', '2020-06-12 17:52:11'),
+(16, 'team 7', 'team 7', 'http://eastravels.com/neweasttravel/public/storage/Gallery_Photos/15919627564165_.jpg', '2020-06-12 17:52:36', '2020-06-12 17:52:36'),
+(17, 'team 8', 'team 8', 'http://eastravels.com/neweasttravel/public/storage/Gallery_Photos/15919627746674_.jpg', '2020-06-12 17:52:54', '2020-06-12 17:52:54'),
+(18, 'team 9', 'team 9', 'http://eastravels.com/neweasttravel/public/storage/Gallery_Photos/15919628827535_.jpg', '2020-06-12 17:53:54', '2020-06-12 17:53:54'),
+(19, 'team 10', 'team 10', 'http://eastravels.com/neweasttravel/public/storage/Gallery_Photos/15919628341162_.jpg', '2020-06-12 17:53:54', '2020-06-12 17:53:54'),
+(20, 'team 11', 'team 11', 'http://eastravels.com/neweasttravel/public/storage/Gallery_Photos/15919629277821_.jpg', '2020-06-12 17:55:27', '2020-06-12 17:55:27'),
+(21, 'team 12', 'team 12', 'http://eastravels.com/neweasttravel/public/storage/Gallery_Photos/15919629422420_.jpg', '2020-06-12 17:55:42', '2020-06-12 17:55:42'),
+(22, 'team 13', 'team 13', 'http://eastravels.com/neweasttravel/public/storage/Gallery_Photos/15919629558057_.jpg', '2020-06-12 17:55:55', '2020-06-12 17:55:55');
 
 -- --------------------------------------------------------
 
@@ -524,9 +524,9 @@ CREATE TABLE `group_photos` (
 --
 
 INSERT INTO `group_photos` (`id`, `title`, `desc`, `url`, `created_at`, `updated_at`) VALUES
-(17, 'retre', 'rterter', 'http://www.enkitravel.com/public/storage/Group_Photos/15947150417505_.jpg', '2020-07-14 14:24:01', '2020-07-14 14:24:01'),
-(14, 'fsfsdfsd', 'fsdfsdfs', 'http://www.enkitravel.com/public/storage/Group_Photos/15947147909406_.jpg', '2020-07-14 14:19:50', '2020-07-14 14:19:50'),
-(15, 'fsdsdf', 'fsdfsdfsd', 'http://www.enkitravel.com/public/storage/Group_Photos/15947148226293_.jpg', '2020-07-14 14:20:22', '2020-07-14 14:20:22');
+(17, 'retre', 'rterter', 'http://eastravels.com/neweasttravel/public/storage/Group_Photos/15947150417505_.jpg', '2020-07-14 14:24:01', '2020-07-14 14:24:01'),
+(14, 'fsfsdfsd', 'fsdfsdfs', 'http://eastravels.com/neweasttravel/public/storage/Group_Photos/15947147909406_.jpg', '2020-07-14 14:19:50', '2020-07-14 14:19:50'),
+(15, 'fsdsdf', 'fsdfsdfsd', 'http://eastravels.com/neweasttravel/public/storage/Group_Photos/15947148226293_.jpg', '2020-07-14 14:20:22', '2020-07-14 14:20:22');
 
 -- --------------------------------------------------------
 
@@ -587,38 +587,38 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `fkey`, `name`, `src`, `of`, `created_at`, `updated_at`) VALUES
-(995, '56', '16053609026294_.jpg', 'http://www.enkitravel.com/public/storage/Event_Images/16053609026294_.jpg', 'Transfer', '2020-11-14 20:35:02', '2020-11-14 20:35:02'),
-(976, '55', '16051063059990_.jpg', 'http://www.enkitravel.com/public/storage/Event_Images/16051063059990_.jpg', 'Activity', '2020-11-11 21:51:45', '2020-11-11 21:51:45'),
-(973, '52', '16051057639065_.jpg', 'http://www.enkitravel.com/public/storage/Event_Images/16051057639065_.jpg', 'Daytour', '2020-11-11 21:42:43', '2020-11-11 21:42:43'),
-(994, '53', '16053607679911_.jpg', 'http://www.enkitravel.com/public/storage/Event_Images/16053607679911_.jpg', 'Activity', '2020-11-14 20:32:47', '2020-11-14 20:32:47'),
-(972, '51', '16051056482962_.jpg', 'http://www.enkitravel.com/public/storage/Event_Images/16051056482962_.jpg', 'Daytour', '2020-11-11 21:40:48', '2020-11-11 21:40:48'),
-(971, '50', '16051054686249_.jpg', 'http://www.enkitravel.com/public/storage/Event_Images/16051054686249_.jpg', 'Daytour', '2020-11-11 21:37:48', '2020-11-11 21:37:48'),
-(1013, '47', '16059108884603_.jpg', 'http://www.enkitravel.com/public/storage/Event_Images/16059108884603_.jpg', 'Package', '2020-11-21 05:21:28', '2020-11-21 05:21:28'),
-(959, '46', '15961944143614_.png', 'http://www.enkitravel.com/public/storage/Event_Images/15961944143614_.png', 'Package', '2020-07-31 17:20:14', '2020-07-31 17:20:14'),
-(958, '46', '15961944143367_.png', 'http://www.enkitravel.com/public/storage/Event_Images/15961944143367_.png', 'Package', '2020-07-31 17:20:14', '2020-07-31 17:20:14'),
-(957, '46', '15961944145494_.png', 'http://www.enkitravel.com/public/storage/Event_Images/15961944145494_.png', 'Package', '2020-07-31 17:20:14', '2020-07-31 17:20:14'),
-(956, '46', '15961944147209_.png', 'http://www.enkitravel.com/public/storage/Event_Images/15961944147209_.png', 'Package', '2020-07-31 17:20:14', '2020-07-31 17:20:14'),
-(955, '45', '15961942602668_.png', 'http://www.enkitravel.com/public/storage/Event_Images/15961942602668_.png', 'Transfer', '2020-07-31 17:17:40', '2020-07-31 17:17:40'),
-(954, '45', '15961942604511_.png', 'http://www.enkitravel.com/public/storage/Event_Images/15961942604511_.png', 'Transfer', '2020-07-31 17:17:40', '2020-07-31 17:17:40'),
-(953, '45', '15961942608553_.png', 'http://www.enkitravel.com/public/storage/Event_Images/15961942608553_.png', 'Transfer', '2020-07-31 17:17:40', '2020-07-31 17:17:40'),
-(952, '45', '15961942608469_.png', 'http://www.enkitravel.com/public/storage/Event_Images/15961942608469_.png', 'Transfer', '2020-07-31 17:17:40', '2020-07-31 17:17:40'),
-(951, '44', '15961934607186_.png', 'http://www.enkitravel.com/public/storage/Event_Images/15961934607186_.png', 'Daytour', '2020-07-31 17:04:20', '2020-07-31 17:04:20'),
-(946, '41', '15960021128193_.jpg', 'http://www.enkitravel.com/public/storage/Event_Images/15960021128193_.jpg', 'Activity', '2020-07-29 11:55:12', '2020-07-29 11:55:12'),
-(947, '44', '15961934607142_.png', 'http://www.enkitravel.com/public/storage/Event_Images/15961934607142_.png', 'Daytour', '2020-07-31 17:04:20', '2020-07-31 17:04:20'),
-(948, '44', '15961934601454_.png', 'http://www.enkitravel.com/public/storage/Event_Images/15961934601454_.png', 'Daytour', '2020-07-31 17:04:20', '2020-07-31 17:04:20'),
-(949, '44', '15961934608274_.png', 'http://www.enkitravel.com/public/storage/Event_Images/15961934608274_.png', 'Daytour', '2020-07-31 17:04:20', '2020-07-31 17:04:20'),
-(950, '44', '15961934609525_.png', 'http://www.enkitravel.com/public/storage/Event_Images/15961934609525_.png', 'Daytour', '2020-07-31 17:04:20', '2020-07-31 17:04:20'),
-(940, '40', '15957344969225_.jpg', 'http://www.enkitravel.com/public/storage/Event_Images/15957344969225_.jpg', 'Activity', '2020-07-26 09:34:56', '2020-07-26 09:34:56'),
-(945, '42', '15957907179818_.jpg', 'http://www.enkitravel.com/public/storage/Event_Images/15957907179818_.jpg', 'Activity', '2020-07-27 01:11:57', '2020-07-27 01:11:57'),
-(943, '43', '15957363551033_.jpg', 'http://www.enkitravel.com/public/storage/Event_Images/15957363551033_.jpg', 'Cruise', '2020-07-26 10:05:55', '2020-07-26 10:05:55'),
-(978, '57', '16051073003374_.jpg', 'http://www.enkitravel.com/public/storage/Event_Images/16051073003374_.jpg', 'Transfer', '2020-11-11 22:08:20', '2020-11-11 22:08:20'),
-(979, '58', '16051074647902_.jpg', 'http://www.enkitravel.com/public/storage/Event_Images/16051074647902_.jpg', 'Transfer', '2020-11-11 22:11:04', '2020-11-11 22:11:04'),
-(980, '59', '16051077552621_.jpg', 'http://www.enkitravel.com/public/storage/Event_Images/16051077552621_.jpg', 'Cruise', '2020-11-11 22:15:55', '2020-11-11 22:15:55'),
-(1016, '47', '16059108889705_.jpg', 'http://www.enkitravel.com/public/storage/Event_Images/16059108889705_.jpg', 'Package', '2020-11-21 05:21:28', '2020-11-21 05:21:28'),
-(1015, '47', '16059108887752_.jpg', 'http://www.enkitravel.com/public/storage/Event_Images/16059108887752_.jpg', 'Package', '2020-11-21 05:21:28', '2020-11-21 05:21:28'),
-(1014, '47', '16059108881242_.jpg', 'http://www.enkitravel.com/public/storage/Event_Images/16059108881242_.jpg', 'Package', '2020-11-21 05:21:28', '2020-11-21 05:21:28'),
-(996, '54', '16053649529203_.jpg', 'http://www.enkitravel.com/public/storage/Event_Images/16053649529203_.jpg', 'Activity', '2020-11-14 21:42:32', '2020-11-14 21:42:32'),
-(990, '60', '16053603071060_.jpg', 'http://www.enkitravel.com/public/storage/Event_Images/16053603071060_.jpg', 'Package', '2020-11-14 20:25:07', '2020-11-14 20:25:07');
+(995, '56', '16053609026294_.jpg', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16053609026294_.jpg', 'Transfer', '2020-11-14 20:35:02', '2020-11-14 20:35:02'),
+(976, '55', '16051063059990_.jpg', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16051063059990_.jpg', 'Activity', '2020-11-11 21:51:45', '2020-11-11 21:51:45'),
+(973, '52', '16051057639065_.jpg', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16051057639065_.jpg', 'Daytour', '2020-11-11 21:42:43', '2020-11-11 21:42:43'),
+(994, '53', '16053607679911_.jpg', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16053607679911_.jpg', 'Activity', '2020-11-14 20:32:47', '2020-11-14 20:32:47'),
+(972, '51', '16051056482962_.jpg', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16051056482962_.jpg', 'Daytour', '2020-11-11 21:40:48', '2020-11-11 21:40:48'),
+(971, '50', '16051054686249_.jpg', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16051054686249_.jpg', 'Daytour', '2020-11-11 21:37:48', '2020-11-11 21:37:48'),
+(1013, '47', '16059108884603_.jpg', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16059108884603_.jpg', 'Package', '2020-11-21 05:21:28', '2020-11-21 05:21:28'),
+(959, '46', '15961944143614_.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Images/15961944143614_.png', 'Package', '2020-07-31 17:20:14', '2020-07-31 17:20:14'),
+(958, '46', '15961944143367_.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Images/15961944143367_.png', 'Package', '2020-07-31 17:20:14', '2020-07-31 17:20:14'),
+(957, '46', '15961944145494_.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Images/15961944145494_.png', 'Package', '2020-07-31 17:20:14', '2020-07-31 17:20:14'),
+(956, '46', '15961944147209_.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Images/15961944147209_.png', 'Package', '2020-07-31 17:20:14', '2020-07-31 17:20:14'),
+(955, '45', '15961942602668_.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Images/15961942602668_.png', 'Transfer', '2020-07-31 17:17:40', '2020-07-31 17:17:40'),
+(954, '45', '15961942604511_.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Images/15961942604511_.png', 'Transfer', '2020-07-31 17:17:40', '2020-07-31 17:17:40'),
+(953, '45', '15961942608553_.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Images/15961942608553_.png', 'Transfer', '2020-07-31 17:17:40', '2020-07-31 17:17:40'),
+(952, '45', '15961942608469_.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Images/15961942608469_.png', 'Transfer', '2020-07-31 17:17:40', '2020-07-31 17:17:40'),
+(951, '44', '15961934607186_.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Images/15961934607186_.png', 'Daytour', '2020-07-31 17:04:20', '2020-07-31 17:04:20'),
+(946, '41', '15960021128193_.jpg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Images/15960021128193_.jpg', 'Activity', '2020-07-29 11:55:12', '2020-07-29 11:55:12'),
+(947, '44', '15961934607142_.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Images/15961934607142_.png', 'Daytour', '2020-07-31 17:04:20', '2020-07-31 17:04:20'),
+(948, '44', '15961934601454_.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Images/15961934601454_.png', 'Daytour', '2020-07-31 17:04:20', '2020-07-31 17:04:20'),
+(949, '44', '15961934608274_.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Images/15961934608274_.png', 'Daytour', '2020-07-31 17:04:20', '2020-07-31 17:04:20'),
+(950, '44', '15961934609525_.png', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Images/15961934609525_.png', 'Daytour', '2020-07-31 17:04:20', '2020-07-31 17:04:20'),
+(940, '40', '15957344969225_.jpg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Images/15957344969225_.jpg', 'Activity', '2020-07-26 09:34:56', '2020-07-26 09:34:56'),
+(945, '42', '15957907179818_.jpg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Images/15957907179818_.jpg', 'Activity', '2020-07-27 01:11:57', '2020-07-27 01:11:57'),
+(943, '43', '15957363551033_.jpg', 'https://www.eastravels.com/neweasttravel/public/storage/Event_Images/15957363551033_.jpg', 'Cruise', '2020-07-26 10:05:55', '2020-07-26 10:05:55'),
+(978, '57', '16051073003374_.jpg', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16051073003374_.jpg', 'Transfer', '2020-11-11 22:08:20', '2020-11-11 22:08:20'),
+(979, '58', '16051074647902_.jpg', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16051074647902_.jpg', 'Transfer', '2020-11-11 22:11:04', '2020-11-11 22:11:04'),
+(980, '59', '16051077552621_.jpg', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16051077552621_.jpg', 'Cruise', '2020-11-11 22:15:55', '2020-11-11 22:15:55'),
+(1016, '47', '16059108889705_.jpg', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16059108889705_.jpg', 'Package', '2020-11-21 05:21:28', '2020-11-21 05:21:28'),
+(1015, '47', '16059108887752_.jpg', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16059108887752_.jpg', 'Package', '2020-11-21 05:21:28', '2020-11-21 05:21:28'),
+(1014, '47', '16059108881242_.jpg', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16059108881242_.jpg', 'Package', '2020-11-21 05:21:28', '2020-11-21 05:21:28'),
+(996, '54', '16053649529203_.jpg', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16053649529203_.jpg', 'Activity', '2020-11-14 21:42:32', '2020-11-14 21:42:32'),
+(990, '60', '16053603071060_.jpg', 'http://eastravels.com/neweasttravel/public/storage/Event_Images/16053603071060_.jpg', 'Package', '2020-11-14 20:25:07', '2020-11-14 20:25:07');
 
 -- --------------------------------------------------------
 
@@ -820,16 +820,16 @@ CREATE TABLE `popularcities` (
 --
 
 INSERT INTO `popularcities` (`id`, `name`, `country`, `description`, `banner`, `created_at`) VALUES
-(66, 'Vienna', 'Austria', 'fdsfsdfs', 'http://www.enkitravel.com/public/cities/images/1592721183.jpg', '2020-06-21 06:33:03'),
-(67, 'Bratislava', 'Slovakia', 'fdsfsdf', 'http://www.enkitravel.com/public/cities/images/1592721265.jpg', '2020-06-21 06:34:25'),
-(68, 'Munich', 'Germany', NULL, 'http://www.enkitravel.com/public/cities/images/1604770102.jpg', '2020-11-07 17:28:22'),
-(70, 'Zurich', 'Switzerland', 'Switzerland', 'http://www.enkitravel.com/public/cities/images/1604770132.jfif', '2020-11-07 17:28:52'),
-(75, 'Rome', 'Italy', 'Italy', 'http://www.enkitravel.com/public/cities/images/1592722258.jpg', '2020-06-21 06:50:58'),
-(77, 'Salzburg', 'Austria', NULL, 'http://www.enkitravel.com/public/cities/images/1604770090.jpg', '2020-11-07 17:28:10'),
-(78, 'Rome', 'Italy', NULL, 'http://www.enkitravel.com/public/cities/images/1602519224.jpg', '2020-10-12 16:13:44'),
-(81, 'zell am zee 2', 'Austria', NULL, 'http://www.enkitravel.com/public/cities/images/1602519353.jpg', '2020-10-12 16:15:53'),
-(83, 'Vienna', 'Austria', 'Sameer Country', 'http://www.enkitravel.com/public/cities/images/1604769887.jpg', '2020-11-07 17:26:32'),
-(84, 'Bratislava', 'Slovakia', NULL, 'http://www.enkitravel.com/public/cities/images/1604771084.jpg', '2020-11-07 17:44:44');
+(66, 'Vienna', 'Austria', 'fdsfsdfs', 'http://eastravels.com/neweasttravel/public/cities/images/1592721183.jpg', '2020-06-21 06:33:03'),
+(67, 'Bratislava', 'Slovakia', 'fdsfsdf', 'http://eastravels.com/neweasttravel/public/cities/images/1592721265.jpg', '2020-06-21 06:34:25'),
+(68, 'Munich', 'Germany', NULL, 'https://www.eastravels.com/neweasttravel/public/cities/images/1604770102.jpg', '2020-11-07 17:28:22'),
+(70, 'Zurich', 'Switzerland', 'Switzerland', 'https://www.eastravels.com/neweasttravel/public/cities/images/1604770132.jfif', '2020-11-07 17:28:52'),
+(75, 'Rome', 'Italy', 'Italy', 'http://eastravels.com/neweasttravel/public/cities/images/1592722258.jpg', '2020-06-21 06:50:58'),
+(77, 'Salzburg', 'Austria', NULL, 'https://www.eastravels.com/neweasttravel/public/cities/images/1604770090.jpg', '2020-11-07 17:28:10'),
+(78, 'Rome', 'Italy', NULL, 'http://eastravels.com/neweasttravel/public/cities/images/1602519224.jpg', '2020-10-12 16:13:44'),
+(81, 'zell am zee 2', 'Austria', NULL, 'http://eastravels.com/neweasttravel/public/cities/images/1602519353.jpg', '2020-10-12 16:15:53'),
+(83, 'Vienna', 'Austria', 'Sameer Country', 'https://www.eastravels.com/neweasttravel/public/cities/images/1604769887.jpg', '2020-11-07 17:26:32'),
+(84, 'Bratislava', 'Slovakia', NULL, 'https://www.eastravels.com/neweasttravel/public/cities/images/1604771084.jpg', '2020-11-07 17:44:44');
 
 -- --------------------------------------------------------
 
