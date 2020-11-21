@@ -487,15 +487,17 @@ $path="../public/";
                             aria-hidden="true"></i></a> </li>
                 <li><a href="https://wa.me/421917251996" target="_blank" style="background-color: lime"><i
                             class="fa fa-whatsapp" aria-hidden="true"></i></a> </li>
-                <li><a href="https://www.instagram.com/east_travel/" target="_blank" style="background-color: orange"><i
-                            class="fa fa-instagram" aria-hidden="true"><br>Eng</i></a> </li>
+                {{-- <li><a href="https://www.instagram.com/east_travel/" target="_blank" style="background-color: orange"><i
+                            class="fa fa-instagram" aria-hidden="true"><br>Eng</i></a> </li> --}}
+                            <li><a href="https://www.instagram.com/east_travel/" target="_blank" style="background-color: orange"><i
+                                class="fa fa-instagram" aria-hidden="true"><br></i></a> </li>
                 <li><a href="https://www.linkedin.com/company/easttravels" target="_blank" class="li1"><i
                             class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
-                <li><a href="https://www.facebook.com/easttravels/" target="_blank" class="fb1"><i
+                {{-- <li><a href="https://www.facebook.com/easttravels/" target="_blank" class="fb1"><i
                             class="fa fa-facebook" aria-hidden="true"><br>الْعَرَبِيَّة</i></a> </li>
                 <li><a href="https://www.instagram.com/eastravel.arabic" target="_blank"
                         style="background-color: orange"><i class="fa fa-instagram"
-                            aria-hidden="true"><br>الْعَرَبِيَّة</i></a> </li>
+                            aria-hidden="true"><br>الْعَرَبِيَّة</i></a> </li> --}}
                 <li><a href="mailto:info@eastravels.com" class="sh1"><i class="fa fa-envelope-o"
                             aria-hidden="true"></i></a> </li>
             </ul>

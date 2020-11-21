@@ -2808,9 +2808,9 @@ footer ul li a {
 
 .tour_social ul {
     display: flex !important;
-    justify-content: center;
+    /* justify-content: center;  ahmed commented*/
     float: unset;
-    padding: 10px 0 !important;
+    /* padding: 10px 0 !important;ahmed commented */
     padding-right: 0 !important;
 }
 

@@ -1,0 +1,58 @@
+   {{ dd(get_defined_vars()['__data']) }}
+
+
+   dump variables in views using balade
+
+
+User: enkitravel.com
+pass: 28j9C^?c6HJt623
+
+
+eastravels.com
+UYVzXZ77kZsBixv$
+
+
+
+facebookpage
+https://www.facebook.com/Eastravels
+instagram page
+https://www.instagram.com/east_travel/
+linkedin
+https://www.linkedin.com/company/18011782
+
+
+bluehost
+https://www.bluehost.com/?utm_source=google&utm_medium=brandsearch&gclid=EAIaIQobChMIq4667eiT7QIViBoGAB1hwwTiEAAYASAAEgLHKPD_BwE&gclsrc=aw.ds&utm_campaign=affiliate-link_searchbrandpromo_PPC
+
+
+
+
+
+
+
+{
+    "name": "East Travel",
+    "host": "162.241.216.38",
+    "protocol": "ftp",
+    "port": 21,
+    "username": "asd@neweasttravel.eastravels.com",
+    "password": "ASksk20195$7",
+    "remotePath": "/",
+    "uploadOnSave": true
+}
+
+
+
+
+
+
+{
+    "name": "East Travel production",
+    "host": "50.87.222.94",
+    "protocol": "ftp",
+    "port": 21,
+    "username": "asd@enkitravel.com",
+    "password": "ASksk20195$7",
+    "remotePath": "/",
+    "uploadOnSave": true
+}

@@ -10,3 +10,40 @@ Stack trace:
 #4 /home4/eastrave/public_html/neweasttravel/vendor/facade/ignition/src/Views/Engines/CompilerEngine.php(36): Illuminate\View\Engines\CompilerEngine->get('/home4/eastrave...', Array) in /home4/eastrave/public_html/neweasttravel/storage/framework/views/61bed652632b85aaebe0efff3d25c744a66371a2.php on line 4
 [25-May-2020 18:12:21 UTC] PHP Fatal error:  Object of class stdClass could not be converted to string in /home4/eastrave/public_html/neweasttravel/storage/framework/views/61bed652632b85aaebe0efff3d25c744a66371a2.php on line 4
 [25-May-2020 18:39:19 UTC] PHP Fatal error:  Cannot use App\Package_Icon as Package_Icon because the name is already in use in /home4/eastrave/public_html/neweasttravel/app/Http/Controllers/ahmed/BookNowController.php on line 14
+[27-May-2020 04:25:49 UTC] PHP Fatal error:  Constant expression contains invalid operations in /home4/eastrave/public_html/neweasttravel/app/Http/Controllers/ahmed/GalleryController.php on line 12
+[27-May-2020 04:26:49 UTC] PHP Fatal error:  Constant expression contains invalid operations in /home4/eastrave/public_html/neweasttravel/app/Http/Controllers/ahmed/GalleryController.php on line 12
+[17-Jun-2020 23:25:18 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 2097160 bytes) in /home4/eastrave/public_html/neweasttravel/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 333
+[17-Jun-2020 23:25:59 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 2097160 bytes) in /home4/eastrave/public_html/neweasttravel/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 333
+[17-Jun-2020 23:26:49 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 2097160 bytes) in /home4/eastrave/public_html/neweasttravel/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 333
+[17-Jun-2020 23:27:10 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 2097160 bytes) in /home4/eastrave/public_html/neweasttravel/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 333
+[18-Jun-2020 05:19:50 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 2097160 bytes) in /home4/eastrave/public_html/neweasttravel/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 333
+[18-Jun-2020 05:24:52 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 2097160 bytes) in /home4/eastrave/public_html/neweasttravel/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 333
+[18-Jun-2020 05:32:27 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 2097160 bytes) in /home4/eastrave/public_html/neweasttravel/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 333
+[21-Jun-2020 04:24:38 UTC] PHP Warning:  Uncaught ErrorException: Object of class stdClass could not be converted to string in /home4/eastrave/public_html/neweasttravel/app/Http/Controllers/ahmed/BookNowController.php:48
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(4096, 'Object of class...', '/home4/eastrave...', 48, Array)
+#1 /home4/eastrave/public_html/neweasttravel/app/Http/Controllers/ahmed/BookNowController.php(48): array_intersect(Array, Array)
+#2 [internal function]: App\Http\Controllers\ahmed\BookNowController->all_activities()
+#3 /home4/eastrave/public_html/neweasttravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array(Array, Array)
+#4 /home4/eastrave/public_html/neweasttravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('all_activities', Array)
+#5 /home4/eastrave/public_html/neweasttravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(219): Illuminate\Routing\Co in /home4/eastrave/public_html/neweasttravel/app/Http/Controllers/ahmed/BookNowController.php on line 48
+[21-Jun-2020 04:24:38 UTC] PHP Fatal error:  Object of class stdClass could not be converted to string in /home4/eastrave/public_html/neweasttravel/app/Http/Controllers/ahmed/BookNowController.php on line 48
+[21-Jun-2020 04:31:58 UTC] PHP Warning:  Uncaught ErrorException: Object of class stdClass could not be converted to string in /home4/eastrave/public_html/neweasttravel/app/Http/Controllers/ahmed/BookNowController.php:47
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(4096, 'Object of class...', '/home4/eastrave...', 47, Array)
+#1 /home4/eastrave/public_html/neweasttravel/app/Http/Controllers/ahmed/BookNowController.php(47): array_diff(Array, Array)
+#2 [internal function]: App\Http\Controllers\ahmed\BookNowController->all_activities()
+#3 /home4/eastrave/public_html/neweasttravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array(Array, Array)
+#4 /home4/eastrave/public_html/neweasttravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('all_activities', Array)
+#5 /home4/eastrave/public_html/neweasttravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(219): Illuminate\Routing\Control in /home4/eastrave/public_html/neweasttravel/app/Http/Controllers/ahmed/BookNowController.php on line 47
+[21-Jun-2020 04:31:58 UTC] PHP Fatal error:  Object of class stdClass could not be converted to string in /home4/eastrave/public_html/neweasttravel/app/Http/Controllers/ahmed/BookNowController.php on line 47
+[21-Jun-2020 04:32:42 UTC] PHP Warning:  Uncaught ErrorException: Object of class stdClass could not be converted to string in /home4/eastrave/public_html/neweasttravel/app/Http/Controllers/ahmed/BookNowController.php:47
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(4096, 'Object of class...', '/home4/eastrave...', 47, Array)
+#1 /home4/eastrave/public_html/neweasttravel/app/Http/Controllers/ahmed/BookNowController.php(47): array_diff(Array, Array)
+#2 [internal function]: App\Http\Controllers\ahmed\BookNowController->all_activities()
+#3 /home4/eastrave/public_html/neweasttravel/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array(Array, Array)
+#4 /home4/eastrave/public_html/neweasttravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\Routing\Controller->callAction('all_activities', Array)
+#5 /home4/eastrave/public_html/neweasttravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php(219): Illuminate\Routing\Control in /home4/eastrave/public_html/neweasttravel/app/Http/Controllers/ahmed/BookNowController.php on line 47
+[21-Jun-2020 04:32:42 UTC] PHP Fatal error:  Object of class stdClass could not be converted to string in /home4/eastrave/public_html/neweasttravel/app/Http/Controllers/ahmed/BookNowController.php on line 47
+[14-Jul-2020 03:09:01 UTC] PHP Fatal error:  Cannot redeclare App\Activity::cities() in /home4/eastrave/public_html/neweasttravel/app/Activity.php on line 41

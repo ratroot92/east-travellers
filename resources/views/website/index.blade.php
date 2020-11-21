@@ -162,10 +162,11 @@ li {
 #Search_Btn_CutomCountry,
 #Search_Btn_City,
 #Search_Btn_Country {
-    height: 40px !important;
+    height: 42px !important;
     border: 2px solid #fff;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 14px;
+    margin-top: -5px;
 
 }
 
@@ -186,6 +187,24 @@ li {
 }
 
 /* End  */
+/* Materilaize dropdown */
+ul.dropdown-content.select-dropdown li span {
+    color: #000;
+    font-size: 13px !important;
+
+     /* no need for !important :) */
+}
+.select-dropdown{
+text-align: left!important;
+}.select-wrapper+label {
+    position: absolute!important;
+    top: -27px!important;
+    font-size: 1.3rem!important;
+    color: #ffc107!important;
+}
+.package-form label, select, input {
+    font-size: 12px !important;
+}
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -201,6 +220,8 @@ li {
                     <p>Make your choice and plan your trip at the best price in just a few minutes.</p>
 
                     <!--  -->
+
+                    {{--
                     <div class="row">
                         <div class="col-md-12 ">
                             <ul class="nav nav-tabs border-0">
@@ -497,6 +518,50 @@ li {
                         </div>
 
                     </div>
+                   --}}
+
+                   <div class="row">
+                    <div class="col-md-12">
+
+                            <div class="row d-flex flex-row justify-content-center align-items-center">
+
+                                <div class="input-field col-md-3 s12 m12 l12 mt-5 mb-5">
+
+                                    <select name="Event_Type" class="Event_Type_City" id="Event_Type_City">
+                                        <option value="" disabled selected>Event Type</option>
+                                        <option value="All">All</option>
+                                        <option value="Activity">Activity</option>
+                                        <option value="Cruise">Cruise</option>
+                                        <option value="Transfer">Transfer</option>
+                                        <option value="Daytour">Daytour</option>
+                                        <option value="Package">Package</option>
+                                    </select>
+                                    {{-- <label class="text-white font-weight-bold">Event Type</label> --}}
+                                </div>
+
+
+
+
+                                <div class="input-field col-md-5 s12 m12 l12 mt-5 mb-5 m-0 p-0">
+
+                                    <select name="Event_City" class="Event_City" id="Event_City">
+                                        <option value="" disabled selected>Choose City</option>
+                                        @foreach($Event_Cities as $City)<option value="{{$City->id}}">{{$City->name}}</option>@endforeach
+                                    </select>
+                                    {{-- <label class="text-white font-weight-bold">Event City</label> --}}
+                                </div>
+
+                                <div class="col-md-4 mt-2">
+                                    <button type="button" class="btn btn-danger btn-block Search_Btn_City"
+                                        id="Search_Btn_City">Search</button>
+                                </div>
+                            </div>
+
+
+
+                    </div>
+                   </div>
+
                     <!--  -->
                     <div class="tourz-hom-ser">
                         <ul>
@@ -985,7 +1050,7 @@ li {
 </section>
 <section>
     <div class="rows tb-spaces pad-top-o pad-bot-redu">
-        <div class="container-fluid">
+        <div class="container-fluid pl-5 pr-5">
             <!-- TITLE & DESCRIPTION -->
             <div class="spe-title">
                 <h2>Popular <span>Cities</span> </h2>
@@ -1002,11 +1067,12 @@ li {
 @if($key==0)
 {{-- start of first col-md-6 with 3 pics    --}}
 <div class="col-md-6">
-<div class="col-md-12 ">
+    <div class="row">
+<div class="col-md-12 m-0 p-1 ">
     <a href="">
         <div class="tour-mig-like-com">
             <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}" style="height:530px;" >
+                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}" style="height:450px;" >
             </div>
             <div class="tour-mig-lc-con">
                 <h5>{{$item->name}}</h5>
@@ -1016,11 +1082,11 @@ li {
     </a>
 </div>
 @elseif($key==1)
-<div class="col-md-6 ">
+<div class="col-md-6 m-0 p-1">
     <a href="">
         <div class="tour-mig-like-com">
             <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}" style="height:255px;" >
+                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}" style="height:207px;" >
             </div>
             <div class="tour-mig-lc-con">
                 <h5>{{$item->name}}</h5>
@@ -1030,11 +1096,11 @@ li {
     </a>
 </div>
 @elseif($key==2)
-<div class="col-md-6 ">
+<div class="col-md-6 m-0 p-1">
     <a href="">
         <div class="tour-mig-like-com">
             <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:255px;"  >
+                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:207px;"  >
             </div>
             <div class="tour-mig-lc-con">
                 <h5>{{$item->name}}</h5>
@@ -1044,15 +1110,16 @@ li {
     </a>
 </div>
 </div>
+</div>
 {{-- end of first with 3 pics  col-md-6  --}}
 {{-- start  of second with 3 pics  col-md-6  --}}
 @elseif($key==3)
 <div class="col-md-6">
-<div class="col-md-6 ">
+<div class="col-md-6 m-0 p-2">
     <a href="">
         <div class="tour-mig-like-com">
             <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:255px;"  >
+                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:207px;"  >
             </div>
             <div class="tour-mig-lc-con">
                 <h5>{{$item->name}}</h5>
@@ -1062,11 +1129,11 @@ li {
     </a>
 </div>
 @elseif($key==4)
-<div class="col-md-6 ">
+<div class="col-md-6 m-0 p-2">
     <a href="">
         <div class="tour-mig-like-com">
             <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:255px;"  >
+                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:207px;"  >
             </div>
             <div class="tour-mig-lc-con">
                 <h5>{{$item->name}}</h5>
@@ -1078,11 +1145,11 @@ li {
 
 {{--  --}}
 @elseif($key==5)
-<div class="col-md-6 ">
+<div class="col-md-6 m-0 p-2">
     <a href="">
         <div class="tour-mig-like-com">
             <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:255px;"  >
+                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:207px;"  >
             </div>
             <div class="tour-mig-lc-con">
                 <h5>{{$item->name}}</h5>
@@ -1092,11 +1159,11 @@ li {
     </a>
 </div>
 @elseif($key==6)
-<div class="col-md-6 ">
+<div class="col-md-6 m-0 p-2">
     <a href="">
         <div class="tour-mig-like-com">
             <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:255px;"  >
+                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:207px;"  >
             </div>
             <div class="tour-mig-lc-con">
                 <h5>{{$item->name}}</h5>
@@ -1107,11 +1174,11 @@ li {
 </div>
 {{--  --}}
 @elseif($key==7)
-<div class="col-md-6 ">
+<div class="col-md-6 m-0 p-2">
     <a href="">
         <div class="tour-mig-like-com">
             <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:255px;"  >
+                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:207px;"  >
             </div>
             <div class="tour-mig-lc-con">
                 <h5>{{$item->name}}</h5>
@@ -1121,11 +1188,11 @@ li {
     </a>
 </div>
 @elseif($key==8)
-<div class="col-md-6 ">
+<div class="col-md-6 m-0 p-2">
     <a href="">
         <div class="tour-mig-like-com">
             <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:255px;"  >
+                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:207px;"  >
             </div>
             <div class="tour-mig-lc-con">
                 <h5>{{$item->name}}</h5>
@@ -1234,7 +1301,7 @@ li {
 {{-- <script>
    window.fbAsyncInit = function() {
    FB.init({
-   appId      : '205766477231808',
+   appId      : '207766477231808',
    autoLogAppEvents : true,
    xfbml      : true,
    version    : 'v5.0'
@@ -1254,7 +1321,7 @@ li {
 <script>
 window.fbAsyncInit = function() {
     FB.init({
-        appId: '205766477231808',
+        appId: '207766477231808',
         xfbml: true,
         version: 'v6.0'
     });

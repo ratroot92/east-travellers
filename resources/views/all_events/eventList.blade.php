@@ -96,7 +96,7 @@ height: auto;
                            @if($cities)
                            <li>
                               <div class="checkbox checkbox-info checkbox-circle">
-                                 <input id="city{{ $city->id }}" onClick="getCityNameForSearch(this.value)" class="cities city styled" value="{{$city->id}}" type="checkbox" >
+                                 <input id="{{ $city->id }}" onClick="getCityNameForSearch(this.value)" class="cities city styled" value="{{$city->id}}" type="checkbox" >
                                  <label for="{{ $city->id }}">{{$city->name ?? 'NA'}} </label>
                               </div>
                            </li>

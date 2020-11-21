@@ -532,3 +532,7 @@ Route::get('search/booknow/price/{min}/{max}/{tab}', 'ahmed\Booknow_Controller@B
 Route::get('search/booknow/categoryname/{name}/{tab}', 'ahmed\Booknow_Controller@Booknow_By_CategoryName')->name('search.booknow.categoryname');
 Route::get('search/booknow/cityname/{name}/{tab}', 'ahmed\Booknow_Controller@Booknow_By_CityName')->name('search.booknow.citynamename');
 Route::get('search/booknow/countryname/{name}/{tab}', 'ahmed\Booknow_Controller@Booknow_By_CountryName')->name('search.booknow.countryname');
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    // return what you want
+});

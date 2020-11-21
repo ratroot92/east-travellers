@@ -12,13 +12,13 @@ class CreateEventCitiesTable extends Migration {
 	 */
 	public function up() {
 		Schema::create('event__cities', function (Blueprint $table) {
-				$table->bigIncrements('id');
-				$table->string('name')->nullable();
-				$table->longText('description')->nullable();
-				$table->string('image')->nullable();
-				$table->string('for')->nullable();
-				$table->timestamps();
-			});
+			$table->bigIncrements('id');
+			$table->string('name')->nullable();
+			$table->longText('description')->nullable();
+			$table->string('image')->nullable();
+			$table->string('for')->nullable();
+			$table->timestamps();
+		});
 	}
 
 	/**
