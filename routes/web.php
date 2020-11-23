@@ -532,7 +532,38 @@ Route::get('search/booknow/price/{min}/{max}/{tab}', 'ahmed\Booknow_Controller@B
 Route::get('search/booknow/categoryname/{name}/{tab}', 'ahmed\Booknow_Controller@Booknow_By_CategoryName')->name('search.booknow.categoryname');
 Route::get('search/booknow/cityname/{name}/{tab}', 'ahmed\Booknow_Controller@Booknow_By_CityName')->name('search.booknow.citynamename');
 Route::get('search/booknow/countryname/{name}/{tab}', 'ahmed\Booknow_Controller@Booknow_By_CountryName')->name('search.booknow.countryname');
+//Clear Cache facade value:
 Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('cache:clear');
-    // return what you want
+    return '<h1>Cache facade value cleared</h1>';
+});
+
+//Reoptimized class loader:
+Route::get('/optimize', function() {
+    $exitCode = Artisan::call('optimize');
+    return '<h1>Reoptimized class loader</h1>';
+});
+
+//Route cache:
+Route::get('/route-cache', function() {
+    $exitCode = Artisan::call('route:cache');
+    return '<h1>Routes cached</h1>';
+});
+
+//Clear Route cache:
+Route::get('/route-clear', function() {
+    $exitCode = Artisan::call('route:clear');
+    return '<h1>Route cache cleared</h1>';
+});
+
+//Clear View cache:
+Route::get('/view-clear', function() {
+    $exitCode = Artisan::call('view:clear');
+    return '<h1>View cache cleared</h1>';
+});
+
+//Clear Config cache:
+Route::get('/config-cache', function() {
+    $exitCode = Artisan::call('config:cache');
+    return '<h1>Clear Config cleared</h1>';
 });

@@ -1,7 +1,7 @@
-# FROM maliksblr92/easttravellers:v1.1
-# EXPOSE 80:80
-# EXPOSE 8000:8000
-# EXPOSE 3306:3360
-# WORKDIR /var/www/html
-# CMD  service nginx start && service mysql start   && /bin/bash
-# #
+FROM maliksblr92/easttravellers:v1.1
+EXPOSE 80:80
+EXPOSE 8000:8000
+EXPOSE 3306:3360
+WORKDIR /var/www/html
+CMD  service nginx start && service mysql start   && /bin/bash
+
