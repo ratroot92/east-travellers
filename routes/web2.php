@@ -485,7 +485,7 @@ Route::post('/submitinquiry', function () {
     // $departure=$Object->departure;
     $max_price = $Object->max_price;
     $min_price = $Object->min_price;
-    Mail::to('maliksblr92@gmail.com')->send(new App\Mail\SendMailable($object));
+    Mail::to('info@eastravels.com')->send(new App\Mail\SendMailable($object));
     return back()->with('submit');
 });
 Route::post('/submitinquiry_email', 'ahmed\email_controller@insert_email_inquiry');

@@ -422,7 +422,7 @@ Route::post('/submitinquiry', function () {
     $max_price = $Object->max_price;
     $min_price = $Object->min_price;
 
-    Mail::to('maliksblr92@gmail.com')->send(new App\Mail\SendMailable($object));
+    Mail::to('info@eastravels.com')->send(new App\Mail\SendMailable($object));
 
 
 

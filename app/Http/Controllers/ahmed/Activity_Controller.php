@@ -14,6 +14,11 @@ use DB;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use PDF;
+use App\Mail\SendMail;
+use App\Mail\SendMailForBooking;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMailable;
+use App\Mail\detailMail;
 //
 use Validator;
 
@@ -200,4 +205,26 @@ class Activity_Controller extends Controller
 	}
 	//###############################################################################################################
 	//###############################################################################################################
+public function eventInquiry(Request $request){
+
+    $emailData =array(
+        'type'=>'Event Inquiry',
+        'date'=>$request->input('date'),
+        'email'=>$request->input('email'),
+        'name'=>$request->input('name'),
+        'phone'=>$request->input('phone'),
+        'adult'=>$request->input('adult'),
+        'child'=>$request->input('child'),
+        'eventName'=>$request->input('eventName'),
+        'eventId'=>$request->input('eventId'),
+        'eventLink'=>$request->input('eventLink'),
+        // 'description'=>$request->input('description'),
+
+
+    );
+
+    Mail::to('info@eastravels.com')->send(new detailMail($emailData));
+    //return redirect('/auth/signup')->with('message','Check your email and get verification link, if you do not recieve it in inbox, check spam folder');
+}
+
 }

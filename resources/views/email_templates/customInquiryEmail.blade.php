@@ -1,7 +1,7 @@
            <!doctype html>
            <html class="no-js" lang="">
            <head>
-           
+
            </head>
            <body>
            <div class="container-fluid">
@@ -47,21 +47,21 @@
                        Trip From :  <p style="">{{$object->trip_from  ?? ''}}</p>
                        Trip Date:  <p style="">{{$object->trip_to  ?? ''}}</p>
                        Trip Type:  <p style="">{{$object->trip_type  ?? ''}}</p>
-                       
 
 
 
 
 
-           
-                       
-                        
 
-          
-           
+
+
+
+
+
+
            </div>
-           
+
            </div>
-           
+
            </body>
            </html>

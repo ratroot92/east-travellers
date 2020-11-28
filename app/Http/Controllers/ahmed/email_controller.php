@@ -56,7 +56,7 @@ class email_controller extends Controller {
 			->orderBy('created_at', 'desc')
 			->first();
 
-		// Mail::to('maliksblr92@gmail.com')->send(new SendMailable($object));
+		// Mail::to('info@eastravels.com')->send(new SendMailable($object));
 
 		return redirect('/custominquiry')->with('success', 'Your Inquiry Has Been Submitted Successfully ');
 
@@ -71,8 +71,8 @@ class email_controller extends Controller {
 		$adult = $request->input('adult');
 		$child = $request->input('child');
 
-		//Mail::to('maliksblr92@gmail.com')->send(new detailMail($object));
-		//Mail::to('maliksblr92@gmail.com')->send(new SendMailable($object));
+		//Mail::to('info@eastravels.com')->send(new detailMail($object));
+		//Mail::to('info@eastravels.com')->send(new SendMailable($object));
 		return redirect('/')->with('success', 'Your Detailed Inquiry Has Been Submitted Successfully ');
 	}
 
@@ -88,8 +88,8 @@ class email_controller extends Controller {
 		$adult      = $request->input('adult');
 		$child      = $request->input('child');
 
-		//Mail::to('maliksblr92@gmail.com')->send(new detailMail($object));
-		//Mail::to('maliksblr92@gmail.com')->send(new SendMailable($object));
+		//Mail::to('info@eastravels.com')->send(new detailMail($object));
+		//Mail::to('info@eastravels.com')->send(new SendMailable($object));
 		return Redirect::back()->with('success', 'Email Inquiry dispatched successfully');
 	}
 

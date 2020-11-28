@@ -288,11 +288,12 @@ Route::post('/submitinquiry', function () {
 	// $departure=$Object->departure;
 	$max_price = $Object->max_price;
 	$min_price = $Object->min_price;
-	Mail::to('maliksblr92@gmail.com')->send(new App\Mail\SendMailable($object));
+	Mail::to('info@eastravels.com')->send(new App\Mail\SendMailable($object));
 	return back()->with('submit');
 });
 Route::post('/submitinquiry_email', 'ahmed\email_controller@insert_email_inquiry');
-Route::post('activity/detail_inquiry', 'ahmed\email_controller@activity_detail_inquiry');
+// Route::post('activity/detail_inquiry', 'ahmed\email_controller@activity_detail_inquiry');
+Route::post('/event/inquiry', 'ahmed\Activity_Controller@eventInquiry');
 Route::post('cruise/detail_inquiry', 'ahmed\email_controller@cruise_detail_inquiry');
 Route::post('daytour/detail_inquiry', 'ahmed\email_controller@daytour_detail_inquiry');
 Route::post('transfer/detail_inquiry', 'ahmed\email_controller@transfer_detail_inquiry');
@@ -343,7 +344,8 @@ Route::get('/migrate', function () {
 	echo "done";
 });
 Route::get('/clear', function () {
-	Artisan::call('cache:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
 	return "Cache is cleared";
 });
 Route::get('csrf', function () {

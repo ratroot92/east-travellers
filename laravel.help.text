@@ -39,3 +39,11 @@ https://www.bluehost.com/?utm_source=google&utm_medium=brandsearch&gclid=EAIaIQo
     "uploadOnSave": true
 }
 
+
+
+# MAIL_DRIVER=smtp
+# MAIL_HOST=smtp.gmail.com
+# MAIL_PORT=587
+# MAIL_USERNAME=maliksblr92@gmail.com
+# MAIL_PASSWORD=
+# MAIL_ENCRYPTION=tls

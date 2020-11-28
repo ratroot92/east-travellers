@@ -1408,10 +1408,19 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                <form action="{{ url('activity/detail_inquiry ') }}" method="post">
+                <form action="{{ url('event/inquiry ') }}" method="post">
                     {{ csrf_field() }}
                     <input type="hidden" name="event_name" value="activity" />
                     <input type="hidden" name="event_id" value="{{ $Event->id }}" />
+                    <div class="form-group">
+                        <label for="name" style="font-size: 18px;">Event Name*:</label>
+                        <input type="text" class="form-control" placeholder="Your Name" id="eventName" name="eventName" value="{{  $Event->event_name }} "readonly >
+                    </div>
+
+
+                        <input type="hidden" class="form-control" placeholder="Your Name" id="eventId" name="eventId" value={{ $Event->id }} >
+                        <input type="hidden" class="form-control" placeholder="Your Name" id="eventLink" name="eventLink" value={{url()->current()}} >
+
                     <div class="form-group">
                         <label for="name" style="font-size: 18px;">Name*:</label>
                         <input type="text" class="form-control" placeholder="Your Name" id="name" name="name" required>
