@@ -162,6 +162,30 @@ $path="../public/";
         border-bottom: 3px solid transparent;
         border-top: 3px solid #8F5408;
     }
+    .custom-booknow-link{
+        line-height: 22px!important;
+        font-size: 12px!important;
+        font-weight: bold!important;
+        color:#000!important;
+        /* padding: 2px!important; */
+    }
+
+    .custom-booknow-link:hover{
+        text-decoration: underline!important;
+        color: #e23464!important;
+    }
+
+
+
+    @media screen and (max-width: 960px) {
+        body > section:nth-child(6) > div.tourz-search > div > div > div > div.row > div > div > div.input-field.col-md-3.s12.m12.l12.mt-5.mb-5
+        {
+            padding-left:0px!important;
+            padding-right:0px!important;
+
+        }
+}
+
     </style>
 </head>
 
@@ -224,6 +248,10 @@ $path="../public/";
                                 <!--</li>-->
                                 <li><a href="{{ url('contact/policy') }}">Contact us</a>
                                 </li>
+                                <li><a  href="{{url('/aboutus')}}">About Us</a>
+                                </li>
+
+
                             </ul>
                         </div>
                         <div class="ed-com-t1-right">
@@ -244,20 +272,27 @@ $path="../public/";
                         </div>
                         <div class="ed-com-t1-social">
                             <ul>
-                                <li><a href="https://www.facebook.com/Eastravels/" target="_blank"><i
-                                            class="fa fa-facebook" aria-hidden="true"></i>English</a>
-                                </li>
-                                <li><a href="https://www.instagram.com/east_travel/" target="_blank"><i
-                                            class="fa fa-instagram" aria-hidden="true"></i>English</a> </li>
+
+                                {{-- <li><a href="https://www.instagram.com/east_travel/" target="_blank"><i
+                                            class="fa fa-instagram" aria-hidden="true"></i>English</a> </li> --}}
+                                            <li><a href="https://www.instagram.com/east_travel/" target="_blank"><i
+                                                class="fa fa-instagram" aria-hidden="true"></i></a> </li>
                                 <li><a href="https://www.linkedin.com/company/easttravels" target="_blank" class=""><i
                                             class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
-                                <li><a href="https://www.facebook.com/easttravels/" target="_blank" class=""><i
+                                            {{-- <li><a href="https://www.facebook.com/Eastravels/" target="_blank"><i
+                                                class="fa fa-facebook" aria-hidden="true"></i>English</a>
+                                    </li> --}}
+                                    <li><a href="https://www.facebook.com/Eastravels/" target="_blank"><i
+                                        class="fa fa-facebook" aria-hidden="true"></i></a>
+                            </li>
+                                    <li><a href="mailto:info@eastravels.com" class=""><i class="fa fa-envelope-o"
+                                        aria-hidden="true"></i></a> </li>
+                                {{-- <li><a href="https://www.facebook.com/easttravels/" target="_blank" class=""><i
                                             class="fa fa-facebook" style="margin-right: 3px"
-                                            aria-hidden="true"></i>الْعَرَبِيَّة</a> </li>
-                                <li><a href="https://www.instagram.com/eastravel.arabic" target="_blank"><i
-                                            class="fa fa-instagram" aria-hidden="true"></i>الْعَرَبِيَّة</a> </li>
-                                <li><a href="mailto:info@eastravels.com" class=""><i class="fa fa-envelope-o"
-                                            aria-hidden="true"></i></a> </li>
+                                            aria-hidden="true"></i>الْعَرَبِيَّة</a> </li> --}}
+                                {{-- <li><a href="https://www.instagram.com/eastravel.arabic" target="_blank"><i
+                                            class="fa fa-instagram" aria-hidden="true"></i>الْعَرَبِيَّة</a> </li> --}}
+
                             </ul>
                         </div>
                     </div>
@@ -286,11 +321,13 @@ $path="../public/";
                                         class="mm-arr">Cruises</a></li>
                                 <li class="about-menu"><a href="{{route('all.events.transfer')}}"
                                         class="mm-arr">Transfer</a></li>
-                                <li class="admi-menu"><a href="{{route('booknow.index')}}">Booknow</a></li>
+                                        <li class="about-menu"><a href="{{url('/custominquiry')}}">Custom Inquiry</a></li>
                                 <li class="about-menu"><a href="{{route('events.show')}}">Events</a></li>
-                                <li class="admi-menu"><a href="{{url('/aboutus')}}">About us</a></li>
-                                <li class="about-menu"><a href="{{url('/custominquiry')}}">Custom Inquiry</a></li>
+                                {{-- <li class="admi-menu"><a href="{{url('/aboutus')}}">About us</a></li> --}}
+
                                 <li class="about-menu"><a href="{{url('/contact/policy')}}">Contact Us </a></li>
+                                <li class="admi-menu "><button class=" btn btn-warning btn-sm mt-3  custom-booknow-link
+                                    "onclick="location.href='{{route('booknow.index')}}'" >Booknow</button></li>
                             </ul>
 
 
@@ -333,6 +370,32 @@ $path="../public/";
                                     </li>
                                 </ul>
                             </div>
+
+                            <div class="col-sm-4 foot-social foot-spec foot-com">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4><span>Destination</span></h4>
+                                        <ul style="list-style: none;display: grid;">
+                                            @foreach($destinationCities as $key=>$item)
+                                            <li><a href="{{ url('/popularcities/all') }}">{{ $item->name}}</a></li>
+                                            @endforeach
+
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4><span>Information</span></h4>
+                                        <ul style="list-style: none;">
+                                            <li><a href="{{url('/gdpr')}}">GDPR</a>
+                                            <li><a href="{{url('/termscondition')}}">Terms & Conditions</a></li>
+                                            <li><a href="{{url('/cancellation/policy')}}">Cancellation Policy</a></li>
+                                            <li><a href="{{url('/cookie/policy')}}">Cookie Policy</a></li>
+                                            <li><a href="{{url('/contact/policy')}}">Contact Us</a></li>
+                                            <li><a href="{{url('/payment/policy')}}">Payment Policy</a></li>
+                                            <li><a href="{{url('/faq/policy')}}">FAQs</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-sm-4 col-md-5 foot-spec foot-com">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -372,31 +435,7 @@ $path="../public/";
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-4 foot-social foot-spec foot-com">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h4><span>Destination</span></h4>
-                                        <ul style="list-style: none;display: grid;">
-                                            <li><a href="#">Austria</a></li>
-                                            <li><a href="#">Germany</a></li>
-                                            <li><a href="#">Italy</a></li>
-                                            <li><a href="#">France</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h4><span>Information</span></h4>
-                                        <ul style="list-style: none;">
-                                            <li><a href="{{url('/gdpr')}}">GDPR</a>
-                                            <li><a href="{{url('/termscondition')}}">Terms & Conditions</a></li>
-                                            <li><a href="{{url('/cancellation/policy')}}">Cancellation Policy</a></li>
-                                            <li><a href="{{url('/cookie/policy')}}">Cookie Policy</a></li>
-                                            <li><a href="{{url('/contact/policy')}}">Contact Us</a></li>
-                                            <li><a href="{{url('/payment/policy')}}">Payment Policy</a></li>
-                                            <li><a href="{{url('/faq/policy')}}">FAQs</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                         <div class="row">
                             <div class="col-sm-6 foot-spec foot-com">

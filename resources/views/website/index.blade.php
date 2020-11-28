@@ -642,13 +642,13 @@ text-align: left!important;
                                 <!-- OFFER BRAND -->
                                 @if($s->discount!=0)
                                 <div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png"
-                                        alt="" /><span class="disc-text">{{$s->discount}}<br>OFF</span></div>
+                                        alt="" /><span class="disc-text">{{$s->discount}}%<br>OFF</span></div>
                                 @else
                                 <!--  <div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png" alt="" /><span class="disc-text">No Discount</span></div> -->
                                 @endif
                                 <!--    <div class="band">-->
                                 <!--    <div class="box">-->
-                                <!--        <div class="ribbon"><span>{{$s->discount}}</span></div>-->
+                                <!--        <div class="ribbon"><span>{{$s->discount}}%</span></div>-->
                                 <!--    </div>-->
                                 <!--    {{--<span class="w3-tag w3-yellow"></span>--}}-->
                                 <!--    {{--  <img src="{{url('/theme/travel')}}/images/band.png" alt="" />--}}-->
@@ -730,13 +730,13 @@ text-align: left!important;
                                 <!-- OFFER BRAND -->
                                 @if($s->discount!=0)
                                 <div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png"
-                                        alt="" /><span class="disc-text">{{$s->discount}}<br>OFF</span></div>
+                                        alt="" /><span class="disc-text">{{$s->discount}}%<br>OFF</span></div>
                                 @else
                                 <!--  <div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png" alt="" /><span class="disc-text">No Discount</span></div> -->
                                 @endif
                                 <!--    <div class="band">-->
                                 <!--    <div class="box">-->
-                                <!--        <div class="ribbon"><span>{{$s->discount}}</span></div>-->
+                                <!--        <div class="ribbon"><span>{{$s->discount}}%</span></div>-->
                                 <!--    </div>-->
                                 <!--    {{--<span class="w3-tag w3-yellow"></span>--}}-->
                                 <!--    {{--  <img src="{{url('/theme/travel')}}/images/band.png" alt="" />--}}-->
@@ -817,13 +817,13 @@ text-align: left!important;
                                 <!-- OFFER BRAND -->
                                 @if($s->discount!=0)
                                 <div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png"
-                                        alt="" /><span class="disc-text">{{$s->discount}}<br>OFF</span></div>
+                                        alt="" /><span class="disc-text">{{$s->discount}}%<br>OFF</span></div>
                                 @else
                                 <!--  <div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png" alt="" /><span class="disc-text">No Discount</span></div> -->
                                 @endif
                                 <!--    <div class="band">-->
                                 <!--    <div class="box">-->
-                                <!--        <div class="ribbon"><span>{{$s->discount}}</span></div>-->
+                                <!--        <div class="ribbon"><span>{{$s->discount}}%</span></div>-->
                                 <!--    </div>-->
                                 <!--    {{--<span class="w3-tag w3-yellow"></span>--}}-->
                                 <!--    {{--  <img src="{{url('/theme/travel')}}/images/band.png" alt="" />--}}-->
@@ -904,13 +904,13 @@ text-align: left!important;
                                 <!-- OFFER BRAND -->
                                 @if($s->discount!=0)
                                 <div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png"
-                                        alt="" /><span class="disc-text">{{$s->discount}}<br>OFF</span></div>
+                                        alt="" /><span class="disc-text">{{$s->discount}}%<br>OFF</span></div>
                                 @else
                                 <!--  <div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png" alt="" /><span class="disc-text">No Discount</span></div> -->
                                 @endif
                                 <!--    <div class="band">-->
                                 <!--    <div class="box">-->
-                                <!--        <div class="ribbon"><span>{{$s->discount}}</span></div>-->
+                                <!--        <div class="ribbon"><span>{{$s->discount}}%</span></div>-->
                                 <!--    </div>-->
                                 <!--    {{--<span class="w3-tag w3-yellow"></span>--}}-->
                                 <!--    {{--  <img src="{{url('/theme/travel')}}/images/band.png" alt="" />--}}-->
@@ -992,13 +992,13 @@ text-align: left!important;
                                 <!-- OFFER BRAND -->
                                 @if($s->discount!=0)
                                 <div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png"
-                                        alt="" /><span class="disc-text">{{$s->discount}}<br>OFF</span></div>
+                                        alt="" /><span class="disc-text">{{$s->discount}}%<br>OFF</span></div>
                                 @else
                                 <!--  <div class="band"> <img src="{{url('/theme/travel')}}/images/icon/ribbon.png" alt="" /><span class="disc-text">No Discount</span></div> -->
                                 @endif
                                 <!--    <div class="band">-->
                                 <!--    <div class="box">-->
-                                <!--        <div class="ribbon"><span>{{$s->discount}}</span></div>-->
+                                <!--        <div class="ribbon"><span>{{$s->discount}}%</span></div>-->
                                 <!--    </div>-->
                                 <!--    {{--<span class="w3-tag w3-yellow"></span>--}}-->
                                 <!--    {{--  <img src="{{url('/theme/travel')}}/images/band.png" alt="" />--}}-->
@@ -1086,7 +1086,7 @@ text-align: left!important;
     <a href="">
         <div class="tour-mig-like-com">
             <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}" style="height:207px;" >
+                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}" style="height:213px;" >
             </div>
             <div class="tour-mig-lc-con">
                 <h5>{{$item->name}}</h5>
@@ -1100,7 +1100,7 @@ text-align: left!important;
     <a href="">
         <div class="tour-mig-like-com">
             <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:207px;"  >
+                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:213px;"  >
             </div>
             <div class="tour-mig-lc-con">
                 <h5>{{$item->name}}</h5>
@@ -1115,11 +1115,12 @@ text-align: left!important;
 {{-- start  of second with 3 pics  col-md-6  --}}
 @elseif($key==3)
 <div class="col-md-6">
-<div class="col-md-6 m-0 p-2">
+    <div class="row">
+<div class="col-md-6 m-0 p-1">
     <a href="">
         <div class="tour-mig-like-com">
             <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:207px;"  >
+                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:213px;"  >
             </div>
             <div class="tour-mig-lc-con">
                 <h5>{{$item->name}}</h5>
@@ -1129,11 +1130,11 @@ text-align: left!important;
     </a>
 </div>
 @elseif($key==4)
-<div class="col-md-6 m-0 p-2">
+<div class="col-md-6 m-0 p-1">
     <a href="">
         <div class="tour-mig-like-com">
             <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:207px;"  >
+                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:213px;"  >
             </div>
             <div class="tour-mig-lc-con">
                 <h5>{{$item->name}}</h5>
@@ -1145,11 +1146,11 @@ text-align: left!important;
 
 {{--  --}}
 @elseif($key==5)
-<div class="col-md-6 m-0 p-2">
+<div class="col-md-6 m-0 p-1">
     <a href="">
         <div class="tour-mig-like-com">
             <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:207px;"  >
+                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:213px;"  >
             </div>
             <div class="tour-mig-lc-con">
                 <h5>{{$item->name}}</h5>
@@ -1159,11 +1160,11 @@ text-align: left!important;
     </a>
 </div>
 @elseif($key==6)
-<div class="col-md-6 m-0 p-2">
+<div class="col-md-6 m-0 p-1">
     <a href="">
         <div class="tour-mig-like-com">
             <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:207px;"  >
+                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:213px;"  >
             </div>
             <div class="tour-mig-lc-con">
                 <h5>{{$item->name}}</h5>
@@ -1174,11 +1175,11 @@ text-align: left!important;
 </div>
 {{--  --}}
 @elseif($key==7)
-<div class="col-md-6 m-0 p-2">
+<div class="col-md-6 m-0 p-1">
     <a href="">
         <div class="tour-mig-like-com">
             <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:207px;"  >
+                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:213px;"  >
             </div>
             <div class="tour-mig-lc-con">
                 <h5>{{$item->name}}</h5>
@@ -1188,11 +1189,11 @@ text-align: left!important;
     </a>
 </div>
 @elseif($key==8)
-<div class="col-md-6 m-0 p-2">
+<div class="col-md-6 m-0 p-1">
     <a href="">
         <div class="tour-mig-like-com">
             <div class="tour-mig-lc-img">
-                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:207px;"  >
+                <img src="{{$item->banner}}" alt="" title="{{ $item->description }}"style="height:213px;"  >
             </div>
             <div class="tour-mig-lc-con">
                 <h5>{{$item->name}}</h5>
@@ -1200,6 +1201,7 @@ text-align: left!important;
             </div>
         </div>
     </a>
+</div>
 </div>
 </div>
 @endif

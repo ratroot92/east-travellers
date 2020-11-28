@@ -9,7 +9,7 @@ nav {
     height: auto;
 }
 
-.alert {
+.custom-alert {
     font-size: 13px !important;
     font-weight: bold !important;
     height: 35px !important;
@@ -447,7 +447,7 @@ container-fluiddForSearch(this.value)" value="{{$city->id}}" class="price styled
                                         <div class="col-md-12  ">
                                             @if(count($All_Events) >0)
 
-                                            <div class="alert alert-secondary text-white">
+                                            <div class="custom-alert alert-secondary text-white">
                                                 <i class="fa fa-bell text-danger fa-2x ml-3 mr-3"
                                                     aria-hidden="true"></i> Showing All Events
                                                 @if(@isset($Results_For))
@@ -589,7 +589,7 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                         <div class="col-md-12  ">
                                             @if(count($All_Activity_Events) >0)
 
-                                            <div class="alert alert-secondary text-white">
+                                            <div class="custom-alert alert-secondary text-white">
                                                 <i class="fa fa-bell text-danger fa-2x ml-3 mr-3"
                                                     aria-hidden="true"></i>
                                                 Showing
@@ -874,7 +874,7 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                             <div class="row">
                                 <div class="col-md-12  ">
                                     @if(count($All_Cruise_Events) >0)
-                                    <div class="alert alert-secondary text-white">
+                                    <div class="custom-alert alert-secondary text-white">
                                         <i class="fa fa-bell text-danger fa-2x ml-3 mr-3" aria-hidden="true"></i>
                                         Showing All Cruise Events
                                         @if(@isset($Results_For))
@@ -1014,7 +1014,7 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                             <div class="row">
                                 <div class="col-md-12  ">
                                     @if(count($All_Transfer_Events) >0)
-                                    <div class="alert alert-secondary text-white">
+                                    <div class="custom-alert alert-secondary text-white">
                                         <i class="fa fa-bell text-danger fa-2x ml-3 mr-3" aria-hidden="true"></i>
                                         Showing All Transfer Events
                                         @if(@isset($Results_For))
@@ -1157,7 +1157,7 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                             <div class="row">
                                 <div class="col-md-12">
                                     @if(count($All_Daytour_Events) >0)
-                                    <div class="alert alert-secondary text-white">
+                                    <div class="custom-alert alert-secondary text-white">
                                         <i class="fa fa-bell text-danger fa-2x ml-3 mr-3" aria-hidden="true"></i>
                                         Showing All Daytour Events
                                         @if(@isset($Results_For))
@@ -1301,7 +1301,7 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
                                 <div class="col-md-12 ">
                                     @if(count($All_Package_Events) >
                                     0)
-                                    <div class="alert alert-secondary text-white">
+                                    <div class="custom-alert alert-secondary text-white">
                                         <i class="fa fa-bell text-danger fa-2x ml-3 mr-3" aria-hidden="true"></i>
                                         Showing All Package
                                         Events
@@ -1450,7 +1450,7 @@ font-weight: 700;">Event Type : {{$item->event_type}}</h4>
 </div>
 </div>
 <!-- END CONTAINER -->
-<button id="button">asd</button>
+
 @endsection
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">

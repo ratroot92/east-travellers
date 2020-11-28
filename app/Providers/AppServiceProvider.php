@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
+use View;
+use DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,7 +18,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        View::share('myname','ahmed');
+        View::composer('*',function($view){
+            $destinationCities = DB::table('popularcities')->latest('created_at')->limit('9')->get();
+            $view->with('destinationCities',$destinationCities);
+        });
     }
 
     /**

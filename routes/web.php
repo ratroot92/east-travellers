@@ -21,6 +21,7 @@ Route::get(
 		$data['sightseeing'] = DB::table('sightseeing')->where(DB::raw('MONTH(sight_date)'), date('m'))->get();
 		// $result = DB::table('popularcities')->limit('10')->get();
         $cities = DB::table('popularcities')->latest('created_at')->limit('9')->get();
+
 		$Event_Cities = DB::table('event__cities')->groupby('name')->get();
 		$Event_Countries = DB::table('event__countries')->groupby('name')->get();
 		$Event_Categories = DB::table('event__categories')->groupby('name')->get();
