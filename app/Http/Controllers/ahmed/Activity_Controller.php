@@ -19,6 +19,7 @@ use App\Mail\SendMailForBooking;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMailable;
 use App\Mail\detailMail;
+use Redirect;
 //
 use Validator;
 
@@ -35,16 +36,18 @@ class Activity_Controller extends Controller
 
 	public function returnpdf()
 	{
-		return view('activities.pdf');
+		return view('activities/pdf');
 	}
 	public function PDF($id)
 	{
-		$activity = DB::table('activities')
-			->where('id', $id)
-			->first();
-		$pdf = PDF::loadView('activities/pdf', compact('activity'));
+         $Event = All_Events::Find($id);
+        //  dd($Event);
+		// $Event = DB::table('all__events')
+		// 	->where('id', $id)
+		// 	->first();
+		$pdf = PDF::loadView('activities/pdf', compact('Event'));
 		$pdf->setOptions(['isPhpEnabled' => true, 'isRemoteEnabled' => true]);
-		return $pdf->download('weblinerz.pdf');
+		return $pdf->download($Event->event_name.'.pdf');
 	}
 
 
@@ -224,7 +227,8 @@ public function eventInquiry(Request $request){
     );
 
     Mail::to('info@eastravels.com')->send(new detailMail($emailData));
-    //return redirect('/auth/signup')->with('message','Check your email and get verification link, if you do not recieve it in inbox, check spam folder');
+  //  return  Redirect::back()->withMessage('message','Email Inquiry sent successfully ');
+    return Redirect::back()->withErrors(['msg', 'Email Inquiry sent successfully']);
 }
 
 }
