@@ -413,7 +413,7 @@
 
                 <!--<div class="row p-t-10">-->
                 <!--   <div class="col-md-12">-->
-                <!--      <a type="button" class="btn btn-danger btn-lg" style="border-radius: 0px;font-weight: bold;font-size:12px;"id="Btnpdf" href="{{URL::to('/activity/downloadPDF/').'/'.$Event->id}}">Download As PDF</a>-->
+                <!--      <a type="button" class="btn btn-danger btn-lg" style="border-radius: 0px;font-weight: bold;font-size:12px;"id="Btnpdf" href="{{URL::to('/event/downloadPDF/').'/'.$Event->id}}">Download As PDF</a>-->
                 <!--   </div>-->
                 <!--</div>-->
                 <!--====== TOUR LOCATION ==========-->
@@ -612,7 +612,7 @@
                     <div class="col-sm-6" style="padding: 1px;">
                         <a type="button" class="btn btn-danger btn-lg"
                             style="border-radius: 0px;font-weight: bold;font-size:12px; width: 100%" id="Btnpdf"
-                            href="{{URL::to('/activity/downloadPDF/').'/'.$Event->id}}">Download PDF</a>
+                            href="{{URL::to('/event/downloadPDF/').'/'.$Event->id}}">Download PDF</a>
                     </div>
                 </div>
                 <div class="tour_right tour_offer" style="background: transparent">

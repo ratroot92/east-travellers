@@ -14,6 +14,7 @@ use App\File;
 use App\Image;
 use App\Package_Icon;
 use DB;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -883,5 +884,7 @@ class Event_Controller extends Controller
 		} else {
 			return redirect()->route('view.all.icons')->with('success', 'Failed to Delete Event Icon  ');;
 		}
-	}
+    }
+
+
 }

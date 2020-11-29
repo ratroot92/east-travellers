@@ -77,7 +77,7 @@ Route::get('activities/gridsearch3/{price}', 'ahmed\Activity_Controller@grid_sea
 Route::get('activities/gridsearch4/{price}', 'ahmed\Activity_Controller@grid_search4');
 Route::get('activities/gridsearch5/{price}', 'ahmed\Activity_Controller@grid_search5');
 Route::get('activities/gridsearch', 'ahmed\Activity_Controller@grid_search');
-Route::get('/activity/downloadPDF/{id}', 'ahmed\Activity_Controller@PDF');
+Route::get('/event/downloadPDF/{id}', 'ahmed\Activity_Controller@PDF');
 Route::get('/activity/pdf', 'ahmed\Activity_Controller@returnpdf');
 Route::get('/cityByCountry/{country}', 'ahmed\Activity_Controller@cityByCountry');
 /*Activity Routes defined By Ahmad*/

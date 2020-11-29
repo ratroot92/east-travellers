@@ -47,7 +47,8 @@ class Activity_Controller extends Controller
 		// 	->first();
 		$pdf = PDF::loadView('activities/pdf', compact('Event'));
 		$pdf->setOptions(['isPhpEnabled' => true, 'isRemoteEnabled' => true]);
-		return $pdf->download($Event->event_name.'.pdf');
+        return $pdf->download($Event->event_name.'.pdf');
+        // return view('activities/pdf',['Event' => $Event]);
 	}
 
 

@@ -72,11 +72,9 @@ Route::group(['middleware' => ['session']], function () {
 
 Route::get('/activity/downloadPDF/{id}', 'ahmed\Activity_Controller@PDF');
 Route::get('/activity/pdf', 'ahmed\Activity_Controller@returnpdf');
-
 /*Activity Routes defined By Ahmad*/
 Route::prefix('activity')->group(function () {
 });
-
 
 Route::get('cruise/downloadPDF/{id}', 'ahmed\Cruise_Controller@PDF');
 Route::get('cruise/pdf', 'ahmed\Cruise_Controller@returnpdf');
